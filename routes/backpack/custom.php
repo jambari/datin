@@ -28,4 +28,8 @@ Route::group([
 	//Kindeks
 
 	CRUD::resource('kindek', 'KindekCrudController');
+
+	//Deklinasi
+
+	CRUD::resource('deklinasi', 'DeklinasiCrudController');
 }); // this should be the absolute last line of this file
