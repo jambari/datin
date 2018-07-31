@@ -32,4 +32,7 @@ Route::group([
 	//Deklinasi
 
 	CRUD::resource('deklinasi', 'DeklinasiCrudController');
+
+	//Inklinasi
+	CRUD::resource('inklinasi', 'InklinasiCrudController');	
 }); // this should be the absolute last line of this file

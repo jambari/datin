@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Deklinasi extends Model
+class Inklinasi extends Model
 {
     use CrudTrait;
 
@@ -15,13 +15,14 @@ class Deklinasi extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'deklinasis';
+    protected $table = 'inklinasi';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'tanggal','jam00', 'jam01', 'jam02', 'jam03', 'jam04', 'jam05', 'jam06', 'jam07', 'jam08', 'jam09','jam10', 'jam11', 'jam12', 'jam13', 'jam14', 'jam15', 'jam16', 'jam17', 'jam18', 'jam19', 'jam20',
-        'jam21', 'jam22', 'jam23'
+        'tanggal','jam00', 'jam01', 'jam02', 'jam03', 'jam04', 'jam05', 'jam06', 'jam07', 'jam08', 'jam09',
+                            'jam10', 'jam11', 'jam12', 'jam13', 'jam14', 'jam15', 'jam16', 'jam17', 'jam18', 'jam19', 'jam20',
+                            'jam21', 'jam22', 'jam23'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -79,7 +80,6 @@ class Deklinasi extends Model
         + $jam10 + $jam11 + $jam12 + $jam13 + $jam14 + $jam15 + $jam16 + $jam17 + $jam18 + $jam19 + $jam20 + $jam21 + $jam22 + $jam23)/24 ;
         return round($value);
     }
-
     public function getTanggalAttribute($value)
     {
         return date("d-m-Y", strtotime($value));
