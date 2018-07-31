@@ -35,4 +35,8 @@ Route::group([
 
 	//Inklinasi
 	CRUD::resource('inklinasi', 'InklinasiCrudController');	
+
+	//Absolut
+	CRUD::resource('absolut', 'AbsolutCrudController');	
+
 }); // this should be the absolute last line of this file
