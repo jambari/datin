@@ -18,4 +18,7 @@ Route::group([
 	//Hujan 
 
 	CRUD::resource('hujan', 'HujanCrudController');
+
+	//KAH
+	CRUD::resource('kah', 'KahCrudController');
 }); // this should be the absolute last line of this file
