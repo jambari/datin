@@ -5,3 +5,4 @@
 
 <li><a href="{{ backpack_url('hujan') }}"><i class="wi wi-raindrops"></i> <span>Hujan</span></a></li>
 <li><a href="{{ backpack_url('kah') }}"><i class="wi wi-dust"></i> <span>KAH</span></a></li>
+<li><a href="{{ backpack_url('spm') }}"><i class="wi wi-humidity"></i> <span>SPM</span></a></li>

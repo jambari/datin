@@ -21,4 +21,7 @@ Route::group([
 
 	//KAH
 	CRUD::resource('kah', 'KahCrudController');
+
+	//SPM
+	CRUD::resource('spm', 'SpmCrudController');
 }); // this should be the absolute last line of this file
