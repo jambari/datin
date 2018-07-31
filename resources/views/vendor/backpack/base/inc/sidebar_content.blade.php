@@ -8,6 +8,8 @@
 
 <li><a href="{{ backpack_url('absolut') }}"><i class="wi wi-storm-warning"></i></i> <span>Absolut</span></a></li>
 
+<li><a href="{{ backpack_url('summary') }}"><i class="wi wi-storm-warning"></i></i> <span>Summary</span></a></li>
+
 <li><a href="{{ backpack_url('hujan') }}"><i class="wi wi-raindrops"></i> <span>Hujan</span></a></li>
 <li><a href="{{ backpack_url('kah') }}"><i class="wi wi-dust"></i> <span>KAH</span></a></li>
 <li><a href="{{ backpack_url('spm') }}"><i class="wi wi-humidity"></i> <span>SPM</span></a></li>
