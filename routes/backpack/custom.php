@@ -24,4 +24,8 @@ Route::group([
 
 	//SPM
 	CRUD::resource('spm', 'SpmCrudController');
+
+	//Kindeks
+
+	CRUD::resource('kindek', 'KindekCrudController');
 }); // this should be the absolute last line of this file
