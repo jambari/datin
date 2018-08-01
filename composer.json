@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.1.3",
         "backpack/crud": "^3.4",
+        "backpack/pagemanager": "^1.1",
         "barryvdh/laravel-elfinder": "^0.3.12",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
