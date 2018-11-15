@@ -29,8 +29,10 @@
                     <span class="info-box-text">Epicenter</span>
                     <span class="info-box-number">
                         @php
-                        $lin = str_split($gempa->lintang);
-                        if ($lin[0] == '-' && count($lin) <=2 ) { //jika misal lintang = 3.0, 4.0 
+                        $lin = str_split($gempa['lintang']);
+                        if ($lin=='') {
+                            print_r(' LS');
+                        } elseif($lin[0] == '-' && count($lin) <=2 ) { //jika misal lintang = 3.0, 4.0 
                             $lintang = $lin[1].'.0';
                         }
                         else {

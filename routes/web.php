@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('admin/dashboard', 'DashboardController@index');
+Route::get('/admin/dashboard', 'DashboardController@index');

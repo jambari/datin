@@ -20,11 +20,21 @@ class HomeController extends Controller
 	public function index() 
 	{
 		
-		$gempa = Gempa::latest();
+		$terasa = Gempa::orderBy('id', 'desc')
+		->whereBetween('lintang',[-11,-0.10])
+		->whereBetween('bujur',[134,140.417])
+		->take(150)->get();
+		$tidakterasa = Gempa::orderBy('id', 'desc')
+		->whereBetween('lintang',[-11,-0.10])
+		->whereBetween('bujur',[134,140.417])
+		->take(150)->get();
 
-		$event = DB::table('gempas')->latest()->first();
+		$datas = [
+			'terasa' => $terasa,
+			'tidakterasa' => $tidakterasa,
+        ];
 
-    	return view('welcome')->with(compact('gempa','event'));
+    	return view('welcome')->with(compact('datas'));
 	}
 
 }
