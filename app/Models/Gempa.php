@@ -63,9 +63,7 @@ class Gempa extends Model
 
     public function getTanggalAttribute($value)
     {
-        $tanggal = \Carbon\Carbon::parse($value)->format('Y-m-d');
-        $value = $tanggal;
-        return $value;
+        return date("d-m-Y", strtotime($value));
     }
     /*
     |--------------------------------------------------------------------------

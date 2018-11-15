@@ -15,7 +15,36 @@ Route::group([
 	//Gempabumi
 	CRUD::resource('gempa', 'GempaCrudController');
 
+	//Infogempa
+	CRUD::resource('infogempa', 'InfogempaCrudController');
+	Route::get('infogempa/{id}/peta', 'InfogempaCrudController@peta');
 	//Hujan 
 
 	CRUD::resource('hujan', 'HujanCrudController');
+
+	//KAH
+	CRUD::resource('kah', 'KahCrudController');
+
+	//SPM
+	CRUD::resource('spm', 'SpmCrudController');
+
+	//Kindeks
+
+	CRUD::resource('kindek', 'KindekCrudController');
+
+	//Deklinasi
+
+	CRUD::resource('deklinasi', 'DeklinasiCrudController');
+
+	//Inklinasi
+	CRUD::resource('inklinasi', 'InklinasiCrudController');	
+
+	//Absolut
+	CRUD::resource('absolut', 'AbsolutCrudController');	
+	//summary
+	CRUD::resource('summary', 'SummaryCrudController');	
+
+	//Menuitem
+	CRUD::resource('menu-item', 'MenuItemCrudController');
+
 }); // this should be the absolute last line of this file

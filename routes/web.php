@@ -11,7 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('admin/dashboard', 'DashboardController@index');
+Route::get('/', 'HomeController@index');
+Route::get('/admin/dashboard', 'DashboardController@index');
