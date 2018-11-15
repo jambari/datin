@@ -153,13 +153,25 @@ class InfogempaCrudController extends CrudController
         fclose($file);
         $file = fopen("/home/suadmin/gmt1/info.gmt","w");
         $sms = $event['sms'];
-        $sms = str_replace(':','@~\072@',$sms);
+        // $sms = str_replace(':','@~\072@',$sms);
         $sms = str_replace('WITA','WIT',$sms);
         $sms = str_replace('BMKG','BMKG-JAY',$sms);
         $sms = str_replace('SR','',$sms);
         fwrite($file,$sms);
         $test = shell_exec('cd /home/suadmin/gmt1 && sh ./autoepic.sh');
+       
+        // function setInterval($f, $milliseconds)
+        //     {
+        //         $seconds=(int)$milliseconds/1000;
+        //         while(true)
+        //         {
+        //             $f();
+        //             sleep($seconds);
+        //         }
+        //     }
+            // setInterval(function(){
+                return view('gempa.infogempa')->with(compact('sms'));
+            // }, 10000);
         // return view('gempa.infogempa')->with(compact('lapenda','tahun','month','rownum'));
-        return view('gempa.infogempa')->with(compact('sms'));
     }
 }

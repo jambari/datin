@@ -23,14 +23,24 @@
                 </div>
                 <div class="box-body">
                     <div class="row" id="peta" >
-                        <div class="col-md-12 ">
-                            <div align="center" id="peta">
-                                <!-- <p> {{ $sms }} </p> -->
+                        <div class="col-md-8 col-offset-md-4 ">
+                            <div align="center" id="peta" >
+                                <p> {{ $sms }} </p>
                                 <img src=" {{ asset('images') }}/lapenda.png " alt="lapenda" width="600px" height="450px" >
                             </div>
-                            <button onclick="take()"> take </button>
+                        </div>
+                        <div col-md-4 >
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box-body">
+                        <button onclick="take()" class="btn btn-block" > Download peta </button>
                 </div>
             </div>
         </div>
