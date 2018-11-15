@@ -26,7 +26,7 @@ class HomeController extends Controller
 		->take(150)->get();
 		$tidakterasa = Gempa::orderBy('id', 'desc')
 		->whereBetween('lintang',[-11,-0.10])
-		->whereBetween('bujur',[134,140.417])
+		->whereBetween('bujur',[134,142.417])
 		->take(150)->get();
 
 		$datas = [
