@@ -149,6 +149,8 @@ class InfogempaCrudController extends CrudController
         $bujur = $event['bujur'];
         $file = fopen("/home/suadmin/gmt1/event.gmt","w");
         $koordinat = $event['bujur']." ".$event['lintang']." ".$id;
+        $lat = $event['lintang'];
+        $lon = $event['bujur'];
         fwrite($file,$koordinat);
         fclose($file);
         $file = fopen("/home/suadmin/gmt1/info.gmt","w");
@@ -159,6 +161,6 @@ class InfogempaCrudController extends CrudController
         $sms = str_replace('SR','',$sms);
         fwrite($file,$sms);
         echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
-        return view('gempa.infogempa')->with(compact('sms'));
+        return view('gempa.infogempa')->with(compact('sms', 'lat', 'lon'));
     }
 }
