@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/backpack/backpack.base.css') }}?v=2">
     <link rel="stylesheet" href="{{ asset('vendor/backpack/overlays/backpack.bold.css') }}">
     <link rel="stylesheet" href="{{ asset('css/weather-icons.min.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 
     @yield('after_styles')
     @stack('after_styles')
@@ -126,6 +128,7 @@
     <script src="{{ asset('vendor/adminlte') }}/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/dist/js/adminlte.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
 
     <!-- page script -->
     <script type="text/javascript">
