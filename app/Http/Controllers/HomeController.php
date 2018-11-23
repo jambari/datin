@@ -21,13 +21,17 @@ class HomeController extends Controller
 	{
 		
 		$terasa = Gempa::orderBy('id', 'desc')
-		->whereBetween('lintang',[-11,-0.10])
-		->whereBetween('bujur',[134,140.417])
-		->take(150)->get();
+		->whereBetween('lintang',[-8, 1])
+		->whereBetween('bujur',[134,142])
+		->where('terasa', '=',1)
+		->orderBy('tanggal', 'desc')
+		->take(60)->get();
 		$tidakterasa = Gempa::orderBy('id', 'desc')
-		->whereBetween('lintang',[-11,-0.10])
-		->whereBetween('bujur',[134,142.417])
-		->take(150)->get();
+		->whereBetween('lintang',[-8, 1])
+		->whereBetween('bujur',[134,142])
+		->where('terasa', '=',0)
+		->orderBy('tanggal', 'desc')
+		->take(60)->get();
 
 		$datas = [
 			'terasa' => $terasa,

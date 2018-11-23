@@ -17,8 +17,8 @@
                 <span class="info-box-icon"><i class="wi wi-earthquake"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Origin</span>
-                    <span class="info-box-number">{{ $gempa->tanggal or '-' }}</span>
-                    <span class="info-box-number">{{ $gempa->origin or '-' }}</span>
+                    <span class="info-box-number">{{ $data['gempa']['tanggal'] or '-' }}</span>
+                    <span class="info-box-number">{{ $data['gempa']['origin'] or '-' }}</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div>
@@ -29,7 +29,7 @@
                     <span class="info-box-text">Epicenter</span>
                     <span class="info-box-number">
                         @php
-                        $lin = str_split($gempa['lintang']);
+                        $lin = str_split($data['gempa']['lintang']);
                         if ($lin=='') {
                             print_r(' LS');
                         } elseif($lin[0] == '-' && count($lin) <=2 ) { //jika misal lintang = 3.0, 4.0 
@@ -43,7 +43,7 @@
                         @endphp
 
                     </span>
-                    <span class="info-box-number">{{ $gempa->bujur or '-' }} BT</span>
+                    <span class="info-box-number">{{ $data['gempa']['bujur'] or '-' }} BT</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div>
@@ -52,7 +52,7 @@
                 <span class="info-box-icon"><span class="glyphicon glyphicon-stats"></span></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Magnitudo</span>
-                    <span class="info-box-number">{{ $gempa->magnitudo or '-' }} {{ $gempa->type or '-' }}</span>
+                    <span class="info-box-number">{{ $data['gempa']['magnitudo'] or '-' }} {{ $data['gempa']['type'] or '-' }}</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div>
@@ -61,7 +61,7 @@
                 <span class="info-box-icon"><span class="glyphicon glyphicon-circle-arrow-down"></span></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Kedalaman</span>
-                    <span class="info-box-number"> {{ $gempa->depth or '-' }} Km</span>
+                    <span class="info-box-number"> {{ $data['gempa']['depth'] or '-' }} Km</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div>
@@ -91,7 +91,7 @@
                             {
                             label: "Gempabumi",
                             backgroundColor: ["#804715", "#D49C6A","#FFD2AA"],
-                            data: [2478,5267,734]
+                            data: [ {{ $data['Mbelowthree'] }} ,{{ $data['Mthreefive'] }}, {{ $data['Mabovefive'] }} ]
                             }
                         ]
                         },
@@ -129,7 +129,7 @@
                             {
                             label: "Gempabumi",
                             backgroundColor: ["#013034", "#0E494E","#417C81"],
-                            data: [2478,5267,734]
+                            data: [ {{ $data['Dshallow'] }} ,{{ $data['Dmediate'] }}, {{ $data['Dverydeep'] }} ]
                             }
                         ]
                         },
@@ -167,31 +167,20 @@
                     new Chart(document.getElementById("Aindeks-chart"), {
                         type: 'line',
                         data: {
-                            labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+                            labels: [
+                                @foreach($data['aindeks'] as $aindek)
+                                    "{{ $aindek['tanggal'] }}",
+                                @endforeach
+
+                            ],
                             datasets: [{ 
-                                data: [86,114,106,106,107,111,133,221,783,2478],
-                                label: "Africa",
+                                data: [
+                                    @foreach($data['aindeks'] as $aindek)
+                                    "{{ $aindek['aindex'] }}",
+                                    @endforeach
+                                ],
+                                label: "Aindeks",
                                 borderColor: "#3e95cd",
-                                fill: false
-                            }, { 
-                                data: [282,350,411,502,635,809,947,1402,3700,5267],
-                                label: "Asia",
-                                borderColor: "#8e5ea2",
-                                fill: false
-                            }, { 
-                                data: [168,170,178,190,203,276,408,547,675,734],
-                                label: "Europe",
-                                borderColor: "#3cba9f",
-                                fill: false
-                            }, { 
-                                data: [40,20,10,16,24,38,74,167,508,784],
-                                label: "Latin America",
-                                borderColor: "#e8c3b9",
-                                fill: false
-                            }, { 
-                                data: [6,3,2,2,7,26,82,172,312,433],
-                                label: "North America",
-                                borderColor: "#c45850",
                                 fill: false
                             }
                             ]
@@ -199,7 +188,7 @@
                         options: {
                             title: {
                             display: true,
-                            text: 'World population per region (in millions)'
+                            text: 'Nilai A Indeks 30 hari terakhir'
                             }
                         }
                         });
@@ -225,12 +214,19 @@
                             new Chart(document.getElementById("Kindeks-chart"), {
                                 type: 'bar',
                                 data: {
-                                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                                labels: ["00-03", "03-06", "09-12", "12-15", "18-21", "21-24"],
                                 datasets: [
                                     {
                                     label: "K Indeks",
                                     backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                                    data: [2478,5267,734,784,433]
+                                    data: [{{ $data['kindeks']['k1'] }},
+                                    {{ $data['kindeks']['k2'] }}
+                                    ,{{ $data['kindeks']['k3'] }},
+                                    {{ $data['kindeks']['k4'] }},
+                                    {{ $data['kindeks']['k5'] }},
+                                    {{ $data['kindeks']['k6'] }},
+                                    {{ $data['kindeks']['k7'] }},
+                                    {{ $data['kindeks']['k8'] }}]
                                     }
                                 ]
                                 },
@@ -238,7 +234,7 @@
                                 legend: { display: false },
                                 title: {
                                     display: true,
-                                    text: 'Nilai K-Indeks 1 Hari Terakhir'
+                                    text: 'Nilai K-Indeks {{ $data['kindeks']['tanggal'] }}'
                                 }
                                 }
                             });
@@ -287,12 +283,20 @@
                         new Chart(document.getElementById("Hujan-chart"), {
                         type: 'line',
                         data: {
-                        labels: ["day 1","day 1","day 1","day 1","day 1","day 1","day 1","day 1","day 1","day 1","day 1","day 1",],
+                        labels: [
+                                @foreach($data['hujans'] as $hujan)
+                                    "{{ $hujan['tanggal'] }}",
+                                @endforeach
+                            ],
                         datasets: [
                             {
                             label: "Hujan",
-                            backgroundColor: ["#6B4E90"],
-                            data: [2478,5267,734,734,734,734,734,734,734,734,734,734,734,734,734,734,734,734,734,734]
+                            backgroundColor: ["#162756"],
+                            data: [
+                                @foreach($data['hujans'] as $hujan)
+                                    "{{ $hujan['obs'] }}",
+                                @endforeach
+                            ]
                             }
                         ]
                         },

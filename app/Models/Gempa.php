@@ -17,7 +17,7 @@ class Gempa extends Model
 
     protected $table = 'gempas';
     // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    public $timestamps = true;
     // protected $guarded = ['id'];
     protected $fillable = [
         'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth', 'ket','terasa','terdampak'

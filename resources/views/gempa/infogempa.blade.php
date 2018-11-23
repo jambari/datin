@@ -75,10 +75,12 @@
         html2canvas(document.getElementById("peta"), {
             onrendered: function (canvas) {
                 var base64image = canvas.toDataURL();
-                window.open(base64image , "_blank");
+                // window.open(base64image , "_blank");
+                var newWindow = window.open();
+                newWindow.document.write('<img src="' + base64image + '" />'); 
             }
         })
-        }
+        };
 
         function initMap() {
         var myLatLng = {lat: {{ $lat }}, lng: {{ $lon }} };

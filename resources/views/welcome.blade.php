@@ -22,6 +22,7 @@
                 justify-content: center;
                 align-content: center;
                 flex-direction: row;
+				height: 100%;
 
             }
         </style>
@@ -50,7 +51,7 @@
 					            	icon: iconBase + 'redblack.png'
 					          	},
 					          	tidak: {
-					            	icon: iconBase + 'redblack.png'
+					            	icon: iconBase + 'whiteblack.png'
 					          	}
 					        };
 
@@ -80,10 +81,10 @@
 													'</tr>'+
 													'<tr>'+
 																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $terasa->lokasi }} Km '+'</td>'+
+																'<td>'+'{{ $terasa->lokasi or '-' }} Km '+'</td>'+
 													'</tr>'+
 													'<td>'+'Intensitas'+'</td>'+
-																'<td>'+'{{ $terasa->dirasakan }} '+'</td>'+
+																'<td>'+'{{ $terasa->terdampak or '-' }} '+'</td>'+
 													'</tr>'+
 												'</tbody>'+
 											'</table>',
@@ -116,9 +117,6 @@
 													'<tr>'+
 																'<td>'+'Lokasi'+'</td>'+
 																'<td>'+'{{ $tidak->ket }} Km '+'</td>'+
-													'</tr>'+
-													'<td>'+'Intensitas'+'</td>'+
-																'<td>'+'{{ $tidak->terdampak }} '+'</td>'+
 													'</tr>'+
 												'</tbody>'+
 											'</table>',

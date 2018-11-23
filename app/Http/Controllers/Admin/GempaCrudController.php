@@ -72,6 +72,7 @@ class GempaCrudController extends CrudController
                 'name' => 'terasa',
                 'label' => 'dirasakan',
                 'type' => 'checkbox',
+                "default" => 0
             ], [
                 'name' => 'terdampak',
                 'label' => 'daerah yang merasakan',
@@ -79,11 +80,15 @@ class GempaCrudController extends CrudController
             ]
         ];
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
-        // $this->crud->addColumns(); // add multiple columns, at the end of the stack
+        $this->crud->addColumn('terasa');
+        $this->crud->addColumn('terdampak'); 
+        $this->crud->addColumn('created_at'); 
+        // add a single column, at the end of the stack
+        //$this->crud->addColumns('terasa','terdampak'); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
-        $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']); // adjusts the properties of the passed in column (by name)
+        $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']);
+        $this->crud->setColumnDetails('terasa', ['label' => 'Terasa']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
 
         // ------ CRUD FIELDS
@@ -106,7 +111,7 @@ class GempaCrudController extends CrudController
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
         // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -114,7 +119,7 @@ class GempaCrudController extends CrudController
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
 
         // ------ CRUD DETAILS ROW
-        // $this->crud->enableDetailsRow();
+        //$this->crud->enableDetailsRow();
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
 
@@ -148,6 +153,7 @@ class GempaCrudController extends CrudController
         // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
+        $this->crud->orderBy('tanggal','desc');
 
         //filter magnitudo 
         $this->crud->addFilter([ // daterange filter
