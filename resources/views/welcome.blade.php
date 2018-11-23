@@ -162,7 +162,7 @@
 								</tbody>
 							</table>
 						</div>
-					</div> {{-- end of map --}}
+					</div>
                 </div>
             </div>
 

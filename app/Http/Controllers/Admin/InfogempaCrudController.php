@@ -119,7 +119,7 @@ class InfogempaCrudController extends CrudController
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
-        // $this->crud->orderBy();
+        $this->crud->orderBy('id','desc');
         // $this->crud->groupBy();
         // $this->crud->limit();
     }
@@ -149,17 +149,18 @@ class InfogempaCrudController extends CrudController
         $bujur = $event['bujur'];
         $file = fopen("/home/suadmin/gmt1/event.gmt","w");
         $koordinat = $event['bujur']." ".$event['lintang']." ".$id;
+        $lat = $event['lintang'];
+        $lon = $event['bujur'];
         fwrite($file,$koordinat);
         fclose($file);
         $file = fopen("/home/suadmin/gmt1/info.gmt","w");
         $sms = $event['sms'];
-        $sms = str_replace(':','@~\072@',$sms);
+        // $sms = str_replace(':','@~\072@',$sms);
         $sms = str_replace('WITA','WIT',$sms);
         $sms = str_replace('BMKG','BMKG-JAY',$sms);
         $sms = str_replace('SR','',$sms);
         fwrite($file,$sms);
-        $test = shell_exec('cd /home/suadmin/gmt1 && sh ./autoepic.sh');
-        // return view('gempa.infogempa')->with(compact('lapenda','tahun','month','rownum'));
-        return view('gempa.infogempa')->with(compact('sms'));
+        echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
+        return view('gempa.infogempa')->with(compact('sms', 'lat', 'lon'));
     }
 }
