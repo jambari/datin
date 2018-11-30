@@ -124,7 +124,7 @@
                         new Chart(document.getElementById("Depth-chart"), {
                         type: 'bar',
                         data: {
-                        labels: ["Depth<3", "3>Depth<5", "Depth>5"],
+                        labels: ["Depth<70", "70>Depth<300", "Depth>300"],
                         datasets: [
                             {
                             label: "Gempabumi",

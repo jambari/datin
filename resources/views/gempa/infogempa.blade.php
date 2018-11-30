@@ -5,7 +5,6 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: white;
         }
     </style>
 @section('header')
@@ -19,7 +18,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-9 col-md-offset-1">
+        <div class="col-md-9 col-md-offset-2">
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h1 class="box-title">Info Gempabumi</h1>
@@ -33,11 +32,11 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <div align=""  id="peta">
+                            <div id="peta">
                                 <img src=" {{ asset('images') }}/logo.jpeg " alt="logo" width="700px" height="80px" style="margin-bottom: 15px" > 
     
                                 <img src=" {{ asset('images') }}/lapenda.png " alt="lapenda" width="600px" height="390px" style="margin-bottom: 15px;">
-                                <p class="text-center" style="color: black; font-size: 1em;" > <strong>{{ $sms }} </strong> </p>
+                                <p class="text-center" style="color: black; font-size: 1em; margin-left:8%;margin-right:8%;" > <strong>{{ $sms }} </strong> </p>
                                 <img src=" {{ asset('images') }}/medsos.jpg " alt="logo" width="700px" height="50px"> 
                             </div>
                         </div>
