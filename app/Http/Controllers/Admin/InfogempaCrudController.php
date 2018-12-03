@@ -50,8 +50,8 @@ class InfogempaCrudController extends CrudController
             ]
         ];
         // ------ CRUD COLUMNS
-        $this->crud->addColumn('created_at');
-        $this->crud->addColumn('updated_at'); // add a single column, at the end of the stack
+        //$this->crud->addColumn('created_at');
+        //$this->crud->addColumn('updated_at'); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -61,8 +61,8 @@ class InfogempaCrudController extends CrudController
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
-        $this->crud->removeField('lintang', 'update/create/both');
-        $this->crud->removeField('bujur', 'update/create/both');
+        //$this->crud->removeField('lintang', 'update/create/both');
+        //$this->crud->removeField('bujur', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // add asterisk for fields that are required in InfogempaRequest
@@ -156,9 +156,9 @@ class InfogempaCrudController extends CrudController
         fwrite($file,$koordinat);
         fclose($file);
         $sms = $event['sms'];
-        $sms = str_replace('WITA','WIT',$sms);
-        $sms = str_replace('BMKG','BMKG-JAY',$sms);
-        $sms = str_replace('SR','',$sms);
+        // $sms = str_replace('WITA','WIT',$sms);
+        // $sms = str_replace('BMKG','BMKG-JAY',$sms);
+        // $sms = str_replace('SR','',$sms);
         echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
         return view('gempa.infogempa')->with(compact('sms', 'lat', 'lon'));
     }
