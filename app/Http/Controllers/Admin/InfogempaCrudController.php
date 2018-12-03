@@ -147,7 +147,7 @@ class InfogempaCrudController extends CrudController
     public function peta($id)
     {   
         $event = Infogempa::find($id);
-        $lintang = $event['lintang'];
+        // $lintang = $event['lintang'];
         // $bujur = $event['bujur'];
         // $file = fopen("/home/suadmin/gmt1/event.gmt","w");
         // $koordinat = $event['bujur']." ".$event['lintang']." ".$id;
@@ -155,13 +155,10 @@ class InfogempaCrudController extends CrudController
         $lon = $event['bujur'];
         // fwrite($file,$koordinat);
         // fclose($file);
-        // $file = fopen("/home/suadmin/gmt1/info.gmt","w");
         $sms = $event['sms'];
-        // $sms = str_replace(':','@~\072@',$sms);
         $sms = str_replace('WITA','WIT',$sms);
         $sms = str_replace('BMKG','BMKG-JAY',$sms);
         $sms = str_replace('SR','',$sms);
-        // fwrite($file,$sms);
         // echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
         return view('gempa.infogempa')->with(compact('sms', 'lat', 'lon'));
     }
