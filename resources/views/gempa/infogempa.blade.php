@@ -36,8 +36,8 @@
                                 <img src=" {{ asset('images') }}/logo.jpeg " alt="logo" width="700px" height="80px" style="margin-bottom: 15px" > 
     
                                 <img src=" {{ asset('images') }}/lapenda.png " alt="lapenda" width="600px" height="390px" style="margin-bottom: 15px;">
-                                <p class="text-center" style="color: black; font-size: 1em; margin-left:13%;margin-right:13%;" > <strong>{{ $sms }} </strong> </p>
-                                <img src=" {{ asset('images') }}/medsos.jpg " alt="logo" width="700px" height="50px"> 
+                                <p class="text-center" style="color: black; font-size: 1em; margin-left:10%;margin-right:10%;" > <strong>{{ $sms }} </strong> </p>
+                                <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="700px" height="50px" ">  
                             </div>
                         </div>
                     </div>

@@ -83,19 +83,19 @@ class GempaCrudController extends CrudController
         // ------ CRUD COLUMNS
         $this->crud->addColumn('terasa');
         $this->crud->addColumn('terdampak'); 
-        $this->crud->addColumn('created_at'); 
+        //$this->crud->addColumn('created_at'); 
         // add a single column, at the end of the stack
         //$this->crud->addColumns('terasa','terdampak'); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']);
         $this->crud->setColumnDetails('terasa', ['label' => 'Terasa']); // adjusts the properties of the passed in column (by name)
-        // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
+        $this->crud->setColumnsDetails(['origin'], ['label' => 'Origin (UTC)']);
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         $this->crud->addFields($fields, 'update/create/both');
-        // $this->crud->removeField('name', 'update/create/both');
+        $this->crud->removeField('tanggal', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // add asterisk for fields that are required in GempaRequest
@@ -155,6 +155,7 @@ class GempaCrudController extends CrudController
         // $this->crud->groupBy();
         // $this->crud->limit();
         $this->crud->orderBy('tanggal','desc');
+        $this->crud->orderBy('origin','desc');
 
         //filter magnitudo 
         $this->crud->addFilter([ // daterange filter
