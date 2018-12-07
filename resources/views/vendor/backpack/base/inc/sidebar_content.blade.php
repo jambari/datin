@@ -37,7 +37,7 @@
 		<li><a href="{{ backpack_url('spm') }}"><i class="wi wi-humidity" style="margin-right: 0.5em;"></i> <span>SPM</span></a></li>
 	</ul>
 </li>
-
+<li><a href="{{ backpack_url('kegiatan') }}"><i class="fa fa-user" style="margin-right: 0.5em;"></i> <span>Kegiatan</span></a></li>
 
 <li><a href="{{ url('admin/menu-item') }}"><i class="fa fa-list"></i> <span>Menu</span></a></li>
 <li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>
