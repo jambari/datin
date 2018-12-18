@@ -334,7 +334,7 @@
                             datasets: [{
                                 label: "Gempabumi",
                                 backgroundColor: ["#4B0018", "#BD5E7C"],
-                                data: [2478,5267]
+                                data: [{{ $data['darat'] }},{{ $data['laut'] }}]
                             }]
                             },
                             options: {
