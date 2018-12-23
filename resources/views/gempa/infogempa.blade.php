@@ -134,10 +134,9 @@
         var eqIcon = L.icon({
             iconUrl: '/images/icongempa.png',
 
-            iconSize:     [50, 50], // size of the icon
+            iconSize:     [40, 40], // size of the icon
         });
         L.marker([{{ $lat }}, {{ $lon }}], {icon: eqIcon}).addTo(mymap);
-        // var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:'red'});
 
 		// Define an icon called cssIcon
 		var cssIcon = L.divIcon({
@@ -155,7 +154,7 @@
         function onMapClick(e) {
             popup
                 .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
+                .setContent("Koordinat gempa " + e.latlng.toString())
                 .openOn(mymap);
         }
 
