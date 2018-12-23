@@ -6,6 +6,33 @@
             align-items: center;
             flex-direction: column;
         }
+
+        #streetmap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .css-icon {
+
+            }
+
+        .gps_ring {	
+            border: 3px solid #FF0000;
+            -webkit-border-radius: 100px;
+            height: 100px;
+            width: 100px;		
+            -webkit-animation: pulsate 1s ease-out;
+            -webkit-animation-iteration-count: infinite; 
+            /*opacity: 0.0*/
+        }
+
+        @-webkit-keyframes pulsate {
+                0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+                50% {opacity: 1.0;}
+                100% {opacity: 1.0;}
+        }
     </style>
 @section('header')
     <section class="content-header">
@@ -63,13 +90,26 @@
                     <h1 class="box-title">Zoom In Peta di bawah ini untuk memastikan gempa di darat atau di laut</h1>
                 </div>
                 <div class="box-body">
-                <div id="map" style="width:100%;height:500px;"></div>
-
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="streetmap">
+                                <img src=" {{ asset('images') }}/logo.jpeg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
+                                    <div id="map" style="width:85%;height:500px;"></div> 
+                                <p class="text-center" style="color: black; font-size: 1.25em; margin-left:10%;margin-right:10%;" > <strong>{{ $sms }} </strong> </p>
+                                <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="100%" height="20%" ">  
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+
     <script>
+
         window.take = function() {
         html2canvas(document.getElementById("peta"), {
             onrendered: function (canvas) {
@@ -81,23 +121,45 @@
         })
         };
 
-        function initMap() {
-        var myLatLng = {lat: {{ $lat }}, lng: {{ $lon }} };
+        var mymap = L.map('map').setView([{{ $lat }}, {{ $lon }}], 7);
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 6,
-            center: myLatLng
-        });
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox.streets'
+        }).addTo(mymap);
 
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Hello World!'
+        var eqIcon = L.icon({
+            iconUrl: '/images/icongempa.png',
+
+            iconSize:     [50, 50], // size of the icon
         });
+        L.marker([{{ $lat }}, {{ $lon }}], {icon: eqIcon}).addTo(mymap);
+        // var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:'red'});
+
+		// Define an icon called cssIcon
+		var cssIcon = L.divIcon({
+		  // Specify a class name we can refer to in CSS.
+		  className: 'css-icon',
+		  html: '<div class="gps_ring"></div>'
+		  // Set marker width and height
+		  ,iconSize: [100,100]
+		  // ,iconAnchor: [11,11]
+		});
+
+		// Create three markers and set their icons to cssIcon
+		L.marker([{{ $lat }}, {{ $lon }}], {icon: cssIcon}).addTo(mymap);
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(mymap);
         }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxboE6Q1qKhSDL8HO4wHyH50-CiDUygcA&callback=initMap&callback=initMap">
-    </script>
+
+        mymap.on('click', onMapClick);
+        </script>
 
 @endsection

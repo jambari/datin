@@ -36,6 +36,12 @@
     <link rel="stylesheet" href="{{ asset('css/weather-icons.min.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <!-- leafletjs -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+   <!-- icon gempanya -->
+   <!-- <link rel="stylesheet" href="{{ asset('css') }}/L.Icon.Pulse.css" /> -->
 
     @yield('after_styles')
     @stack('after_styles')
@@ -128,6 +134,9 @@
     <script src="{{ asset('vendor/adminlte') }}/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/dist/js/adminlte.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="{{ asset('js') }}/L.Icon.Pulse.js" />
+    <!-- leafletjs -->
+
 
 
     <!-- page script -->
