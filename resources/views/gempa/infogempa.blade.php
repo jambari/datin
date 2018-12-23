@@ -120,6 +120,7 @@
             }
         })
         };
+        
 
         var mymap = L.map('map').setView([{{ $lat }}, {{ $lon }}], 7);
 

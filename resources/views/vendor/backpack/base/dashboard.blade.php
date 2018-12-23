@@ -18,7 +18,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Origin</span>
                     <span class="info-box-number">{{ $data['gempa']['tanggal'] or '-' }}</span>
-                    <span class="info-box-number">{{ $data['gempa']['origin'] or '-' }}</span>
+                    <span class="info-box-number">{{ $data['gempa']['origin'] or '-' }} UTC</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div>
@@ -28,22 +28,9 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Epicenter</span>
                     <span class="info-box-number">
-                        @php
-                        $lin = str_split($data['gempa']['lintang']);
-                        if ($lin=='') {
-                            print_r(' LS');
-                        } elseif($lin[0] == '-' && count($lin) <=2 ) { //jika misal lintang = 3.0, 4.0 
-                            $lintang = $lin[1].'.0';
-                        }
-                        else {
-                            $lintang = $lin[1].$lin[2].$lin[3];
-                        }
-
-                        print_r($lintang.' LS');
-                        @endphp
-
+                        {{ $data['gempa']['lintang'] or '-' }}
                     </span>
-                    <span class="info-box-number">{{ $data['gempa']['bujur'] or '-' }} BT</span>
+                    <span class="info-box-number">{{ $data['gempa']['bujur'] or '-' }}</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div>

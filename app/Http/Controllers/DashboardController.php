@@ -17,7 +17,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $gempa = Gempa::latest()->first();
+        $gempa = Gempa::orderBy('id', 'DESC')->first();
         $Mbelowthree = Gempa::where('magnitudo','<', 3)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         $Mthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])

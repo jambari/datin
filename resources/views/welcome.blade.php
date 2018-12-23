@@ -12,10 +12,14 @@
         <link rel="stylesheet" href="{{ asset('css/weather-icons.min.css') }}">
 {{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+		crossorigin=""/>
         <!-- Styles -->
         <style>
             header {
                 font-family: 'Abel', sans-serif;
+				display: flex;
             }
             footer {
                 display: flex;
@@ -28,40 +32,42 @@
         </style>
     </head>
     <body class=""{{--  --}}>
-        <header class="w3-container w3-blue-grey w3-padding-16">
+        <header class="w3-container w3-teal w3-padding-16">
             <span style="font-size:2em; ">Stageof Angkasapura</span>
         </header>
         <div class="w3-row"  >
             <div class="w3-col s12">
                 <div class="w3-container">
-                <div id="map" style="width:100%;height:650px;" class="w3-margin-top w3-margin-right"></div>
+                	<div id="map" style="width:100%;height:650px;" class="w3-margin-top w3-margin-right"></div>
+						<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+						integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+						crossorigin=""></script>
 							<script>
-								function initMap() {
-									var myLatlng = {lat:-2.54, lng:140.7504  };
-									var map = new google.maps.Map(document.getElementById('map'), {
-							center: myLatlng,
-                            mapTypeId: google.maps.MapTypeId.TERRAIN,
-							zoom: 6,
+								var map = L.map('map').setView([-2.5104, 140.714], 6);
 
-							});
-							var image = '/images/star.png';
-							var iconBase = '/images/';
-					        var icons = {
-					          	terasa: {
-					            	icon: iconBase + 'redblack.png'
-					          	},
-					          	tidak: {
-					            	icon: iconBase + 'whiteblack.png'
-					          	}
-					        };
+								L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+									attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+									id: 'mapbox.streets'
+								}).addTo(map);
 
-							var features = [
+								var terasaIcon = L.icon({
+									iconUrl: '/images/redblack.png',
+									iconSize:     [20, 20], // size of the icon
+
+								});
+
+								var tidakterasaIcon = L.icon({
+									iconUrl: '/images/whiteblack.png',
+									iconSize:     [20, 20], // size of the icon
+
+								});
+							
 								@if ($datas['terasa']->count() > 0)
 									@foreach ($datas['terasa'] as $terasa)
 									{
-							            position: new google.maps.LatLng({{ $terasa->lintang }}, {{ $terasa->bujur }}),
-							            type: 'terasa',
-							            info: '<table class="table table-bordered table-striped" style="border-radius:25px;">'+
+										marker = new L.marker([{{ $terasa->lintang }}, {{ $terasa->bujur }}], { icon: terasaIcon}).addTo(map)
+										.bindPopup(
+											'<table class="table table-bordered table-striped" style="border-radius:25px;">'+
 											'<tbody>'+
 													'<tr>'+
 																'<td>'+'Magnitudo'+'</td>'+
@@ -69,7 +75,7 @@
 													'</tr>'+
 													'<tr>'+
 																'<td>'+'Tanggal'+'</td>'+
-																'<td>'+'{{ $terasa->tanggal }} {{ $terasa->waktu }} UTC'+'</td>'+
+																'<td>'+'{{ $terasa->tanggal }} {{ $terasa->origin }} UTC'+'</td>'+
 													'</tr>'+
 													'<tr>'+
 																'<td>'+'Lokasi'+'</td>'+
@@ -77,26 +83,29 @@
 													'</tr>'+
 													'<tr>'+
 																'<td>'+'Kedalaman'+'</td>'+
-																'<td>'+'{{ $terasa->kedalaman }} Km '+'</td>'+
+																'<td>'+'{{ $terasa->depth }} Km '+'</td>'+
 													'</tr>'+
 													'<tr>'+
 																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $terasa->lokasi or '-' }} Km '+'</td>'+
+																'<td>'+'{{ $terasa->ket or '-' }}'+'</td>'+
 													'</tr>'+
 													'<td>'+'Intensitas'+'</td>'+
 																'<td>'+'{{ $terasa->terdampak or '-' }} '+'</td>'+
 													'</tr>'+
 												'</tbody>'+
-											'</table>',
-          							},
+											'</table>'
+										);
+									}
 									@endforeach
 								@endif
+
+								//tidak terasa
 								@if ($datas['tidakterasa']->count() > 0)
 									@foreach ($datas['tidakterasa'] as $tidak)
 									{
-							            position: new google.maps.LatLng({{ $tidak->lintang }}, {{ $tidak->bujur }}),
-							            type: 'tidak',
-							            info: '<table class="table table-bordered table-striped">'+
+										marker = new L.marker([{{ $tidak->lintang }}, {{ $tidak->bujur }}], { icon: tidakterasaIcon}).addTo(map)
+										.bindPopup(
+											'<table class="table table-bordered table-striped" style="border-radius:25px;">'+
 											'<tbody>'+
 													'<tr>'+
 																'<td>'+'Magnitudo'+'</td>'+
@@ -104,7 +113,11 @@
 													'</tr>'+
 													'<tr>'+
 																'<td>'+'Tanggal'+'</td>'+
-																'<td>'+'{{ $tidak->tanggal }} {{ $tidak->origin }} UTC'+'</td>'+
+																'<td>'+'{{ $terasa->tanggal }}'+'</td>'+
+													'</tr>'+
+													'<tr>'+
+																'<td>'+'Origin'+'</td>'+
+																'<td>'+'{{ $terasa->origin }} UTC'+'</td>'+
 													'</tr>'+
 													'<tr>'+
 																'<td>'+'Lokasi'+'</td>'+
@@ -114,39 +127,13 @@
 																'<td>'+'Kedalaman'+'</td>'+
 																'<td>'+'{{ $tidak->depth }} Km '+'</td>'+
 													'</tr>'+
-													'<tr>'+
-																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $tidak->ket }} Km '+'</td>'+
-													'</tr>'+
 												'</tbody>'+
-											'</table>',
-          							},
+											'</table>'
+										);
+									}
 									@endforeach
-								@endif								
-        					];
+								@endif
 
-							features.forEach(function(feature) {
-					         	var marker = new google.maps.Marker({
-					            	position: feature.position,
-					            	icon: icons[feature.type].icon,
-					            	map: map
-					          	});
-
-
-							var contentString = feature.info;
-							
-
-							var infowindow = new google.maps.InfoWindow({
-								content: contentString
-							});
-							marker.addListener('click', function() {
-								infowindow.open(map, marker);
-							});
-					        });
-							
-							}
-							</script>
-							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxboE6Q1qKhSDL8HO4wHyH50-CiDUygcA&callback=initMap">
 							</script>
 							<br>
 							<table>
@@ -165,8 +152,8 @@
             </div>
 
         </div>    
-        <footer class="w3-blue-grey w3-padding-32">
-                   <p>copyright Stageof Angkasapura 2018</p>         
+        <footer class="w3-teal w3-padding-32">
+                   <p>&copy; Stageof Angkasapura <?php echo date("Y"); ?></p>         
         </footer>
     </body>
 </html>
