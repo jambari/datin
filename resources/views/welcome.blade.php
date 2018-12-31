@@ -36,6 +36,26 @@
             <span style="font-size:2em; ">Stageof Angkasapura</span>
         </header>
         <div class="w3-row"  >
+			<!-- <div class="w3-col s4" >
+				<table class="w3-table w3-striped w3-responsive" >
+					<tr>
+						<th>#</th>
+						<th>Origin (UTC)</th>
+						<th>Lat</th>
+						<th>Lon</th>
+						<th>Depth</th>
+						<th>M</th>
+					</tr>
+					@if ($datas['terasa']->count() > 0)
+						@foreach ($datas['terasa'] as $terasa)
+						<tr>
+							<td> {{ $loop->iteration }} </td>
+
+						</tr> 
+						@endforeach
+					@endif 
+				</table>
+			</div> -->
             <div class="w3-col s12">
                 <div class="w3-container">
                 	<div id="map" style="width:100%;height:650px;" class="w3-margin-top w3-margin-right"></div>
@@ -65,87 +85,13 @@
 								@if ($datas['terasa']->count() > 0)
 									@foreach ($datas['terasa'] as $terasa)
 									{
-										marker = new L.marker([{{ $terasa->lintang }}, {{ $terasa->bujur }}], { icon: terasaIcon}).addTo(map)
-										.bindPopup(
-											'<table class="table table-bordered table-striped" style="border-radius:25px;">'+
-											'<tbody>'+
-													'<tr>'+
-																'<td>'+'Magnitudo'+'</td>'+
-																'<td>'+'<label class="label label-danger">'+'{{ $terasa->magnitudo }}'+'</label>'+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Tanggal'+'</td>'+
-																'<td>'+'{{ $terasa->tanggal }} {{ $terasa->origin }} UTC'+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $terasa->lintang }}, {{ $terasa->bujur }} '+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Kedalaman'+'</td>'+
-																'<td>'+'{{ $terasa->depth }} Km '+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $terasa->ket or '-' }}'+'</td>'+
-													'</tr>'+
-													'<td>'+'Intensitas'+'</td>'+
-																'<td>'+'{{ $terasa->terdampak or '-' }} '+'</td>'+
-													'</tr>'+
-												'</tbody>'+
-											'</table>'
-										);
-									}
-									@endforeach
-								@endif
-
-								//tidak terasa
-								@if ($datas['tidakterasa']->count() > 0)
-									@foreach ($datas['tidakterasa'] as $tidak)
-									{
-										marker = new L.marker([{{ $tidak->lintang }}, {{ $tidak->bujur }}], { icon: tidakterasaIcon}).addTo(map)
-										.bindPopup(
-											'<table class="table table-bordered table-striped" style="border-radius:25px;">'+
-											'<tbody>'+
-													'<tr>'+
-																'<td>'+'Magnitudo'+'</td>'+
-																'<td>'+'<label class="label label-danger">'+'{{ $tidak->magnitudo }}'+'</label>'+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Tanggal'+'</td>'+
-																'<td>'+'{{ $terasa->tanggal }}'+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Origin'+'</td>'+
-																'<td>'+'{{ $terasa->origin }} UTC'+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $tidak->lintang }}, {{ $tidak->bujur }} '+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Kedalaman'+'</td>'+
-																'<td>'+'{{ $tidak->depth }} Km '+'</td>'+
-													'</tr>'+
-												'</tbody>'+
-											'</table>'
-										);
+										marker = new L.marker([{{ $terasa->lintang }}, {{ $terasa->bujur }}], { icon: terasaIcon}).addTo(map);
 									}
 									@endforeach
 								@endif
 
 							</script>
-							<br>
-							<table>
-								<tbody border="0">
-									<tr>
-										<td>Dirasakan :</td>
-										<td><img src="{{ asset('images') }}/redblack.png" alt=""></td>
-										<td>Tidak</td>
-										<td><img src="{{ asset('images') }}/whiteblack.png" alt=""></td>
-									</tr>
-								</tbody>
-							</table>
+							</br>
 						</div>
 					</div>
                 </div>

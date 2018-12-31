@@ -48,8 +48,6 @@ class Gempa extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-  
-
     public function getTerasaAttribute($value)
     {
         if ($value==0) {
