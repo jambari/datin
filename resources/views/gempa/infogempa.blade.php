@@ -7,11 +7,40 @@
             flex-direction: column;
         }
 
+        #openstreetmap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 1%;
+        }
+
         #streetmap {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            margin-top: 2%;
+        }
+
+        #header-lapenda {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border: 1px solid #32965d;
+            padding-right: 1%;
+            background-color: #DCDCDC;
+        }
+
+        #sosmed {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #map {
+            border-radius: 10px;
+            border: 3px solid #DCDCDC; 
         }
 
         .css-icon {
@@ -64,7 +93,7 @@
     
                                 <img src=" {{ asset('images') }}/lapenda.jpg " alt="lapenda" width="600px" height="390px" style="margin-bottom: 15px;">
                                 <p class="text-center" style="color: black; font-size: 1em; margin-left:10%;margin-right:10%;" > <strong>{{ $sms }} </strong> </p>
-                                <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="700px" height="50px" ">  
+                                <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="700px" height="50px">  
                             </div>
                         </div>
                     </div>
@@ -83,22 +112,41 @@
             </div>
         </div>
     </div>
+
+    <!-- section for openstreetmap version of lapenda -->
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box box-header with-border">
-                    <h1 class="box-title">Zoom In Peta di bawah ini untuk memastikan gempa di darat atau di laut</h1>
+                    <h1 class="box-title">Kirim ke Whatsapp</h1>
                 </div>
                 <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="streetmap">
-                                <img src=" {{ asset('images') }}/logo.jpeg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
-                                    <div id="map" style="width:85%;height:500px;"></div> 
-                                <p class="text-center" style="color: black; font-size: 1.25em; margin-left:10%;margin-right:10%;" > <strong>{{ $sms }} </strong> </p>
-                                <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="100%" height="20%" ">  
+                    <div id="openstreetmap">
+                        <div class="row" id="header-lapenda" >
+                            <div class="" style=" display: flex; justify-content: center;">
+                                <img src=" {{ asset('images') }}/logo-bmkg.svg " alt="logo-bmkg" width="47%" height="47%" style=";">
+                            </div>
+                            <div class="" style="line-height: 225%">
+                                <span style="font-size: 1.5em; font-weight: bold; color: #5d9ec6;" >BADAN METEOROLOGI KLIMATOLOGI DAN GEOFISIKA</span> <br>
+                                <span style="font-size: 2em; font-weight: bold; color: #32965d; ">STASIUN GEOFISIKA ANGKASAPURA JAYAPURA</span>
+                                <p style="font-weight: bold ; color: a6b07e;"> <em>Jl. Drs. Krisna Sunarya No. 26 Angkasapura - Jayapura, 99613, Telp (0967) 533533, stageof.angkasa.bmkg.go.id </em> </p>
                             </div>
                         </div>
+                        <!-- end of lapenda header -->
+                        <div class="row" id="streetmap">
+                            <div class="col-md-10">
+                                <div id="map" style="width:100%;height:450px;"></div> 
+                                <p class="text-center" style="font-size: 1.1em; margin-left:%;margin-right:%; margin-top: 1%;" > <strong>{{ $sms }} </strong> </p> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" >
+                                <div  id="sosmed">
+                                <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="90%" height="75%"> 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end of the epicenter map -->
                     </div>
                 </div>
             </div>
