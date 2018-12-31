@@ -14,6 +14,12 @@
             flex-direction: column;
         }
 
+        #map {
+            border: 3px solid lightgray;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
         .css-icon {
 
             }
@@ -63,7 +69,7 @@
                                 <img src=" {{ asset('images') }}/logo.jpeg " alt="logo" width="700px" height="80px" style="margin-bottom: 15px" > 
     
                                 <img src=" {{ asset('images') }}/lapenda.jpg " alt="lapenda" width="600px" height="390px" style="margin-bottom: 15px;">
-                                <p class="text-center" style="color: black; font-size: 1em; margin-left:10%;margin-right:10%;" > <strong>{{ $sms }} </strong> </p>
+                                <p class="text-center" style="color: black; font-size: 1em; margin-left:5%;margin-right:5%;" > <strong>{{ $sms }} </strong> </p>
                                 <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="700px" height="50px" ">  
                             </div>
                         </div>
@@ -95,7 +101,7 @@
                             <div id="streetmap">
                                 <img src=" {{ asset('images') }}/logo.jpeg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
                                     <div id="map" style="width:85%;height:500px;"></div> 
-                                <p class="text-center" style="color: black; font-size: 1.25em; margin-left:10%;margin-right:10%;" > <strong>{{ $sms }} </strong> </p>
+                                <p class="text-center" style="font-size: 1.1em; margin-left:5%;margin-right:5%;" > <strong>{{ $sms }} </strong> </p>
                                 <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="100%" height="20%" ">  
                             </div>
                         </div>
