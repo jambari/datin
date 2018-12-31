@@ -10,26 +10,28 @@ use App\Models\Kindek;
 use App\Models\Hujan;
 use App\Models\Spm;
 use App\Models\Kah;
+use App\Models\Infogempa;
+
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $gempa = Gempa::latest()->first();
+        $gempa = Gempa::orderBy('id', 'DESC')->first();
         $Mbelowthree = Gempa::where('magnitudo','<', 3)
-                    ->whereDate('created_at', '>', Carbon::now()->subDays(30))->count();
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         $Mthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])
-                    ->whereDate('created_at', '>', Carbon::now()->subDays(30))->count();
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         $Mabovefive = Gempa::where('magnitudo','>=', 5)
-                    ->whereDate('created_at', '>', Carbon::now()->subDays(30))->count();
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
 
         //depth\
         $Dshallow = Gempa::where('depth','<', 70)
-                    ->whereDate('created_at', '>', Carbon::now()->subDays(30))->count();
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         $Mmediate = Gempa::whereBetween('depth',[70, 249])
-                    ->whereDate('created_at', '>', Carbon::now()->subDays(30))->count();
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         $Mverydeep = Gempa::where('depth','>=', 300)
-                    ->whereDate('created_at', '>', Carbon::now()->subDays(30))->count();
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
 
         $aindeks = Kindek::select(['tanggal','aindex'])
                     ->orderBy('tanggal','desc')
@@ -39,6 +41,11 @@ class DashboardController extends Controller
         $hujans = Hujan::select(['tanggal','obs'])
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
+        //darat
+
+        $darat = Infogempa::where('sms','like', '%darat%')->count();
+        //Laut
+        $laut = Infogempa::where('sms','like', '%laut%')->count();
         $data = [
             'gempa' => $gempa,
             'Mbelowthree' => $Mbelowthree,
@@ -49,7 +56,9 @@ class DashboardController extends Controller
             'Dverydeep' => $Mverydeep,
             'aindeks' => $aindeks,
             'kindeks' => $kindeks,
-            'hujans' => $hujans
+            'hujans' => $hujans,
+            'darat' => $darat,
+            'laut' => $laut,
         ];
         return view('vendor.backpack.base.dashboard')->with(compact('data'));
     }

@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\StoreHujanRequest as StoreRequest;
-use App\Http\Requests\UpdateHujanRequest as UpdateRequest;
+use App\Http\Requests\StoreKegiatanRequest as StoreRequest;
+use App\Http\Requests\UpdateKegiatanRequest as UpdateRequest;
 
 /**
- * Class HujanCrudController
+ * Class KegiatanCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class HujanCrudController extends CrudController
+class KegiatanCrudController extends CrudController
 {
     public function setup()
     {
@@ -22,9 +22,9 @@ class HujanCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Hujan');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/hujan');
-        $this->crud->setEntityNameStrings('hujan', 'hujan');
+        $this->crud->setModel('App\Models\Kegiatan');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/kegiatan');
+        $this->crud->setEntityNameStrings('kegiatan', 'kegiatan');
 
         /*
         |--------------------------------------------------------------------------
@@ -34,41 +34,34 @@ class HujanCrudController extends CrudController
 
         $this->crud->setFromDb();
 
-         $fields = [
+        $fields = [
             [
                 'name' => 'tanggal',
-                'label' => 'Tanggal',
+                'label' => 'tanggal',
                 'type' => 'date'
             ], [
-                'name' => 'obs',
-                'label' => 'Jumlah Obs',
+                'name' => 'waktu',
+                'label' => 'Waktu',
+                'type' => 'text',
+            ], [
+                'name' => 'kegiatan',
+                'label' => 'Kegiatan',
                 'type' => 'text'
             ], [
-                'name' => 'hilman',
-                'label' => 'Jumlah Hilman',
-                'type' => 'text'
-            ], [
-                'name' => 'kategori',
-                'label' => 'Kategori',
-                'type' => 'select_from_array',
-                'options' => [
-                    'nihil' => 'Nihil',
-                    'sangat ringan' => 'Sangat ringan',
-                    'ringan' => 'Ringan',
-                    'sedang' => 'Sedang',
-                    'lebat' => 'Lebat',
-                    'sangat lebat' => 'Sangat Lebat'
-                ],
-                'allows_null' => false, 
-            ], [
-                'name' => 'keterangan',
-                'label' => 'Keterangan',
-                'type' => 'textarea'
+                'name' => 'pengamat',
+                'label' => 'Pegawai',
+                'type' => 'select2_from_array',
+                'options' => ['akram' => 'Akram', 'berlian' => 'Berlian',
+                    'canggih'=> 'Canggih', 'danang' => 'Danang', 
+                    'dedy' => 'Dedy', 'jambari' => 'Jambari', 'lidya' => 'Lidya',
+                    'netty' => 'Netty', 'purnam' => 'Purnama','risma'=> 'Risma', 'rosi' => 'Rosi',
+                    'syawal' => 'Syawal'
+                ]
             ]
         ];
 
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
+        $this->crud->addColumn('created_at'); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -81,7 +74,7 @@ class HujanCrudController extends CrudController
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
-        // add asterisk for fields that are required in HujanRequest
+        // add asterisk for fields that are required in KegiatanRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
 
@@ -122,7 +115,7 @@ class HujanCrudController extends CrudController
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         // Does not work well with AJAX datatables.
-        $this->crud->enableExportButtons();
+        // $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
         // $this->crud->addClause('active');
@@ -135,81 +128,9 @@ class HujanCrudController extends CrudController
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
-        $this->crud->orderBy('tanggal','desc');
+        // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
-
-        //filter tanggal
-
-        $this->crud->addFilter([ // daterange filter
-           'type' => 'date_range',
-           'name' => 'tanggal',
-           'label'=> 'Tanggal'
-         ],
-         false,
-         function($value) { // if the filter is active, apply these constraints
-           $dates = json_decode($value);
-           $this->crud->addClause('where', 'tanggal', '>=', $dates->from);
-           $this->crud->addClause('where', 'tanggal', '<=', $dates->to);
-         });
-
-        //filter obs
-
-        $this->crud->addFilter([
-          'name' => 'obs',
-          'type' => 'range',
-          'label'=> 'Obs',
-          'label_from' => 'min obs',
-          'label_to' => 'max obs'
-        ],
-        false,
-        function($value) { // if the filter is active
-                    $range = json_decode($value);
-                    if ($range->from) {
-                        $this->crud->addClause('where', 'obs', '>=', (float) $range->from);
-                    }
-                    if ($range->to) {
-                        $this->crud->addClause('where', 'obs', '<=', (float) $range->to);
-                    }
-        });
-
-        //filter hilman
-
-        $this->crud->addFilter([
-          'name' => 'hilman',
-          'type' => 'range',
-          'label'=> 'Hilman',
-          'label_from' => 'min hilman',
-          'label_to' => 'max hilman'
-        ],
-        false,
-        function($value) { // if the filter is active
-                    $range = json_decode($value);
-                    if ($range->from) {
-                        $this->crud->addClause('where', 'hilman', '>=', (float) $range->from);
-                    }
-                    if ($range->to) {
-                        $this->crud->addClause('where', 'hilman', '<=', (float) $range->to);
-                    }
-        });
-
-        //kategori
-        $this->crud->addFilter([ // select2 filter
-          'name' => 'kategori',
-          'type' => 'select2',
-          'label'=> 'Kategori'
-        ], function() {
-            return [
-                    'nihil' => 'Nihil',
-                    'sangat ringan' => 'Sangat ringan',
-                    'ringan' => 'Ringan',
-                    'sedang' => 'Sedang',
-                    'lebat' => 'Lebat',
-                    'sangat lebat' => 'Sangat lebat'
-                    ];
-        }, function($value) { // if the filter is active
-            $this->crud->addClause('where', 'kategori', $value);
-        });
     }
 
     public function store(StoreRequest $request)

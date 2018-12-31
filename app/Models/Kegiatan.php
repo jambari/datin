@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Gempa extends Model
+class Kegiatan extends Model
 {
     use CrudTrait;
 
@@ -15,13 +15,11 @@ class Gempa extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'gempas';
+    protected $table = 'kegiatans';
     // protected $primaryKey = 'id';
-    public $timestamps = true;
+    // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [
-        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth', 'ket','terasa','terdampak'
-    ];
+    protected $fillable = ['tanggal', 'waktu', 'kegiatan', 'pengamat'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -48,21 +46,7 @@ class Gempa extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-    public function getTerasaAttribute($value)
-    {
-        if ($value==0) {
-            $value = 'tidak';
-            return $value;
-        } else {
-            $value = 'dirasakan';
-            return $value;
-        }
-    }
 
-    public function getTanggalAttribute($value)
-    {
-        return date("d-m-Y", strtotime($value));
-    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

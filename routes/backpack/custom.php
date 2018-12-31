@@ -41,6 +41,8 @@ Route::group([
 
 	//Absolut
 	CRUD::resource('absolut', 'AbsolutCrudController');	
+	//Kegiatan
+	CRUD::resource('kegiatan', 'KegiatanCrudController');	
 	//summary
 	CRUD::resource('summary', 'SummaryCrudController');	
 

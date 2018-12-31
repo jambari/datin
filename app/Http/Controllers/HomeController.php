@@ -23,7 +23,7 @@ class HomeController extends Controller
 		$terasa = Gempa::orderBy('id', 'desc')
 		->whereBetween('lintang',[-8, 1])
 		->whereBetween('bujur',[134,142])
-		->where('terasa', '=',1)
+		// ->where('terasa', '=',1)
 		->orderBy('tanggal', 'desc')
 		->take(60)->get();
 		$tidakterasa = Gempa::orderBy('id', 'desc')
