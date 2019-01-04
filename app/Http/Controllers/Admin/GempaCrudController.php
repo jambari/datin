@@ -78,6 +78,10 @@ class GempaCrudController extends CrudController
                 'name' => 'terdampak',
                 'label' => 'daerah yang merasakan',
                 'type' => 'textarea'
+            ], [
+                'name' => 'narasi',
+                'label' => 'narasi',
+                'type' => 'tinymce'
             ]
         ];
         // ------ CRUD COLUMNS
@@ -86,7 +90,7 @@ class GempaCrudController extends CrudController
         //$this->crud->addColumn('created_at'); 
         // add a single column, at the end of the stack
         //$this->crud->addColumns('terasa','terdampak'); // add multiple columns, at the end of the stack
-        // $this->crud->removeColumn('column_name'); // remove a column from the stack
+        $this->crud->removeColumn('narasi'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']);
         $this->crud->setColumnDetails('terasa', ['label' => 'Terasa']); // adjusts the properties of the passed in column (by name)
@@ -95,7 +99,7 @@ class GempaCrudController extends CrudController
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         $this->crud->addFields($fields, 'update/create/both');
-        $this->crud->removeField('tanggal', 'update/create/both');
+        $this->crud->removeField('tanggal', 'update');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // add asterisk for fields that are required in GempaRequest
@@ -120,7 +124,8 @@ class GempaCrudController extends CrudController
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
 
         // ------ CRUD DETAILS ROW
-        //$this->crud->enableDetailsRow();
+        $this->crud->enableDetailsRow();
+        $this->crud->allowAccess('details_row');
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
 
@@ -281,4 +286,10 @@ class GempaCrudController extends CrudController
     }
 
     //filter
+
+    //details row
+    public function showDetailsRow($id) {
+        $event = $this->crud->getEntry($id);
+        return view('vendor.backpack.crud.gempa_details_row', compact('event'));
+    }
 }
