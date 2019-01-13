@@ -50,15 +50,15 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-9 col-md-offset-2">
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h1 class="box-title">Info Gempabumi</h1>
                         <div class="box-tools">
-                          <!-- This will cause the box to be removed when clicked -->
+                          This will cause the box to be removed when clicked
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                          <!-- This will cause the box to collapse when clicked -->
+                          This will cause the box to collapse when clicked
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                         </div>
                 </div>
@@ -66,7 +66,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div id="peta">
-                                <img src=" {{ asset('images') }}/logo.jpeg " alt="logo" width="700px" height="80px" style="margin-bottom: 15px" > 
+                                <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="700px" height="80px" style="margin-bottom: 15px" > 
     
                                 <img src=" {{ asset('images') }}/lapenda.jpg " alt="lapenda" width="600px" height="390px" style="margin-bottom: 15px;">
                                 <p class="text-center" style="color: black; font-size: 1em; margin-left:5%;margin-right:5%;" > <strong>{{ $sms }} </strong> </p>
@@ -80,6 +80,7 @@
         <div class="col-md-3">
         </div>
     </div>
+    tombol screetshoot
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
@@ -89,17 +90,20 @@
             </div>
         </div>
     </div>
+
+    end of peta GMT -->
+
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box box-header with-border">
-                    <h1 class="box-title">Zoom In Peta di bawah ini untuk memastikan gempa di darat atau di laut</h1>
+                    <h1 class="box-title">Info Gempabumi</h1>
                 </div>
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div id="streetmap">
-                                <img src=" {{ asset('images') }}/logo.jpeg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
+                                <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
                                     <div id="map" style="width:85%;height:500px;"></div> 
                                 <p class="text-center" style="font-size: 1.1em; margin-left:5%;margin-right:5%;" > <strong>{{ $sms }} </strong> </p>
                                 <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="100%" height="20%" ">  
@@ -113,6 +117,9 @@
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    crossorigin=""></script>
+   <script src="{{ asset('gjson') }}/patahan.js" > </script>
+   <script src="{{ asset('gjson') }}/subduksi.js" > </script>
+   <script src="{{ asset('gjson') }}/plates.js" > </script>
 
     <script>
 
@@ -144,6 +151,42 @@
             iconSize:     [40, 40], // size of the icon
         });
         L.marker([{{ $lat }}, {{ $lon }}], {icon: eqIcon}).addTo(mymap);
+        //style for subduksi and patahan
+        var patahanStyle = {
+            "color": "#2C4B48",
+            "weight": 0.7,
+            "opacity": 0.9
+        };
+
+        //style for subduksi
+
+        var subduksiStyle = {
+            "color": "#0A70C4",
+            "weight": 1,
+            "opacity": 0.5,
+            "fillColor": 'transparent',
+        }
+
+        function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+            if (feature.properties && feature.properties.PlateName) {
+                layer.bindPopup(feature.properties.PlateName);
+            }
+        }
+
+        L.geoJSON(pataHan, {
+            style : patahanStyle,
+        }).addTo(mymap); //add patahan symbol
+
+        L.geoJSON(worldPlates, {
+            style: subduksiStyle,
+            onEachFeature: onEachFeature
+        }).addTo(mymap);
+
+        //plot subduction
+        // L.geoJSON(subDuksi, {
+        //     style: subduksiStyle
+        // }).addTo(mymap);
 
 		// Define an icon called cssIcon
 		var cssIcon = L.divIcon({
@@ -154,18 +197,6 @@
 		  ,iconSize: [100,100]
 		  // ,iconAnchor: [11,11]
 		});
-
-		// Create three markers and set their icons to cssIcon
-		L.marker([{{ $lat }}, {{ $lon }}], {icon: cssIcon}).addTo(mymap);
-
-        function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent("Koordinat gempa " + e.latlng.toString())
-                .openOn(mymap);
-        }
-
-        mymap.on('click', onMapClick);
-        </script>
+    </script>
 
 @endsection
