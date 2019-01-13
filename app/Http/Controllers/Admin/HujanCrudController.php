@@ -40,12 +40,12 @@ class HujanCrudController extends CrudController
                 'label' => 'Tanggal',
                 'type' => 'date'
             ], [
-                'name' => 'obs',
-                'label' => 'Jumlah Obs',
-                'type' => 'text'
-            ], [
                 'name' => 'hilman',
                 'label' => 'Jumlah Hilman',
+                'type' => 'text'
+            ], [
+                'name' => 'obs',
+                'label' => 'Jumlah Obs',
                 'type' => 'text'
             ], [
                 'name' => 'kategori',
@@ -64,6 +64,16 @@ class HujanCrudController extends CrudController
                 'name' => 'keterangan',
                 'label' => 'Keterangan',
                 'type' => 'textarea'
+            ],[
+                'name' => 'petugas',
+                'label' => 'On Duty',
+                'type' => 'select_from_array',
+                'options' => ['akram'=>'Akram', 'berlian' => 'Berlian', 'canggih'=>'Canggih',
+                    'danang' => 'Danang' ,'dedy' => 'Dedy', 'jambari' => 'Jambari',
+                    'lidya' => 'Lidya', 'netty' => 'Netty', 'purnama' => 'Purnama', 'risma' => 'Risma',
+                    'rosi' => 'Rosi', 'syawal' => 'Syawal' 
+                ],
+                'default' => 'umum'
             ]
         ];
 

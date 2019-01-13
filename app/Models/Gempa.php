@@ -20,7 +20,8 @@ class Gempa extends Model
     public $timestamps = true;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth', 'ket','terasa','terdampak', 'narasi'
+        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth', 'ket','terasa','terdampak', 'narasi',
+        'sumber', 'petugas'
     ];
     // protected $hidden = [];
     // protected $dates = [];

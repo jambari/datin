@@ -82,11 +82,27 @@ class GempaCrudController extends CrudController
                 'name' => 'narasi',
                 'label' => 'narasi',
                 'type' => 'tinymce'
+            ], [
+                'name' => 'sumber',
+                'label' => 'Sumber',
+                'type' => 'select_from_array',
+                'options' => ['angkasa'=>'Angkasa', 'pgr v' => 'PGR V', 'pgn'=>'pgr'],
+                'default' => 'angkasa'
+            ], [
+                'name' => 'petugas',
+                'label' => 'On Duty',
+                'type' => 'select_from_array',
+                'options' => ['akram'=>'Akram', 'berlian' => 'Berlian', 'canggih'=>'Canggih',
+                    'danang' => 'Danang' ,'dedy' => 'Dedy', 'jambari' => 'Jambari',
+                    'lidya' => 'Lidya', 'netty' => 'Netty', 'purnama' => 'Purnama', 'risma' => 'Risma',
+                    'rosi' => 'Rosi', 'syawal' => 'Syawal' 
+                ],
+                'default' => 'umum'
             ]
         ];
         // ------ CRUD COLUMNS
-        $this->crud->addColumn('terasa');
-        $this->crud->addColumn('terdampak'); 
+        // $this->crud->addColumn('terasa');
+        // $this->crud->addColumn('terdampak'); 
         //$this->crud->addColumn('created_at'); 
         // add a single column, at the end of the stack
         //$this->crud->addColumns('terasa','terdampak'); // add multiple columns, at the end of the stack

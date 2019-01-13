@@ -75,12 +75,6 @@
 									iconSize:     [20, 20], // size of the icon
 
 								});
-
-								var tidakterasaIcon = L.icon({
-									iconUrl: '/images/whiteblack.png',
-									iconSize:     [20, 20], // size of the icon
-
-								});
 							
 								@if ($datas['terasa']->count() > 0)
 									@foreach ($datas['terasa'] as $terasa)
