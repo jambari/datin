@@ -184,9 +184,9 @@
         // }).addTo(mymap);
 
         //plot subduction
-        // L.geoJSON(subDuksi, {
-        //     style: subduksiStyle
-        // }).addTo(mymap);
+        L.geoJSON(subDuksi, {
+            style: subduksiStyle
+        }).addTo(mymap);
 
 		// Define an icon called cssIcon
 		var cssIcon = L.divIcon({
