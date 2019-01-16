@@ -15,4 +15,4 @@ Route::get('/', 'HomeController@index');
 Route::get('/admin/dashboard', 'DashboardController@index');
 Route::get('/bukutamu', 'GuestController@index');
 Route::get('/bukutamu/tambah', 'GuestController@tambah');
-Route::get('/bukutamu/post', 'GuestController@postTamu');
+Route::post('/bukutamu/store', 'GuestController@storeTamu');

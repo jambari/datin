@@ -178,10 +178,10 @@
             style : patahanStyle,
         }).addTo(mymap); //add patahan symbol
 
-        L.geoJSON(worldPlates, {
-            style: subduksiStyle,
-            onEachFeature: onEachFeature
-        }).addTo(mymap);
+        // L.geoJSON(worldPlates, {
+        //     style: subduksiStyle,
+        //     onEachFeature: onEachFeature
+        // }).addTo(mymap);
 
         //plot subduction
         // L.geoJSON(subDuksi, {

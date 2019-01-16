@@ -13,7 +13,7 @@ class StoreGuestRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class StoreGuestRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama' => 'required',
+            'dari' => 'required',
+            'keperluan' => 'required',
+            'foto' => 'required'
+        ];
+    }
+
+    //pesan error
+    public function messages()
+    {
+        return [
+            'nama.required' => 'Nama harus diisi',
+            'dari.required' => 'Dari harus diisi',
+            'keperluan.required' => 'Keperluan harus diisi',
         ];
     }
 }
