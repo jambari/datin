@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form action="/bukutamu/store" method="post" id="myform">
+                <form action="{{ action('GuestController@store') }}" method="post" id="myform">
                 {{ csrf_field() }}
                     <fieldset>
                         <legend>Tambah Tamu</legend>
@@ -67,7 +67,7 @@
     height: 240,
     dest_width: 320,
     dest_height: 240,
-    image_format: 'jpeg',
+    image_format: 'png',
     jpeg_quality: 90,
     force_flash: false
 });
