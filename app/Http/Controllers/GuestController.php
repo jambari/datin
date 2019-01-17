@@ -25,7 +25,7 @@ class GuestController extends Controller
     }
 
     //store
-    public function store(StoreRequest $rerquest) {
+    public function store(StoreRequest $request) {
         $requestData = $request->all();
  
             if(!empty($_POST['foto'])){
