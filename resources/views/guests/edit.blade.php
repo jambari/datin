@@ -5,6 +5,7 @@
             <div class="col-md-12">
                 <form method="POST" id="myform" action="{{ route('guests.update',$guest->id) }}">
                 {{ csrf_field() }}
+                @method('PUT')
                     <fieldset>
                         <legend>Tambah Tamu</legend>
                         <div class="row">

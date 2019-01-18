@@ -14,8 +14,5 @@
 Route::get('/', 'HomeController@index');
 Route::get('/admin/dashboard', 'DashboardController@index');
 Route::resource('/guests', 'GuestController');
-// Route::get('/bukutamu/tambah', 'GuestController@show');
-// // Route::post('/bukutamu/store', 'GuestController@storeTamu');
-// // Route::put('/bukutamu/update/{id}', 'GuestController@update');
-// // Route::get('/bukutamu/update/entri/{id}', 'GuestController@updateTamu');
-// Route::get('/bukutamu/hapus/{id}', 'GuestController@hapusTamu');
+//cari tamu
+Route::any( '/guests/search', 'GuestController@search');

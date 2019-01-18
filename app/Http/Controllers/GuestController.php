@@ -101,4 +101,17 @@ class GuestController extends Controller
 
     //update entry
 
+    public function search (StoreRequest $request) {
+        $q = $request->input( 'q' );
+        if($q != ""){
+        $guests = Guest::where( 'nama', 'LIKE', '%' . $q . '%' )->orWhere ( 'dari', 'LIKE', '%' . $q . '%' )->paginate (5)->setPath ( '' );
+        $pagination = $guests->appends ( array (
+           'q' => $request->input ( 'q' ) 
+         ) );
+        if (count ( $guests ) > 0)
+         return view ( 'guests.index' )->withDetails ( $guests )->withQuery ( $q );
+        }
+         return view ( 'guests.index' )->withMessage ( 'Tidak ada tamu yang anda cari !' );
+    }
+
 }

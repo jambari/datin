@@ -10,8 +10,8 @@
     @yield('after_style')
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+<nav class="navbar navbar-expand-lg navbar-light bg-success" >
+  <a class="navbar-brand text-white" href="/guests">
     <img src="{{ asset('images') }}/bukutamu.jpg" alt="" width="100" height="50">
     Bukutamu
 </a>
@@ -23,17 +23,17 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <a class="nav-link btn pull-right" href="{{ route('guests.create') }}">Tambah tamu <i class="fa fa-group" ></i> </a>
+        <a class="nav-link btn pull-right text-white" href="{{ route('guests.create') }}">Tambah tamu <i class="fa fa-group" ></i> </a>
       </li>
       </ul>
   </div>
 </nav>
     @yield('content')
-    <footer class="page-footer font-small bg-light">
+    <footer class="page-footer font-small bg-success">
 <!-- Copyright -->
     <div class="footer-copyright text-center py-3">
-        <p>&copy; Stageof Angkasapura <?php echo date("Y"); ?></p>  
-        <p> Crafted by <a href="https://github.com/jambari">Jambari</a> </p>  
+        <p class="text-white">&copy; Stageof Angkasapura <?php echo date("Y"); ?></p>  
+        <p class="text-white"> Crafted by <a href="https://github.com/jambari" class="text-white">Jambari</a> </p>  
     </div>
 <!-- Copyright -->
 </footer>

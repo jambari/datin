@@ -3,14 +3,26 @@
 @endsection
 @section('content')
 @include('guests.pesan')
-
+<div class="container" style="margin-top: 3%;">
+        <form action="/guests/search" method="POST" role="search">
+            {{ csrf_field() }}
+            <div class="input-group">
+                <input type="text" class="form-control" name="q"
+                    placeholder="Cari Tamu"> <span class="input-group-btn">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search">Cari</span>
+                    </button>
+                </span>
+            </div>
+        </form>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="container" >
                 <h3 class="text-center" >Daftar tamu terkini</h3>
             </div>
-            <table class="table table-hover">
+            <table class="table table-hover table-striped">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -18,7 +30,7 @@
                     <th scope="col">Nama</th>
                     <th scope="col">Dari</th>
                     <th scope="col">Keperluan</th>
-                    <th scope="col">Keterangan</th>
+                    <th scope="col">Kesan dan Pesan</th>
                     <th scope="col">Foto</th>
                     <th>aksi</th>
                     </tr>
