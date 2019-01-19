@@ -134,7 +134,7 @@
             style : patahanStyle,
         }).addTo(mymap); //add patahan symbol
 
-        L.geoJSON(worldPlates, {
+        L.geoJSON(subDuksi, {
             style: subduksiStyle,
             onEachFeature: onEachFeature
         }).addTo(mymap);
