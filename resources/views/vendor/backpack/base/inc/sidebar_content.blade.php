@@ -5,7 +5,8 @@
 <a href="#"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i><span>Gempabumi</span><i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
 	<li><a href="{{ backpack_url('gempa') }}"><i class="fa fa-book"></i> <span>Repositori</span></a></li>
-	<li><a href="{{ backpack_url('infogempa') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa</span></a></li>
+	<!-- <li><a href="{{ backpack_url('infogempa') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa</span></a></li> -->
+	<li><a href="/infogempa/peta"><i class="fa fa-envelope"></i></i> <span>Info Gempa</span></a></li>
 	</ul>
 </li>
 <li class="treeview">

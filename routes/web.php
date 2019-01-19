@@ -13,3 +13,5 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/admin/dashboard', 'DashboardController@index');
+Route::get('/infogempa', 'infobaruController@index');
+Route::get('/infogempa/peta', 'infobaruController@peta');
