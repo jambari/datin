@@ -13,6 +13,7 @@ use App\Models\Summary;
 use App\Models\Kindek;
 use App\Models\Deklinasi;
 use App\Models\Inklinasi;
+use App\Models\Infogempa;
 
 class HomeController extends Controller
 {
@@ -39,6 +40,15 @@ class HomeController extends Controller
         ];
 
     	return view('welcome')->with(compact('datas'));
+	}
+
+	public function apigempa() {
+		$gempa = Gempa::latest()->first();
+		return response()->json($gempa);
+	}
+	public function apisms() {
+		$sms = Infogempa::latest()->first();
+		return response()->json($sms);
 	}
 
 }

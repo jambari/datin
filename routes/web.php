@@ -13,6 +13,6 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/admin/dashboard', 'DashboardController@index');
-Route::resource('/guests', 'GuestController');
-//cari tamu
-Route::any( '/guests/search', 'GuestController@search');
+//api
+Route::get('/api/gempa', 'HomeController@apigempa');
+Route::get('/api/sms', 'HomeController@apisms');
