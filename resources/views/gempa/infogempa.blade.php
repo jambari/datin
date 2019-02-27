@@ -137,12 +137,10 @@
 
         var mymap = L.map('map').setView([{{ $lat }}, {{ $lon }}], 7);
 
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
             maxZoom: 18,
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox.streets'
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
         }).addTo(mymap);
 
         var eqIcon = L.icon({
@@ -197,6 +195,9 @@
 		  ,iconSize: [100,100]
 		  // ,iconAnchor: [11,11]
 		});
+    
+    //add css icon as gps ring
+    L.marker([{{ $lat }}, {{ $lon }}], {icon: cssIcon}).addTo(mymap);
     </script>
 
 @endsection

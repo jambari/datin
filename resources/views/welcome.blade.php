@@ -65,10 +65,7 @@
 							<script>
 								var map = L.map('map').setView([-2.5104, 140.714], 6);
 
-								L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-									attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-									id: 'mapbox.streets'
-								}).addTo(map);
+								L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18 }).addTo(map);
 
 								var terasaIcon = L.icon({
 									iconUrl: '/images/redblack.png',

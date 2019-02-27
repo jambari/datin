@@ -147,13 +147,13 @@ class InfogempaCrudController extends CrudController
     public function peta($id)
     {   
         $event = Infogempa::find($id);
-        $lintang = $event['lintang']; //ngambil lintang untuk peta gmt
-        $bujur = $event['bujur'];//ngambil bujur untuk peta gmt
-        $file = fopen("/home/suadmin/gmt1/event.gmt","w"); //nulis peta gmt
-        $koordinat = $event['bujur']." ".$event['lintang']." ".$id;
+        //$lintang = $event['lintang']; //ngambil lintang untuk peta gmt
+        //$bujur = $event['bujur'];//ngambil bujur untuk peta gmt
+        //$file = fopen("/home/suadmin/gmt1/event.gmt","w"); //nulis peta gmt
+        //$koordinat = $event['bujur']." ".$event['lintang']." ".$id;
         $lat = $event['lintang'];
         $lon = $event['bujur'];
-        fwrite($file,$koordinat);
+        //fwrite($file,$koordinat);
         // fclose($file);
         $sms = $event['sms'];
         // $sms = str_replace('WITA','WIT',$sms);
