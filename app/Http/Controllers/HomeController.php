@@ -21,22 +21,26 @@ class HomeController extends Controller
 	public function index() 
 	{
 		
-		$terasa = Gempa::orderBy('id', 'desc')
-		->whereBetween('lintang',[-8, 1])
-		->whereBetween('bujur',[134,142])
-		// ->where('terasa', '=',1)
-		->orderBy('tanggal', 'desc')
-		->take(60)->get();
-		$tidakterasa = Gempa::orderBy('id', 'desc')
-		->whereBetween('lintang',[-8, 1])
-		->whereBetween('bujur',[134,142])
-		->where('terasa', '=',0)
-		->orderBy('tanggal', 'desc')
-		->take(60)->get();
+		// $terasa = Gempa::orderBy('id', 'desc')
+		// ->whereBetween('lintang',[-8, 1])
+		// ->whereBetween('bujur',[134,142])
+		// // ->where('terasa', '=',1)
+		// ->orderBy('tanggal', 'desc')
+		// ->take(60)->get();
+		// $tidakterasa = Gempa::orderBy('id', 'desc')
+		// ->whereBetween('lintang',[-8, 1])
+		// ->whereBetween('bujur',[134,142])
+		// ->where('terasa', '=',0)
+		// ->orderBy('tanggal', 'desc')
+		// ->take(60)->get();
+		$gempa = Gempa::orderBy('id', 'DESC')->first();
+		$kindeks = Kindek::latest()->first();
 
 		$datas = [
-			'terasa' => $terasa,
-			'tidakterasa' => $tidakterasa,
+			// 'terasa' => $terasa,
+			// 'tidakterasa' => $tidakterasa,
+			'gempa' => $gempa,
+			'kindeks' => $kindeks,
         ];
 
     	return view('welcome')->with(compact('datas'));
