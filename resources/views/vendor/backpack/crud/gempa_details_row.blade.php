@@ -1,3 +1,25 @@
+<style>
+
+    .css-icon {
+
+        }
+
+    .gps_ring {	
+        border: 3px solid #FF0000;
+        -webkit-border-radius: 100px;
+        height: 100px;
+        width: 100px;		
+        -webkit-animation: pulsate 1s ease-out;
+        -webkit-animation-iteration-count: infinite; 
+        /*opacity: 0.0*/
+    }
+
+    @-webkit-keyframes pulsate {
+            0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+            50% {opacity: 1.0;}
+            100% {opacity: 1.0;}
+    }
+    </style>
 <div class="row">
     <div class=" col-md-12">
         <div class="box box-success box-solid">
@@ -6,8 +28,8 @@
             </div>
             <div class="box-body" >
                 <div class="row">
-                    <div class="container">
-                        <div id="map" style="width:50%;height:500px;"></div> 
+                    <div class="container-fluid">
+                        <div id="map" style="width:100%;height:500px;"></div> 
                     </div>
                 </div>
             </div>
@@ -83,5 +105,5 @@ crossorigin=""></script>
     });
 
 //add css icon as gps ring
-//  L.marker([{{ $event->lintang }}, {{ $event->bujur }}], {icon: cssIcon}).addTo(mymap);
+    L.marker([{{ $event->lintang }}, {{ $event->bujur }}], {icon: cssIcon}).addTo(mymap);
 </script>
