@@ -37,7 +37,16 @@
 		<li><a href="{{ backpack_url('spm') }}"><i class="wi wi-humidity" style="margin-right: 0.5em;"></i> <span>SPM</span></a></li>
 	</ul>
 </li>
-<li><a href="{{ backpack_url('kegiatan') }}"><i class="fa fa-user" style="margin-right: 0.5em;"></i> <span>Kegiatan</span></a></li>
+
+<li class="treeview">
+		<a href="#"><i class="fa fa-newspaper-o"></i> <span>News</span> <i class="fa fa-angle-left pull-right"></i></a>
+		<ul class="treeview-menu">
+		  <li><a href="{{ backpack_url('article') }}"><i class="fa fa-newspaper-o"></i> <span>Articles</span></a></li>
+		  <li><a href="{{ backpack_url('category') }}"><i class="fa fa-list"></i> <span>Categories</span></a></li>
+		  <li><a href="{{ backpack_url('tag') }}"><i class="fa fa-tag"></i> <span>Tags</span></a></li>
+		</ul>
+	</li>
+{{-- <li><a href="{{ backpack_url('kegiatan') }}"><i class="fa fa-user" style="margin-right: 0.5em;"></i> <span>Kegiatan</span></a></li>
 
 <li><a href="{{ url('admin/menu-item') }}"><i class="fa fa-list"></i> <span>Menu</span></a></li>
-<li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>
+<li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li> --}}

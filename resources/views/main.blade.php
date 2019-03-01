@@ -24,22 +24,29 @@
             color: white;
             text-align: center;
         }
+        .footer-copyright {
+          border-top: 2px solid #95A5A6;
+          background-color: #031424;
+        }
     </style>
     @yield('after_style')
 </head>
 <body>
+
+@yield('alert')
 <nav class="site-header sticky-top py-1 bg-light">
   <div class="container d-flex flex-column flex-md-row justify-content-between">
     <a class="py-2" href="#">
-      <img src=" {{ asset('images') }}/logo-bmkg.png " alt="logo" width="25" height="40" class="d-block mx-auto" role="img" viewBox="0 0 24 24" focusable="false" >
+      <img src=" {{ asset('images') }}/logo-bmkg.png " alt="logo" width="25" height="35" class="d-block mx-auto" role="img" viewBox="0 0 24 24" focusable="false" >
     </a>
     <a class="py-2 d-none d-md-inline-block text-primary" href="#"> <i class="fa fa-home">Home</i> </a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">News</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Earthquake</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Geomagnetism</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Lightning</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Air Quality</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Contact Us</a>
+    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Kabar</a>
+    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Gempabumi</a>
+    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Magnetbumi</a>
+    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Listrik Udara</a>
+    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Kualitas Udara</a>
+    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Laporan</a>
+    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Hubungi Kami</a>
   </div>
 </nav>
 
@@ -48,7 +55,7 @@
 <!-- Footer -->
 <footer class="page-footer font-small text-light bg-primary">
 
-    <div style="" class="bg-light text-primary " >
+    <div style="" class=" bg-secondary text-primary " >
       <div class="container">
 
         <!-- Grid row-->

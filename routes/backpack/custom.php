@@ -49,4 +49,9 @@ Route::group([
 	//Menuitem
 	CRUD::resource('menu-item', 'MenuItemCrudController');
 
+	//News
+	CRUD::resource('article', 'ArticleCrudController');
+    CRUD::resource('category', 'CategoryCrudController');
+    CRUD::resource('tag', 'TagCrudController');
+
 }); // this should be the absolute last line of this file
