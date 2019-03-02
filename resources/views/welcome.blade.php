@@ -10,6 +10,10 @@
    .leaflet-container{background-color:#c5e8ff;}
 </style>
 <style>
+    body {
+               background-color: #000000;
+    }
+
    .css-icon {
    }
    .gps_ring {	
@@ -41,6 +45,8 @@
    background-size: cover;
    padding-top: 6%;
    padding-bottom: 6%;
+   padding-left: 4%;
+   padding-right: 4%;
    }
 
    #forcarousel {
@@ -54,23 +60,15 @@
    #eq {
 	   padding: 4%;
    }
-   #myVideo {
-   position: fixed;
-   right: 0;
-   bottom: 0;
-   min-width: 100%; 
-   min-height: 100%;
-   z-index: -1;
+
+   #youtube {
    }
 
    #video {
-      padding-top: 6%;
-      padding-bottom: 6%;
+      padding-top: 4%;
+      padding-bottom: 7%;
    }
 
-   #map {
-      border-radius: 2%;
-   }
 
 </style>
 @endsection
@@ -105,10 +103,10 @@
                         @if ($datas['articles'])
                         @foreach ($datas['articles'] as $article)
                      <div class="carousel-item {{ $loop->first ? 'active': '' }}">
-                        <img src="{{ $article->image }}" class="d-block w-100" height="600" alt="{{ $article->title }}">
+                        <img src="{{ $article->image }}" class="d-block w-100" height="650" alt="{{ $article->title }}">
                         <div class="carousel-caption d-none d-md-block">
                            <h5>{{ $article->title }}</h5>
-                           {!! str_limit($article->content, $limit = 150, $end = '...') !!} <a href="#" class="text-primary" >Selengkapnya! </a> </p>
+                           {!! str_limit($article->content, $limit = 150, $end = '...') !!} <a href="#" class="text-light" >Selengkapnya! </a> </p>
                         </div>
                      </div>
                      @endforeach
@@ -126,11 +124,7 @@
       </div>
    </div>
 </div>
-<div class="row" id="eq">
-      <video autoplay muted loop id="myVideo">
-            <source src="{{ asset('images') }}/0292_earthonblack_720p.mov" type="video/mp4">
-            Your browser does not support HTML5 video.
-          </video>          
+<div class="row" id="eq">       
 		<div class="row">
          <div class="container" >
                <div class="col-md-12">
@@ -144,88 +138,86 @@
       </div>
 </div>
 
-<div class="container">
-      <div class="row" id="video" >
-            <div class="col-md-6">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/dJpIU1rSOFY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="col-md-6">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/MfsugkikLJI?controls=0&amp;start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
-            </div>
-         </div>
+<div class="container" id="youtube" >
+  <div class="row" id="video" >
+    <div class="col-md-6">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/dJpIU1rSOFY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-6">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/MfsugkikLJI?controls=0&amp;start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+    </div>
+  </div>
 </div>
 
 <!-- Latest K Index dan Curah Hujan -->
 <div class="row" id="timeline">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-4">
-            <div class="medsos" >
-               <a class="twitter-timeline" href="https://twitter.com/AngkasaStageof?ref_src=twsrc%5Etfw">Tweets by AngkasaStageof</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-            </div>
-         </div>
-         <div class="col md-4">
-            <div class="medsos" >
-					<div class="list-group">
-							<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-							  <div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">List group item heading</h5>
-								<small>3 days ago</small>
-							  </div>
-							  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-							  <small>Donec id elit non mi porta.</small>
-							</a>
-							<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-							  <div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">List group item heading</h5>
-								<small class="text-muted">3 days ago</small>
-							  </div>
-							  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-							  <small class="text-muted">Donec id elit non mi porta.</small>
-							</a>
-							<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-							  <div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">List group item heading</h5>
-								<small class="text-muted">3 days ago</small>
-							  </div>
-							  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-							  <small class="text-muted">Donec id elit non mi porta.</small>
-							</a>
-						  </div>
-            </div>
-         </div>
-         <div class="col md-4">
-            <div class="medsos">
-					<div class="list-group">
-							<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-							  <div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">List group item heading</h5>
-								<small>3 days ago</small>
-							  </div>
-							  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-							  <small>Donec id elit non mi porta.</small>
-							</a>
-							<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-							  <div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">List group item heading</h5>
-								<small class="text-muted">3 days ago</small>
-							  </div>
-							  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-							  <small class="text-muted">Donec id elit non mi porta.</small>
-							</a>
-							<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-							  <div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">List group item heading</h5>
-								<small class="text-muted">3 days ago</small>
-							  </div>
-							  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-							  <small class="text-muted">Donec id elit non mi porta.</small>
-							</a>
-						  </div>
-            </div>
-         </div>
+  <div class="row">
+      <div class="col-md-4">
+        <div class="medsos" >
+            <a class="twitter-timeline" href="https://twitter.com/AngkasaStageof?ref_src=twsrc%5Etfw">Tweets by AngkasaStageof</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+        </div>
       </div>
-   </div>
+      <div class="col md-4">
+        <div class="medsos" >
+      <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small>Donec id elit non mi porta.</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col md-4">
+        <div class="medsos">
+      <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small>Donec id elit non mi porta.</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+          </a>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>
 @endsection
 @section('script')
