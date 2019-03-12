@@ -2,12 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Stasiun Geofisika Angkasapura">
+    <meta name="keywords" content="Gempabumi, Magnetbumi, Listrik Udara, Percepatan Tanah">
+    <meta name="author" content="Jambari">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @yield('title')
     <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Miriam+Libre|Open+Sans+Condensed:300|Oswald" rel="stylesheet"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="https://bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://bmkg.go.id/asset/img/favicon-60@3x.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="https://bmkg.go.id/asset/img/favicon-60.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="https://bmkg.go.id/asset/img/favicon-60@2x.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://bmkg.go.id/asset/img/favicon-60@3x.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="https://bmkg.go.id/asset/img/favicon-76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="https://bmkg.go.id/asset/img/favicon-76@2x.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <style>
@@ -34,21 +44,43 @@
 <body>
 
 @yield('alert')
-<nav class="site-header sticky-top py-1 bg-light">
-  <div class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2" href="#">
-      <img src=" {{ asset('images') }}/logo-bmkg.png " alt="logo" width="25" height="35" class="d-block mx-auto" role="img" viewBox="0 0 24 24" focusable="false" >
-    </a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#"> <i class="fa fa-home">Home</i> </a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Kabar</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Gempabumi</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Magnetbumi</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Listrik Udara</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Kualitas Udara</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Laporan</a>
-    <a class="py-2 d-none d-md-inline-block text-primary" href="#">Hubungi Kami</a>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+          <img src="{{ asset('images') }}/logo-bmkg.png" alt="logo" width="35" height="40" >
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Berita</a>
+          </li>
+{{--           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li> --}}
+        </ul>
+{{--    <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> --}}
+      </div>
+    </nav>
 
     @yield('content')
 

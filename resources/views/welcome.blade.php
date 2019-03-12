@@ -11,7 +11,7 @@
 </style>
 <style>
     body {
-               background-color: #000000;
+               background-color: #ffffff;
     }
 
    .css-icon {
@@ -36,30 +36,22 @@
    display: block;
    }
    #timeline {
-	background: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url('./images/seiscomp3.jpg');
-   background-size: cover;
-   padding-top: 6%;
-   padding-bottom: 6%;
-   padding-left: 4%;
-   padding-right: 4%;
+
    }
 
-   #forcarousel {
-      background: 
-      linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-      );
-   }
+    .carousel-item:after {
+      content:"";
+      display:block;
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      background:rgba(0,0,0,0.6);
+    }
 
-   #eq {
-	   padding: 4%;
-   }
+    #eq {
+    }
 
    #youtube {
    }
@@ -76,7 +68,7 @@
 @section('alert')
 <div class="row">
    <div class="col-md-12">
-         <div class="alert alert-warning alert-dismissible fade show" role="alert">
+         <div class="alert alert-info alert-dismissible fade show" role="alert">
          <strong>Welcome</strong> to Stasiun Geofisika Kelas I Angkasapura Jayapura. We are supporting <a href="https://bmkg.go.id" style="text-decoration: none;" >BMKG</a> by observing small earthquake in Papua !
          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
          <span aria-hidden="true">&times;</span>
@@ -86,67 +78,52 @@
 </div>
 
 @endsection
-
 @section('content')
-<div class="row" id="forcarousel">
-   <div class="col-md-12">
-      <div class="bd-example">
-         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                  @if ($datas['articles'])
-                  @foreach ($datas['articles'] as $article)
-                     <li data-target="#carouselExampleCaptions" data-slide-to="{{ $loop->index }}"></li> 
-                  @endforeach
-               @endif
-            </ol>
-                  <div class="carousel-inner">
-                        @if ($datas['articles'])
-                        @foreach ($datas['articles'] as $article)
-                     <div class="carousel-item {{ $loop->first ? 'active': '' }}">
-                        <img src="{{ $article->image }}" class="d-block w-100" height="650" alt="{{ $article->title }}">
-                        <div class="carousel-caption d-none d-md-block">
-                           <h5>{{ $article->title }}</h5>
-                           {!! str_limit($article->content, $limit = 150, $end = '...') !!} <a href="#" class="text-light" >Selengkapnya! </a> </p>
-                        </div>
-                     </div>
-                     @endforeach
-                     @endif
-                  </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-            </a>
-         </div>
-      </div>
-   </div>
-</div>
+<br>
+    <div class="container">
+       <div class="col-md-12">
+          <div class="bd-example">
+             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                      @if ($datas['articles'])
+                      @foreach ($datas['articles'] as $article)
+                         <li data-target="#carouselExampleCaptions" data-slide-to="{{ $loop->index }}"></li> 
+                      @endforeach
+                   @endif
+                </ol>
+                      <div class="carousel-inner">
+                            @if ($datas['articles'])
+                            @foreach ($datas['articles'] as $article)
+                         <div class="carousel-item {{ $loop->first ? 'active': '' }}">
+                            <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="650" alt="{{ $article->title }}">
+                            <div class="carousel-caption d-none d-md-block">
+                               <h5>{{ $article->title }}</h5>
+                               {!! str_limit($article->content, $limit = 150, $end = '...') !!} <a href="#" class="text-light" >Selengkapnya! </a> </p>
+                            </div>
+                         </div>
+                         @endforeach
+                         @endif
+                      </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+             </div>
+          </div>
+       </div>
+    </div>
+<br>
 <div class="row" id="eq">       
-		<div class="row">
-         <div class="container" >
-               <div class="col-md-12">
-                  <h3 class="mx-auto text-light" >Hi, thank you for being here ! </h3>
-                  <h4 class="mx-auto text-light">
-                     These videos below will let you understand how an earthquake and tsunami is generated.</h4>
-                  <h4 class="mx-auto text-light"> All credit to <a href="https://www.youtube.com/watch?v=dJpIU1rSOFY" class="btn btn-primary" target="_blank" > Peekaboo Kidz  </a> .
-                  </h4>
-               </div>
-         </div>
-      </div>
-</div>
-
-<div class="container" id="youtube" >
-  <div class="row" id="video" >
-    <div class="col-md-6">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/dJpIU1rSOFY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<div class="row">
+        <div class="container" >
+                <div class="col-md-12">
+                </div>
+        </div>
     </div>
-    <div class="col-md-6">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/MfsugkikLJI?controls=0&amp;start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
-    </div>
-  </div>
 </div>
 
 <!-- Latest K Index dan Curah Hujan -->

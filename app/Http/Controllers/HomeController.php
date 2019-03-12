@@ -25,7 +25,7 @@ class HomeController extends Controller
 		
 		$gempa = Gempa::orderBy('id', 'DESC')->first();
 		$kindeks = Kindek::latest()->first();
-		$articles = Article::take(5)->get();
+		$articles = Article::take(5)->orderBy('id','desc')->get();
 
 		$datas = [
 			// 'terasa' => $terasa,
