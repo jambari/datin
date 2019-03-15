@@ -53,5 +53,9 @@ Route::group([
 	CRUD::resource('article', 'ArticleCrudController');
     CRUD::resource('category', 'CategoryCrudController');
     CRUD::resource('tag', 'TagCrudController');
+    //Pengumuman
+    CRUD::resource('pengumuman', 'PengumumanCrudController');
+    //Press Release
+    CRUD::resource('siaran', 'SiaranCrudController');
 
 }); // this should be the absolute last line of this file

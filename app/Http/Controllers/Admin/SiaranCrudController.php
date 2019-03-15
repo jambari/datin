@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-Use App\Models\Infogempa;
+
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\StoreInfogempaRequest as StoreRequest;
-use App\Http\Requests\UpdateInfogempaRequest as UpdateRequest;
+use App\Http\Requests\SiaranRequest as StoreRequest;
+use App\Http\Requests\SiaranRequest as UpdateRequest;
+use App\Models\Siaran;
 
 /**
- * Class InfogempaCrudController
+ * Class SiaranCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class InfogempaCrudController extends CrudController
+class SiaranCrudController extends CrudController
 {
     public function setup()
     {
@@ -22,9 +23,9 @@ class InfogempaCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Infogempa');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/infogempa');
-        $this->crud->setEntityNameStrings('infogempa', 'infogempas');
+        $this->crud->setModel('App\Models\Siaran');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/siaran');
+        $this->crud->setEntityNameStrings('siaran press', 'siaran press');
 
         /*
         |--------------------------------------------------------------------------
@@ -33,27 +34,42 @@ class InfogempaCrudController extends CrudController
         */
 
         $this->crud->setFromDb();
+        $this->crud->addColumn('author')->afterColumn('status');
+        $this->crud->addColumn([
+                                'name' => 'title',
+                                'label' => 'Judul',
+                            ]);
 
-        $fields = [
-            [
-                'name' => 'lintang',
-                'label' => 'Lintang',
-                'type' => 'text'
-            ], [
-                'name' => 'bujur',
-                'label' => 'Bujur',
-                'type' => 'text'
-            ], [
-                'name' => 'sms',
-                'label' => 'Isi Info',
-                'type' => 'text'
-            ]
-        ];
+
+        // ------ CRUD FIELDS
+        $this->crud->addField([    // TEXT
+                                'name' => 'title',
+                                'label' => 'Title',
+                                'type' => 'text',
+                                'placeholder' => 'Tulis Judul Disini',
+                            ]);
+
+        $this->crud->addField([    // TEXT
+                                'name' => 'author',
+                                'label' => 'Penulis',
+                                'type' => 'text',
+                            ]);
+
+        $this->crud->addField([    // WYSIWYG
+                                'name' => 'content',
+                                'label' => 'Siaran Press',
+                                'type' => 'tinymce',
+                                'placeholder' => 'Tulis Siaran Press Disini',
+                            ]);
+        $this->crud->addField([    // Image
+                                'name' => 'image',
+                                'label' => 'Image',
+                                'type' => 'browse',
+                            ]);
         // ------ CRUD COLUMNS
-        //$this->crud->addColumn('created_at');
-        //$this->crud->addColumn('updated_at'); // add a single column, at the end of the stack
+        // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
-        // $this->crud->removeColumn('column_name'); // remove a column from the stack
+        $this->crud->removeColumn('content'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
@@ -61,11 +77,10 @@ class InfogempaCrudController extends CrudController
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
-        //$this->crud->removeField('lintang', 'update/create/both');
-        //$this->crud->removeField('bujur', 'update/create/both');
+        // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
-        // add asterisk for fields that are required in InfogempaRequest
+        // add asterisk for fields that are required in SiaranRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
 
@@ -74,15 +89,13 @@ class InfogempaCrudController extends CrudController
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model
         // $this->crud->addButtonFromView($stack, $name, $view, $position); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
-        //$this->crud->removeButton('create');
+        // $this->crud->removeButton($name);
         // $this->crud->removeButtonFromStack($name, $stack);
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
-        // $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
-        $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
 
         // ------ CRUD ACCESS
-        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'peta']);
+        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -121,7 +134,7 @@ class InfogempaCrudController extends CrudController
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
-        $this->crud->orderBy('id','desc');
+        // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
     }
@@ -144,22 +157,17 @@ class InfogempaCrudController extends CrudController
         return $redirect_location;
     }
 
-    public function peta($id)
-    {   
-        $event = Infogempa::find($id);
-        //$lintang = $event['lintang']; //ngambil lintang untuk peta gmt
-        //$bujur = $event['bujur'];//ngambil bujur untuk peta gmt
-        //$file = fopen("/home/suadmin/gmt1/event.gmt","w"); //nulis peta gmt
-        //$koordinat = $event['bujur']." ".$event['lintang']." ".$id;
-        $lat = $event['lintang'];
-        $lon = $event['bujur'];
-        //fwrite($file,$koordinat);
-        // fclose($file);
-        $sms = $event['sms'];
-        // $sms = str_replace('WITA','WIT',$sms);
-        // $sms = str_replace('BMKG','BMKG-JAY',$sms);
-        // $sms = str_replace('SR','',$sms);
-        // echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
-        return view('gempa.infogempa')->with(compact('sms', 'lat', 'lon'));
+    //for article detail page
+    public function show($id) {
+        $siaran = $this->crud->getEntry($id);
+        $siarans = Siaran::take(5)->orderBy('id','desc')->get();
+        return view('siarans.show')->with(compact('siaran','siarans'));
+    }
+
+    //for news page
+    public function siarans() {
+        $siarans = Siaran::latest()->paginate(5);
+        return view('siarans.siarans',compact('siarans'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

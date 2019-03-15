@@ -13,6 +13,9 @@
         display: flex;
    }
 
+   #siaran {
+        display: flex;
+   }
     .carousel-item:after {
       content:"";
       display:block;
@@ -40,20 +43,27 @@
     transform: scale(1.5);
 }
 
+/*#pengumuman {
+    margin-bottom: -1%;
+}*/
+
 </style>
 @endsection
 
 @section('alert')
-<div class="row">
+
+{{-- @if ($datas['pengumumans'])
+<div class="row" id="pengumuman">
    <div class="col-md-12">
          <div class="alert alert-info alert-dismissible fade show" role="alert">
-         <strong>Welcome</strong> to Stasiun Geofisika Kelas I Angkasapura Jayapura. We are supporting <a href="https://bmkg.go.id" style="text-decoration: none;" >BMKG</a> by observing small earthquake in Papua !
+            <span class="text-light" >{{ $datas['pengumumans']->isi }}</span>
          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
          <span aria-hidden="true">&times;</span>
          </button>
          </div>
    </div>
 </div>
+@endif --}}
 
 @endsection
 @section('content')
@@ -136,6 +146,26 @@
     </div>
 </div>
 
+<hr>
+<h3 class="text-center text-primary">Siaran Press</h3>
+<div class="row">       
+    <div class="container" id="siaran" >
+        @if ($datas['siarans'])
+        @foreach ($datas['siarans'] as $siaran)
+        <div id="" class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/{{ $siaran->image }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $siaran->title }}</h5>
+                    <a href="/siarans/{{ $siaran->id }}" class="btn btn-primary">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @endif
+    </div>
+</div>
+<br>
 @endsection
 @section('script')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>

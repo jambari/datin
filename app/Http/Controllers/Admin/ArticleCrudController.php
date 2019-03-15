@@ -41,7 +41,7 @@ class ArticleCrudController extends CrudController
         $this->crud->addColumn('author')->afterColumn('status');
         $this->crud->addColumn([
                                 'name' => 'title',
-                                'label' => 'Title',
+                                'label' => 'Judul',
                             ]);
         $this->crud->addColumn([
                                 'name' => 'featured',
@@ -61,7 +61,7 @@ class ArticleCrudController extends CrudController
         // ------ CRUD FIELDS
         $this->crud->addField([    // TEXT
                                 'name' => 'title',
-                                'label' => 'Title',
+                                'label' => 'Judul',
                                 'type' => 'text',
                                 'placeholder' => 'Your title here',
                             ]);

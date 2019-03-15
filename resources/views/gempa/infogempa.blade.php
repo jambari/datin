@@ -1,45 +1,47 @@
+
 @extends('backpack::layout')
-    <style>
-        #peta {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+<style>
+    #peta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #streetmap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #map {
+        border: 3px solid lightgray;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .css-icon {
+
         }
 
-        #streetmap {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+    .gps_ring {	
+        border: 3px solid #FF0000;
+        -webkit-border-radius: 100px;
+        height: 100px;
+        width: 100px;		
+        -webkit-animation: pulsate 1s ease-out;
+        -webkit-animation-iteration-count: infinite; 
+        /*opacity: 0.0*/
+    }
 
-        #map {
-            border: 3px solid lightgray;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
+    @-webkit-keyframes pulsate {
+            0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+            50% {opacity: 1.0;}
+            100% {opacity: 1.0;}
+    }
+</style>
 
-        .css-icon {
-
-            }
-
-        .gps_ring {	
-            border: 3px solid #FF0000;
-            -webkit-border-radius: 100px;
-            height: 100px;
-            width: 100px;		
-            -webkit-animation: pulsate 1s ease-out;
-            -webkit-animation-iteration-count: infinite; 
-            /*opacity: 0.0*/
-        }
-
-        @-webkit-keyframes pulsate {
-                0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
-                50% {opacity: 1.0;}
-                100% {opacity: 1.0;}
-        }
-    </style>
 @section('header')
     <section class="content-header">
       <ol class="breadcrumb">

@@ -18,7 +18,7 @@
 		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-				<li class="breadcrumb-item active"><a href="/news" class="text-primary" >Berita</a></li>
+				<li class="breadcrumb-item active"><a href="/siarans" class="text-primary" >Siaran Press</a></li>
 			</ol>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
-	    	<p>{!! $news->links() !!}</p>
+	    	<p>{!! $siarans->links() !!}</p>
 	    </div>
 	</div>
 </div>
@@ -34,15 +34,15 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12 col-lg-12 " id="news">
-	       	@if ( $news )
-             @foreach ( $news as $berita )
+	       	@if ( $siarans )
+             @foreach ( $siarans as $siaran )
              <ul class="list-unstyled">
-             	<a href="/berita/{{ $berita->id }}" title="{{ $berita->title }}" class="text-primary">
+             	<a href="/siarans/{{ $siaran->id }}" title="{{ $siaran->title }}" class="text-primary">
 			  	<li class="media">
-			    	<img class="mr-3" src="/{{ $berita->image }}" alt="image of {{ $berita->title }}" width="200" height="150" >
+			    	<img class="mr-3" src="/{{ $siaran->image }}" alt="image of {{ $siaran->title }}" width="200" height="150" >
 			    	<div class="media-body">
-				      	<h5 class="mt-0 mb-1">{{ $berita->title }}</h5>
-				     	{!! str_limit($berita->content, $limit = 200, $end = '') !!}
+				      	<h5 class="mt-0 mb-1">{{ $siaran->title }}</h5>
+				     	{!! str_limit($siaran->content, $limit = 200, $end = '') !!}
 			    	</div>
 			  	</li>
 			  	</a>
@@ -55,7 +55,7 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
-	    	<p>{!! $news->links() !!}</p>
+	    	<p>{!! $siarans->links() !!}</p>
 	    </div>
 	</div>
 </div>

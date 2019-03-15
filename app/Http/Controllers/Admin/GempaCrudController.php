@@ -74,7 +74,7 @@ class GempaCrudController extends CrudController
                 'name' => 'terasa',
                 'label' => 'dirasakan',
                 'type' => 'checkbox',
-                "default" => 0
+                'default' => '0',
             ], [
                 'name' => 'terdampak',
                 'label' => 'daerah yang merasakan',
@@ -318,7 +318,7 @@ class GempaCrudController extends CrudController
 
     //recent earthquakes
     public function recenteqs() {
-        $gempas = Gempa::latest()->paginate(10);
+        $gempas = Gempa::take(100)->orderBy('id','desc')->paginate(10);
         return view('gempa.recent',compact('gempas'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

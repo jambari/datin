@@ -23,7 +23,7 @@
 		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-				<li class="breadcrumb-item active"><a href="/news" class="text-primary" >Berita</a></li>
+				<li class="breadcrumb-item active"><a href="/siarans" class="text-primary" >Siaran Press</a></li>
 			</ol>
 		</div>
 	</div>
@@ -33,18 +33,15 @@
 	<div class="container">
 		<div class="col-md-8 col-lg-8 ">
 	        <!-- the actual blog post: title/author/date/content -->
-	        <h1>{{ $article->title }} </h1>
-	        <p class="lead"><i class="fa fa-user"></i> by <a href="" class="text-primary">{{ $article->author or '-' }}</a>
+	        <h1>{{ $siaran->title }} </h1>
+	        <p class="lead"><i class="fa fa-user"></i> by <a href="" class="text-primary">{{ $siaran->author or '-' }}</a>
 	        </p>
 	        <hr>
-	        <p><i class="fa fa-calendar"></i> Posted on {{ Carbon\Carbon::parse($article->created_at)->diffForHumans() }} </p>
+	        <p><i class="fa fa-calendar"></i> Posted on {{ Carbon\Carbon::parse($siaran->created_at)->diffForHumans() }} </p>
 	        <hr>
-	        <img src="/{{ $article->image }}" class="img-fluid">
+	        <img src="/{{ $siaran->image }}" class="img-fluid">
 	        <hr>
-	        	{!! $article->content !!}
-	  		<br>
-	  	<div class="fb-share-button"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-
+	        	{!! $siaran->content !!}
 	    </div>
 	</div>
 </div>
@@ -52,13 +49,13 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12 col-lg-12 " id="beritalainnya" >
-		    @if ( $beritas )
-             @foreach ( $beritas as $berita )
+		    @if ( $siarans )
+             @foreach ( $siarans as $siaran )
             <div class="card" style="width: 18rem;">
-				<img class="card-img-top" src="/{{ $berita->image }}" alt="Card image cap">
+				<img class="card-img-top" src="/{{ $siaran->image }}" alt="Card image cap">
 				<div class="card-body">
-				    <h5 class="card-title">{{ $berita->title }}</h5>
-				    <a href="/berita/{{ $berita->id }}" class="btn btn-primary">Selengkapnya</a>
+				    <h5 class="card-title">{{ $siaran->title }}</h5>
+				    <a href="/berita/{{ $siaran->id }}" class="btn btn-primary">Selengkapnya</a>
 				</div>
 			</div>
 		  	@endforeach
