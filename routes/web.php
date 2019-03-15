@@ -14,5 +14,9 @@
 Route::get('/', 'HomeController@index');
 Route::get('/admin/dashboard', 'DashboardController@index');
 //api
-Route::get('/api/gempa', 'HomeController@apigempa');
-Route::get('/api/sms', 'HomeController@apisms');
+//Website Kantor
+Route::get('/news', 'Admin\ArticleCrudController@news');
+Route::get('/berita/{id}', 'Admin\ArticleCrudController@show');
+//Gempabumi
+Route::get('/gempa', 'Admin\GempaCrudController@recenteqs'); //list of recent earthquake
+Route::get('/gempa/{id}', 'Admin\GempaCrudController@showmap'); // detail earthquake

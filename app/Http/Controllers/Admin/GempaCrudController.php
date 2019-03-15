@@ -8,6 +8,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\StoreGempaRequest as StoreRequest;
 use App\Http\Requests\UpdateGempaRequest as UpdateRequest;
 use App\Models\Infogempa;
+use App\Models\Gempa;
 
 /**
  * Class GempaCrudController
@@ -307,5 +308,18 @@ class GempaCrudController extends CrudController
     public function showDetailsRow($id) {
         $event = $this->crud->getEntry($id);
         return view('vendor.backpack.crud.gempa_details_row', compact('event'));
+    }
+
+    //detail eq on front end
+    public function showmap($id) {
+        $event = $this->crud->getEntry($id);
+        return view('gempa.detail_gempa', compact('event'));
+    }
+
+    //recent earthquakes
+    public function recenteqs() {
+        $gempas = Gempa::latest()->paginate(10);
+        return view('gempa.recent',compact('gempas'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

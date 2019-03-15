@@ -23,28 +23,19 @@ class HomeController extends Controller
 	public function index() 
 	{
 		
-		$gempa = Gempa::orderBy('id', 'DESC')->first();
-		$kindeks = Kindek::latest()->first();
+		$gempas = Gempa::take(3)->orderBy('id','desc')->get();
 		$articles = Article::take(5)->orderBy('id','desc')->get();
+		$galleries = Article::take(8)->orderBy('id','desc')->get();
 
 		$datas = [
 			// 'terasa' => $terasa,
 			// 'tidakterasa' => $tidakterasa,
-			'gempa' => $gempa,
-			'kindeks' => $kindeks,
-			'articles' => $articles
+			'gempas' => $gempas,
+			'articles' => $articles,
+			'galleries' => $galleries,
         ];
 
-    	return view('welcome')->with(compact('datas'));
-	}
-
-	public function apigempa() {
-		$gempa = Gempa::latest()->first();
-		return response()->json($gempa);
-	}
-	public function apisms() {
-		$sms = Infogempa::latest()->first();
-		return response()->json($sms);
+    	return view('welcome', compact('datas'));
 	}
 
 }

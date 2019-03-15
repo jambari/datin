@@ -12,14 +12,6 @@
     <link href="https://fonts.googleapis.com/css?family=Miriam+Libre|Open+Sans+Condensed:300|Oswald" rel="stylesheet"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="https://bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="https://bmkg.go.id/asset/img/favicon-60@3x.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="https://bmkg.go.id/asset/img/favicon-60.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="https://bmkg.go.id/asset/img/favicon-60@2x.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://bmkg.go.id/asset/img/favicon-60@3x.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="https://bmkg.go.id/asset/img/favicon-76.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="https://bmkg.go.id/asset/img/favicon-76@2x.png" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <style>
         #stasiun {
             font-family: 'Oswald', sans-serif;
@@ -45,7 +37,7 @@
 
 @yield('alert')
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
           <img src="{{ asset('images') }}/logo-bmkg.png" alt="logo" width="35" height="40" >
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,10 +47,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Berita</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="/news">Berita</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/gempa">Gempabumi</a>
           </li>
 {{--           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -85,9 +80,9 @@
     @yield('content')
 
 <!-- Footer -->
-<footer class="page-footer font-small text-light bg-primary">
+<footer class="page-footer font-small text-primary bg-light">
 
-    <div style="" class=" bg-secondary text-primary " >
+    <div style="" class=" bg-light text-primary border border-bottom" >
       <div class="container">
 
         <!-- Grid row-->
@@ -103,20 +98,20 @@
           <div class="col-md-6 col-lg-7 text-center text-md-right">
 
             <!-- Facebook -->
-            <a class="fb-ic">
-              <i class="fa fa-facebook white-text mr-4"> </i>
+            <a class="fb-ic" href="https://www.facebook.com/profile.php?id=100013155312444&ref=bookmarks" target="_blank">
+              <i class="fa fa-facebook text-primary mr-4"> </i>
             </a>
             <!-- Twitter -->
-            <a class="tw-ic">
-              <i class="fa fa-twitter white-text mr-4"> </i>
+            <a class="tw-ic" href="https://twitter.com/AngkasaStageof" target="_blank">
+              <i class="fa fa-twitter text-primary mr-4"> </i>
             </a>
             <!-- Google +-->
-            <a class="gplus-ic">
-              <i class="fa fa-google-plus white-text mr-4"> </i>
+            <a class="gplus-ic" href="mailto:stageof.angkasa@gmail.com" target="_blank">
+              <i class="fa fa-google-plus text-primary mr-4"> </i>
             </a>
             <!--Instagram-->
-            <a class="ins-ic">
-              <i class="fa fa-instagram white-text"> </i>
+            <a class="ins-ic" href="https://www.instagram.com/stageofangkasa/" target="_blank">
+              <i class="fa fa-instagram text-primary"> </i>
             </a>
 
           </div>
@@ -152,17 +147,17 @@
           <h6 class="text-uppercase font-weight-bold">Produk</h6>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a class="text-light" href="#!">Gempabumi</a>
+            <a class="text-primary" href="/gempa">Gempabumi</a>
           </p>
           <p>
-            <a class="text-light" href="#!">Magnetbumi</a>
+<!--             <a class="text-primary" href="#!">Magnetbumi</a>
           </p>
           <p>
-            <a class="text-light" href="#!">Listrik Udara</a>
+            <a class="text-primary" href="#!">Listrik Udara</a>
           </p>
           <p>
-            <a class="text-light" href="#!">Kualitas Udara</a>
-          </p>
+            <a class="text-primary" href="#!">Kualitas Udara</a>
+          </p> -->
 
         </div>
         <!-- Grid column -->
@@ -174,13 +169,13 @@
           <h6 class="text-uppercase font-weight-bold">Link Terkait</h6>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a class="text-light" href="#!">BMKG</a>
+            <a class="text-primary" href="https://bmkg.go.id">BMKG</a>
           </p>
           <p>
-            <a class="text-light" href="#!">InaTEWS</a>
+            <a class="text-primary" href="https://inatews.bmkg.go.id">InaTEWS</a>
           </p>
           <p>
-            <a class="text-light" href="#!">BBMKG V</a>
+            <a class="text-primary" href="balai5.bmkg.go.id">BBMKG V</a>
           </p>
           <p>
         </div>

@@ -1,96 +1,120 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('main')
+@section('title')
+<title>Berita - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+@section('after_style')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+crossorigin=""/>
+<style type="text/css" media="screen">
+#news ul a:hover{
+	text-decoration: none;
+	opacity: .5;
+}
+</style>
+@endsection
+@endsection
 
-        <title>Welcome to Stageof Angkasa</title>
+@section('content')
+<br>
+<div class="row">
+	<div class="container">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
+				<li class="breadcrumb-item active"><a href="/gempa" class="text-primary" >Gempabumi</a></li>
+			</ol>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="container">
+		<div class="col-md-12">
+	    	<ul class="nav nav-tabs" id="myTab" role="tablist">
+			  	<li class="nav-item">
+			    	<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tabel</a>
+			  	</li>
+			  	<li class="nav-item">
+			    	<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Peta</a>
+			  	</li>
+			  	<li class="nav-item">
+			    	<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Statistik</a>
+			  	</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+			  	<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+			  		<p>{!! $gempas->links() !!}</p>
+			  		<table class="table table-striped">
+						  <thead>
+						   <tr>
+							    <th scope="col">#</th>
+							    <th scope="col">Date</th>
+							    <th scope="col">Origin (UTC)</th>
+							    <th scope="col">Lat</th>
+							    <th scope="col">Lon</th>
+							    <th scope="col">Mag</th>
+							    <th scope="col">Depth</th>
+							    <th scope="col">Loc</th>
+							    <th scope="col">Action</th>
+						    </tr>
+						</thead>
+						<tbody>
+					@if ( $gempas )
+		            @foreach ( $gempas as $gempa )
+		            
+						    <tr>
+						      	<th scope="row"> {{ $loop->iteration }}</th>
+						      	<td>{{ $gempa->tanggal }}</td>
+						      	<td> {{ $gempa->origin }} </td>
+						      	<td> {{ $gempa->lintang }} </td>
+						      	<td> {{ $gempa->bujur }} </td>
+						      	<td> {{ $gempa->magnitudo }} </td>
+						      	<td> {{ $gempa->depth }} </td>
+						      	<td> {{ $gempa->ket }} </td>
+						      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-primary" > Peta </a></td>
+						    </tr>
+					
+				  	@endforeach
+				 	@endif
+				 		</tbody>
+					</table>
+			  	</div>
+			  	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+			  		{{-- <div id="map" style="width:100%;height:500px;" class=""></div> --}}
+			  	</div>
+			  	<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+			  		
+			  	</div>
+			</div>
+	    </div>
+	</div>
+</div>
+<br>
+@endsection
+@section('script')
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+   <script src="{{ asset('gjson') }}/patahan.js" > </script>
+   <script src="{{ asset('gjson') }}/subduksi.js" > </script>
+   <script src="{{ asset('gjson') }}/plates.js" > </script>
+<script>
+	var map = L.map('map').setView([-2.5104, 140.714], 6);
 
-        <!-- Fonts -->
-        <link href="{{ asset('css/w3.css') }}" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="{{ asset('css/weather-icons.min.css') }}">
-{{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
-        <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet"> 
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-		crossorigin=""/>
-        <!-- Styles -->
-        <style>
-            header {
-                font-family: 'Abel', sans-serif;
-				display: flex;
-            }
-            footer {
-                display: flex;
-                justify-content: center;
-                align-content: center;
-                flex-direction: row;
-				height: 100%;
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18 }).addTo(map);
 
-            }
-        </style>
-    </head>
-    <body class=""{{--  --}}>
-        <header class="w3-container w3-teal w3-padding-16">
-            <span style="font-size:2em; ">Stageof Angkasapura</span>
-        </header>
-        <div class="w3-row"  >
-			<!-- <div class="w3-col s4" >
-				<table class="w3-table w3-striped w3-responsive" >
-					<tr>
-						<th>#</th>
-						<th>Origin (UTC)</th>
-						<th>Lat</th>
-						<th>Lon</th>
-						<th>Depth</th>
-						<th>M</th>
-					</tr>
-					@if ($datas['terasa']->count() > 0)
-						@foreach ($datas['terasa'] as $terasa)
-						<tr>
-							<td> {{ $loop->iteration }} </td>
+	var terasaIcon = L.icon({
+		iconUrl: '/images/redblack.png',
+		iconSize:     [20, 20], // size of the icon
 
-						</tr> 
-						@endforeach
-					@endif 
-				</table>
-			</div> -->
-            <div class="w3-col s12">
-                <div class="w3-container">
-                	<div id="map" style="width:100%;height:650px;" class="w3-margin-top w3-margin-right"></div>
-						<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-						integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-						crossorigin=""></script>
-							<script>
-								var map = L.map('map').setView([-2.5104, 140.714], 6);
+	});
 
-								L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18 }).addTo(map);
+	@if ($gempas->count() > 0)
+		@foreach ($gempas as $gempa)
+		{
+			marker = new L.marker([{{ $gempa->lintang }}, {{ $gempa->bujur }}], { icon: terasaIcon}).addTo(map);
+		}
+		@endforeach
+	@endif
 
-								var terasaIcon = L.icon({
-									iconUrl: '/images/redblack.png',
-									iconSize:     [20, 20], // size of the icon
-
-								});
-							
-								@if ($datas['terasa']->count() > 0)
-									@foreach ($datas['terasa'] as $terasa)
-									{
-										marker = new L.marker([{{ $terasa->lintang }}, {{ $terasa->bujur }}], { icon: terasaIcon}).addTo(map);
-									}
-									@endforeach
-								@endif
-
-							</script>
-							</br>
-						</div>
-					</div>
-                </div>
-            </div>
-
-        </div>    
-        <footer class="w3-teal w3-padding-32">
-                   <p>&copy; Stageof Angkasapura <?php echo date("Y"); ?></p>         
-        </footer>
-    </body>
-</html>
+</script>
+@endsection

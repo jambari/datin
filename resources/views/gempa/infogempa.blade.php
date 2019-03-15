@@ -50,49 +50,6 @@
 @endsection
 
 @section('content')
-    <!-- <div class="row">
-        <div class="col-md-9 col-md-offset-2">
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h1 class="box-title">Info Gempabumi</h1>
-                        <div class="box-tools">
-                          This will cause the box to be removed when clicked
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                          This will cause the box to collapse when clicked
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                </div>
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="peta">
-                                <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="700px" height="80px" style="margin-bottom: 15px" > 
-    
-                                <img src=" {{ asset('images') }}/lapenda.jpg " alt="lapenda" width="600px" height="390px" style="margin-bottom: 15px;">
-                                <p class="text-center" style="color: black; font-size: 1em; margin-left:5%;margin-right:5%;" > <strong>{{ $sms }} </strong> </p>
-                                <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="700px" height="50px" ">  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-        </div>
-    </div>
-    tombol screetshoot
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-solid">
-                <div class="box-body">
-                        <button onclick="take()" class="btn btn-block btn-success" > Download peta </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    end of peta GMT -->
-
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
@@ -106,7 +63,7 @@
                                 <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
                                     <div id="map" style="width:85%;height:500px;"></div> 
                                 <p class="text-center" style="font-size: 1.1em; margin-left:5%;margin-right:5%;" > <strong>{{ $sms }} </strong> </p>
-                                <img src=" {{ asset('images') }}/medsos2.png " alt="logo" width="100%" height="20%" ">  
+                                <img src=" {{ asset('images') }}/medsos3.png " alt="logo" width="100%" height="20%" style="border-radius: 7px;">  
                             </div>
                         </div>
                     </div>
@@ -121,20 +78,7 @@
    <script src="{{ asset('gjson') }}/subduksi.js" > </script>
    <script src="{{ asset('gjson') }}/plates.js" > </script>
 
-    <script>
-
-        window.take = function() {
-        html2canvas(document.getElementById("peta"), {
-            onrendered: function (canvas) {
-                var base64image = canvas.toDataURL();
-                // window.open(base64image , "_blank");
-                var newWindow = window.open();
-                newWindow.document.write('<img src="' + base64image + '" />'); 
-            }
-        })
-        };
-        
-
+    <script>        
         var mymap = L.map('map').setView([{{ $lat }}, {{ $lon }}], 7);
 
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {

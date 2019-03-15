@@ -3,40 +3,14 @@
 <title>Home - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
 @endsection
 @section('after_style')
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-   crossorigin=""/>
+<link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href=" {{ asset('css/demogallery.css') }} ">
 <style type="text/css">
    .leaflet-container{background-color:#c5e8ff;}
 </style>
 <style>
-    body {
-               background-color: #ffffff;
-    }
-
-   .css-icon {
-   }
-   .gps_ring {	
-   border: 2px solid #FF0000;
-   -webkit-border-radius: 100px;
-   height: 100px;
-   width: 100px;		
-   -webkit-animation: pulsate 1s ease-out;
-   -webkit-animation-iteration-count: infinite; 
-   /*opacity: 0.0*/
-   }
-   @-webkit-keyframes pulsate {
-   0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
-   50% {opacity: 1.0;}
-   100% {opacity: 1.0;}
-   }
-   .medsos {
-   height:350px;
-   overflow-y: scroll;
-   display: block;
-   }
-   #timeline {
-
+   #eq {
+        display: flex;
    }
 
     .carousel-item:after {
@@ -49,18 +23,22 @@
       right:0;
       background:rgba(0,0,0,0.6);
     }
-
-    #eq {
+    #lightgallery {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-   #youtube {
-   }
-
-   #video {
-      padding-top: 4%;
-      padding-bottom: 7%;
-   }
-
+#lightgallery a figure img {
+    width: 300px;
+    height: auto;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+#lightgallery a figure:hover img {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+}
 
 </style>
 @endsection
@@ -98,7 +76,7 @@
                             <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="650" alt="{{ $article->title }}">
                             <div class="carousel-caption d-none d-md-block">
                                <h5>{{ $article->title }}</h5>
-                               {!! str_limit($article->content, $limit = 150, $end = '...') !!} <a href="#" class="text-light" >Selengkapnya! </a> </p>
+                               {!! str_limit($article->content, $limit = 100, $end = '...') !!} <a href="/berita/{{ $article->id }}" class="text-light" >Selengkapnya! </a> </p>
                             </div>
                          </div>
                          @endforeach
@@ -116,180 +94,66 @@
           </div>
        </div>
     </div>
-<br>
-<div class="row" id="eq">       
-	<div class="row">
-        <div class="container" >
-                <div class="col-md-12">
-                </div>
+<hr>
+<div class="row">       
+    <div class="container" >
+        <div id="lightgallery" class="col-md-12">
+            @if ($datas['galleries'])
+                @foreach ($datas['galleries'] as $gallery)
+                    <a href="{{ $gallery->image }}">
+                        <figure>
+                        <img src="{{ $gallery->image }}" class="img-thumbnail " />
+                        </figure>
+                    </a>
+                @endforeach
+            @endif
         </div>
     </div>
 </div>
-
-<!-- Latest K Index dan Curah Hujan -->
-<div class="row" id="timeline">
-  <div class="row">
-      <div class="col-md-4">
-        <div class="medsos" >
-            <a class="twitter-timeline" href="https://twitter.com/AngkasaStageof?ref_src=twsrc%5Etfw">Tweets by AngkasaStageof</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+<hr>
+<div class="row">       
+    <div class="container" id="eq" >
+        @if ($datas['gempas'])
+        @foreach ($datas['gempas'] as $gempa)
+        <div id="" class="col-md-4">
+            <div class="card text-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header"> {{ $gempa->tanggal }} {{ $gempa->origin }} UTC</div>
+                <div class="card-body">
+                    <h5 class="card-title">Magnitudo <span class="badge badge-primary">{{ $gempa->magnitudo }}</span></h5>
+                    <p class="card-text">Lintang: {{ $gempa->lintang }}</p>
+                    <p class="card-text">Bujur: {{ $gempa->bujur }}</p>
+                    <p class="card-text">Kedalaman: {{ $gempa->depth }} Km</p>
+                    <p class="card-text">{{ $gempa->ket }} </p>
+                    <p>
+                        {{ $gempa->terdampak or ' '}}
+                    </p>
+                    <a href="/gempa/{{ $gempa->id }}" title="peta"> <button type="" class="btn btn-primary">Lihat Peta</button> </a>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col md-4">
-        <div class="medsos" >
-      <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-            <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small>3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small>Donec id elit non mi porta.</small>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-          </a>
-          </div>
-        </div>
-      </div>
-      <div class="col md-4">
-        <div class="medsos">
-      <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-            <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small>3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small>Donec id elit non mi porta.</small>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-          </a>
-          </div>
-        </div>
-      </div>
-  </div>
+        @endforeach
+        @endif
+    </div>
 </div>
+
 @endsection
 @section('script')
-<script>
-   $('.alert').alert()
-   // $('.alert').alert('close')
-</script>
-<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-   crossorigin=""></script>
-<script src="{{ asset('gjson') }}/patahan.js" > </script>
-<script src="{{ asset('gjson') }}/subduksi.js" > </script>
-<script src="{{ asset('gjson') }}/plates.js" > </script>
-<script src="{{ asset('gjson') }}/vectormap.js" > </script>
-<script>
-   var myGeoJSONPath = 'path/to/mymap.geo.json';
-         var mymap = L.map('map').setView([{{ $datas['gempa']['lintang'] }}, {{ $datas['gempa']['bujur'] }}], 6);
-   
-         // L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-         //     maxZoom: 18,
-         //     attribution: 'Map data &copy; <a href="https://server.arcgisonline.com">ArcGis Onlinep</a> contributors, ' +
-         //         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-         // }).addTo(mymap);
-   
-         var eqIcon = L.icon({
-             iconUrl: '/images/icongempa.png',
-   
-             iconSize:     [20, 20], // size of the icon
-   });
-   
-   var vectorMap = {
-             stroke: false,
-             fill: true,
-             fillColor: '#2c3e50',
-             fillOpacity: 1
-   };
-   
-         L.marker([{{ $datas['gempa']['lintang'] }}, {{ $datas['gempa']['bujur'] }}], {icon: eqIcon}).addTo(mymap);
-         //style for subduksi and patahan
-         var patahanStyle = {
-             "color": "#fff",
-             "weight": 0.7,
-             "opacity": 0.9
-         };
-   
-         //style for subduksi
-   
-         var subduksiStyle = {
-             "color": "#0A70C4",
-             "weight": 1,
-             "opacity": 0.5,
-             "fillColor": 'transparent',
-   };
-   
-   //style for vectormap
-   
-         function onEachFeature(feature, layer) {
-         // does this feature have a property named popupContent?
-             if (feature.properties && feature.properties.PlateName) {
-                 layer.bindPopup(feature.properties.PlateName);
-             }
-         }
-   
-         L.geoJSON(pataHan, {
-             style : patahanStyle,
-         }).addTo(mymap); //add patahan symbol
-   
-         // L.geoJSON(worldPlates, {
-         //     style: subduksiStyle,
-         //     onEachFeature: onEachFeature
-         // }).addTo(mymap);
-   
-         //plot subduction
-         L.geoJSON(subDuksi, {
-             style: subduksiStyle
-   }).addTo(mymap);
-   
-         //plot VectorMap
-         L.geoJSON(VectorMap, {
-             style: vectorMap
-         }).addTo(mymap);
-   
-   // Define an icon called cssIcon
-   var cssIcon = L.divIcon({
-     // Specify a class name we can refer to in CSS.
-     className: 'css-icon',
-     html: '<div class="gps_ring"></div>'
-     // Set marker width and height
-     ,iconSize: [100,100]
-     // ,iconAnchor: [11,11]
-   });
-     
-     //add css icon as gps ring
-     L.marker([{{ $datas['gempa']['lintang'] }}, {{ $datas['gempa']['bujur'] }}], {icon: cssIcon}).addTo(mymap);
-     
-</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+
+    <script>
+       $('.alert').alert()
+    </script>
+        <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+        <script>
+            lightGallery(document.getElementById('lightgallery'));
+        </script>
 @endsection
 

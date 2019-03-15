@@ -6,7 +6,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\ArticleRequest as StoreRequest;
 use App\Http\Requests\ArticleRequest as UpdateRequest;
-
+use App\Models\Article;
 class ArticleCrudController extends CrudController
 {
     public function __construct()
@@ -38,6 +38,7 @@ class ArticleCrudController extends CrudController
                                 'name' => 'status',
                                 'label' => 'Status',
                             ]);
+        $this->crud->addColumn('author')->afterColumn('status');
         $this->crud->addColumn([
                                 'name' => 'title',
                                 'label' => 'Title',
@@ -55,6 +56,7 @@ class ArticleCrudController extends CrudController
                                 'attribute' => 'name',
                                 'model' => "App\Models\Category",
                             ]);
+
 
         // ------ CRUD FIELDS
         $this->crud->addField([    // TEXT
@@ -83,10 +85,16 @@ class ArticleCrudController extends CrudController
                                 'type' => 'date',
                             ], 'update');
 
+        $this->crud->addField([    // TEXT
+                                'name' => 'author',
+                                'label' => 'Penulis',
+                                'type' => 'text',
+                            ]);
+
         $this->crud->addField([    // WYSIWYG
                                 'name' => 'content',
                                 'label' => 'Content',
-                                'type' => 'ckeditor',
+                                'type' => 'tinymce',
                                 'placeholder' => 'Your textarea text here',
                             ]);
         $this->crud->addField([    // Image
@@ -133,5 +141,19 @@ class ArticleCrudController extends CrudController
     public function update(UpdateRequest $request)
     {
         return parent::updateCrud();
+    }
+
+    //for article detail page
+    public function show($id) {
+        $article = $this->crud->getEntry($id);
+        $beritas = Article::take(5)->orderBy('id','desc')->get();
+        return view('articles.show')->with(compact('article','beritas'));
+    }
+
+    //for news page
+    public function news() {
+        $news = Article::latest()->paginate(5);
+        return view('articles.news',compact('news'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }
