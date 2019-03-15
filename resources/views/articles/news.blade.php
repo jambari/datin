@@ -35,8 +35,8 @@
 	<div class="container">
 		<div class="col-md-12 col-lg-12 " id="news">
 	       	@if ( $news )
-             @foreach ( $news as $berita )
-             <ul class="list-unstyled">
+            @foreach ( $news as $berita )
+            <ul class="list-unstyled">
              	<a href="/berita/{{ $berita->id }}" title="{{ $berita->title }}" class="text-primary">
 			  	<li class="media">
 			    	<img class="mr-3" src="/{{ $berita->image }}" alt="image of {{ $berita->title }}" width="200" height="150" >

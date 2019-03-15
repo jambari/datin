@@ -1,6 +1,9 @@
 @extends('main')
 @section('title')
 <title>Berita - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+@endsection
+
+
 @section('after_style')
 <style type="text/css" media="screen">
 #news ul a:hover{
@@ -9,7 +12,7 @@
 }
 </style>
 @endsection
-@endsection
+
 
 @section('content')
 <br>

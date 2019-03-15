@@ -1,6 +1,7 @@
 @extends('main')
 @section('title')
 <title>Berita - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+@endsection
 @section('after_style')
 <style type="text/css" media="screen">
 	#beritalainnya {
@@ -14,8 +15,6 @@
 	}
 </style>
 @endsection
-@endsection
-
 @section('content')
 <br>
 <div class="row">
@@ -42,8 +41,6 @@
 	        <img src="/{{ $article->image }}" class="img-fluid">
 	        <hr>
 	        	{!! $article->content !!}
-	  		<br>
-	  	<div class="fb-share-button"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
 
 	    </div>
 	</div>
