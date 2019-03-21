@@ -46,9 +46,9 @@
 
 @section('content')
 <br>
-<div class="row">
-    <div class="container">
-        <div class="col-md-12">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="bd-example">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -86,9 +86,9 @@
 </div>
 <hr>
 <!-- The Gallery Section -->
-<div class="row">       
-    <div class="container" >
-        <div id="lightgallery" class="col-md-12">
+<div class="container">       
+    <div class="row" >
+        <div id="lightgallery" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             @if ($datas['galleries'])
                 @foreach ($datas['galleries'] as $gallery)
                     <a href="{{ $gallery->image }}">
@@ -103,11 +103,11 @@
 </div>
 <hr>
 <!-- recent earthquake section -->
-<div class="row">       
-    <div class="container" id="eq" >
+<div class="container">       
+    <div class="row">
         @if ($datas['gempas'])
         @foreach ($datas['gempas'] as $gempa)
-        <div id="" class="col-md-4">
+        <div id="" class=" col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="card text-primary mb-3" style="max-width: 18rem;">
                 <div class="card-header"> {{ $gempa->tanggal }} {{ $gempa->origin }} UTC</div>
                 <div class="card-body">
@@ -129,11 +129,11 @@
 </div>
 <hr>
 <!-- Pers release section -->
-<div class="row">       
-    <div class="container" id="siaran" >
+<div class="container">       
+    <div class="row">
         @if ($datas['siarans'])
         @foreach ($datas['siarans'] as $siaran)
-        <div id="" class="col-md-4">
+        <div id="" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="/{{ $siaran->image }}" alt="Card image cap">
                 <div class="card-body">

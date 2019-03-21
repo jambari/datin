@@ -25,9 +25,9 @@
 </div>
 <div class="row">
 	<div class="container">
-		<div class="col-md-12">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	  		{{-- <p>{!! $gempas->links() !!}</p> --}}
-	  		<table class="table table-striped table-hover">
+	  		<table class="table table-striped table-hover table-responsive">
 				  <thead>
 				   <tr>
 					    <th scope="col">#</th>
@@ -54,7 +54,7 @@
 				      	<td> {{ $gempa->magnitudo }} </td>
 				      	<td> {{ $gempa->depth }} </td>
 				      	<td> {{ $gempa->ket }} </td>
-				      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-primary" > Peta </a></td>
+				      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-success" > Peta </a></td>
 				    </tr>
 		  	@endforeach
 		 	@endif

@@ -4,28 +4,25 @@
 @section('after_style')
 
 <style type="text/css" media="screen">
-#charts {
-	display: flex;
-}
 </style>
 @endsection
 @endsection
 
 @section('content')
 <br>
-<div class="row">
-	<div class="container">
-		<div class="col-md-12">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-				<li class="breadcrumb-item active"><a href="/gempa/statistik" class="text-primary" >Statistik</a></li>
-			</ol>
-		</div>
-	</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
+                <li class="breadcrumb-item active"><a href="/gempa/statistik" class="text-primary" >Statistik</a></li>
+            </ol>
+        </div>
+    </div>
 </div>
-<div class="row">
-	<div class="container" id="charts">
-        <div class="col-md-6">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
                     <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
@@ -58,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
                     <img src="http://inatews.bmkg.go.id/light/images/kedalaman.png" alt="depth" aria-hidden="true">
@@ -93,7 +90,6 @@
             </div>
         </div>
     </div>
-	</div>
 </div>
 <br>
 @endsection

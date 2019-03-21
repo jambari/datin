@@ -46,6 +46,7 @@
 			    	</div>
 			  	</li>
 			  	</a>
+			  	<hr>
 			</ul>
 		  	@endforeach
 		 	@endif
