@@ -7,8 +7,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
+        flex-direction: column; 
     }
+
     
     .css-icon {}
     
@@ -35,14 +36,11 @@
         }
     }
     
-    .parameter {
-        display: flex;
-    }
 </style>
 @endsection @endsection @section('content')
 <br>
-<div class="row">
-    <div class="container">
+<div class="container">
+    <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
@@ -53,8 +51,8 @@
 </div>
 <br>
 <!-- this is eq map -->
-<div class="row">
-    <div class="container">
+<div class="container">
+    <div class="row">
         <div class="col-md-12 col-lg-12">
             <div id="streetmap">
                 <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px">
@@ -65,9 +63,9 @@
 </div>
 <br>
 <!-- eq parameter -->
-<div class="row">
-    <div class="container parameter">
-        <div class="col-md-4">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-header">
                     <img src="http://inatews.bmkg.go.id/light/images/clock.png" alt="waktu gempa" aria-hidden="true"> Waktu Gempa
@@ -98,11 +96,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<br>
-<div class="row">
-    <div class="container parameter">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">

@@ -17,9 +17,9 @@ crossorigin=""/>
 
 @section('content')
 <br>
-<div class="row">
-	<div class="container">
-		<div class="col-md-12">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
 				<li class="breadcrumb-item active"><a href="/gempa/recentmap" class="text-primary" >Peta Gempabumi Terkini</a></li>
@@ -27,10 +27,10 @@ crossorigin=""/>
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="container">
-		<div class="col-md-12">
-			  		<div id="map" style="width:100%; height: 600px; border-radius: 5px; "></div>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div id="map" style="width:100%; height: 600px; border-radius: 5px; "></div>
 	    </div>
 	</div>
 </div>
