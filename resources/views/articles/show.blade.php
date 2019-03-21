@@ -15,6 +15,7 @@
 	}
 </style>
 @endsection
+
 @section('content')
 <br>
 <div class="row">
@@ -64,4 +65,5 @@
 	</div>
 </div>
 <br>
+
 @endsection

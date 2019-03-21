@@ -46,11 +46,10 @@ class HomeController extends Controller
 
     //recent earthquakes tables
     public function terkini() {
-        $date = \Carbon\Carbon::today()->subDays(7);//get last 7 day record order by datetime
-        $gempas = Gempa::where('created_at', '>=', $date)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
-        return view('gempa.terkini',compact('gempas'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $gempas = Gempa::take(60)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
+        return view('gempa.terkini',compact('gempas'));
     }
+
     //recent eq map
     public function recentmap() {
         $eqs = Gempa::take(60)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
