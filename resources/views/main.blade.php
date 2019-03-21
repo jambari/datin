@@ -16,6 +16,9 @@
       <link rel="stylesheet" href="{{ asset('css/weather-icons.min.css') }}">
       <link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href=" {{ asset('css/demogallery.css') }} ">
+          <link rel="stylesheet" href="{{ asset('vendor/adminlte/') }}/dist/css/AdminLTE.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
       <style>
          #stasiun {
          font-family: 'Karla', sans-serif;
