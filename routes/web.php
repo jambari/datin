@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/gempa/terkini', 'HomeController@terkini');
+Route::get('/gempa/recentmap', 'HomeController@recentmap');
+Route::get('/gempa/statistik', 'HomeController@statistik');
 Route::get('/admin/dashboard', 'DashboardController@index');
 //api
 //Website Kantor
@@ -20,6 +23,6 @@ Route::get('/berita/{id}', 'Admin\ArticleCrudController@show');
 //Siaran Press
 Route::get('/siarans', 'Admin\SiaranCrudController@siarans'); //daftar semua press release
 Route::get('/siarans/{id}', 'Admin\SiaranCrudController@show'); //detail press release
-//Gempabumi
-Route::get('/gempa', 'Admin\GempaCrudController@recenteqs'); //list of recent earthquake
+//Gempabumi //list of recent earthquake
 Route::get('/gempa/{id}', 'Admin\GempaCrudController@showmap'); // detail earthquake
+
