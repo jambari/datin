@@ -46,38 +46,40 @@
 
 @section('content')
 <br>
-<div class="container">
-    <div class="col-md-12">
-        <div class="bd-example">
-            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                      @if ($datas['articles'])
-                      @foreach ($datas['articles'] as $article)
-                         <li data-target="#carouselExampleCaptions" data-slide-to="{{ $loop->index }}"></li> 
-                      @endforeach
-                   @endif
-                </ol>
-                    <div class="carousel-inner">
-                        @if ($datas['articles'])
-                        @foreach ($datas['articles'] as $article)
-                    <div class="carousel-item {{ $loop->first ? 'active': '' }}">
-                        <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="650" alt="{{ $article->title }}">
-                        <div class="carousel-caption d-none d-md-block">
-                           <h5>{{ $article->title }}</h5>
-                           {!! str_limit($article->content, $limit = 100, $end = '...') !!} <a href="/berita/{{ $article->id }}" class="text-light" >Selengkapnya! </a> </p>
+<div class="row">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="bd-example">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                          @if ($datas['articles'])
+                          @foreach ($datas['articles'] as $article)
+                             <li data-target="#carouselExampleCaptions" data-slide-to="{{ $loop->index }}"></li> 
+                          @endforeach
+                       @endif
+                    </ol>
+                        <div class="carousel-inner">
+                            @if ($datas['articles'])
+                            @foreach ($datas['articles'] as $article)
+                        <div class="carousel-item {{ $loop->first ? 'active': '' }}">
+                            <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="650" alt="{{ $article->title }}">
+                            <div class="carousel-caption d-none d-md-block">
+                               <h5>{{ $article->title }}</h5>
+                               {!! str_limit($article->content, $limit = 100, $end = '...') !!} <a href="/berita/{{ $article->id }}" class="text-light" >Selengkapnya! </a> </p>
+                            </div>
                         </div>
-                    </div>
-                        @endforeach
-                        @endif
-                    </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-                </a>
+                            @endforeach
+                            @endif
+                        </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

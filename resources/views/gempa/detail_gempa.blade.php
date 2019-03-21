@@ -212,6 +212,6 @@ crossorigin=""/>
 		});
     
     //add css icon as gps ring
-    L.marker([{{$event['lintang'] }}, {{ $event['bujur'] }}], {icon: cssIcon}).addTo(mymap);
+    L.marker([ {{$event['lintang'] }}, {{ $event['bujur'] }} ], {icon: cssIcon} ).addTo(mymap);
     </script>
 @endsection
