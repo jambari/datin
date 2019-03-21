@@ -26,8 +26,8 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
-	  		<p>{!! $gempas->links() !!}</p>
-	  		<table class="table table-striped">
+	  		{{-- <p>{!! $gempas->links() !!}</p> --}}
+	  		<table class="table table-striped table-hover">
 				  <thead>
 				   <tr>
 					    <th scope="col">#</th>
@@ -36,7 +36,7 @@
 					    <th scope="col">Lat</th>
 					    <th scope="col">Lon</th>
 					    <th scope="col">Mag</th>
-					    <th scope="col">Depth</th>
+					    <th scope="col">Depth (Km)</th>
 					    <th scope="col">Loc</th>
 					    <th scope="col">Action</th>
 				    </tr>

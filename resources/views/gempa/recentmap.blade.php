@@ -22,7 +22,6 @@ crossorigin=""/>
 		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-				<li class="breadcrumb-item active"><a href="/gempa" class="text-primary" >Gempabumi</a></li>
 				<li class="breadcrumb-item active"><a href="/gempa/recentmap" class="text-primary" >Peta Gempabumi Terkini</a></li>
 			</ol>
 		</div>
@@ -57,39 +56,15 @@ crossorigin=""/>
 
 	@if ($eqs->count() > 0)
 		@foreach ($eqs as $eq)
-		{
 			marker = new L.marker([{{ $eq->lintang }}, {{ $eq->bujur }}], { icon: terasaIcon}).addTo(map)
 			.bindPopup(
-					'<table class="table table-bordered table-striped" style="border-radius:25px;">'+
-					'<tbody>'+
-						'<tr>'+
-									'<td>'+'Magnitudo'+'</td>'+
-									'<td>'+'<span class="badge badge-danger">'+'{{ $eq->magnitudo }}'+'</span>'+'</td>'+
-						'</tr>'+
-						'<tr>'+
-									'<td>'+'Tanggal'+'</td>'+
-									'<td>'+'{{ $eq->tanggal }}'+'</td>'+
-						'</tr>'+
-						'<tr>'+
-									'<td>'+'Origin'+'</td>'+
-									'<td>'+'{{ $eq->origin }} UTC'+'</td>'+
-						'</tr>'+
-						'<tr>'+
-									'<td>'+'Lokasi'+'</td>'+
-									'<td>'+'{{ $eq->lintang }}, {{ $eq->bujur }} '+'</td>'+
-						'</tr>'+
-						'<tr>'+
-									'<td>'+'Kedalaman'+'</td>'+
-									'<td>'+'{{ $eq->depth }} Km '+'</td>'+
-						'</tr>'+
-						'<tr>'+
-									'<td>'+'Kedalaman'+'</td>'+
-									'<td>'+'{{ $eq->ket }} '+'</td>'+
-						'</tr>'+
-					'</tbody>'+
-				'</table>'
-			);
-		}
+				`{{ $eq->tanggal }}
+				{{ $eq->origin }} UTC, 
+				{{ $eq->lintang }}
+				{{ $eq->bujur }} BT,  
+				M{{ $eq->magnitudo }}
+				Depth {{ $eq->depth }} Km, 
+				{{ $eq->ket }}`);
 		@endforeach
 	@endif
 

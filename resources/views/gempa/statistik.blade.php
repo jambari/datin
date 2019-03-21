@@ -18,7 +18,6 @@
 		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-				<li class="breadcrumb-item "><a href="/gempa" class="text-primary" >Gempabumi</a></li>
 				<li class="breadcrumb-item active"><a href="/gempa/statistik" class="text-primary" >Statistik</a></li>
 			</ol>
 		</div>
