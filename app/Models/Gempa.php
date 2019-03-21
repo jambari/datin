@@ -17,10 +17,11 @@ class Gempa extends Model
 
     protected $table = 'gempas';
     // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    public $timestamps = true;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth', 'ket','terasa','terdampak'
+        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth', 'ket','terasa','terdampak', 'narasi',
+        'sumber', 'petugas'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -48,8 +49,6 @@ class Gempa extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-  
-
     public function getTerasaAttribute($value)
     {
         if ($value==0) {

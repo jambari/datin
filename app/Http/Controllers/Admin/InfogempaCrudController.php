@@ -50,7 +50,8 @@ class InfogempaCrudController extends CrudController
             ]
         ];
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
+        //$this->crud->addColumn('created_at');
+        //$this->crud->addColumn('updated_at'); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -60,7 +61,8 @@ class InfogempaCrudController extends CrudController
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
-        // $this->crud->removeField('name', 'update/create/both');
+        //$this->crud->removeField('lintang', 'update/create/both');
+        //$this->crud->removeField('bujur', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // add asterisk for fields that are required in InfogempaRequest
@@ -72,7 +74,7 @@ class InfogempaCrudController extends CrudController
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model
         // $this->crud->addButtonFromView($stack, $name, $view, $position); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
-        // $this->crud->removeButton($name);
+        //$this->crud->removeButton('create');
         // $this->crud->removeButtonFromStack($name, $stack);
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
@@ -119,7 +121,7 @@ class InfogempaCrudController extends CrudController
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
-        // $this->crud->orderBy();
+        $this->crud->orderBy('id','desc');
         // $this->crud->groupBy();
         // $this->crud->limit();
     }
@@ -145,21 +147,19 @@ class InfogempaCrudController extends CrudController
     public function peta($id)
     {   
         $event = Infogempa::find($id);
-        $lintang = $event['lintang'];
-        $bujur = $event['bujur'];
-        $file = fopen("/home/suadmin/gmt1/event.gmt","w");
-        $koordinat = $event['bujur']." ".$event['lintang']." ".$id;
-        fwrite($file,$koordinat);
-        fclose($file);
-        $file = fopen("/home/suadmin/gmt1/info.gmt","w");
+        //$lintang = $event['lintang']; //ngambil lintang untuk peta gmt
+        //$bujur = $event['bujur'];//ngambil bujur untuk peta gmt
+        //$file = fopen("/home/suadmin/gmt1/event.gmt","w"); //nulis peta gmt
+        //$koordinat = $event['bujur']." ".$event['lintang']." ".$id;
+        $lat = $event['lintang'];
+        $lon = $event['bujur'];
+        //fwrite($file,$koordinat);
+        // fclose($file);
         $sms = $event['sms'];
-        $sms = str_replace(':','@~\072@',$sms);
-        $sms = str_replace('WITA','WIT',$sms);
-        $sms = str_replace('BMKG','BMKG-JAY',$sms);
-        $sms = str_replace('SR','',$sms);
-        fwrite($file,$sms);
-        $test = shell_exec('cd /home/suadmin/gmt1 && sh ./autoepic.sh');
-        // return view('gempa.infogempa')->with(compact('lapenda','tahun','month','rownum'));
-        return view('gempa.infogempa')->with(compact('sms'));
+        // $sms = str_replace('WITA','WIT',$sms);
+        // $sms = str_replace('BMKG','BMKG-JAY',$sms);
+        // $sms = str_replace('SR','',$sms);
+        // echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
+        return view('gempa.infogempa')->with(compact('sms', 'lat', 'lon'));
     }
 }

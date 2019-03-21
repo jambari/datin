@@ -1,174 +1,151 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('main')
+@section('title')
+<title>Home - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+@endsection
+@section('after_style')
+<link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href=" {{ asset('css/demogallery.css') }} ">
+<style>
+   #eq {
+        display: flex;
+   }
 
-        <title>Welcome to Stageof Angkasa</title>
+   #siaran {
+        display: flex;
+   }
+    .carousel-item:after {
+      content:"";
+      display:block;
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      background:rgba(0,0,0,0.6);
+    }
+    #lightgallery {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-        <!-- Fonts -->
-        <link href="{{ asset('css/w3.css') }}" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="{{ asset('css/weather-icons.min.css') }}">
-{{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
-        <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet"> 
-        <!-- Styles -->
-        <style>
-            header {
-                font-family: 'Abel', sans-serif;
-            }
-            footer {
-                display: flex;
-                justify-content: center;
-                align-content: center;
-                flex-direction: row;
-
-            }
-        </style>
-    </head>
-    <body class=""{{--  --}}>
-        <header class="w3-container w3-blue-grey w3-padding-16">
-            <span style="font-size:2em; ">Stageof Angkasapura</span>
-        </header>
-        <div class="w3-row"  >
-            <div class="w3-col s12">
-                <div class="w3-container">
-                <div id="map" style="width:100%;height:650px;" class="w3-margin-top w3-margin-right"></div>
-							<script>
-								function initMap() {
-									var myLatlng = {lat:-2.54, lng:140.7504  };
-									var map = new google.maps.Map(document.getElementById('map'), {
-							center: myLatlng,
-                            mapTypeId: google.maps.MapTypeId.TERRAIN,
-							zoom: 6,
-
-							});
-							var image = '/images/star.png';
-							var iconBase = '/images/';
-					        var icons = {
-					          	terasa: {
-					            	icon: iconBase + 'redblack.png'
-					          	},
-					          	tidak: {
-					            	icon: iconBase + 'redblack.png'
-					          	}
-					        };
-
-							var features = [
-								@if ($datas['terasa']->count() > 0)
-									@foreach ($datas['terasa'] as $terasa)
-									{
-							            position: new google.maps.LatLng({{ $terasa->lintang }}, {{ $terasa->bujur }}),
-							            type: 'terasa',
-							            info: '<table class="table table-bordered table-striped" style="border-radius:25px;">'+
-											'<tbody>'+
-													'<tr>'+
-																'<td>'+'Magnitudo'+'</td>'+
-																'<td>'+'<label class="label label-danger">'+'{{ $terasa->magnitudo }}'+'</label>'+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Tanggal'+'</td>'+
-																'<td>'+'{{ $terasa->tanggal }} {{ $terasa->waktu }} UTC'+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $terasa->lintang }}, {{ $terasa->bujur }} '+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Kedalaman'+'</td>'+
-																'<td>'+'{{ $terasa->kedalaman }} Km '+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $terasa->lokasi }} Km '+'</td>'+
-													'</tr>'+
-													'<td>'+'Intensitas'+'</td>'+
-																'<td>'+'{{ $terasa->dirasakan }} '+'</td>'+
-													'</tr>'+
-												'</tbody>'+
-											'</table>',
-          							},
-									@endforeach
-								@endif
-								@if ($datas['tidakterasa']->count() > 0)
-									@foreach ($datas['tidakterasa'] as $tidak)
-									{
-							            position: new google.maps.LatLng({{ $tidak->lintang }}, {{ $tidak->bujur }}),
-							            type: 'tidak',
-							            info: '<table class="table table-bordered table-striped">'+
-											'<tbody>'+
-													'<tr>'+
-																'<td>'+'Magnitudo'+'</td>'+
-																'<td>'+'<label class="label label-danger">'+'{{ $tidak->magnitudo }}'+'</label>'+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Tanggal'+'</td>'+
-																'<td>'+'{{ $tidak->tanggal }} {{ $tidak->origin }} UTC'+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $tidak->lintang }}, {{ $tidak->bujur }} '+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Kedalaman'+'</td>'+
-																'<td>'+'{{ $tidak->depth }} Km '+'</td>'+
-													'</tr>'+
-													'<tr>'+
-																'<td>'+'Lokasi'+'</td>'+
-																'<td>'+'{{ $tidak->ket }} Km '+'</td>'+
-													'</tr>'+
-													'<td>'+'Intensitas'+'</td>'+
-																'<td>'+'{{ $tidak->terdampak }} '+'</td>'+
-													'</tr>'+
-												'</tbody>'+
-											'</table>',
-          							},
-									@endforeach
-								@endif								
-        					];
-
-							features.forEach(function(feature) {
-					         	var marker = new google.maps.Marker({
-					            	position: feature.position,
-					            	icon: icons[feature.type].icon,
-					            	map: map
-					          	});
+#lightgallery a figure img {
+    width: 300px;
+    height: auto;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+#lightgallery a figure:hover img {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+}
 
 
-							var contentString = feature.info;
-							
+</style>
+@endsection
 
-							var infowindow = new google.maps.InfoWindow({
-								content: contentString
-							});
-							marker.addListener('click', function() {
-								infowindow.open(map, marker);
-							});
-					        });
-							
-							}
-							</script>
-							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxboE6Q1qKhSDL8HO4wHyH50-CiDUygcA&callback=initMap">
-							</script>
-							<br>
-							<table>
-								<tbody border="0">
-									<tr>
-										<td>Dirasakan :</td>
-										<td><img src="{{ asset('images') }}/redblack.png" alt=""></td>
-										<td>Tidak</td>
-										<td><img src="{{ asset('images') }}/whiteblack.png" alt=""></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div> {{-- end of map --}}
+@section('content')
+<br>
+<div class="row">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="bd-example">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                          @if ($datas['articles'])
+                          @foreach ($datas['articles'] as $article)
+                             <li data-target="#carouselExampleCaptions" data-slide-to="{{ $loop->index }}"></li> 
+                          @endforeach
+                       @endif
+                    </ol>
+                        <div class="carousel-inner">
+                            @if ($datas['articles'])
+                            @foreach ($datas['articles'] as $article)
+                        <div class="carousel-item {{ $loop->first ? 'active': '' }}">
+                            <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="650" alt="{{ $article->title }}">
+                            <div class="carousel-caption d-none d-md-block">
+                               <h5>{{ $article->title }}</h5>
+                               {!! str_limit($article->content, $limit = 100, $end = '...') !!} <a href="/berita/{{ $article->id }}" class="text-light" >Selengkapnya! </a> </p>
+                            </div>
+                        </div>
+                            @endforeach
+                            @endif
+                        </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<hr>
+<!-- The Gallery Section -->
+<div class="row">       
+    <div class="container" >
+        <div id="lightgallery" class="col-md-12">
+            @if ($datas['galleries'])
+                @foreach ($datas['galleries'] as $gallery)
+                    <a href="{{ $gallery->image }}">
+                        <figure>
+                        <img src="{{ $gallery->image }}" class="img-thumbnail " />
+                        </figure>
+                    </a>
+                @endforeach
+            @endif
+        </div>
+    </div>
+</div>
+<hr>
+<!-- recent earthquake section -->
+<div class="row">       
+    <div class="container" id="eq" >
+        @if ($datas['gempas'])
+        @foreach ($datas['gempas'] as $gempa)
+        <div id="" class="col-md-4">
+            <div class="card text-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header"> {{ $gempa->tanggal }} {{ $gempa->origin }} UTC</div>
+                <div class="card-body">
+                    <h5 class="card-title">Magnitudo <span class="badge badge-primary">{{ $gempa->magnitudo }}</span></h5>
+                    <p class="card-text">Lintang: {{ $gempa->lintang }}</p>
+                    <p class="card-text">Bujur: {{ $gempa->bujur }}</p>
+                    <p class="card-text">Kedalaman: {{ $gempa->depth }} Km</p>
+                    <p class="card-text">{{ $gempa->ket }} </p>
+                    <p>
+                        {{ $gempa->terdampak or ' '}}
+                    </p>
+                    <a href="/gempa/{{ $gempa->id }}" title="peta"> <button type="" class="btn btn-primary">Lihat Peta</button> </a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @endif
+    </div>
+</div>
+<hr>
+<!-- Pers release section -->
+<div class="row">       
+    <div class="container" id="siaran" >
+        @if ($datas['siarans'])
+        @foreach ($datas['siarans'] as $siaran)
+        <div id="" class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/{{ $siaran->image }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $siaran->title }}</h5>
+                    <a href="/siarans/{{ $siaran->id }}" class="btn btn-primary">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @endif
+    </div>
+</div>
+<br>
+@endsection
 
-        </div>    
-        <footer class="w3-blue-grey w3-padding-32">
-                   <p>copyright Stageof Angkasapura 2018</p>         
-        </footer>
-    </body>
-</html>

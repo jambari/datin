@@ -34,6 +34,13 @@
     <link rel="stylesheet" href="{{ asset('vendor/backpack/backpack.base.css') }}?v=2">
     <link rel="stylesheet" href="{{ asset('vendor/backpack/overlays/backpack.bold.css') }}">
     <link rel="stylesheet" href="{{ asset('css/weather-icons.min.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <!-- leafletjs -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+   <!-- icon gempanya -->
 
     @yield('after_styles')
     @stack('after_styles')
@@ -119,14 +126,17 @@
     <!-- jQuery 2.2.3 -->
     <script src="{{ asset('vendor/adminlte') }}/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ asset('vendor/adminlte') }}/plugins/jQuery/jQuery-2.2.3.min.js"><\/script>')</script> --}}
+    <script>window.jQuery || document.write('<script src="{{ asset('vendor/adminlte') }}/plugins/jQuery/jQuery-2.2.3.min.js"><\/script>')</script>
     <!-- Bootstrap 3.3.7 -->
     <script src="{{ asset('vendor/adminlte') }}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/plugins/pace/pace.min.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    {{-- <script src="{{ asset('vendor/adminlte') }}/bower_components/fastclick/lib/fastclick.js"></script> --}}
     <script src="{{ asset('vendor/adminlte') }}/dist/js/adminlte.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+    <!-- leafletjs -->
+
+
 
     <!-- page script -->
     <script type="text/javascript">
@@ -165,7 +175,6 @@
         }
 
         $curentPageLink.parents('li').addClass('active');
-        {{-- Enable deep link to tab --}}
         var activeTab = $('[href="' + location.hash.replace("#", "#tab_") + '"]');
         location.hash && activeTab && activeTab.tab('show');
         $('.nav-tabs a').on('shown.bs.tab', function (e) {
@@ -179,6 +188,5 @@
     @stack('after_scripts')
 
     <!-- JavaScripts -->
-    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
 </body>
 </html>

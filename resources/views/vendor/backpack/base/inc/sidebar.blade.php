@@ -16,7 +16,6 @@
           @include('backpack::inc.sidebar_content')
 
           <!-- ======================================= -->
-          {{-- <li class="header">Other menus</li> --}}
         </ul>
       </section>
       <!-- /.sidebar -->

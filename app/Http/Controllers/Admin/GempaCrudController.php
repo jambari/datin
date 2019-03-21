@@ -7,6 +7,8 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\StoreGempaRequest as StoreRequest;
 use App\Http\Requests\UpdateGempaRequest as UpdateRequest;
+use App\Models\Infogempa;
+use App\Models\Gempa;
 
 /**
  * Class GempaCrudController
@@ -72,24 +74,49 @@ class GempaCrudController extends CrudController
                 'name' => 'terasa',
                 'label' => 'dirasakan',
                 'type' => 'checkbox',
+                'default' => '0',
             ], [
                 'name' => 'terdampak',
                 'label' => 'daerah yang merasakan',
                 'type' => 'textarea'
+            ], [
+                'name' => 'narasi',
+                'label' => 'narasi',
+                'type' => 'tinymce'
+            ], [
+                'name' => 'sumber',
+                'label' => 'Sumber',
+                'type' => 'select_from_array',
+                'options' => ['angkasa'=>'Angkasa', 'pgr v' => 'PGR V', 'pgn'=>'PGN'],
+                'default' => 'angkasa'
+            ], [
+                'name' => 'petugas',
+                'label' => 'On Duty',
+                'type' => 'select_from_array',
+                'options' => ['akram'=>'Akram', 'berlian' => 'Berlian', 'canggih'=>'Canggih',
+                    'danang' => 'Danang' ,'dedy' => 'Dedy', 'jambari' => 'Jambari',
+                    'lidya' => 'Lidya', 'netty' => 'Netty', 'purnama' => 'Purnama', 'risma' => 'Risma',
+                    'rosi' => 'Rosi', 'syawal' => 'Syawal' 
+                ],
+                'default' => 'umum'
             ]
         ];
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
-        // $this->crud->addColumns(); // add multiple columns, at the end of the stack
-        // $this->crud->removeColumn('column_name'); // remove a column from the stack
+        // $this->crud->addColumn('terasa');
+        // $this->crud->addColumn('terdampak'); 
+        //$this->crud->addColumn('created_at'); 
+        // add a single column, at the end of the stack
+        //$this->crud->addColumns('terasa','terdampak'); // add multiple columns, at the end of the stack
+        $this->crud->removeColumn('narasi'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
-        $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']); // adjusts the properties of the passed in column (by name)
-        // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
+        $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']);
+        $this->crud->setColumnDetails('terasa', ['label' => 'Terasa']); // adjusts the properties of the passed in column (by name)
+        $this->crud->setColumnsDetails(['origin'], ['label' => 'Origin (UTC)']);
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         $this->crud->addFields($fields, 'update/create/both');
-        // $this->crud->removeField('name', 'update/create/both');
+        $this->crud->removeField('tanggal', 'update');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // add asterisk for fields that are required in GempaRequest
@@ -106,7 +133,7 @@ class GempaCrudController extends CrudController
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
         // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -114,7 +141,8 @@ class GempaCrudController extends CrudController
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
 
         // ------ CRUD DETAILS ROW
-        // $this->crud->enableDetailsRow();
+        $this->crud->enableDetailsRow();
+        $this->crud->allowAccess('details_row');
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
 
@@ -148,6 +176,8 @@ class GempaCrudController extends CrudController
         // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
+        $this->crud->orderBy('tanggal','desc');
+        $this->crud->orderBy('origin','desc');
 
         //filter magnitudo 
         $this->crud->addFilter([ // daterange filter
@@ -273,4 +303,24 @@ class GempaCrudController extends CrudController
     }
 
     //filter
+
+    //details row
+    public function showDetailsRow($id) {
+        $event = $this->crud->getEntry($id);
+        return view('vendor.backpack.crud.gempa_details_row', compact('event'));
+    }
+
+    //detail eq on front end
+    public function showmap($id) {
+        $event = $this->crud->getEntry($id);
+        return view('gempa.detail_gempa', compact('event'));
+    }
+
+    //recent earthquakes
+    public function recenteqs() {
+        $date = \Carbon\Carbon::today()->subDays(7);//get last 7 day record order by datetime
+        $gempas = Gempa::where('created_at', '>=', $date)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
+        return view('gempa.recent',compact('gempas'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 }

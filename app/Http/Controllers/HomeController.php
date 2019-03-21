@@ -13,6 +13,11 @@ use App\Models\Summary;
 use App\Models\Kindek;
 use App\Models\Deklinasi;
 use App\Models\Inklinasi;
+use App\Models\Infogempa;
+use App\Models\Article;
+use App\Models\Pengumuman;
+use App\Models\Siaran;
+
 
 class HomeController extends Controller
 {
@@ -20,21 +25,23 @@ class HomeController extends Controller
 	public function index() 
 	{
 		
-		$terasa = Gempa::orderBy('id', 'desc')
-		->whereBetween('lintang',[-11,-0.10])
-		->whereBetween('bujur',[134,140.417])
-		->take(150)->get();
-		$tidakterasa = Gempa::orderBy('id', 'desc')
-		->whereBetween('lintang',[-11,-0.10])
-		->whereBetween('bujur',[134,142.417])
-		->take(150)->get();
+		$gempas = Gempa::take(3)->orderBy('id','desc')->get();
+		$articles = Article::take(5)->orderBy('id','desc')->get();
+		$galleries = Article::take(8)->orderBy('id','desc')->get();
+		$pengumumans = Gempa::orderBy('id','desc')->first();
+		$siarans = Siaran::take(3)->orderBy('id','desc')->get();
 
 		$datas = [
-			'terasa' => $terasa,
-			'tidakterasa' => $tidakterasa,
+			// 'terasa' => $terasa,
+			// 'tidakterasa' => $tidakterasa,
+			'gempas' => $gempas,
+			'articles' => $articles,
+			'galleries' => $galleries,
+			'pengumumans' => $pengumumans,
+			'siarans' => $siarans
         ];
 
-    	return view('welcome')->with(compact('datas'));
+    	return view('welcome', compact('datas'));
 	}
 
 }

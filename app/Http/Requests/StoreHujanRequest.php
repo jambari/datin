@@ -29,7 +29,8 @@ class StoreHujanRequest extends FormRequest
             // 'name' => 'required|min:5|max:255'
             'tanggal' => 'required|unique:hujans,tanggal',
             'obs' => 'numeric|between:0,400',
-            'hilman' => 'numeric|between:0,400'
+            'hilman' => 'numeric|between:0,400',
+            'petugas' => 'required'
         ];
     }
 

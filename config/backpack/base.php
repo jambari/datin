@@ -19,16 +19,16 @@ return [
     'logo_mini' => '<b>D</b>i',
 
     // Developer or company name. Shown in footer.
-    'developer_name' => 'Jambari',
+    'developer_name' => '',
 
     // Developer website. Link in footer.
     'developer_link' => 'http://github.com/jambari',
 
     // Show powered by Laravel Backpack in the footer?
-    'show_powered_by' => true,
+    'show_powered_by' => false,
 
     // The AdminLTE skin. Affects menu color and primary/secondary colors used throughout the application.
-    'skin' => 'skin-green',
+    'skin' => 'skin-yellow',
     // Options: skin-black, skin-blue, skin-purple, skin-red, skin-yellow, skin-green, skin-blue-light, skin-black-light, skin-purple-light, skin-green-light, skin-red-light, skin-yellow-light
 
     // Date & Datetime Format Syntax: https://github.com/jenssegers/date#usage

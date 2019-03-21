@@ -41,10 +41,21 @@ Route::group([
 
 	//Absolut
 	CRUD::resource('absolut', 'AbsolutCrudController');	
+	//Kegiatan
+	CRUD::resource('kegiatan', 'KegiatanCrudController');	
 	//summary
 	CRUD::resource('summary', 'SummaryCrudController');	
 
 	//Menuitem
 	CRUD::resource('menu-item', 'MenuItemCrudController');
+
+	//News
+	CRUD::resource('article', 'ArticleCrudController');
+    CRUD::resource('category', 'CategoryCrudController');
+    CRUD::resource('tag', 'TagCrudController');
+    //Pengumuman
+    CRUD::resource('pengumuman', 'PengumumanCrudController');
+    //Press Release
+    CRUD::resource('siaran', 'SiaranCrudController');
 
 }); // this should be the absolute last line of this file

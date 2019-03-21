@@ -40,12 +40,12 @@ class HujanCrudController extends CrudController
                 'label' => 'Tanggal',
                 'type' => 'date'
             ], [
-                'name' => 'obs',
-                'label' => 'Jumlah Obs',
-                'type' => 'text'
-            ], [
                 'name' => 'hilman',
                 'label' => 'Jumlah Hilman',
+                'type' => 'text'
+            ], [
+                'name' => 'obs',
+                'label' => 'Jumlah Obs',
                 'type' => 'text'
             ], [
                 'name' => 'kategori',
@@ -64,6 +64,16 @@ class HujanCrudController extends CrudController
                 'name' => 'keterangan',
                 'label' => 'Keterangan',
                 'type' => 'textarea'
+            ],[
+                'name' => 'petugas',
+                'label' => 'On Duty',
+                'type' => 'select_from_array',
+                'options' => ['akram'=>'Akram', 'berlian' => 'Berlian', 'canggih'=>'Canggih',
+                    'danang' => 'Danang' ,'dedy' => 'Dedy', 'jambari' => 'Jambari',
+                    'lidya' => 'Lidya', 'netty' => 'Netty', 'purnama' => 'Purnama', 'risma' => 'Risma',
+                    'rosi' => 'Rosi', 'syawal' => 'Syawal' 
+                ],
+                'default' => 'umum'
             ]
         ];
 
@@ -135,7 +145,7 @@ class HujanCrudController extends CrudController
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
-        // $this->crud->orderBy();
+        $this->crud->orderBy('tanggal','desc');
         // $this->crud->groupBy();
         // $this->crud->limit();
 
