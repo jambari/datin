@@ -31,6 +31,9 @@ crossorigin=""/>
             50% {opacity: 1.0;}
             100% {opacity: 1.0;}
     }
+    .parameter {
+        display: flex;
+   }
 </style>
 @endsection
 @endsection
@@ -54,26 +57,87 @@ crossorigin=""/>
             <div id="streetmap">
                 <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
                     <div id="map" style="width:85%;height:500px;"></div> 
-                    <p style="margin-top: 1%;">
-                    	{{ $event['tanggal'] }} {{ $event['origin'] }} UTC
-                    </p>
-                    <p>
-                    	Magnitudo <span class="badge badge-primary">{{ $event['magnitudo'] }}</span>
-	                </p>
-                    <p>
-                    	Lokasi: {{ $event['lintang'] }} , {{ $event['bujur'] }}
-                    </p>
-                    <p>
-                    	Kedalaman: {{ $event['depth'] }} Km
-                    </p>
-                    <p>
-                    	{{ $event['ket'] }}
-                    </p>
-                    <p>
-                    	{{ $event['terdampak'] or ' '}}
-                    </p>
             </div>
 	    </div>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="container parameter" >
+		<div class="col-md-4">
+			<div class="card">
+			  <div class="card-header">
+			  	<img src="http://inatews.bmkg.go.id/light/images/clock.png" alt="waktu gempa" aria-hidden="true">
+			    Waktu Gempa
+			  </div>
+			  <div class="card-body">
+			    <p class="card-text">{{ $event['tanggal'] }} {{ $event['origin'] }} UTC</p>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+			  <div class="card-header">
+			  	<i class="fa fa-map-marker text-danger" style="font-size: 2.5em;" aria-hidden="true" ></i>
+			    Lokasi
+			  </div>
+			  <div class="card-body">
+			    <p class="card-text">Lokasi: {{ $event['lintang'] }} , {{ $event['bujur'] }}</p>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="card">
+			  <div class="card-header">
+			  	<img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+			    Kekuatan
+			  </div>
+			  <div class="card-body">
+			    <p class="card-text">M <span class="badge badge-primary">{{ $event['magnitudo'] }}</span></p>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="container parameter">
+		<div class="col-md-4">
+			<div class="card">
+			  <div class="card-header">
+			  	<img src="http://inatews.bmkg.go.id/light/images/kedalaman.png" alt="depth" aria-hidden="true">
+			    Kedalaman
+			  </div>
+			  <div class="card-body">
+			    <p class="card-text">{{ $event['depth'] }} Km</p>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="card">
+			  <div class="card-header">
+			  	<i class="fa fa-file-text-o text-primary" aria-hidden="true" style="font-size: 2.5em;" ></i> 
+			    Keterangan
+			  </div>
+			  <div class="card-body">
+			    <p class="card-text">{{ $event['ket'] }}</p>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="card">
+			  <div class="card-header">
+			  	<i class="wi wi-earthquake text-danger" aria-hidden="true" style="font-size: 2.5em;" ></i>
+			    Dirasakan
+			  </div>
+			  <div class="card-body">
+			    <p class="card-text">{{ $event['terdampak'] or ' '}}</p>
+			  </div>
+			</div>
+		</div>
 	</div>
 </div>
 <br>
@@ -89,10 +153,9 @@ crossorigin=""/>
     <script>
         var mymap = L.map('map').setView([{{ $event['lintang'] }}, {{ $event['bujur'] }}], 7);
 
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
             maxZoom: 18,
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+            id: 'mapbox.streets'
         }).addTo(mymap);
 
         var eqIcon = L.icon({

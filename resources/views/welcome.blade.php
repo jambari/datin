@@ -83,6 +83,7 @@
     </div>
 </div>
 <hr>
+<!-- The Gallery Section -->
 <div class="row">       
     <div class="container" >
         <div id="lightgallery" class="col-md-12">
@@ -99,6 +100,7 @@
     </div>
 </div>
 <hr>
+<!-- recent earthquake section -->
 <div class="row">       
     <div class="container" id="eq" >
         @if ($datas['gempas'])
@@ -123,8 +125,8 @@
         @endif
     </div>
 </div>
-
 <hr>
+<!-- Pers release section -->
 <div class="row">       
     <div class="container" id="siaran" >
         @if ($datas['siarans'])

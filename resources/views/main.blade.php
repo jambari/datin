@@ -10,15 +10,16 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       @yield('title')
       <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Miriam+Libre|Open+Sans+Condensed:300|Oswald" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"> 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="shortcut icon" href="https://bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="{{ asset('css/weather-icons.min.css') }}">
       <style>
          #stasiun {
-         font-family: 'Oswald', sans-serif;
+         font-family: 'Karla', sans-serif;
          }
          nav {
-         font-family: 'Miriam Libre', sans-serif;
+         font-family: 'Karla', sans-serif;
          }
          .footer {
          left: 0;
@@ -83,7 +84,7 @@
          </div>
       </nav>
       @yield('content')
-      <!-- Footer -->
+      @include('footer')
 
       @yield('script')
    </body>

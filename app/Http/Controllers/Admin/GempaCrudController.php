@@ -318,7 +318,8 @@ class GempaCrudController extends CrudController
 
     //recent earthquakes
     public function recenteqs() {
-        $gempas = Gempa::take(100)->orderBy('id','desc')->paginate(10);
+        $date = \Carbon\Carbon::today()->subDays(7);//get last 7 day record order by datetime
+        $gempas = Gempa::where('created_at', '>=', $date)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
         return view('gempa.recent',compact('gempas'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

@@ -55,7 +55,7 @@
 				<img class="card-img-top" src="/{{ $siaran->image }}" alt="Card image cap">
 				<div class="card-body">
 				    <h5 class="card-title">{{ $siaran->title }}</h5>
-				    <a href="/berita/{{ $siaran->id }}" class="btn btn-primary">Selengkapnya</a>
+				    <a href="/siarans/{{ $siaran->id }}" class="btn btn-primary">Selengkapnya</a>
 				</div>
 			</div>
 		  	@endforeach
