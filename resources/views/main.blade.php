@@ -11,6 +11,7 @@
       @yield('title')
       <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css">
       <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"> 
+      <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet"> 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="shortcut icon" href="https://bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
       <link rel="stylesheet" href="{{ asset('css/weather-icons.min.css') }}">
@@ -20,6 +21,9 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
       <style>
+        body {
+          padding-top: 75px;
+        }
          #stasiun {
          font-family: 'Karla', sans-serif;
          }
@@ -36,6 +40,25 @@
          .footer-copyright {
          border-top: 2px solid #95A5A6;
          background-color: #031424;
+         }
+
+         nav {
+          background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+          background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+          
+/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));
+background: linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));*/
+
+
+
+
+        /*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
+        background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
+/*
+background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); 
+
+*/
          }
       </style>
       @yield('after_style')
