@@ -50,7 +50,7 @@
                 <h6 class="text-uppercase font-weight-bold">Produk</h6>
                 <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
-                    <a class="text-primary" href="/gempa">Gempabumi</a>
+                    <a class="text-primary" href="/gempa/terkini">Gempabumi</a>
                 </p>
                 <p>
                     <!--             <a class="text-primary" href="#!">Magnetbumi</a>

@@ -6,13 +6,6 @@
 <link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href=" {{ asset('css/demogallery.css') }} ">
 <style>
-   #eq {
-        display: flex;
-   }
-
-   #siaran {
-        display: flex;
-   }
     .carousel-item:after {
       content:"";
       display:block;
@@ -40,17 +33,37 @@
     transform: scale(1.5);
 }
 
+#mycarousel {
 
+background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+
+/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));
+background: linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));*/
+
+/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
+background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
+
+/*background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); */
+}
+#mycarousel div h3 {
+    font-family: 'Bad Script', cursive;
+    padding: 5%;
+}
 </style>
 @endsection
 
 @section('content')
-<br>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="bd-example">
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+<!-- <br>
+<div class="container"> -->
+    <div class="row" id="mycarousel">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center align-self-center ">
+            <h3 class="text-light ml-5" > <strong class="">Selamat Datang </strong> <br>Di Stasiun Geofisika Kelas I Angkasapura Jayapura !</h4>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 3%;">
+            <div class="bd-example" >
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
                     <ol class="carousel-indicators">
                           @if ($datas['articles'])
                           @foreach ($datas['articles'] as $article)
@@ -62,10 +75,10 @@
                             @if ($datas['articles'])
                             @foreach ($datas['articles'] as $article)
                         <div class="carousel-item {{ $loop->first ? 'active': '' }}">
-                            <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="650" alt="{{ $article->title }}">
+                            <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="400" alt="{{ $article->title }}" style="border" >
                             <div class="carousel-caption d-none d-md-block">
                                <h5>{{ $article->title }}</h5>
-                               {!! str_limit($article->content, $limit = 100, $end = '...') !!} <a href="/berita/{{ $article->id }}" class="text-light" >Selengkapnya! </a> </p>
+                               <a href="/berita/{{ $article->id }}" class=" btn bg-primary text-light" >Baca </a> 
                             </div>
                         </div>
                             @endforeach
@@ -83,7 +96,7 @@
             </div>
         </div>
     </div>
-</div>
+<!-- </div> -->
 <hr>
 <!-- The Gallery Section -->
 <div class="container">       
@@ -119,7 +132,7 @@
                     <p>
                         {{ $gempa->terdampak or ' '}}
                     </p>
-                    <a href="/gempa/{{ $gempa->id }}" title="peta"> <button type="" class="btn btn-primary">Lihat Peta</button> </a>
+                    <a href="/gempa/{{ $gempa->id }}" title="peta"> <button type="" class="btn bg-primary btn-block text-light">Lihat Peta</button> </a>
                 </div>
             </div>
         </div>
@@ -138,7 +151,7 @@
                 <img class="card-img-top" src="/{{ $siaran->image }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ $siaran->title }}</h5>
-                    <a href="/siarans/{{ $siaran->id }}" class="btn btn-primary">Selengkapnya</a>
+                    <a href="/siarans/{{ $siaran->id }}" class="btn bg-primary btn-block text-light">Baca</a>
                 </div>
             </div>
         </div>

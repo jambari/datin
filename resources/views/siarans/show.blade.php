@@ -39,7 +39,7 @@
 	       	@if ( $siarans )
             @foreach ( $siarans as $siaran )
             <ul class="list-unstyled">
-             	<a href="/berita/{{ $siaran->id }}" title="{{ $siaran->title }}" class="text-primary">
+             	<a href="/siarans/{{ $siaran->id }}" title="{{ $siaran->title }}" class="text-primary">
 			  	<li class="media">
 			    	<img class="mr-3" src="/{{ $siaran->image }}" alt="" width="100" height="80" >
 			    	<div class="media-body">
