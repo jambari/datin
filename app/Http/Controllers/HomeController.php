@@ -25,10 +25,11 @@ class HomeController extends Controller
 	public function index() 
 	{
 		
-		$gempas = Gempa::take(3)->orderBy('id','desc')->get();
+		$gempas = Gempa::orderBy('id','desc')->first();
 		$articles = Article::take(5)->orderBy('id','desc')->get();
 		$galleries = Article::take(8)->orderBy('id','desc')->get();
-		$pengumumans = Gempa::orderBy('id','desc')->first();
+		$pengumuman = Pengumuman::orderBy('id','desc')->first();
+		$sms = Infogempa::orderBy('id','desc')->first();
 		$siarans = Siaran::take(3)->orderBy('id','desc')->get();
 
 		$datas = [
@@ -37,8 +38,9 @@ class HomeController extends Controller
 			'gempas' => $gempas,
 			'articles' => $articles,
 			'galleries' => $galleries,
-			'pengumumans' => $pengumumans,
-			'siarans' => $siarans
+			'pengumuman' => $pengumuman,
+			'siarans' => $siarans,
+			'sms' => $sms,
         ];
 
     	return view('welcome', compact('datas'));
