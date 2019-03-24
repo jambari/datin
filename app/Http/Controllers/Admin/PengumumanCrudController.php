@@ -37,14 +37,13 @@ class PengumumanCrudController extends CrudController
                         'name' => 'isi',
                         'label' => 'Isi Pengumuman',
                         'type' => 'text',
-                        'placeholder' => 'Tulis Pengumuman disini',
                     ]);
         $this->crud->addField([    // TEXT
                         'name' => 'kelas',
                         'label' => 'jenis pengumuman',
                         'type' => 'select_from_array',
-                        'options' => ['info'=>'info', 'warning' => 'warning', 'success'=>'success', 'danger' => 'danger'],
-                        'default' => 'info'
+                        'options' => ['pengumuman'=>'pengumuman', 'ucapan' => 'ucapan', 'duka'=>'duka'],
+                        'default' => 'pengumuman'
                     ]);
         $this->crud->addField([    // TEXT
                         'name' => 'on',
@@ -57,7 +56,7 @@ class PengumumanCrudController extends CrudController
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
-        // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
+        $this->crud->setColumnDetails('kelas', ['attribute' => 'Jenis Pengumuman']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
 
         // ------ CRUD FIELDS

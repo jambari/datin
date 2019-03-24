@@ -3,8 +3,7 @@
 <title>Home - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
 @endsection
 @section('after_style')
-<link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href=" {{ asset('css/demogallery.css') }} ">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
 <style>
     .carousel-item:after {
       content:"";
@@ -22,15 +21,10 @@
         margin-right: auto;
     }
 
-#lightgallery a figure img {
-    width: 300px;
-    height: auto;
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
-}
-#lightgallery a figure:hover img {
-    -webkit-transform: scale(1.5);
-    transform: scale(1.5);
+
+.mainproduct {
+    margin: auto;
+    padding: 10px;
 }
 
 #mycarousel {
@@ -51,6 +45,47 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
     font-family: 'Bad Script', cursive;
     padding: 5%;
 }
+    .css-icon {}
+    
+    .gps_ring {
+        border: 3px solid #FF0000;
+        -webkit-border-radius: 100px;
+        height: 100px;
+        width: 100px;
+        -webkit-animation: pulsate 1s ease-out;
+        -webkit-animation-iteration-count: infinite;
+        /*opacity: 0.0*/
+    }
+    
+    @-webkit-keyframes pulsate {
+        0% {
+            -webkit-transform: scale(0.1, 0.1);
+            opacity: 0.0;
+        }
+        50% {
+            opacity: 1.0;
+        }
+        100% {
+            opacity: 1.0;
+        }
+    }
+    .mainproduct:hover {
+background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+        color: white;
+    }
+
+    .mainproduct>p:hover {
+        color: white;
+    }
+    #info:hover {
+        background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+        background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+    }
+
+    #info >div>h2,p:hover {
+        color: white;
+    }
 </style>
 @endsection
 
@@ -59,7 +94,11 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
 <div class="container"> -->
     <div class="row" id="mycarousel">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center align-self-center ">
-            <h3 class="text-light ml-5" > <strong class="">Selamat Datang </strong> <br>Di Stasiun Geofisika Kelas I Angkasapura Jayapura !</h4>
+            @if ($datas['pengumuman'])
+            <h3 class="text-light ml-5" > 
+                    {!! $datas['pengumuman']->isi !!}
+            </h4>
+            @endif
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 3%;">
             <div class="bd-example" >
@@ -97,51 +136,38 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
         </div>
     </div>
 <!-- </div> -->
-<hr>
-<!-- The Gallery Section -->
-<div class="container">       
-    <div class="row" >
-        <div id="lightgallery" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            @if ($datas['galleries'])
-                @foreach ($datas['galleries'] as $gallery)
-                    <a href="{{ $gallery->image }}">
-                        <figure>
-                        <img src="{{ $gallery->image }}" class="img-thumbnail " />
-                        </figure>
-                    </a>
-                @endforeach
-            @endif
-        </div>
+<!-- The Gallery Section -->  
+<div class="row d-flex justify-content-center align-items-center m-5" id="marketing" style="height: 30rem; ">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct " >
+        <p class="text-center" ><i class="wi wi-earthquake text-primary " style=" font-size: 4em " ></i></p>
+        <h3 class=" text-center" >Gempabumi</h3>
+        <p class="text-center" >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Angkasapura mengamati gempabumi 24/7 hari.</p>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct">
+        <p class="text-center" ><i class="wi wi-meteor text-primary rounded-circle  " style=" font-size: 4em " ></i></p>
+        <h3 class="text-center" >Geofisika Potensial</h3>
+        <p class="text-center" >Pengamatan variasi harian magnetbumi, pengamatan absolut magnetbumi, dan listrik udara dilakukan secara berkelanjutan.</p>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct">
+        <p class="text-center" ><i class="wi wi-raindrops text-primary" style=" font-size: 4em "></i></p>
+        <h3 class="text-center" >Kualitas Udara</h3>
+        <p class="text-center" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
     </div>
 </div>
-<hr>
 <!-- recent earthquake section -->
-<div class="container">       
-    <div class="row">
-        @if ($datas['gempas'])
-        @foreach ($datas['gempas'] as $gempa)
-        <div id="" class=" col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <div class="card text-primary mb-3" style="max-width: 18rem;">
-                <div class="card-header"> {{ $gempa->tanggal }} {{ $gempa->origin }} UTC</div>
-                <div class="card-body">
-                    <h5 class="card-title">Magnitudo <span class="badge badge-primary">{{ $gempa->magnitudo }}</span></h5>
-                    <p class="card-text">Lintang: {{ $gempa->lintang }}</p>
-                    <p class="card-text">Bujur: {{ $gempa->bujur }}</p>
-                    <p class="card-text">Kedalaman: {{ $gempa->depth }} Km</p>
-                    <p class="card-text">{{ $gempa->ket }} </p>
-                    <p>
-                        {{ $gempa->terdampak or ' '}}
-                    </p>
-                    <a href="/gempa/{{ $gempa->id }}" title="peta"> <button type="" class="btn bg-primary btn-block text-light">Lihat Peta</button> </a>
-                </div>
-            </div>
-        </div>
-        @endforeach
-        @endif
-    </div>
+<div class="row d-flex justify-content-center align-items-center border " style="height: 35rem;" id="info">
+  <div class="col-md-5" style="padding: 3%;">
+    <h2 class="featurette-heading text-primary">Gempabumi Terkini</span></h2>
+    <p class="lead text-primary"> @if ($datas['sms']) {{ $datas['sms']->sms }} @endif  </p>
+  </div>
+  <div class="col-md-7 " style="" >
+    <div id="map" style="width:85%;height:400px; border-radius: 5px;"></div>
+  </div>
 </div>
-<hr>
 <!-- Pers release section -->
+<br>
 <div class="container">       
     <div class="row">
         @if ($datas['siarans'])
@@ -160,5 +186,80 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
     </div>
 </div>
 <br>
+@endsection
+
+@section('script')
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+<script src="{{ asset('gjson') }}/patahan.js">
+</script>
+<script src="{{ asset('gjson') }}/subduksi.js">
+</script>
+<script src="{{ asset('gjson') }}/plates.js">
+</script>
+@if ($datas['gempas'])
+<script>
+    var mymap = L.map('map').setView([ {{ $datas['gempas']->lintang }}, {{ $datas['gempas']->bujur }}], 4);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 18,
+        id: 'mapbox.light'
+    }).addTo(mymap);
+
+    var eqIcon = L.icon({
+        iconUrl: '/images/icongempa.png',
+
+        iconSize: [40, 40], // size of the icon
+    });
+    L.marker([{{ $datas['gempas']->lintang }}, {{ $datas['gempas']->bujur }}], {
+        icon: eqIcon
+    }).addTo(mymap);
+    //style for subduksi and patahan
+    var patahanStyle = {
+        "color": "#2C4B48",
+        "weight": 0.7,
+        "opacity": 0.9
+    };
+
+    //style for subduksi
+
+    var subduksiStyle = {
+        "color": "#0A70C4",
+        "weight": 1,
+        "opacity": 0.5,
+        "fillColor": 'transparent',
+    }
+
+    function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties && feature.properties.PlateName) {
+            layer.bindPopup(feature.properties.PlateName);
+        }
+    }
+
+    L.geoJSON(pataHan, {
+        style: patahanStyle,
+    }).addTo(mymap); //add patahan symbol
+
+    //plot subduction
+    L.geoJSON(subDuksi, {
+        style: subduksiStyle
+    }).addTo(mymap);
+
+    // Define an icon called cssIcon
+    var cssIcon = L.divIcon({
+        // Specify a class name we can refer to in CSS.
+        className: 'css-icon',
+        html: '<div class="gps_ring"></div>'
+            // Set marker width and height
+            ,
+        iconSize: [100, 100]
+            // ,iconAnchor: [11,11]
+    });
+
+    //add css icon as gps ring
+    L.marker([{{ $datas['gempas']->lintang }}, {{ $datas['gempas']->bujur }}], {
+        icon: cssIcon
+    }).addTo(mymap);
+</script>
+@endif
 @endsection
 

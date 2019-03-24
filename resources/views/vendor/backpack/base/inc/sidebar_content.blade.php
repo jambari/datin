@@ -45,7 +45,7 @@
 		  	<li><a href="{{ backpack_url('category') }}"><i class="fa fa-list"></i> <span>Categories</span></a></li>
 		  	<li><a href="{{ backpack_url('tag') }}"><i class="fa fa-tag"></i> <span>Tags</span></a></li>
 			<li><a href="{{ backpack_url('siaran') }}"><i class="fa fa-bullhorn"></i> <span>Siaran Press</span></a></li>
-{{-- 		  <li><a href="{{ backpack_url('pengumuman') }}"><i class="fa fa-bullhorn"></i> <span>Pengumuman</span></a></li> --}}
+		  	<li><a href="{{ backpack_url('pengumuman') }}"><i class="fa fa-bullhorn"></i> <span>Pengumuman</span></a></li>
 		</ul>
 	</li>
 <li><a href="{{ backpack_url('kegiatan') }}"><i class="fa fa-user" style="margin-right: 0.5em;"></i> <span>Kegiatan</span></a></li>
