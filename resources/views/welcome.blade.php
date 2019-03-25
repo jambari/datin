@@ -22,10 +22,10 @@
     }
 
 
-.mainproduct {
+/*.mainproduct {
     margin: auto;
     padding: 10px;
-}
+}*/
 
 #mycarousel {
 
@@ -93,9 +93,9 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
 <!-- <br>
 <div class="container"> -->
     <div class="row" id="mycarousel">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center align-self-center ">
+        <div class="col-lg-6 col-md-6 d-flex justify-content-center align-self-center ">
             @if ($datas['pengumuman'])
-            <h3 class="text-light ml-5" > 
+            <h3 class="text-light ml-5 d-none d-sm-block " > 
                     {!! $datas['pengumuman']->isi !!}
             </h4>
             @endif
@@ -137,44 +137,44 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
     </div>
 <!-- </div> -->
 <!-- The Gallery Section -->  
-<div class="row d-flex justify-content-center align-items-center m-5" id="marketing" style="height: 30rem; ">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct " >
+<div class="row d-flex justify-content-center align-items-center" style="padding: 10% 5% 10% 5%;" >
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct " style="" >
         <p class="text-center" ><i class="wi wi-earthquake text-primary " style=" font-size: 4em " ></i></p>
         <h3 class=" text-center" >Gempabumi</h3>
         <p class="text-center" >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Angkasapura mengamati gempabumi 24/7 hari.</p>
     </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct">
-        <p class="text-center" ><i class="wi wi-meteor text-primary rounded-circle  " style=" font-size: 4em " ></i></p>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct ">
+        <p class="text-center" ><i class="wi wi-meteor text-primary " style=" font-size: 4em " ></i></p>
         <h3 class="text-center" >Geofisika Potensial</h3>
         <p class="text-center" >Pengamatan variasi harian magnetbumi, pengamatan absolut magnetbumi, dan listrik udara dilakukan secara berkelanjutan.</p>
     </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct ">
         <p class="text-center" ><i class="wi wi-raindrops text-primary" style=" font-size: 4em "></i></p>
         <h3 class="text-center" >Kualitas Udara</h3>
         <p class="text-center" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
     </div>
 </div>
 <!-- recent earthquake section -->
-<div class="row d-flex justify-content-center align-items-center border " style="height: 35rem;" id="info">
-  <div class="col-md-5" style="padding: 3%;">
+<div class="row d-flex justify-content-center align-items-center border " style="padding-top: 5%; padding-bottom: 5%;" id="info">
+  <div class="col-md-5 d-none d-sm-block" style="padding: 3%;">
     <h2 class="featurette-heading text-primary">Gempabumi Terkini</span></h2>
     <p class="lead text-primary"> @if ($datas['sms']) {{ $datas['sms']->sms }} @endif  </p>
   </div>
-  <div class="col-md-7 " style="" >
-    <div id="map" style="width:85%;height:400px; border-radius: 5px;"></div>
+  <div class="col-md-7 d-none d-sm-block" style="" >
+    <div id="map" class="" style="width:85%;height:400px; border-radius: 5px;"></div>
   </div>
 </div>
 <!-- Pers release section -->
 <br>
 <div class="container">       
-    <div class="row">
+    <div class="row d-flex justify-content-center align-items-center" style="padding-top: 5%; padding-bottom: 5%;" >
         @if ($datas['siarans'])
         @foreach ($datas['siarans'] as $siaran)
         <div id="" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/{{ $siaran->image }}" alt="Card image cap">
+                <img class="card-img-top" src="/{{ $siaran->image }}" alt="Card image cap" height="300" >
                 <div class="card-body">
                     <h5 class="card-title">{{ $siaran->title }}</h5>
                     <a href="/siarans/{{ $siaran->id }}" class="btn bg-primary btn-block text-light">Baca</a>
@@ -198,10 +198,10 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
 </script>
 @if ($datas['gempas'])
 <script>
-    var mymap = L.map('map').setView([ {{ $datas['gempas']->lintang }}, {{ $datas['gempas']->bujur }}], 4);
+    var mymap = L.map('map').setView([ {{ $datas['gempas']->lintang }}, {{ $datas['gempas']->bujur }}], 6);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
-        id: 'mapbox.light'
+        id: 'mapbox.streets'
     }).addTo(mymap);
 
     var eqIcon = L.icon({
@@ -235,9 +235,9 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
         }
     }
 
-    L.geoJSON(pataHan, {
-        style: patahanStyle,
-    }).addTo(mymap); //add patahan symbol
+    // L.geoJSON(pataHan, {
+    //     style: patahanStyle,
+    // }).addTo(mymap); //add patahan symbol
 
     //plot subduction
     L.geoJSON(subDuksi, {
