@@ -22,7 +22,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
       <style>
         body {
-          padding-top: 6%;
+          padding-top: 5.5%;
         }
          #stasiun {
          font-family: 'Karla', sans-serif;

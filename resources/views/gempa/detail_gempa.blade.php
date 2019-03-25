@@ -41,7 +41,7 @@
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 d-none d-sm-block">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
                 <li class="breadcrumb-item active"><a href="/gempa" class="text-primary">Gempabumi</a></li>
@@ -50,12 +50,13 @@
     </div>
 </div>
 <br>
+<br>
 <!-- this is eq map -->
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <div id="streetmap">
-                <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px">
+                <img class="d-none d-sm-block" src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px">
                 <div id="map" style="width:85%;height:500px; border-radius: 5px;"></div>
             </div>
         </div>

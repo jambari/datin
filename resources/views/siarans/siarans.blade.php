@@ -46,7 +46,6 @@
 			    	<img class="mr-3" src="/{{ $siaran->image }}" alt="image of {{ $siaran->title }}" width="200" height="150" >
 			    	<div class="media-body">
 				      	<h5 class="mt-0 mb-1">{{ $siaran->title }}</h5>
-				     	{!! str_limit($siaran->content, $limit = 200, $end = '') !!}
 			    	</div>
 			  	</li>
 			  	</a>
