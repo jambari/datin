@@ -16,25 +16,11 @@ crossorigin=""/>
 @endsection
 
 @section('content')
-<br>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-				<li class="breadcrumb-item active"><a href="/gempa/recentmap" class="text-primary" >Peta Gempabumi Terkini</a></li>
-			</ol>
-		</div>
-	</div>
-</div>
-<div class="container">
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div id="map" style="width:100%; height: 600px; border-radius: 5px; "></div>
 	    </div>
 	</div>
-</div>
-<br>
 @endsection
 @section('script')
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
@@ -46,7 +32,7 @@ crossorigin=""/>
 <script>
 	var map = L.map('map').setView([-2.5104, 140.714], 6);
 
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, id: 'mapbox.dark' }).addTo(map);
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, id: 'mapbox.light' }).addTo(map);
 
 	var terasaIcon = L.icon({
 		iconUrl: '/images/redblack.png',

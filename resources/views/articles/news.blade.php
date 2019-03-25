@@ -13,7 +13,7 @@
 
 @section('content')
 <br>
-<div class="row">
+<div class="row d-none d-sm-block">
 	<div class="container">
 		<div class="col-md-12">
 			<ol class="breadcrumb">
@@ -23,6 +23,7 @@
 		</div>
 	</div>
 </div>
+<br>
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
