@@ -11,7 +11,7 @@
 <br>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="col-lg-12 col-md-12 d-none d-sm-block">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
 				<li class="breadcrumb-item active"><a href="/siarans" class="text-primary" >Siaran Press</a></li>

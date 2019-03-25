@@ -43,7 +43,6 @@
 			    	<img class="mr-3" src="/{{ $berita->image }}" alt="image of {{ $berita->title }}" width="200" height="150" >
 			    	<div class="media-body">
 				      	<h5 class="mt-0 mb-1">{{ $berita->title }}</h5>
-				     	{!! str_limit($berita->content, $limit = 200, $end = '') !!}
 			    	</div>
 			  	</li>
 			  	</a>
