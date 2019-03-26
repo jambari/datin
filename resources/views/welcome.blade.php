@@ -4,6 +4,7 @@
 @endsection
 @section('after_style')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 <style>
     .carousel-item:after {
       content:"";
@@ -184,14 +185,14 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
         <div class="col-md-4 col-sm-12 col-xs-12" >
                 <div class="card" style="width: 18rem;">
                     <a href="/bulletins/{{ $datas['bulletin']->id }}" class="">
-                    <img class="card-img-top" src="{{ $datas['bulletin']->cover }}" alt="Card image cap" height="420" >
+                    <img class="card-img-top" src="/{{ $datas['bulletin']->cover }}" alt="Card image cap" height="420" >
                 </a>
                 </div>
             
         </div>
         <div class="col-md-8">
             <a href="/bulletins/{{ $datas['bulletin']->id }}" class="">
-            <h1 class="text-light" >{{ $datas['bulletin']->title }}</h1></a>
+            <h1 class="text-light" style="font-family: 'Abel', sans-serif;">{{ $datas['bulletin']->title }}</h1></a>
         </div>
         @endif
     </div>
