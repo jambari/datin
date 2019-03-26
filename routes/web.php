@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+Route::get('/about', 'HomeController@about');
 Route::get('/gempa/terkini', 'HomeController@terkini');
 Route::get('/gempa/recentmap', 'HomeController@recentmap');
 Route::get('/gempa/statistik', 'HomeController@statistik');
@@ -20,6 +22,9 @@ Route::get('/admin/dashboard', 'DashboardController@index');
 //Website Kantor
 Route::get('/news', 'Admin\ArticleCrudController@news'); // list semua berita
 Route::get('/berita/{id}', 'Admin\ArticleCrudController@show');
+//Bulletin
+Route::get('/bulletins', 'Admin\BulletinCrudController@bulletin'); // list semua bulletin
+Route::get('/bulletins/{id}', 'Admin\BulletinCrudController@show');
 //Siaran Press
 Route::get('/siarans', 'Admin\SiaranCrudController@siarans'); //daftar semua press release
 Route::get('/siarans/{id}', 'Admin\SiaranCrudController@show'); //detail press release

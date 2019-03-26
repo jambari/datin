@@ -57,5 +57,7 @@ Route::group([
     CRUD::resource('pengumuman', 'PengumumanCrudController');
     //Press Release
     CRUD::resource('siaran', 'SiaranCrudController');
+    //Bulletin
+    CRUD::resource('bulletin', 'BulletinCrudController');
 
 }); // this should be the absolute last line of this file

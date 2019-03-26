@@ -86,6 +86,17 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
     #info >div>h2,p:hover {
         color: white;
     }
+
+
+   #bulletin {
+    background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url('./images/seiscomp3.jpg');
+   background-size: cover;
+   }
 </style>
 @endsection
 
@@ -166,7 +177,24 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
     <div id="map" class="" style="width:85%;height:400px; border-radius: 5px;"></div>
   </div>
 </div>
-<!-- Pers release section -->
+
+{{-- Buletin Section --}}
+    <div class="row d-flex justify-content-center align-items-center border " style="padding: 5%; padding-bottom: 5%;" id="bulletin">
+        @if ($datas['bulletin'])
+        <div class="col-md-4 col-sm-12 col-xs-12" >
+                <div class="card" style="width: 18rem;">
+                    <a href="/bulletins/{{ $datas['bulletin']->id }}" class="">
+                    <img class="card-img-top" src="{{ $datas['bulletin']->cover }}" alt="Card image cap" height="420" >
+                </a>
+                </div>
+            
+        </div>
+        <div class="col-md-8">
+            <a href="/bulletins/{{ $datas['bulletin']->id }}" class="">
+            <h1 class="text-light" >{{ $datas['bulletin']->title }}</h1></a>
+        </div>
+        @endif
+    </div>
 <br>
 <div class="container">       
     <div class="row d-flex justify-content-center align-items-center" style="padding-top: 5%; padding-bottom: 5%;" >
