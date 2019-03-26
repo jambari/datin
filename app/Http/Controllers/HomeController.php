@@ -17,6 +17,7 @@ use App\Models\Infogempa;
 use App\Models\Article;
 use App\Models\Pengumuman;
 use App\Models\Siaran;
+use App\Models\Bulletin;
 
 
 class HomeController extends Controller
@@ -31,6 +32,7 @@ class HomeController extends Controller
 		$pengumuman = Pengumuman::orderBy('id','desc')->first();
 		$sms = Infogempa::orderBy('id','desc')->first();
 		$siarans = Siaran::take(3)->orderBy('id','desc')->get();
+        $bulletin = Bulletin::orderBy('id','desc')->first();
 
 		$datas = [
 			// 'terasa' => $terasa,
@@ -41,6 +43,7 @@ class HomeController extends Controller
 			'pengumuman' => $pengumuman,
 			'siarans' => $siarans,
 			'sms' => $sms,
+            'bulletin' => $bulletin,
         ];
 
     	return view('welcome', compact('datas'));
@@ -78,5 +81,11 @@ class HomeController extends Controller
         return view('gempa.statistik', compact('gempa', 'Mbelowthree', 'Mthreefive', 'Mabovefive',
         	'Dshallow', 'Dmediate', 'Dverydeep'
     ));
+    }
+
+    //Tentang Kami
+
+    public function about () {
+        return view('abouts.about');
     }
 }

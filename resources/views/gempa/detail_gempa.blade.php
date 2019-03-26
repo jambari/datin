@@ -1,5 +1,5 @@
 @extends('main') @section('title')
-<title>detail Berita - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+<title>Gempabumi - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
 @section('after_style')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
 <style type="text/css" media="screen">
@@ -125,7 +125,7 @@
                     <i class="wi wi-earthquake text-danger" aria-hidden="true" style="font-size: 2.5em;"></i> Dirasakan
                 </div>
                 <div class="card-body">
-                    <p class="card-text">{{ $event['terdampak'] or ' '}}</p>
+                    <p class="card-text">{{ $event['terdampak'] or ' Tidak dirasakan '}}</p>
                 </div>
             </div>
         </div>
