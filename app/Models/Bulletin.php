@@ -99,7 +99,7 @@ class Bulletin extends Model
 
     public function getCoverAttribute() {
         if (!$this->attributes['cover']) {
-            return '/berita/buletin/buletin-default.JPG';
+            return 'berita/buletin/buletin-default.JPG';
         }
 
 

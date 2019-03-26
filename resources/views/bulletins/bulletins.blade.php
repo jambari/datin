@@ -38,7 +38,7 @@
             @foreach ( $bulletins as $bulletin )
         <div id="" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ $bulletin->cover }}" alt="Card image cap" height="300" >
+                <img class="card-img-top" src="/{{ $bulletin->cover }}" alt="Card image cap" height="300" >
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ $bulletin->title }}</h5>
                     <a href="/bulletins/{{ $bulletin->id }}" class="btn bg-primary btn-block text-light">Baca</a>

@@ -35,7 +35,7 @@
             <ul class="list-unstyled">
              	<a href="/bulletins/{{ $bulletin->id }}" title="{{ $bulletin->title }}" class="text-primary">
 			  	<li class="media">
-			    	<img class="mr-3" src="{{ $bulletin->cover }}" alt="" width="100" height="80" >
+			    	<img class="mr-3" src="/{{ $bulletin->cover }}" alt="" width="100" height="80" >
 			    	<div class="media-body">
 				      	<h6 class="mt-0 mb-1">{{ $bulletin->title }}</h6>
 			    	</div>
