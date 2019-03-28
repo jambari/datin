@@ -3,6 +3,8 @@
 <title>Berita - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
 @endsection
 @section('after_style')
+<link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('/css/demogallery.css') }}">
 <style type="text/css" media="screen">
 	#beritalainnya {
 		display: flex;
@@ -42,7 +44,12 @@
 	        <hr>
 	        <img src="/{{ $article->image }}" class="img-fluid">
 	        <hr>
-	        	{!! $article->content !!}
+	        	<div id="lightgallery">
+	        		{!! $article->content !!}
+	        		<a href="/berita/20150809_124717.jpg">
+	        			<img src="/berita/20150809_124717.jpg" alt="" width="300px" height="200px">
+	        		</a>
+	        	</div>
 	        <hr>
 
 	    </div>
@@ -67,4 +74,30 @@
 </div>
 <br>
 
+@endsection
+@section('script')
+		<script>
+			// if (document.getElementsByTagName("img")[1]) {
+				// var x = document.getElementsByTagName("img")[1].getAttribute("src");
+				// var linkbefore = '<a href=' +'\"'+x+'\"' + '>';
+			 //    var linkafter = '</a>';
+				// var d1 = document.getElementsByTagName("img")[1];
+				// d1.insertAdjacentHTML('beforebegin', linkbefore);
+				// d1.insertAdjacentHTML('afterend', '</a>');
+			// }
+// var x = document.getElementsByTagName("img")[2].getAttribute("src");
+// var d1 = document.getElementsByTagName("img")[2];
+// d1.insertAdjacentHTML('beforebegin', '<a href= \" /berita/20150809_124717.jpg \"> Test Link ');
+// d1.insertAdjacentHTML('beforebegin', ' </a>  ');
+
+		// $(window).bind("load", function() {
+			var imageLink = document.getElementById("div.lightgallery img ");
+			console.log(imageLink);
+		// });
+
+
+		</script>
+        <script>
+			// lightGallery(document.getElementById('lightgallery'));
+        </script>
 @endsection

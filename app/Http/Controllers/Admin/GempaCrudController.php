@@ -315,20 +315,6 @@ class GempaCrudController extends CrudController
         $event = $this->crud->getEntry($id);
         return view('gempa.detail_gempa', compact('event'));
     }
-
-    //recent earthquakes tables
-    public function terkinii() {
-        $date = \Carbon\Carbon::today()->subDays(7);//get last 7 day record order by datetime
-        $gempas = Gempa::where('created_at', '>=', $date)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
-        return view('gempa.terkini',compact('gempas'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
-    //recent eq map
-    public function recentmap() {
-        $eqs = Gempa::take(60)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
-        return view('gempa.recentmap', compact('eqs'));
-    }
-
     //recent eq statistik
 
 
