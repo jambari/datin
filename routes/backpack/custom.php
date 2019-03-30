@@ -59,5 +59,7 @@ Route::group([
     CRUD::resource('siaran', 'SiaranCrudController');
     //Bulletin
     CRUD::resource('bulletin', 'BulletinCrudController');
+    // Gallery
+    CRUD::resource('gallery', 'GalleryCrudController');
 
 }); // this should be the absolute last line of this file

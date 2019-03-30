@@ -94,7 +94,10 @@ class Article extends Model
 
         return $this->title;
     }
-
+    public function gallery()
+    {
+        return $this->hasMany('App\Models\Gallery');    
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

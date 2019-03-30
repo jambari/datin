@@ -42,6 +42,7 @@
 	<a href="#"><i class="fa fa-newspaper-o"></i> <span>Berita</span> <i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
 	  	<li><a href="{{ backpack_url('article') }}"><i class="fa fa-newspaper-o"></i> <span>Articles</span></a></li>
+	    <li><a href="{{ backpack_url('gallery') }}"><i class="fa fa-list"></i> <span>Lampiran Berita</span></a></li>
 	  	<li><a href="{{ backpack_url('category') }}"><i class="fa fa-list"></i> <span>Categories</span></a></li>
 	  	<li><a href="{{ backpack_url('tag') }}"><i class="fa fa-tag"></i> <span>Tags</span></a></li>
 		<li><a href="{{ backpack_url('siaran') }}"><i class="fa fa-bullhorn"></i> <span>Siaran Press</span></a></li>
