@@ -115,7 +115,7 @@ class GalleryCrudController extends CrudController
         // $this->crud->with(); // eager load relationships
         // $this->crud->orderBy();
         // $this->crud->groupBy();
-        // $this->crud->limit();
+        $this->crud->limit(10);
     }
 
     public function store(StoreRequest $request)
