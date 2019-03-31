@@ -46,19 +46,7 @@ class GalleryCrudController extends CrudController
                                 'label' => 'Image',
                                 'type' => 'browse',
                             ]);
-        $this->crud->addField([    // Image
-                    'name' => 'created_at',
-                    'label' => 'created_at',
-                    'type' => 'datetime_picker',
-                ]);
-        $this->crud->addField([    // Image
-                    'name' => 'updated_at',
-                    'label' => 'updated_at',
-                    'type' => 'datetime_picker',
-                ]);
-        // ------ CRUD COLUMNS
-        $this->crud->addColumn('created_at');
-        $this->crud->addColumn('updated_at'); // add a single column, at the end of the stack
+        // ------ CRUD COLUMNS// add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack

@@ -7,6 +7,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\ArticleRequest as StoreRequest;
 use App\Http\Requests\ArticleRequest as UpdateRequest;
 use App\Models\Article;
+use App\Models\Gallery;
 class ArticleCrudController extends CrudController
 {
     public function __construct()
@@ -146,8 +147,9 @@ class ArticleCrudController extends CrudController
     //for article detail page
     public function show($id) {
         $article = $this->crud->getEntry($id);
+        $galleries = Gallery::where('article_id',17)->get();
         $beritas = Article::take(5)->orderBy('id','desc')->get();
-        return view('articles.show')->with(compact('article','beritas'));
+        return view('articles.show')->with(compact('article','beritas','galleries'));
     }
 
     //for news page

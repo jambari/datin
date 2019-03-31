@@ -44,13 +44,18 @@
 	        <hr>
 	        <img src="/{{ $article->image }}" class="img-fluid">
 	        <hr>
-	        	<div id="lightgallery">
-	        		{!! $article->content !!}
-	        		<a href="/berita/20150809_124717.jpg">
-	        			<img src="/berita/20150809_124717.jpg" alt="" width="300px" height="200px">
-	        		</a>
-	        	</div>
-	        <hr>
+	        {!! $article->content !!}
+			<div class="demo-gallery">
+				<div id="lightgallery">
+				@if ($galleries) 
+					@foreach( $galleries as $gallery )
+						<a href="/{{ $gallery->image }}">
+							<img src="/{{ $gallery->image }}" alt="" class="img-thumbnail" width="150" height="100" >
+						</a>
+					@endforeach
+				@endif
+        		</div>
+			</div>
 
 	    </div>
 		<div class="col-md-4 col-sm-12 col-xs-12">
@@ -71,33 +76,21 @@
 		 	@endif
 	    </div>
 	</div>
+
 </div>
 <br>
 
 @endsection
 @section('script')
-		<script>
-			// if (document.getElementsByTagName("img")[1]) {
-				// var x = document.getElementsByTagName("img")[1].getAttribute("src");
-				// var linkbefore = '<a href=' +'\"'+x+'\"' + '>';
-			 //    var linkafter = '</a>';
-				// var d1 = document.getElementsByTagName("img")[1];
-				// d1.insertAdjacentHTML('beforebegin', linkbefore);
-				// d1.insertAdjacentHTML('afterend', '</a>');
-			// }
-// var x = document.getElementsByTagName("img")[2].getAttribute("src");
-// var d1 = document.getElementsByTagName("img")[2];
-// d1.insertAdjacentHTML('beforebegin', '<a href= \" /berita/20150809_124717.jpg \"> Test Link ');
-// d1.insertAdjacentHTML('beforebegin', ' </a>  ');
-
-		// $(window).bind("load", function() {
-			var imageLink = document.getElementById("div.lightgallery img ");
-			console.log(imageLink);
-		// });
-
-
-		</script>
+        <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+        <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
         <script>
-			// lightGallery(document.getElementById('lightgallery'));
+            lightGallery(document.getElementById('lightgallery'));
         </script>
 @endsection
