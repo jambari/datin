@@ -31,6 +31,14 @@
                      <a class="dropdown-item" href="#">Something else here</a> --}}
                   </div>
                </li>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-light" href="/gempa" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Listrik Udara
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item " href="http://36.91.166.187/angkasa/" target="_blank" >Realtime</a>
+                  </div>
+               </li>
               
             </ul>
            <ul class="navbar-nav ml-auto">
