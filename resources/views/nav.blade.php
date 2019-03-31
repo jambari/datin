@@ -10,13 +10,13 @@
                <li class="nav-item active">
                   <a class="nav-link text-light" href="/">Beranda <span class="sr-only">(current)</span></a>
                </li>
-               <li class="nav-item active">
+               <li class="nav-item ">
                   <a class="nav-link text-light" href="/news">Berita</a>
                </li>
-               <li class="nav-item active">
+               <li class="nav-item ">
                   <a class="nav-link text-light" href="/siarans">Siaran Press</a>
                </li>
-               <li class="nav-item active">
+               <li class="nav-item ">
                   <a class="nav-link" href="/bulletins">Buletin</a>
                </li>                 
                <li class="nav-item dropdown">
@@ -37,6 +37,14 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <a class="dropdown-item " href="http://36.91.166.187/angkasa/" target="_blank" >Realtime</a>
+                  </div>
+               </li>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-light" href="/gempa" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Media 
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item " href="https://www.youtube.com/channel/UCS5S4ImDRZmuC80EzvqKU6A" target="_blank" >Youtube</a>
                   </div>
                </li>
               
