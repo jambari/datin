@@ -21,7 +21,7 @@ class Gallery extends Model
     // protected $guarded = ['id'];
     protected $fillable = ['article_id', 'image'];
     // protected $hidden = [];
-    // protected $dates = [];
+    //protected $dates = ['Y-m-d H:i:s'];
 
     /*
     |--------------------------------------------------------------------------

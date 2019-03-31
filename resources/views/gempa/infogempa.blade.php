@@ -65,7 +65,7 @@
                                 <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
                                     <div id="map" style="width:85%;height:500px;"></div> 
                                 <p class="text-center" style="font-size: 1.1em; margin-left:5%;margin-right:5%;" > <strong>{{ $sms }} </strong> </p>
-                                <img src=" {{ asset('images') }}/medsos4.png " alt="logo" width="100%" height="20%" style="border-radius: 7px;">  
+                                <img src=" {{ asset('images') }}/medsos-lightblue.png " alt="logo" width="100%" height="20%" style="border-radius: 7px;">  
                             </div>
                         </div>
                     </div>

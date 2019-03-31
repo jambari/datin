@@ -46,8 +46,7 @@ class GalleryCrudController extends CrudController
                                 'label' => 'Image',
                                 'type' => 'browse',
                             ]);
-        // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
+        // ------ CRUD COLUMNS// add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -116,7 +115,7 @@ class GalleryCrudController extends CrudController
         // $this->crud->with(); // eager load relationships
         // $this->crud->orderBy();
         // $this->crud->groupBy();
-        // $this->crud->limit();
+        $this->crud->limit(10);
     }
 
     public function store(StoreRequest $request)
