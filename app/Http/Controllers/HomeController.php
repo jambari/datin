@@ -22,10 +22,10 @@ use App\Models\Bulletin;
 
 class HomeController extends Controller
 {
-    
-	public function index() 
+
+	public function index()
 	{
-		
+
 		$gempas = Gempa::orderBy('id','desc')->first();
 		$articles = Article::take(5)->orderBy('id','desc')->get();
 		$galleries = Article::take(8)->orderBy('id','desc')->get();
@@ -88,4 +88,9 @@ class HomeController extends Controller
     public function about () {
         return view('abouts.about');
     }
+
+    // realtime listrik udara
+    // public function realtimeLd () {
+    // 	return view('petirs.realtime'); 
+    // }
 }

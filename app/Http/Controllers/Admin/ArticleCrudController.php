@@ -132,6 +132,8 @@ class ArticleCrudController extends CrudController
                             ]);
 
         $this->crud->enableAjaxTable();
+
+        $this->crud->orderBy('date', 'desc');
     }
 
     public function store(StoreRequest $request)
@@ -144,17 +146,18 @@ class ArticleCrudController extends CrudController
         return parent::updateCrud();
     }
 
+
     //for article detail page
     public function show($id) {
         $article = $this->crud->getEntry($id);
-        $galleries = Gallery::where('article_id',17)->get();
+        $galleries = Gallery::where('article_id',$id)->get();
         $beritas = Article::take(5)->orderBy('id','desc')->get();
         return view('articles.show')->with(compact('article','beritas','galleries'));
     }
 
     //for news page
     public function news() {
-        $news = Article::latest()->paginate(5);
+        $news = Article::latest()->paginate(6);
         return view('articles.news',compact('news'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
