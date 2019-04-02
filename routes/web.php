@@ -18,7 +18,7 @@ Route::get('/gempa/terkini', 'HomeController@terkini'); // table of up recent eq
 Route::get('/gempa/recentmap', 'HomeController@recentmap'); //several latest eqs map
 Route::get('/gempa/statistik', 'HomeController@statistik'); // statistik and earthquake charts
 Route::get('/admin/dashboard', 'DashboardController@index'); // dashboard page
-Route::get('/petir/realtime', 'HomeController@realtimeLd' );
+// Route::get('/petir/realtime', 'HomeController@realtimeLd' );
 //api
 //Website Kantor
 Route::get('/news', 'Admin\ArticleCrudController@news'); // list semua berita
@@ -31,4 +31,5 @@ Route::get('/siarans', 'Admin\SiaranCrudController@siarans'); //daftar semua pre
 Route::get('/siarans/{id}', 'Admin\SiaranCrudController@show'); //detail press release
 //Gempabumi //list of recent earthquake
 Route::get('/gempa/{id}', 'Admin\GempaCrudController@showmap'); // detail earthquake
+Route::resource('/mercallies', 'MercallyController');// Indeks Seismisitas
 

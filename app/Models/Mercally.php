@@ -4,11 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Models\Article;
+use App\Models\Gempa;
 
-class Gallery extends Model
+class Mercally extends Model
 {
     use CrudTrait;
 
@@ -18,13 +16,13 @@ class Gallery extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'galleries';
+    protected $table = 'mercallis';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['article_id', 'image'];
+    protected $fillable = ['gempa_id', 'lintang', 'bujur', 'mmi'];
     // protected $hidden = [];
-    //protected $dates = ['Y-m-d H:i:s'];
+    // protected $dates = [];
 
     /*
     |--------------------------------------------------------------------------
@@ -49,20 +47,19 @@ class Gallery extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-   public function getArticleIdAttribute ($value) {
+    public function getGempaIdAttribute($value) {
         $id = $value;
-        $judul = Article::find($id);
-        $value = $judul['title'];
+        $gempa = Gempa::find($id);
+        $value = $gempa['tanggal'].' '.$gempa['origin'];
         return $value;
-   }
-
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-    public function article()
+    public function gempa()
     {
-        return $this->belongsTo('App\Models\Article');
+        return $this->belongsTo('App\Models\Gempa');
     } 
 }
