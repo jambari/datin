@@ -6,6 +6,7 @@
 	<ul class="treeview-menu">
 	<li><a href="{{ backpack_url('gempa') }}"><i class="fa fa-book"></i> <span>Repositori</span></a></li>
 	<li><a href="{{ backpack_url('infogempa') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa</span></a></li>
+{{-- 	<li><a href="{{ backpack_url('mercally') }}"><i class="fa fa-envelope"></i></i> <span>MMI</span></a></li> --}}
 	</ul>
 </li>
 <li class="treeview">

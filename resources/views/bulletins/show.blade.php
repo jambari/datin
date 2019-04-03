@@ -27,6 +27,7 @@
 	        <h3 class="">{{ $bulletin->title }} </h3>
 	        <hr>
 	         <object width="100%" height="800px" data="/{{ $bulletin->content }}"></object> 
+	         <p>Silahkan Klik <a href="/{{ $bulletin->content }}" class="text-primary" style="text-decoration: none;" >disini</a> untuk mengunduh </p>
 	    </div>
 
 		<div class="col-md-4 col-sm-12 col-xs-12">
