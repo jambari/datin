@@ -103,7 +103,7 @@
     <!-- Copyright -->
     <div class="footer-copyright text-center text-light py-3">©
         <?php echo date("Y"); ?>
-            <a class="text-light" href="http://stageof.angkasa.bmkg.go.id"> Stageof Angkasapura Jayapura</a>
+            <a class="text-light" href="http://stageof.angkasa.bmkg.go.id"> Stasiun Geofisika Kelas I Angkasapura Jayapura</a>
     </div>
     <!-- Copyright -->
 </footer>
