@@ -53,14 +53,8 @@
                     <a class="text-primary" href="/gempa/terkini">Gempabumi</a>
                 </p>
                 <p>
-                    <!--             <a class="text-primary" href="#!">Magnetbumi</a>
-                        </p>
-                        <p>
-                          <a class="text-primary" href="#!">Listrik Udara</a>
-                        </p>
-                        <p>
-                          <a class="text-primary" href="#!">Kualitas Udara</a>
-                        </p> -->
+                    <a class="text-primary" href="/bulletins">Buletin</a>
+                </p>
             </div>
             <!-- Grid column -->
             <!-- Grid column -->

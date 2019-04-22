@@ -17,7 +17,7 @@
                   <a class="nav-link text-light" href="/siarans">Siaran Press</a>
                </li>
                <li class="nav-item ">
-                  <a class="nav-link" href="/bulletins">Buletin</a>
+                  <a class="nav-link text-light" href="/bulletins">Buletin</a>
                </li>                 
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="/gempa" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +40,7 @@
                   </div>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/charts">Grafik</a>
+                  <a class="nav-link text-light" href="/charts">Grafik</a>
                </li>
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
