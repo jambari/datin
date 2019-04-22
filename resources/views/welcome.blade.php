@@ -1,3 +1,4 @@
+
 @extends('main')
 @section('title')
 <title>Home - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
@@ -42,6 +43,23 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 /*background: rgb(0,0,0);
 background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); */
 }
+
+#digital, #analog {
+    background-color: #031424;
+}
+
+#analog {
+    padding-top: 3%;
+    margin-bottom: -4%;
+}
+
+#digital {
+    padding-bottom: 5%;
+      font-family: 'liquid_crystalregular', sans-serif;
+  user-select: none;
+  user-drag: none;
+}
+
 #mycarousel div h3 {
     font-family: 'Bad Script', cursive;
     padding: 5%;
@@ -70,24 +88,6 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
             opacity: 1.0;
         }
     }
-    .mainproduct:hover {
-background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-        color: white;
-    }
-
-    .mainproduct>p:hover {
-        color: white;
-    }
-    #info:hover {
-        background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-        background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-    }
-
-    #info >div>h2,p:hover {
-        color: white;
-    }
-
 
    #bulletin {
     background: 
@@ -98,9 +98,87 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
     url('./images/seiscomp3.jpg');
    background-size: cover;
    }
+
+.hero-circle{
+        width:180px;
+        height:180px;
+        position:relative;
+        border:6px solid #ffffff;
+        border-radius:50%;
+        box-shadow:0 1px 8px rgba(34, 34, 34, 0.3),inset 0 1px 8px rgba(34, 34, 34, 0.3);
+    }
+.hero-face{
+    width:100%;
+    height:100%;
+}
+.hero-face:after{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:12px;
+    height:12px;
+    margin:-6px 0 0 -6px;
+    background:#ffffff;
+    border-radius:6px;
+    content:"";
+    display:block;
+}
+.hero-hour{
+    width:0;
+    height:0;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-4px 0 -4px -25%;
+    padding:4px 0 4px 25%;
+    background:#ffffff;
+    -webkit-transform-origin:100% 50%;
+    -ms-transform-origin:100% 50%;
+    transform-origin:100% 50%;
+    border-radius:4px 0 0 4px;
+}
+.hero-minute{
+    width:0;
+    height:0;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-40% -3px 0;
+    padding:40% 3px 0;
+    background:#ffffff;
+    -webkit-transform-origin:50% 100%;
+    -ms-transform-origin:50% 100%;
+    transform-origin:50% 100%;
+    border-radius:3px 3px 0 0;
+}
+.hero-second{
+    width:0;
+    height:0;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-40% -1px 0 0;
+    padding:40% 1px 0;
+    background:#ffffff;
+    -webkit-transform-origin:50% 100%;
+    -ms-transform-origin:50% 100%;
+    transform-origin:50% 100%;
+}
+
+.clock {
+  height: 100px;
+  width: 70%;
+  line-height: 100px;  
+  margin: 150px auto 0;
+  padding: 0 50px;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 0 7px #fff;
+  text-shadow: 0 0 3px #fff;
+}
 </style>
 @endsection
-
 @section('content')
 <!-- <br>
 <div class="container"> -->
@@ -148,7 +226,7 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
         </div>
     </div>
 <!-- </div> -->
-<!-- The Gallery Section -->  
+<!-- The Product Section -->  
 <div class="row d-flex justify-content-center align-items-center" style="padding: 10% 5% 10% 5%;" >
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct " style="" >
         <p class="text-center" ><i class="wi wi-earthquake text-primary " style=" font-size: 4em " ></i></p>
@@ -167,6 +245,20 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
         <h3 class="text-center" >Kualitas Udara</h3>
         <p class="text-center" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
     </div>
+</div>
+<!-- The Clock Section -->  
+<div class="row d-flex justify-content-center align-items-center" style="" id="analog" >
+    <div class="hero-circle">
+        <div class="hero-face">
+            <div id="hour" class="hero-hour"></div>
+            <div id="minute" class="hero-minute"></div>
+            <div id="second" class="hero-second"></div>
+        </div>
+    </div>
+</div>
+<!-- The Clock Section -->  
+<div class="row d-flex justify-content-center align-items-center" style="" id="digital" >
+    <div id="clock" class="clock">loading ...</div>
 </div>
 <!-- recent earthquake section -->
 <div class="row d-flex justify-content-center align-items-center border " style="padding-top: 5%; padding-bottom: 5%;" id="info">
@@ -218,6 +310,8 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
 @endsection
 
 @section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="{{ asset('js') }}/jquery.fittext.js"> </script>
 <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
 <script src="{{ asset('gjson') }}/patahan.js">
 </script>
@@ -288,6 +382,34 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
     L.marker([{{ $datas['gempas']->lintang }}, {{ $datas['gempas']->bujur }}], {
         icon: cssIcon
     }).addTo(mymap);
+
+//clock
+
+</script>
+<script>
+    function updateClock() {
+                var now = moment(),
+                    second = now.seconds() * 6,
+                    minute = now.minutes() * 6 + second / 60,
+                    hour = ((now.hours() % 12) / 12) * 360 + 90 + minute / 12;
+                $('#hour').css("transform", "rotate(" + hour + "deg)");
+                $('#minute').css("transform", "rotate(" + minute + "deg)");
+                $('#second').css("transform", "rotate(" + second + "deg)");
+            }
+            function timedUpdate () {
+                updateClock();
+                setTimeout(timedUpdate, 1000);
+            }
+            timedUpdate();
+</script>
+<script>
+    $('#clock').fitText(1.3);
+
+function update() {
+  $('#clock').html(moment().format('D. MMMM YYYY H:mm:ss'));
+}
+
+setInterval(update, 1000);
 </script>
 @endif
 @endsection
