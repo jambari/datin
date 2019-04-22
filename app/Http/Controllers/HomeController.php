@@ -89,8 +89,42 @@ class HomeController extends Controller
         return view('abouts.about');
     }
 
-    // realtime listrik udara
-    // public function realtimeLd () {
-    // 	return view('petirs.realtime'); 
-    // }
+    // chart
+    public function charts () {
+        $Mbelowthree = Gempa::where('magnitudo','<', 3)
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $Mthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $Mabovefive = Gempa::where('magnitudo','>=', 5)
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+
+        //depth\
+        $Dshallow = Gempa::where('depth','<', 70)
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $Mmediate = Gempa::whereBetween('depth',[70, 249])
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $Mverydeep = Gempa::where('depth','>=', 300)
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+
+        $aindeks = Kindek::select(['tanggal','aindex'])
+                    ->orderBy('tanggal','desc')
+                    ->take(30)->get();
+        $kindeks = Kindek::latest()->first();
+        //Hujan
+        $hujans = Hujan::select(['tanggal','obs'])
+                    ->orderBy('tanggal','desc')
+                    ->take(30)->get();
+        $datas = [
+            'Mbelowthree' => $Mbelowthree,
+            'Mthreefive' => $Mthreefive,
+            'Mabovefive' => $Mabovefive,
+            'Dshallow' => $Dshallow,
+            'Dmediate'  => $Mmediate,
+            'Dverydeep' => $Mverydeep,
+            'aindeks' => $aindeks,
+            'kindeks' => $kindeks,
+            'hujans' => $hujans,
+        ];
+    	return view('charts.index', compact('datas')); 
+    }
 }

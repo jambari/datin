@@ -16,9 +16,9 @@ Route::get('/home', 'HomeController@index'); // home
 Route::get('/about', 'HomeController@about'); // about us
 Route::get('/gempa/terkini', 'HomeController@terkini'); // table of up recent eqs
 Route::get('/gempa/recentmap', 'HomeController@recentmap'); //several latest eqs map
-Route::get('/gempa/statistik', 'HomeController@statistik'); // statistik and earthquake charts
+Route::get('/gempa/statistik', 'HomeController@statistik'); // statistik and earthquake
 Route::get('/admin/dashboard', 'DashboardController@index'); // dashboard page
-// Route::get('/petir/realtime', 'HomeController@realtimeLd' );
+Route::get('/charts', 'HomeController@charts' ); // charts
 //api
 //Website Kantor
 Route::get('/news', 'Admin\ArticleCrudController@news'); // list semua berita
