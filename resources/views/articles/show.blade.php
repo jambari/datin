@@ -56,6 +56,7 @@
 				@endif
         		</div>
 			</div>
+			<div class="fb-comments"></div>
 
 	    </div>
 		<div class="col-md-4 col-sm-12 col-xs-12">

@@ -27,7 +27,7 @@ class HomeController extends Controller
 	{
 
 		$gempas = Gempa::orderBy('id','desc')->first();
-		$articles = Article::take(5)->orderBy('id','desc')->get();
+		$articles = Article::take(8)->orderBy('id','desc')->get();
 		$galleries = Article::take(8)->orderBy('id','desc')->get();
 		$pengumuman = Pengumuman::orderBy('id','desc')->first();
 		$sms = Infogempa::orderBy('id','desc')->first();
