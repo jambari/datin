@@ -65,6 +65,8 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
       @yield('after_style')
    </head>
    <body>
+         <div id="fb-root"></div>
+         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=331075104258748&autoLogAppEvents=1"></script>
       @yield('alert')
       @include('nav')
       @yield('content')
