@@ -13,8 +13,7 @@
 	<a href="#"><i class="fa fa-magnet"></i><span>Magnetbumi</span><i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
 		<li><a href="{{ backpack_url('kindek') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Kindek</span></a></li>
-		<li><a href="{{ backpack_url('deklinasi') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Deklinasi</span></a></li>
-		<li><a href="{{ backpack_url('inklinasi') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Inklinasi</span></a></li>
+		<li><a href="{{ backpack_url('magnet') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Variasi</span></a></li>
 		<li><a href="{{ backpack_url('absolut') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Absolut</span></a></li>
 	</ul>
 </li>

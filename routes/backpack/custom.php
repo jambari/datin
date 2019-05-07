@@ -62,5 +62,7 @@ Route::group([
     CRUD::resource('bulletin', 'BulletinCrudController');
     // Gallery
     CRUD::resource('gallery', 'GalleryCrudController');
+    // magnet
+    CRUD::resource('magnet', 'MagnetCrudController');
 
 }); // this should be the absolute last line of this file
