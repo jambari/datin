@@ -40,6 +40,13 @@ class MagnetCrudController extends CrudController
         $this->crud->removeColumn('action'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         $this->crud->setColumnDetails('hari', ['label' => 'tanggal']); // adjusts the properties of the passed in column (by name)
+        $this->crud->setColumnDetails('kompx', ['label' => 'Komponen X']); 
+        $this->crud->setColumnDetails('kompy', ['label' => 'Komponen Y']); 
+        $this->crud->setColumnDetails('kompz', ['label' => 'Komponen Z']); 
+        $this->crud->setColumnDetails('komph', ['label' => 'Komponen H']); 
+        $this->crud->setColumnDetails('kompf', ['label' => 'Komponen Total']); 
+        $this->crud->setColumnDetails('kompd', ['label' => 'Deklinasi']); 
+        $this->crud->setColumnDetails('kompi', ['label' => 'Inklinasi']); 
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
 
         // ------ CRUD FIELDS
@@ -89,7 +96,7 @@ class MagnetCrudController extends CrudController
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         // Does not work well with AJAX datatables.
-        $this->crud->enableExportButtons();
+        //$this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
         // $this->crud->addClause('active');
@@ -102,9 +109,12 @@ class MagnetCrudController extends CrudController
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
-        // $this->crud->orderBy();
+        $this->crud->orderBy('tahun','desc');
+        $this->crud->orderBy('bulan','desc');
+        $this->crud->orderBy('hari','desc');
+        $this->crud->orderBy('jam','desc');
         // $this->crud->groupBy();
-        // $this->crud->limit();
+        $this->crud->limit(240);
     }
 
     public function store(StoreRequest $request)

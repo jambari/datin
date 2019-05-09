@@ -119,7 +119,7 @@ class PengumumanCrudController extends CrudController
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
-        // $this->crud->orderBy();
+        $this->crud->orderBy('id', 'desc');
         // $this->crud->groupBy();
         // $this->crud->limit();
     }

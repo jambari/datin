@@ -40,6 +40,9 @@ class GalleryCrudController extends CrudController
                         'entity' => 'article',
                         'attribute' => 'title',
                         'model' => "App\Models\Article",
+                           'options'   => (function ($query) {
+                            return $query->orderBy('id', 'desc')->get();
+                        }),
                     ]);
         $this->crud->addField([    // Image
                                 'name' => 'image',
@@ -113,7 +116,7 @@ class GalleryCrudController extends CrudController
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
-        // $this->crud->orderBy();
+        $this->crud->orderBy('id', 'desc');
         // $this->crud->groupBy();
         $this->crud->limit(10);
     }

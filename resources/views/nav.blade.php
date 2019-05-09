@@ -31,6 +31,9 @@
                      <a class="dropdown-item" href="#">Something else here</a> --}}
                   </div>
                </li>
+               <li class="nav-item ">
+                  <a class="nav-link text-light" href="/magnet">Magnetbumi</a>
+               </li>        
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Listrik Udara
