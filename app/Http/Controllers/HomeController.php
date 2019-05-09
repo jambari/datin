@@ -18,6 +18,7 @@ use App\Models\Article;
 use App\Models\Pengumuman;
 use App\Models\Siaran;
 use App\Models\Bulletin;
+use App\Models\Magnet;
 
 
 class HomeController extends Controller
@@ -114,6 +115,7 @@ class HomeController extends Controller
         $hujans = Hujan::select(['tanggal','obs'])
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
+        //Magnetbumi chart
         $datas = [
             'Mbelowthree' => $Mbelowthree,
             'Mthreefive' => $Mthreefive,
@@ -126,5 +128,16 @@ class HomeController extends Controller
             'hujans' => $hujans,
         ];
     	return view('charts.index', compact('datas')); 
+    }
+
+    //Magnetbumi Page
+    public function magnet() {
+        $date_raw = date("r");
+        $tanggal = date('Y-m-d', strtotime('-1 day', strtotime($date_raw)));
+        $tahun =date('Y', strtotime($tanggal));
+        $bulan =date('m', strtotime($tanggal));
+        $hari = date('d', strtotime($tanggal));
+        $magnets = Magnet::select()->where(['tahun' => $tahun, 'bulan' => $bulan, 'hari' => $hari])->get();
+        return view('magnets.dailychart', compact('magnets', 'tanggal'));
     }
 }

@@ -19,6 +19,7 @@ Route::get('/gempa/recentmap', 'HomeController@recentmap'); //several latest eqs
 Route::get('/gempa/statistik', 'HomeController@statistik'); // statistik and earthquake
 Route::get('/admin/dashboard', 'DashboardController@index'); // dashboard page
 Route::get('/charts', 'HomeController@charts' ); // charts
+Route::get('/magnet', 'HomeController@magnet' ); // charts
 //api
 //Website Kantor
 Route::get('/news', 'Admin\ArticleCrudController@news'); // list semua berita

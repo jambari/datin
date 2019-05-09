@@ -123,7 +123,7 @@ class InfogempaCrudController extends CrudController
         // $this->crud->with(); // eager load relationships
         $this->crud->orderBy('id','desc');
         // $this->crud->groupBy();
-        // $this->crud->limit();
+        $this->crud->limit(30);
     }
 
     public function store(StoreRequest $request)
