@@ -15,9 +15,7 @@ class CreateMagnetTable extends Migration
     {
         Schema::create('magnets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tahun')->nullable();
-            $table->integer('bulan')->nullable();
-            $table->integer('hari')->nullable();
+            $table->date('tanggal')->nullable();
             $table->integer('jam')->nullable();
             $table->decimal('kompx', 7,2)->nullable();
             $table->decimal('kompy', 6, 2)->nullable();
