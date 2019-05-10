@@ -127,7 +127,7 @@ class HomeController extends Controller
             'kindeks' => $kindeks,
             'hujans' => $hujans,
         ];
-    	return view('charts.index', compact('datas')); 
+    	return view('charts.index', compact('datas'));
     }
 
     //Magnetbumi Page
@@ -137,7 +137,7 @@ class HomeController extends Controller
         $tahun =date('Y', strtotime($tanggal));
         $bulan =date('m', strtotime($tanggal));
         $hari = date('d', strtotime($tanggal));
-        $magnets = Magnet::select()->where(['tahun' => $tahun, 'bulan' => $bulan, 'hari' => $hari])->get();
+        $magnets = Magnet::select()->where('tanggal', $tanggal)->get();
         return view('magnets.dailychart', compact('magnets', 'tanggal'));
     }
 }
