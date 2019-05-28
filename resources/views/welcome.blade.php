@@ -15,7 +15,7 @@
       bottom:0;
       left:0;
       right:0;
-      background:rgba(0,0,0,0.6);
+      /*background:rgba(0,0,0,0.6);*/
     }
     #lightgallery {
         display: flex;
@@ -65,7 +65,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
     padding: 5%;
 }
     .css-icon {}
-    
+
     .gps_ring {
         border: 3px solid #FF0000;
         -webkit-border-radius: 100px;
@@ -75,7 +75,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
         -webkit-animation-iteration-count: infinite;
         /*opacity: 0.0*/
     }
-    
+
     @-webkit-keyframes pulsate {
         0% {
             -webkit-transform: scale(0.1, 0.1);
@@ -90,7 +90,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
     }
 
    #bulletin {
-    background: 
+    background:
     linear-gradient(
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.4)
@@ -168,7 +168,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
 .clock {
   height: 100px;
   width: 70%;
-  line-height: 100px;  
+  line-height: 100px;
   margin: 150px auto 0;
   padding: 0 50px;
   color: #ffffff;
@@ -185,7 +185,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
     <div class="row" id="mycarousel">
         <div class="col-lg-6 col-md-6 d-flex justify-content-center align-self-center ">
             @if ($datas['pengumuman'])
-            <h3 class="text-light ml-5 d-none d-sm-block " > 
+            <h3 class="text-light ml-5 d-none d-sm-block " >
                     {!! $datas['pengumuman']->isi !!}
             </h4>
             @endif
@@ -196,7 +196,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
                     <ol class="carousel-indicators">
                           @if ($datas['articles'])
                           @foreach ($datas['articles'] as $article)
-                             <li data-target="#carouselExampleCaptions" data-slide-to="{{ $loop->index }}"></li> 
+                             <li data-target="#carouselExampleCaptions" data-slide-to="{{ $loop->index }}"></li>
                           @endforeach
                        @endif
                     </ol>
@@ -207,7 +207,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
                             <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="400" alt="{{ $article->title }}" style="border" >
                             <div class="carousel-caption d-none d-md-block">
                                <h5>{{ $article->title }}</h5>
-                               <a href="/berita/{{ $article->id }}" class=" btn bg-primary text-light" >Baca </a> 
+                               <a href="/berita/{{ $article->id }}" class=" btn bg-primary text-light" >Baca </a>
                             </div>
                         </div>
                             @endforeach
@@ -226,7 +226,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
         </div>
     </div>
 <!-- </div> -->
-<!-- The Product Section -->  
+<!-- The Product Section -->
 <div class="row d-flex justify-content-center align-items-center" style="padding: 10% 5% 10% 5%;" >
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct " style="" >
         <p class="text-center" ><i class="wi wi-earthquake text-primary " style=" font-size: 4em " ></i></p>
@@ -246,7 +246,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
         <p class="text-center" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
     </div>
 </div>
-<!-- The Clock Section -->  
+<!-- The Clock Section -->
 <div class="row d-flex justify-content-center align-items-center" style="" id="analog" >
     <div class="hero-circle">
         <div class="hero-face">
@@ -256,7 +256,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
         </div>
     </div>
 </div>
-<!-- The Clock Section -->  
+<!-- The Clock Section -->
 <div class="row d-flex justify-content-center align-items-center" style="" id="digital" >
     <div id="clock" class="clock">loading ...</div>
 </div>
@@ -280,16 +280,18 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
                     <img class="card-img-top" src="/{{ $datas['bulletin']->cover }}" alt="Card image cap" height="420" >
                 </a>
                 </div>
-            
+
         </div>
         <div class="col-md-8">
-            <a href="/bulletins/{{ $datas['bulletin']->id }}" class="">
-            <h1 class="text-light" style="font-family: 'Abel', sans-serif;">{{ $datas['bulletin']->title }}</h1></a>
+            <a href="/bulletins/{{ $datas['bulletin']->id }}" style="">
+                {{-- <h1 class="text-light" style="font-family: 'Abel', sans-serif; ">{{ $datas['bulletin']->title }}</h1> --}}
+                {{-- <button class="btn btn-lg" >{{ $datas['bulletin']->title }}</button> --}}
+            </a>
         </div>
         @endif
     </div>
 <br>
-<div class="container">       
+<div class="container">
     <div class="row d-flex justify-content-center align-items-center" style="padding-top: 5%; padding-bottom: 5%;" >
         @if ($datas['siarans'])
         @foreach ($datas['siarans'] as $siaran)
@@ -322,10 +324,14 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
 @if ($datas['gempas'])
 <script>
     var mymap = L.map('map').setView([ {{ $datas['gempas']->lintang }}, {{ $datas['gempas']->bujur }}], 6);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-        maxZoom: 18,
-        id: 'mapbox.streets'
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18 // has a coma here
+        // id: 'mapbox.streets'
     }).addTo(mymap);
+    // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    //     maxZoom: 18,
+    //     id: 'mapbox.streets'
+    // }).addTo(mymap);
 
     var eqIcon = L.icon({
         iconUrl: '/images/icongempa.png',

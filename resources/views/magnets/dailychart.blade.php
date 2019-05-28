@@ -15,7 +15,7 @@
         <div class="col-md-12">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-                <li class="breadcrumb-item active"><a href="/gempa/magnet" class="text-primary" >magnet</a></li>
+                <li class="breadcrumb-item active"><a href="/magnet" class="text-primary" >magnet</a></li>
             </ol>
         </div>
     </div>
@@ -25,7 +25,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+                    <img src=" {{ asset('images/mag.png') }} " alt="Magnitude" aria-hidden="true">
                     Komponen H (nT)
                 </div>
                 <div class="card-body">
@@ -71,7 +71,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+                    <img src="{{ asset('images/mag.png') }} " alt="Magnitude" aria-hidden="true">
                     Deklinasi (derajat)
                 </div>
                 <div class="card-body">
@@ -121,7 +121,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+                    <img src="{{ asset('images/mag.png') }} " alt="Magnitude" aria-hidden="true">
                     Inklinasi (derajat)
                 </div>
                 <div class="card-body">
@@ -167,7 +167,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+                    <img src="{{ asset('images/mag.png') }} " alt="Magnitude" aria-hidden="true">
                     Total (nT)
                 </div>
                 <div class="card-body">
@@ -219,7 +219,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+                    <img src="{{ asset('images/mag.png') }} " alt="Magnitude" aria-hidden="true">
                     Komponen X (nT)
                 </div>
                 <div class="card-body">
@@ -265,7 +265,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+                    <img src="{{ asset('images/mag.png') }} " alt="Magnitude" aria-hidden="true">
                     Komponen Y (nT)
                 </div>
                 <div class="card-body">
@@ -316,7 +316,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 m-auto">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+                    <img src="{{ asset('images/mag.png') }} " alt="Magnitude" aria-hidden="true">
                     Komponen Vertikal (nT)
                 </div>
                 <div class="card-body">

@@ -25,7 +25,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+                    <img src="{{ asset('images/mag.png') }} " alt="Magnitude" aria-hidden="true">
                     Magnitudo
                 </div>
                 <div class="card-body">
@@ -58,7 +58,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="http://inatews.bmkg.go.id/light/images/kedalaman.png" alt="depth" aria-hidden="true">
+                    <img src="{{ asset('images/kedalaman.png') }} " alt="depth" aria-hidden="true">
                     Kedalaman
                 </div>
                 <div class="card-body">
