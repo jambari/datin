@@ -157,10 +157,11 @@ class InfogempaCrudController extends CrudController
         //fwrite($file,$koordinat);
         // fclose($file);
         $sms = $event['sms'];
+        $smsbalai = $event['sms'];
         // $sms = str_replace('WITA','WIT',$sms);
-        // $sms = str_replace('BMKG','BMKG-JAY',$sms);
-        // $sms = str_replace('SR','',$sms);
+        $smsbalai = str_replace('BMKG-JAY','BMKG-PGRV',$smsbalai);
+        $smsbalai = str_replace('(','( Di darat, ',$sms);
         // echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
-        return view('gempa.infogempa')->with(compact('sms', 'lat', 'lon'));
+        return view('gempa.infogempa')->with(compact('sms', 'lat', 'lon', 'smsbalai'));
     }
 }
