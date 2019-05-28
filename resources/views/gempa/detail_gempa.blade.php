@@ -7,12 +7,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column; 
+        flex-direction: column;
     }
 
-    
+
     .css-icon {}
-    
+
     .gps_ring {
         border: 3px solid #FF0000;
         -webkit-border-radius: 100px;
@@ -22,7 +22,7 @@
         -webkit-animation-iteration-count: infinite;
         /*opacity: 0.0*/
     }
-    
+
     @-webkit-keyframes pulsate {
         0% {
             -webkit-transform: scale(0.1, 0.1);
@@ -35,7 +35,7 @@
             opacity: 1.0;
         }
     }
-    
+
 </style>
 @endsection @endsection @section('content')
 <br>
@@ -69,7 +69,7 @@
         <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-header">
-                    <img src="http://inatews.bmkg.go.id/light/images/clock.png" alt="waktu gempa" aria-hidden="true"> Waktu Gempa
+                    <img src="{{ asset('images/clock.png') }}" alt="waktu gempa" aria-hidden="true"> Waktu Gempa
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ $event['tanggal'] }} {{ $event['origin'] }} UTC</p>
@@ -90,7 +90,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true"> Kekuatan
+                    <img src="{{ asset('images/mag.png') }}" alt="Magnitude" aria-hidden="true"> Magnitudo
                 </div>
                 <div class="card-body">
                     <p class="card-text">M <span class="badge badge-primary">{{ $event['magnitudo'] }}</span></p>
@@ -100,7 +100,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <img src="http://inatews.bmkg.go.id/light/images/kedalaman.png" alt="depth" aria-hidden="true"> Kedalaman
+                    <img src="{{ asset('images/kedalaman.png ') }}" alt="depth" aria-hidden="true"> Kedalaman
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ $event['depth'] }} Km</p>
@@ -142,9 +142,9 @@
 
 <script>
     var mymap = L.map('map').setView([ {{$event['lintang']}}, {{ $event['bujur']}}], 7);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-        maxZoom: 18,
-        id: 'mapbox.satellite'
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18
+        // id: 'mapbox.satellite'
     }).addTo(mymap);
 
     var eqIcon = L.icon({

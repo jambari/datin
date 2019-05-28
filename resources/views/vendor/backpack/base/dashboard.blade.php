@@ -232,7 +232,7 @@
     </div>
 
     {{-- Lightning --}}
-    <div class="row">
+{{--     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box-header with-border">
@@ -249,7 +249,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Hujan --}}
     <div class="row">
@@ -339,7 +339,7 @@
 
     {{-- SPM --}}
     {{-- Lightning --}}
-    <div class="row">
+{{--     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box-header with-border">
@@ -356,5 +356,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

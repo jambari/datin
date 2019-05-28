@@ -78,7 +78,7 @@ class InfogempaCrudController extends CrudController
         // $this->crud->removeButtonFromStack($name, $stack);
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
-        // $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
+        $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
         $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
 
         // ------ CRUD ACCESS
@@ -103,7 +103,7 @@ class InfogempaCrudController extends CrudController
         // Please note the drawbacks of this though:
         // - 1-n and n-n columns are not searchable
         // - date and datetime columns won't be sortable anymore
-        // $this->crud->enableAjaxTable();
+        $this->crud->enableAjaxTable();
 
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
@@ -118,12 +118,13 @@ class InfogempaCrudController extends CrudController
         // $this->crud->addClause('whereHas', 'posts', function($query) {
         //     $query->activePosts();
         // });
+        $this->crud->limit('100');
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
         $this->crud->orderBy('id','desc');
         // $this->crud->groupBy();
-        $this->crud->limit(30);
+ 
     }
 
     public function store(StoreRequest $request)

@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-                <li class="breadcrumb-item active"><a href="/gempa/charts" class="text-primary" >Grafik</a></li>
+                <li class="breadcrumb-item active"><a href="/charts" class="text-primary" >Grafik</a></li>
             </ol>
         </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="https://inatews.bmkg.go.id/light/images/mag.png" alt="Magnitude" aria-hidden="true">
+                    <img src="{{ asset('images/mag.png') }}" alt="Magnitude" aria-hidden="true">
                     Magnitudo
                 </div>
                 <div class="card-body">
@@ -56,7 +56,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="card-header align-middle">
-                    <img src="http://inatews.bmkg.go.id/light/images/kedalaman.png" alt="depth" aria-hidden="true">
+                    <img src="{{ asset('images/kedalaman.png') }}" alt="depth" aria-hidden="true">
                     Kedalaman
                 </div>
                 <div class="card-body">

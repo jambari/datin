@@ -42,14 +42,17 @@ class HujanCrudController extends CrudController
             ], [
                 'name' => 'hilman',
                 'label' => 'Jumlah Hilman',
+                'hint' => 'Jika Curah Hujan TTU Silahkan diisi 9999',
                 'type' => 'text'
             ], [
                 'name' => 'obs',
                 'label' => 'Jumlah Obs',
+                'hint' => 'Jika Curah Hujan TTU Silahkan diisi 9999',
                 'type' => 'text'
             ], [
                 'name' => 'kategori',
                 'label' => 'Kategori',
+                'hint'       => '0 = nihil, < 10 = sangat ringan, < 20 = ringan, <30 = sedang, <50 = lebat, >50 = sangat lebat',
                 'type' => 'select_from_array',
                 'options' => [
                     'nihil' => 'Nihil',
@@ -57,7 +60,8 @@ class HujanCrudController extends CrudController
                     'ringan' => 'Ringan',
                     'sedang' => 'Sedang',
                     'lebat' => 'Lebat',
-                    'sangat lebat' => 'Sangat Lebat'
+                    'sangat lebat' => 'Sangat Lebat',
+                    'tak terukur' => 'TTU'
                 ],
                 'allows_null' => false, 
             ], [

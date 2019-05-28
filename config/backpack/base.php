@@ -19,7 +19,7 @@ return [
     'logo_mini' => '<b>D</b>i',
 
     // Developer or company name. Shown in footer.
-    'developer_name' => '',
+    'developer_name' => 'Jambari',
 
     // Developer website. Link in footer.
     'developer_link' => 'http://github.com/jambari',
