@@ -6,8 +6,8 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <meta name="description" content="salah satu UPT BMKG yang terletak di Kota Jayapura. Stageof Angkasa melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.">
-      <meta name="keywords" content="Gempabumi, Magnetbumi, Listrik Udara, Percepatan Tanah, Buletin, Siaran Press">
+      <meta name="description" content="Salah satu UPT BMKG yang terletak di Kota Jayapura. Stasiun Geofisika Kelas I Angkasapura melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.">
+      <meta name="keywords" content="Gempabumi terkini, Magnetbumi, Listrik Udara, Percepatan Tanah,Berita Gempabumi, Buletin, Siaran Press">
       <meta name="author" content="Jambari">
       @yield('title')
       <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css">
@@ -74,6 +74,8 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
+    console.log('Developer: jambari07@gmail.com ');
+    console.log('Github: https://github.com/jambari ');
 </script>
 <!--End of Tawk.to Script-->
    </head>

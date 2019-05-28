@@ -20,21 +20,21 @@
 
 
 
-<li class="treeview">
+{{-- <li class="treeview">
 	<a href="#"> <i class="wi wi-lightning" style="margin-right: 0.5em;"></i><span>Listrik Udara</span> <i class="fa fa-angle-left pull-right"></i> </a>
 	<ul class="treeview-menu">
 		<li><a href="{{ backpack_url('summary') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Summary</span></a></li>		
 	</ul>
 	
-</li>
+</li> --}}
 
 
 <li class="treeview">
 		<a href="#"> <i class="wi wi-dust" style="margin-right: 0.5em;"></i><span>Kualitas Udara</span> <i class="fa fa-angle-left pull-right"></i> </a>
 	<ul class="treeview-menu">
 		<li><a href="{{ backpack_url('hujan') }}"><i class="wi wi-raindrops" style="margin-right: 0.5em;"></i> <span>Hujan</span></a></li>
-		<li><a href="{{ backpack_url('kah') }}"><i class="wi wi-dust" style="margin-right: 0.5em;"></i> <span>KAH</span></a></li>
-		<li><a href="{{ backpack_url('spm') }}"><i class="wi wi-humidity" style="margin-right: 0.5em;"></i> <span>SPM</span></a></li>
+{{-- 		<li><a href="{{ backpack_url('kah') }}"><i class="wi wi-dust" style="margin-right: 0.5em;"></i> <span>KAH</span></a></li>
+		<li><a href="{{ backpack_url('spm') }}"><i class="wi wi-humidity" style="margin-right: 0.5em;"></i> <span>SPM</span></a></li> --}}
 	</ul>
 </li>
 
@@ -51,7 +51,7 @@
 </li>
 
 <li><a href="{{ backpack_url('bulletin') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Bulletin</span></a></li>
-<li><a href="{{ backpack_url('kegiatan') }}"><i class="fa fa-user" style="margin-right: 0.5em;"></i> <span>Kegiatan</span></a></li>
+{{-- <li><a href="{{ backpack_url('kegiatan') }}"><i class="fa fa-user" style="margin-right: 0.5em;"></i> <span>Kegiatan</span></a></li> --}}
 <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-file" style="margin-right: 0.5em;"></i> <span>File Manager</span></a></li>
 
 {{-- <li><a href="{{ url('admin/menu-item') }}"><i class="fa fa-list"></i> <span>Menu</span></a></li>

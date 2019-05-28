@@ -75,34 +75,18 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
 @endsection
 
 @section('content')
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-solid">
-                <div class="box box-header with-border">
-                    <h1 class="box-title">Info Gempabumi</h1>
-                </div>
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="streetmap">
-                                <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
-                                    <div id="map" style="width:85%;height:500px;"></div>
-                                    <p class="text-center " style="font-size: 1.1em; margin-left:5%;margin-right:5%; padding-top: 2%;" > <strong class="" >{{ $sms }} </strong> </p>
-                                <img src=" {{ asset('images') }}/medsos-lightblue.png " alt="logo" width="100%" height="20%" style="border-radius: 7px;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 {{-- Baru Uji Coba --}}
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box box-header with-border">
-                    <h1 class="box-title">Info Gempabumi Baru</h1>
+                    <h1 class="box-title">Info Gempabumi Baru Yang Lama di Bawah</h1>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
                 </div>
                 <div class="box-body">
                     <div class="row">
@@ -120,6 +104,35 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
             </div>
         </div>
     </div>
+    {{-- Old Design --}}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box box-header with-border">
+                    <h1 class="box-title">Info Gempabumi</h1>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="streetmap">
+                                <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" > 
+                                    <div id="map" style="width:85%;height:500px;"></div>
+                                    <p class="text-center " style="font-size: 1.1em; margin-left:5%;margin-right:5%; padding-top: 2%;" > <strong class="" >{{ $sms }} </strong> </p>
+                                <img src=" {{ asset('images') }}/medsos-lightblue.png " alt="logo" width="100%" height="20%" style="border-radius: 7px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    crossorigin=""></script>
