@@ -29,8 +29,17 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+        /*border: 2px solid #000000;*/
+/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
+background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
+        background: #232b2b;
+    }
+    #streetmap-baru p {
+         color: white;
+         font-size: 1.1em; 
+         margin-left:5%;
+         margin-right:5%; 
+         padding-top: 2%;
     }
 
     #map {
@@ -93,10 +102,11 @@ background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
                         <div class="col-md-12">
                             <div id="streetmap-baru">
                                 {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
-                                {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="" > --}}
-                                <p class="text-center " style=" color:white; font-size: 1.1em; margin-left:5%;margin-right:5%; padding-top: 2%;" > <strong class="" >{{ $sms }} </strong> </p>
+                                <p class="text-center " style="" > <strong class="" >{{ $sms }} </strong> </p>
                                     <div id="map-baru" style="width:100%;height:500px;"></div>
+                                    <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="" >
                                 <img src=" {{ asset('images') }}/medsos3.png " alt="logo" width="100%" height="20%" style="border-radius: ;">
+
                             </div>
                         </div>
                     </div>
