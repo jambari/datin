@@ -32,14 +32,14 @@
         /*border: 2px solid #000000;*/
 /*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
 background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
-        background: #232b2b;
+        background: #;
     }
     #streetmap-baru p {
-         color: white;
+         color: black;
          font-size: 1.1em; 
          margin-left:5%;
          margin-right:5%; 
-         padding-top: 2%;
+         padding-top: 1.5%;
     }
 
     #map {
@@ -84,36 +84,6 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 @endsection
 
 @section('content')
-{{-- Baru Uji Coba --}}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-solid">
-                <div class="box box-header with-border">
-                    <h1 class="box-title">Info Gempabumi Baru Yang Lama di Bawah</h1>
-                        <div class="box-tools">
-                          <!-- This will cause the box to be removed when clicked -->
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                          <!-- This will cause the box to collapse when clicked -->
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                </div>
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="streetmap-baru">
-                                {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
-                                <p class="text-center " style="" > <strong class="" >{{ $sms }} </strong> </p>
-                                    <div id="map-baru" style="width:100%;height:500px;"></div>
-                                    <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="" >
-                                <img src=" {{ asset('images') }}/medsos3.png " alt="logo" width="100%" height="20%" style="border-radius: ;">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     {{-- Old Design --}}
     <div class="row">
         <div class="col-md-12">
@@ -142,7 +112,36 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
             </div>
         </div>
     </div>
+{{-- Baru Uji Coba balai --}}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box box-header with-border">
+                    <h1 class="box-title">Info Gempabumi Balai Uji Coba</h1>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="streetmap-baru">
+                                {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
+                                <p class="text-center " style="" > <strong class="" >{{ $smsbalai }} </strong> </p>
+                                    <div id="map-baru" style="width:100%;height:500px;"></div>
+                                    <img src=" {{ asset('images') }}/header-balai.jpg " alt="logo" width="100%" height="20%" style="" >
+{{--                                 <img src=" {{ asset('images') }}/medsos3.png " alt="logo" width="100%" height="20%" style="border-radius: ;"> --}}
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    crossorigin=""></script>
@@ -221,9 +220,9 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
             maxZoom: 18
-            // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-            //     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
         }).addTo(mymap);
+
+        // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, id: 'mapbox.light' }).addTo(map);
 
         var eqIcon = L.icon({
             iconUrl: '/images/icongempa.png',
