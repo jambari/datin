@@ -1,14 +1,19 @@
+
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
 <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
 {{-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> --}}
+
 <li class="treeview">
 <a href="#"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i><span>Gempabumi</span><i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
+@if (backpack_auth()->user()->name != 'balai5')
 	<li><a href="{{ backpack_url('gempa') }}"><i class="fa fa-book"></i> <span>Repositori</span></a></li>
+@endif
 	<li><a href="{{ backpack_url('infogempa') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa</span></a></li>
 {{-- 	<li><a href="{{ backpack_url('mercally') }}"><i class="fa fa-envelope"></i></i> <span>MMI</span></a></li> --}}
 	</ul>
 </li>
+@if (backpack_auth()->user()->name != 'balai5')
 <li class="treeview">
 	<a href="#"><i class="fa fa-magnet"></i><span>Magnetbumi</span><i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
@@ -56,3 +61,5 @@
 
 {{-- <li><a href="{{ url('admin/menu-item') }}"><i class="fa fa-list"></i> <span>Menu</span></a></li>
 <li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li> --}}
+
+@endif
