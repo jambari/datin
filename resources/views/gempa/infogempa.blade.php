@@ -36,7 +36,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
     }
     #streetmap-baru p {
          color: #313131;
-         font-size: 1.1em; 
+         font-size: 1.3em; 
          margin-left:5%;
          margin-right:5%; 
          padding-top: 1.5%;

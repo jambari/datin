@@ -110,7 +110,7 @@ class HomeController extends Controller
         $aindeks = Kindek::select(['tanggal','aindex'])
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
-        $kindeks = Kindek::latest()->first();
+        $kindeks = Kindek::orderBy('id','desc')->first();
         //Hujan
         $hujans = Hujan::select(['tanggal','obs'])
                     ->orderBy('tanggal','desc')
