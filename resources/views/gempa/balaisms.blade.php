@@ -73,6 +73,10 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
             50% {opacity: 1.0;}
             100% {opacity: 1.0;}
     }
+
+  #balai {
+	border: 1.5px solid black;
+  }
 </style>
 
 @section('header')
@@ -100,13 +104,13 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                 </div>
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" id="balai" >
                             <div id="streetmap-baru">
                                 {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
                                 <p class="text-center " style="" > <strong class="" >{{ $sms }} </strong> </p>
                                     <div id="map-baru" style="width:100%;height:500px;"></div>
                                     <img src=" {{ asset('images') }}/blue.png " alt="logo" width="100%" height="20%" style="" >
-{{--                                 <img src=" {{ asset('images') }}/medsos3.png " alt="logo" width="100%" height="20%" style="border-radius: ;"> --}}
+{{--                                 <img src=" {{ asset('images') }}/balaiv-header.PNG " alt="logo" width="100%" height="20%" style="border-radius: ;"> --}}
 
                             </div>
                         </div>
