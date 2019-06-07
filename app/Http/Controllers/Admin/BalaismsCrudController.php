@@ -161,7 +161,8 @@ class BalaismsCrudController extends CrudController
         $mag = round($mag,1); 
 	$magnitudo = $mag; 
 	$maglon = shell_exec("grep Longitude /home/suadmin/balai/evefile.txt|awk '{ print $2 }'");
-	$maglon = $maglon + 0.8;
+	$maglon = (int)$maglon;
+	$maglon +=0.8; 
         //$smsbalai = $event['sms'];
         // $sms = str_replace('WITA','WIT',$sms);
         //$smsbalai = str_replace('BMKG-JAY','BMKG-PGRV',$smsbalai);
