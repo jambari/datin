@@ -17,9 +17,11 @@ class Balaigempa extends Model
 
     protected $table = 'balaigempas';
     // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    public $timestamps = true;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = [
+        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth', 'ket','terasa','terdampak'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -46,7 +48,21 @@ class Balaigempa extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+    public function getTerasaAttribute($value)
+    {
+        if ($value==0) {
+            $value = 'tidak';
+            return $value;
+        } else {
+            $value = 'dirasakan';
+            return $value;
+        }
+    }
 
+    public function getTanggalAttribute($value)
+    {
+        return date("d-m-Y", strtotime($value));
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
