@@ -68,4 +68,6 @@ Route::group([
     CRUD::resource('balaigempa', 'BalaigempaCrudController');
     // balaisms
     CRUD::resource('balaisms', 'BalaismsCrudController');
+    //SMS Balai
+    Route::get('balaisms/{id}/peta', 'BalaismsCrudController@peta');
 }); // this should be the absolute last line of this file

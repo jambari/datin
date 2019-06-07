@@ -15,11 +15,11 @@ class Balaisms extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'balaisms';
+    protected $table = 'infogempas';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['lintang', 'bujur', 'sms'];
     // protected $hidden = [];
     // protected $dates = [];
 
