@@ -157,11 +157,14 @@ class BalaismsCrudController extends CrudController
         //fwrite($file,$koordinat);
         // fclose($file);
         $sms = $event['sms'];
+	$mag = shell_exec("grep preferred /home/suadmin/balai/evefile.txt|awk '{ print $2 }'");
+        $mag = round($mag,2); 
+	$magnitudo = $mag; 
         //$smsbalai = $event['sms'];
         // $sms = str_replace('WITA','WIT',$sms);
         //$smsbalai = str_replace('BMKG-JAY','BMKG-PGRV',$smsbalai);
         //$smsbalai = str_replace('(','( Di darat, ',$smsbalai);
         // echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
-        return view('gempa.balaisms')->with(compact('sms', 'lat', 'lon'));
+        return view('gempa.balaisms')->with(compact('sms', 'lat', 'lon', 'magnitudo'));
     }
 }
