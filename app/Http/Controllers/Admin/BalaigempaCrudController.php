@@ -6,7 +6,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\StoreBalaigempaRequest as StoreRequest;
-use App\Http\Requests\UpdateBalaiGemparequest as UpdateRequest;
+use App\Http\Requests\UpdateBalaigemparequest as UpdateRequest;
 use App\Models\Balaisms;
 use App\Models\Balaigempa;
 
