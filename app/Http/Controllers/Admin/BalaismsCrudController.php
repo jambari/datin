@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-
+Use App\Models\Balaisms;
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\BalaismsRequest as StoreRequest;
-use App\Http\Requests\BalaismsRequest as UpdateRequest;
+use App\Http\Requests\StoreBalaismsRequest as StoreRequest;
+use App\Http\Requests\UpdateBalaismsRequest as UpdateRequest;
 
 /**
  * Class BalaismsCrudController
@@ -24,7 +24,7 @@ class BalaismsCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Balaisms');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/balaisms');
-        $this->crud->setEntityNameStrings('balaisms', 'balaisms');
+        $this->crud->setEntityNameStrings('SMS', 'SMS');
 
         /*
         |--------------------------------------------------------------------------
@@ -34,8 +34,24 @@ class BalaismsCrudController extends CrudController
 
         $this->crud->setFromDb();
 
+        $fields = [
+            [
+                'name' => 'lintang',
+                'label' => 'Lintang',
+                'type' => 'text'
+            ], [
+                'name' => 'bujur',
+                'label' => 'Bujur',
+                'type' => 'text'
+            ], [
+                'name' => 'sms',
+                'label' => 'Isi Info',
+                'type' => 'text'
+            ]
+        ];
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
+        //$this->crud->addColumn('created_at');
+        //$this->crud->addColumn('updated_at'); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -45,10 +61,11 @@ class BalaismsCrudController extends CrudController
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
-        // $this->crud->removeField('name', 'update/create/both');
+        //$this->crud->removeField('lintang', 'update/create/both');
+        //$this->crud->removeField('bujur', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
-        // add asterisk for fields that are required in BalaismsRequest
+        // add asterisk for fields that are required in InfogempaRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
 
@@ -57,13 +74,15 @@ class BalaismsCrudController extends CrudController
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model
         // $this->crud->addButtonFromView($stack, $name, $view, $position); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
-        // $this->crud->removeButton($name);
+        //$this->crud->removeButton('create');
         // $this->crud->removeButtonFromStack($name, $stack);
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
+        $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
+        $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
 
         // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'peta']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -84,7 +103,7 @@ class BalaismsCrudController extends CrudController
         // Please note the drawbacks of this though:
         // - 1-n and n-n columns are not searchable
         // - date and datetime columns won't be sortable anymore
-        // $this->crud->enableAjaxTable();
+        $this->crud->enableAjaxTable();
 
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
@@ -99,12 +118,13 @@ class BalaismsCrudController extends CrudController
         // $this->crud->addClause('whereHas', 'posts', function($query) {
         //     $query->activePosts();
         // });
+        $this->crud->limit('100');
         // $this->crud->addClause('withoutGlobalScopes');
         // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
-        // $this->crud->orderBy();
+        $this->crud->orderBy('id','desc');
         // $this->crud->groupBy();
-        // $this->crud->limit();
+ 
     }
 
     public function store(StoreRequest $request)
@@ -123,5 +143,25 @@ class BalaismsCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
+    }
+
+    public function peta($id)
+    {   
+        $event = Balaisms::find($id);
+        //$lintang = $event['lintang']; //ngambil lintang untuk peta gmt
+        //$bujur = $event['bujur'];//ngambil bujur untuk peta gmt
+        //$file = fopen("/home/suadmin/gmt1/event.gmt","w"); //nulis peta gmt
+        //$koordinat = $event['bujur']." ".$event['lintang']." ".$id;
+        $lat = $event['lintang'];
+        $lon = $event['bujur'];
+        //fwrite($file,$koordinat);
+        // fclose($file);
+        $sms = $event['sms'];
+        //$smsbalai = $event['sms'];
+        // $sms = str_replace('WITA','WIT',$sms);
+        //$smsbalai = str_replace('BMKG-JAY','BMKG-PGRV',$smsbalai);
+        //$smsbalai = str_replace('(','( Di darat, ',$smsbalai);
+        // echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
+        return view('gempa.balaisms')->with(compact('sms', 'lat', 'lon'));
     }
 }
