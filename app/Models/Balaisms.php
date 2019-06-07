@@ -15,7 +15,7 @@ class Balaisms extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'infogempas';
+    protected $table = 'balaisms';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
