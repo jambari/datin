@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Gempa;
+use App\Models\Balaigempa;
 use Carbon\Carbon;
 use App\Models\Kindek;
 use App\Models\Hujan;
@@ -46,6 +47,22 @@ class DashboardController extends Controller
         $darat = Infogempa::where('sms','like', '%darat%')->count();
         //Laut
         $laut = Infogempa::where('sms','like', '%laut%')->count();
+        //Gempa dari seiscomp Balai
+        $Bgempa = Balaigempa::orderBy('id', 'DESC')->first();
+        $BMbelowthree = Gempa::where('magnitudo','<', 3)
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $Bthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $BMabovefive = Gempa::where('magnitudo','>=', 5)
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+
+        //depth\
+        $BDshallow = Gempa::where('depth','<', 70)
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $BMmediate = Gempa::whereBetween('depth',[70, 249])
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $BMverydeep = Gempa::where('depth','>=', 300)
+                    ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         $data = [
             'gempa' => $gempa,
             'Mbelowthree' => $Mbelowthree,
@@ -59,6 +76,13 @@ class DashboardController extends Controller
             'hujans' => $hujans,
             'darat' => $darat,
             'laut' => $laut,
+            'gempa' => $gempa,
+            'BMbelowthree' => $Mbelowthree,
+            'BMthreefive' => $Mthreefive,
+            'BMabovefive' => $Mabovefive,
+            'BDshallow' => $Dshallow,
+            'BDmediate'  => $Mmediate,
+            'BDverydeep' => $Mverydeep,
         ];
         return view('vendor.backpack.base.dashboard')->with(compact('data'));
     }

@@ -46,7 +46,20 @@ class Balaisms extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
+    //accesor zonasi
+    public function getZonaAttribute($value) {
+        $lintang = $this->attributes['lintang'];
+        $bujur = $this->attributes['bujur'];
+        if ($bujur >= 132 and $bujur <= 141 and $lintang >= -7.5 and $lintang <= 5) {
+            // if () {
+                $value = "PGR V";
+                return $value;
+            // }
+        } else {
+            $value = "BUKAN PGR V";
+            return $value;
+        }
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
