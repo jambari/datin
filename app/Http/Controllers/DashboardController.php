@@ -51,7 +51,7 @@ class DashboardController extends Controller
         $Bgempa = Balaigempa::orderBy('id', 'DESC')->first();
         $BMbelowthree = Balaigempa::where('magnitudo','<', 3)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
-        $Bthreefive = Balaigempa::whereBetween('magnitudo',[3, 4.9])
+        $BMthreefive = Balaigempa::whereBetween('magnitudo',[3, 4.9])
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         $BMabovefive = Balaigempa::where('magnitudo','>=', 5)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
