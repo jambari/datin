@@ -55,9 +55,10 @@ class BalaismsCrudController extends CrudController
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
-        // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
+        $this->crud->setColumnDetails('sms', ['label' => 'SMS']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
-
+        $this->crud->addColumn('ZONA');
+       $this->crud->setColumnDetails('sms', ['class' => 'badge badge-success']); 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
@@ -124,7 +125,7 @@ class BalaismsCrudController extends CrudController
         // $this->crud->with(); // eager load relationships
         $this->crud->orderBy('id','desc');
         // $this->crud->groupBy();
- 
+
     }
 
     public function store(StoreRequest $request)
@@ -146,7 +147,7 @@ class BalaismsCrudController extends CrudController
     }
 
     public function peta($id)
-    {   
+    {
         $event = Balaisms::find($id);
         //$lintang = $event['lintang']; //ngambil lintang untuk peta gmt
         //$bujur = $event['bujur'];//ngambil bujur untuk peta gmt
@@ -158,16 +159,16 @@ class BalaismsCrudController extends CrudController
         // fclose($file);
         $sms = $event['sms'];
 	$mag = shell_exec("grep preferred /home/suadmin/balai/evefile.txt|awk '{ print $2 }'");
-        $mag = round($mag,1); 
-	$magnitudo = $mag; 
+        $mag = round($mag,1);
+	$magnitudo = $mag;
 	$maglon = shell_exec("grep Longitude /home/suadmin/balai/evefile.txt|awk '{ print $2 }'");
 	$maglon = (int)$maglon;
-	$maglon +=0.8; 
+	$maglon +=0.8;
         //$smsbalai = $event['sms'];
         // $sms = str_replace('WITA','WIT',$sms);
         //$smsbalai = str_replace('BMKG-JAY','BMKG-PGRV',$smsbalai);
         //$smsbalai = str_replace('(','( Di darat, ',$smsbalai);
-        // echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh'); 
+        // echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh');
         return view('gempa.balaisms')->with(compact('sms', 'lat', 'lon', 'magnitudo', 'maglon'));
     }
 }

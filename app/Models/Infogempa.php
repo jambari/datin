@@ -46,7 +46,17 @@ class Infogempa extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
+    public function getZonaAttribute($value) {
+        $lintang = $this->attributes['lintang'];
+        $bujur = $this->attributes['bujur'];
+        if ($bujur >= 132 and $bujur <= 141 and $lintang >= -7.5 and $lintang <= 5) {
+                $value = "PGR V";
+                return $value;
+        } else {
+            $value = "BUKAN PGR V";
+            return $value;
+        }
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
