@@ -76,13 +76,13 @@ class DashboardController extends Controller
             'hujans' => $hujans,
             'darat' => $darat,
             'laut' => $laut,
-            'Bgempa' => $gempa,
-            'BMbelowthree' => $Mbelowthree,
-            'BMthreefive' => $Mthreefive,
-            'BMabovefive' => $Mabovefive,
-            'BDshallow' => $Dshallow,
-            'BDmediate'  => $Mmediate,
-            'BDverydeep' => $Mverydeep,
+            'Bgempa' => $Bgempa,
+            'BMbelowthree' => $BMbelowthree,
+            'BMthreefive' => $BMthreefive,
+            'BMabovefive' => $BMabovefive,
+            'BDshallow' => $BDshallow,
+            'BDmediate'  => $BMmediate,
+            'BDverydeep' => $BMverydeep,
         ];
         return view('vendor.backpack.base.dashboard')->with(compact('data'));
     }
