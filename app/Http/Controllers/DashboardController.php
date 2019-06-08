@@ -76,7 +76,7 @@ class DashboardController extends Controller
             'hujans' => $hujans,
             'darat' => $darat,
             'laut' => $laut,
-            'gempa' => $gempa,
+            'Bgempa' => $gempa,
             'BMbelowthree' => $Mbelowthree,
             'BMthreefive' => $Mthreefive,
             'BMabovefive' => $Mabovefive,
