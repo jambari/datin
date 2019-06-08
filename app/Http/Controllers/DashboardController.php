@@ -49,19 +49,19 @@ class DashboardController extends Controller
         $laut = Infogempa::where('sms','like', '%laut%')->count();
         //Gempa dari seiscomp Balai
         $Bgempa = Balaigempa::orderBy('id', 'DESC')->first();
-        $BMbelowthree = Gempa::where('magnitudo','<', 3)
+        $BMbelowthree = Balaigempa::where('magnitudo','<', 3)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
-        $Bthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])
+        $Bthreefive = Balaigempa::whereBetween('magnitudo',[3, 4.9])
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
-        $BMabovefive = Gempa::where('magnitudo','>=', 5)
+        $BMabovefive = Balaigempa::where('magnitudo','>=', 5)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
 
         //depth\
-        $BDshallow = Gempa::where('depth','<', 70)
+        $BDshallow = Balaigempa::where('depth','<', 70)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
-        $BMmediate = Gempa::whereBetween('depth',[70, 249])
+        $BMmediate = Balaigempa::whereBetween('depth',[70, 249])
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
-        $BMverydeep = Gempa::where('depth','>=', 300)
+        $BMverydeep = Balaigempa::where('depth','>=', 300)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         $data = [
             'gempa' => $gempa,
