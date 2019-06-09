@@ -299,16 +299,25 @@ class BalaiGempaCrudController extends CrudController
     public function press($id)
     {
         $event = Balaigempa::find($id);
+        //Penanggalan
+        $tanggal = $event['tanggal'];
         $lat = $event['lintang'];
         $lon = $event['bujur'].' BT';
         $mag = round($event['magnitudo'],1);
+        $depth = $event['depth'];
+        //wilayah yang diguncang gempa
+        $wilayah = $event['ket'];
+        $ket = explode(" ", $wilayah);
+        $wilayah = $ket[3];
+        $arah = $ket[2];
+        $jarak = $ket[0];
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
         } else {
             $lat = $lat[1].$lat[2].'LU';
         }
-        return view('gempa.press')->with(compact('lat', 'lon', 'mag'));
+        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah', 'depth','event', 'arah', 'jarak'));
     }
 
 }
