@@ -149,26 +149,9 @@ class BalaismsCrudController extends CrudController
     public function peta($id)
     {
         $event = Balaisms::find($id);
-        //$lintang = $event['lintang']; //ngambil lintang untuk peta gmt
-        //$bujur = $event['bujur'];//ngambil bujur untuk peta gmt
-        //$file = fopen("/home/suadmin/gmt1/event.gmt","w"); //nulis peta gmt
-        //$koordinat = $event['bujur']." ".$event['lintang']." ".$id;
         $lat = $event['lintang'];
         $lon = $event['bujur'];
-        //fwrite($file,$koordinat);
-        // fclose($file);
         $sms = $event['sms'];
-	$mag = shell_exec("grep preferred /home/suadmin/balai/evefile.txt|awk '{ print $2 }'");
-        $mag = round($mag,1);
-	$magnitudo = $mag;
-	$maglon = shell_exec("grep Longitude /home/suadmin/balai/evefile.txt|awk '{ print $2 }'");
-	$maglon = (int)$maglon;
-	$maglon +=0.8;
-        //$smsbalai = $event['sms'];
-        // $sms = str_replace('WITA','WIT',$sms);
-        //$smsbalai = str_replace('BMKG-JAY','BMKG-PGRV',$smsbalai);
-        //$smsbalai = str_replace('(','( Di darat, ',$smsbalai);
-        // echo exec('cd /home/suadmin/gmt1 && ./autoepic.sh');
-        return view('gempa.balaisms')->with(compact('sms', 'lat', 'lon', 'magnitudo', 'maglon'));
+        return view('gempa.balaisms')->with(compact('sms', 'lat', 'lon'));
     }
 }
