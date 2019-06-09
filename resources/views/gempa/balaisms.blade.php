@@ -144,7 +144,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
         L.marker([{{ $lat }}, {{ $lon }}], {icon: eqIcon}).addTo(mymap);
         //style for subduksi and patahan
         var patahanStyle = {
-            "color": "#2C4B48",
+            "color": "#ffff00",
             "weight": 0.7,
             "opacity": 0.9
         };
@@ -152,7 +152,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
         //style for subduksi
 
         var subduksiStyle = {
-            "color": "#0A70C4",
+            "color": "#ffff00",
             "weight": 1,
             "opacity": 0.5,
             "fillColor": 'transparent',
