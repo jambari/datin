@@ -191,11 +191,6 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 
     //add css icon as gps ring
     L.marker([{{ $lat }}, {{ $lon }}], {icon: cssIcon}).addTo(mymap);
-
-  // var divIcon = L.divIcon({
-    //   html: "<span style='color:red;font-size:2em; border-color: none;'> M{{ $magnitudo }} </span>"
-      // });
-  // L.marker(new L.LatLng({{ $lat }}, {{ $maglon }}),{icon:divIcon }).addTo(mymap);
     </script>
 
 @endsection
