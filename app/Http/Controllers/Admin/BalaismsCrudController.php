@@ -58,7 +58,7 @@ class BalaismsCrudController extends CrudController
         $this->crud->setColumnDetails('sms', ['label' => 'SMS']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
         $this->crud->addColumn('ZONA');
-       $this->crud->setColumnDetails('sms', ['class' => 'badge badge-success']); 
+       // $this->crud->setColumnDetails('sms', ['class' => 'badge badge-success']); 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
@@ -80,7 +80,7 @@ class BalaismsCrudController extends CrudController
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
         $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
-        $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
+        //$this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
 
         // ------ CRUD ACCESS
         $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'peta']);

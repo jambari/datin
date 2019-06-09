@@ -113,7 +113,7 @@ class BalaiGempaCrudController extends CrudController
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
         // ------ CRUD ACCESS
-        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'press']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -125,7 +125,7 @@ class BalaiGempaCrudController extends CrudController
         $this->crud->allowAccess('details_row');
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
-
+        $this->crud->addButtonFromView('line', 'press' , 'press', 'end');
         // ------ REVISIONS
         // You also need to use \Venturecraft\Revisionable\RevisionableTrait;
         // Please check out: https://laravel-backpack.readme.io/docs/crud#revisions
@@ -296,6 +296,19 @@ class BalaiGempaCrudController extends CrudController
         return view('gempa.detail_gempa', compact('event'));
     }
     //recent eq statistik
-
+    public function press($id)
+    {
+        $event = Balaigempa::find($id);
+        $lat = $event['lintang'];
+        $lon = $event['bujur'].' BT';
+        $mag = round($event['magnitudo'],1);
+        $lat = str_split($lat); //break latitude to an array
+        if ($lat[0] == '-') {
+            $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
+        } else {
+            $lat = $lat[1].$lat[2].'LU';
+        }
+        return view('gempa.press')->with(compact('lat', 'lon', 'mag'));
+    }
 
 }

@@ -41,6 +41,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
          margin-right:5%; 
          padding-top: 1.5%;
          font-family: courier;
+
     }
 
     #map {
@@ -75,7 +76,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
     }
 
   #streetmap-baru {
-	border: 2px solid black;
+    border: 2px solid black;
   }
 </style>
 
@@ -107,11 +108,9 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                         <div class="col-md-12" id="balai" >
                             <div id="streetmap-baru">
                                 {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
+                                <img src=" {{ asset('images') }}/oke4.jpg " alt="logo" width="100%" height="20%" style="" >
+                                    <div id="map-baru" style="width:99%;height:500px;"></div>
                                 <p class="text-center " style="" > <strong class="" >{{ $sms }} </strong> </p>
-                                    <div id="map-baru" style="width:100%;height:500px;"></div>
-                                    <img src=" {{ asset('images') }}/balaiv-header.PNG " alt="logo" width="100%" height="20%" style="" >
-{{--                                 <img src=" {{ asset('images') }}/balaiv-header.PNG " alt="logo" width="100%" height="20%" style="border-radius: ;"> --}}
-
                             </div>
                         </div>
                     </div>
@@ -131,11 +130,11 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
         <script>
         var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
 
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             maxZoom: 18
         }).addTo(mymap);
 
-        // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, id: 'mapbox.light' }).addTo(map);
+        // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, id: 'mapbox.satellite' }).addTo(mymap);
 
         var eqIcon = L.icon({
             iconUrl: '/images/icongempa.png',
