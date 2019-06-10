@@ -300,7 +300,42 @@ class BalaiGempaCrudController extends CrudController
     {
         $event = Balaigempa::find($id);
         //Penanggalan
-        $tanggal = $event['tanggal'];
+        //array bulan
+            $bulan = array (
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        //array hari senin-sabtu
+        $days = array (
+            0 =>   'Minggu',
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            "Jum'at",
+            'Sabtu'
+    );
+        $tanggal = $event['tanggal']; //get date of the eathquake
+        $jam = $event['origin']; // get origin time of eq
+        $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
+        $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
+        $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
+        $hari = $days[$hari];
+        $pecahkan = explode('-',$tanggalbaru);
+        $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
+        $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
+        $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
+        $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
         $lat = $event['lintang'];
         $lon = $event['bujur'].' BT';
         $mag = round($event['magnitudo'],1);
@@ -317,7 +352,7 @@ class BalaiGempaCrudController extends CrudController
         } else {
             $lat = $lat[1].$lat[2].'LU';
         }
-        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah', 'depth','event', 'arah', 'jarak'));
+        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
     }
 
 }
