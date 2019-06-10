@@ -36,9 +36,9 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
     }
     #streetmap-baru p {
          color: #313131;
-         font-size: 1.3em; 
+         font-size: 1.3em;
          margin-left:5%;
-         margin-right:5%; 
+         margin-right:5%;
          padding-top: 1.5%;
          font-family: courier;
 
@@ -54,7 +54,12 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
         border-radius: 10px;*/
 /*        margin-bottom: 10px;*/
     }
-
+    .kota {
+        font-size: ;
+        color: black;
+        background-color: white;
+        border: 3px solid #FF0000;
+    }
     .css-icon {
 
         }
@@ -78,6 +83,56 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
   #streetmap-baru {
     border: 2px solid black;
   }
+
+  /*Wraperclass for the divicon*/
+.map-label {
+  position: absolute;
+  bottom: 0;left: -50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+/*Wrap the content of the divicon (text) in this class*/
+.map-label-content {
+  order: 1;
+  position: relative; left: -50%;
+  /*background-color: #fff;*/
+  /*border-radius: 5px;*/
+  /*border-width: 2px;*/
+  /*border-style: solid;*/
+  /*border-color: #444;*/
+  padding: 3px;
+  white-space: nowrap;
+  color: white;
+}
+/*Add this arrow*/
+.map-label-arrow {
+  order: 2;
+  width: 0px; height: 0px; left: 50%;
+  border-style: solid;
+  border-color: #444 transparent transparent transparent;
+  border-width: 10px 6px 0 6px; /*[first number is height, second/fourth are rigth/left width]*/
+  margin-left: -6px;
+}
+
+/*Instance classes*/
+.map-label.inactive {
+  opacity: 0.5;
+}
+
+.map-label.redborder > .map-label-content {
+  border-color: #e00;
+}
+.map-label.redborder > .map-label-arrow {
+  border-top-color: #e00;
+}
+
+.map-label.redbackground > .map-label-content {
+  white-space: default;
+  color: #fff;
+  background-color: #e00;
+}
+
 </style>
 
 @section('header')
@@ -191,6 +246,162 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 
     //add css icon as gps ring
     L.marker([{{ $lat }}, {{ $lon }}], {icon: cssIcon}).addTo(mymap);
+    // KOta di Papua
+// -2.54;140.7;KOTA JAYAPURA;;;
+    var Jayapura = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Kota Jayapura'+'</div></div>'
+        });
+    L.marker([-2.54, 140.7], {icon: Jayapura}).addTo(mymap);
+// -2.576;140.515;SENTANI;;;
+    var Sentani = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Sentani'+'</div></div>'
+        });
+    L.marker([-2.576, 140.515], {icon: Sentani}).addTo(mymap);
+// -1.183;136.09;BIAK;;;
+    var biak = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Biak'+'</div></div>'
+        });
+    L.marker([-1.183, 136.09], {icon: biak}).addTo(mymap);
+// -6.083;140.316;TANAH MERAH;;;
+    var tanahmerah = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Tanah Merah'+'</div></div>'
+        });
+    L.marker([-6.083, 140.316], {icon: tanahmerah}).addTo(mymap);
+// -4.066;138.966;WAMENA;;;
+    var wamena = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Wamena'+'</div></div>'
+        });
+    L.marker([-4.066, 138.966], {icon: wamena}).addTo(mymap);
+// -3.026;140.751;ARSO;;;
+    var arso = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Arso'+'</div></div>'
+        });
+    L.marker([-3.026, 140.515], {icon: arso}).addTo(mymap);
+// -1.88;136.24;SERUI;;;
+    var serui = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Serui'+'</div></div>'
+        });
+    L.marker([-1.88, 136.24], {icon: serui}).addTo(mymap);
+// -8.466;140.383;MERAUKE;;;
+    var merauke = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Merauke'+'</div></div>'
+        });
+    L.marker([-8.466, 140.383], {icon: merauke}).addTo(mymap);
+// -4.542;136.888;TIMIKA;;;
+    var timika = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Timika'+'</div></div>'
+        });
+    L.marker([-4.542, 136.888], {icon: timika}).addTo(mymap);
+// -3.363;135.503;NABIRE;;;
+    var nabire = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Nabire'+'</div></div>'
+        });
+    L.marker([-3.363, 135.503], {icon: nabire}).addTo(mymap);
+// -3.833;136.35;ENAROTALI;;;
+    var enarotali = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Enarotali'+'</div></div>'
+        });
+    L.marker([-3.833, 136.35], {icon: enarotali}).addTo(mymap);
+// -4.98;140.56;OKSIBIL;;;
+    var oksibil = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Oksibil'+'</div></div>'
+        });
+    L.marker([-4.98, 140.56], {icon: oksibil}).addTo(mymap);
+// -1.877;138.753;SARMI;;;
+    var sarmi = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Sarmi'+'</div></div>'
+        });
+    L.marker([-1.877, 138.753], {icon: sarmi}).addTo(mymap);
+// -2.26;136.37;WAREN;;;
+    var waren = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Waren'+'</div></div>'
+        });
+    L.marker([-2.26, 136.37], {icon: waren}).addTo(mymap);
+// -4.69;139.35;SUMOHAI;;;
+    var sumohai = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Sumohai'+'</div></div>'
+        });
+    L.marker([-4.69, 139.35], {icon: sumohai}).addTo(mymap);
+// -2.92;132.298;FAK FAK;;;
+    var fakfak = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Fak Fak'+'</div></div>'
+        });
+    L.marker([-2.92, 132.298], {icon: fakfak}).addTo(mymap);
+// -3.67;133.77;KAIMANA;;;
+    var kaimana = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Kaimana'+'</div></div>'
+        });
+    L.marker([-3.67, 133.77], {icon: kaimana}).addTo(mymap);
+// -0.86;134.07;MANOKWARI;;;
+    var manokwari = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Manokwari'+'</div></div>'
+        });
+    L.marker([-0.86, 134.07], {icon: manokwari}).addTo(mymap);
+// -2.12;133.54;BINTUNI;;;
+    var bintuni = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Bintuni'+'</div></div>'
+        });
+    L.marker([-2.12, 133.54], {icon: bintuni}).addTo(mymap);
+// -0.87;131.25;SORONG;;;
+    var sorong = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Sorong'+'</div></div>'
+        });
+    L.marker([-0.87, 131.25], {icon: sorong}).addTo(mymap);
+// -0.395;130.803;WAISAI;;;
+    var waisai = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Waisai'+'</div></div>'
+        });
+    L.marker([-0.395, 130.803], {icon: waisai}).addTo(mymap);
+// -1.45;132.01;TEMINABUAN;;;
+    var teminabuan = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'kota',
+          html: '<div class="map-label"><div class="map-label-content">'+'Teminabuan'+'</div></div>'
+        });
+    L.marker([-1.45, 132.01], {icon: teminabuan}).addTo(mymap);
+
     </script>
 
 @endsection
