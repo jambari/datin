@@ -3,7 +3,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="{{ backpack_url() }}">{{ config('backpack.base.project_name') }}</a></li>
-        <li class="active">Press Realese</li>
+        <li class="active">Siaran Pers</li>
       </ol>
     </section>
 @endsection
@@ -12,51 +12,53 @@
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box box-header with-border">
-                    <h1 class="box-title">Press Realese</h1>
-                        <div class="box-tools">
-                          <!-- This will cause the box to be removed when clicked -->
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                          <!-- This will cause the box to collapse when clicked -->
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        </div>
+                    <h1 class="box-title">Siaran Pers</h1>
                 </div>
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-12">
-                        	<h1 class="labl label-danger" >Under Contstruction</h1>
+                        	<div class="alert alert-success alert-dismissible">
+                        		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							  	Hai Pengamat, Ini adalah Siaran Press otomatis, Tugas Pengamat tentu sebagai kontrol kualitas, <strong>Anda kami sarankan untuk memperhatikan kembali parameter gempa yang diwarnai dan menyunting narasi untuk hasil lebih baik di program pengolah kata yang anda suka !</strong>
+							</div>
+                        	<div class="alert alert-success alert-dismissible text-info">
+                        		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							  	<span>Tanggal: {{ $event->tanggal or '-' }}</span> | <span>Origin: {{ $event->origin or '-' }} UTC</span> | <span>Lintang: {{ $event->lintang or '-' }}</span> | <span>Bujur: {{ $event->bujur or '-' }}</span> | <span>Depth: {{ $event->depth or '-' }} Km</span> | <span>Jarak: {{ $event->ket or '-' }}</span>
+							</div>
 
-								<h1>GEMPABUMI M {{ $mag }} MENGUNCANG WILAYAH {{ $wilayah }}</h1>
+								<h1 class="text text-center" >GEMPABUMI M <strong class="text text-danger">{{ $mag }}</strong>  MENGUNCANG WILAYAH <strong class="text text-danger" >{{ $wilayah }}</strong></h1>
+								
 								<ul>
-									<li>
-										Hari Rabu, 29 Mei 2019, terjadi gempa tektonik di wilayah Kabupaten Keerom-Papua.
+									<li class="text text-justify" >
+										Hari <strong class="text text-danger">{{ $hari }}</strong>, <strong class="text text-danger">{{ $tanggalindo }}</strong>, terjadi gempa tektonik di wilayah <strong class="text text-danger" >{{ $wilayah }}</strong>.
 
 									</li>
-									<li>
-										Hasil analisis BMKG menunjukkan bahwa gempabumi ini terjadi pada pukul 23:15.34 WIT dengan Magnitudo M={{ $mag }} SR Episenter terletak pada koordinat {{ $lat }} – {{ $lon }} tepatnya di darat pada jarak {{ $jarak }} Km arah {{ $arah }} {{ $wilayah }} dengan kedalaman {{ $depth }} Km.
+									<li class="text text-justify">
+										Hasil analisis BMKG menunjukkan bahwa gempabumi ini terjadi pada pukul <strong class="text text-danger">{{ $jamwit }} </strong>WIT dengan Magnitudo M=<strong class="text text-danger">{{ $mag }} </strong>SR Episenter terletak pada koordinat <strong class="text text-danger">{{ $lat }} – {{ $lon }} </strong>tepatnya di darat pada jarak <strong class="text text-danger">{{ $jarak }}</strong> Km arah <strong class="text text-danger">{{ $arah }} {{ $wilayah }}</strong> dengan kedalaman <strong class="text text-danger">{{ $depth }}</strong> Km.
 
 									</li>
-									<li>
-										Dampak gempa berupa guncangan yang dirasakan di Kota Jayapura III MMI dan di Kabupaten Jayapura II MMI.
+									<li class="text text-justify">
+										Dampak gempa berupa guncangan yang dirasakan di <strong class="text text-danger">{{ $event->terdampak or 'Isi dulu kolom terdampak' }}</strong>.
 									</li>
-									<li>
-										Ditinjau dari kedalaman hiposenter, gempabumi ini merupakan gempabumi dangkal akibat aktivitas sesar lokal yang melintas di wilayah Kab. Keerom. 
+									<li class="text text-justify">
+										Ditinjau dari kedalaman hiposenter, gempabumi ini merupakan gempabumi <strong class="text text-danger">dangkal</strong> akibat aktivitas sesar lokal yang melintas di wilayah <strong class="text text-danger" >{{ $wilayah }}</strong>. Hasil pemodelan menunjukkan bahwa gempabumi tidak berpotensi tsunami.
 
 									</li>
-									<li>
-										Hingga pukul 23:30 WIT, hasil monitoring BMKG belum menunjukkan adanya aktivitas gempabumi susulan lain (after shock).  Kepada masyarakat dihimbau agar tetap tenang dan tidak terpengaruh oleh isu yang tidak dapat dipertanggungjawabkan kebenarannya.*
+									<li class="text text-justify">
+										Hingga pukul <strong class="text text-danger">{{ $jamsusulan }}</strong> WIT, hasil monitoring BMKG belum menunjukkan adanya aktivitas gempabumi susulan lain (after shock).  Kepada masyarakat dihimbau agar tetap tenang dan tidak terpengaruh oleh isu yang tidak dapat dipertanggungjawabkan kebenarannya.*
 									</li>
-									<li>
-										Pastikan informasi resmi hanya bersumber dari BMKG yang disebarkan melalui kanal komunikasi resmi yang telah terverifikasi (Instagram/Twitter @infoBMKG), website (http://www.bmkg.go.id atau inatews.bmkg.go.id), atau melalui Mobile Apps (iOS dan Android @infobmkg).
+									<li class="text text-justify">
+										Pastikan informasi resmi hanya bersumber dari BMKG yang disebarkan melalui kanal komunikasi resmi yang telah terverifikasi (Instagram/Twitter @infoBMKG), website (<a href="https://www.bmkg.go.id atau inatews.bmkg.go.id">https://www.bmkg.go.id atau inatews.bmkg.go.id</a>), atau melalui Mobile Apps (iOS dan Android @infobmkg).
 									</li>
 								</ul>
 								<p>
-									Jayapura, 05 Juni 2019
+									Jayapura, <strong class="text text-danger">{{ $tanggalindo }}</strong> 
 Kepala Balai Besar Wilayah V Jayapura
 								</p>
 								<p>
 									Petrus Demon Sili, S.IP, M.Si
-NIP 19630307 198503 1 002
 								</p>
+								<p>NIP 19630307 198503 1 002</p>
                             </div>
                         </div>
                     </div>
