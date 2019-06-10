@@ -51,14 +51,22 @@
 										Pastikan informasi resmi hanya bersumber dari BMKG yang disebarkan melalui kanal komunikasi resmi yang telah terverifikasi (Instagram/Twitter @infoBMKG), website (<a href="https://www.bmkg.go.id atau inatews.bmkg.go.id">https://www.bmkg.go.id atau inatews.bmkg.go.id</a>), atau melalui Mobile Apps (iOS dan Android @infobmkg).
 									</li>
 								</ul>
+								@if (backpack_auth()->user()->name == 'balai5')
 								<p>
 									Jayapura, <strong class="text text-danger">{{ $tanggalindo }}</strong> 
-Kepala Balai Besar Wilayah V Jayapura
 								</p>
+								<p>Kepala Balai Besar Wilayah V Jayapura</p>
 								<p>
 									Petrus Demon Sili, S.IP, M.Si
 								</p>
 								<p>NIP 19630307 198503 1 002</p>
+								@else 
+								<p>
+									Jayapura, <strong class="text text-danger">{{ $tanggalindo }}</strong> 
+								</p>
+								<p>Kepala Stasiun Geofisika Klas I Angkasapura - Jayapura</p>
+								<p>MARGIONO, S.Si</p>
+								@endif
                             </div>
                         </div>
                     </div>

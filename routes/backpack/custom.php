@@ -14,7 +14,7 @@ Route::group([
 
 	//Gempabumi
 	CRUD::resource('gempa', 'GempaCrudController');
-
+	Route::get('gempa/{id}/press', 'GempaCrudController@press');
 	//Infogempa
 	CRUD::resource('infogempa', 'InfogempaCrudController');
 	Route::get('infogempa/{id}/peta', 'InfogempaCrudController@peta');
