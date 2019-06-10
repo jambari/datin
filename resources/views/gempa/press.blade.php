@@ -41,7 +41,15 @@
 										Dampak gempa berupa guncangan yang dirasakan di <strong class="text text-danger">{{ $event->terdampak or 'Isi dulu kolom terdampak' }}</strong>.
 									</li>
 									<li class="text text-justify">
-										Ditinjau dari kedalaman hiposenter, gempabumi ini merupakan gempabumi <strong class="text text-danger">dangkal</strong> akibat aktivitas sesar lokal yang melintas di wilayah <strong class="text text-danger" >{{ $wilayah }}</strong>. Hasil pemodelan menunjukkan bahwa gempabumi tidak berpotensi tsunami.
+										Ditinjau dari kedalaman hiposenter, gempabumi ini merupakan gempabumi <strong class="text text-danger">
+											@if ($depth < 70)
+											dangkal
+											@elseif ($depth >= 71 and $depth <= 150)
+											menengah
+											@else
+											dalam
+											@endif
+										</strong> akibat aktivitas sesar lokal yang melintas di wilayah <strong class="text text-danger" >{{ $wilayah }}</strong>. Hasil pemodelan menunjukkan bahwa gempabumi tidak berpotensi tsunami.
 
 									</li>
 									<li class="text text-justify">

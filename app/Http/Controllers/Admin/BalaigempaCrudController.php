@@ -352,7 +352,7 @@ class BalaiGempaCrudController extends CrudController
         } else {
             $lat = $lat[1].$lat[2].'LU';
         }
-        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
+        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah','wilayah1', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
     }
 
 }
