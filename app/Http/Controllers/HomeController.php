@@ -59,7 +59,8 @@ class HomeController extends Controller
     //recent eq map
     public function recentmap() {
         $eqs = Gempa::take(60)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
-        return view('gempa.recentmap', compact('eqs'));
+        $last = Gempa::orderBy('id','desc')->first();
+        return view('gempa.recentmap', compact('eqs','last'));
     }
 
     //Statistik eq map

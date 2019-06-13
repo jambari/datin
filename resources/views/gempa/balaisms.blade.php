@@ -64,6 +64,13 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 
         }
 
+    .white-icon {
+      /*background-color: white;*/
+/*      border-radius: 100px;
+      height: 30px;
+      width: 30px;*/
+    }
+
     .gps_ring {
         border: 3px solid #FF0000;
         -webkit-border-radius: 100px;
@@ -103,7 +110,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
   /*border-color: #444;*/
   padding: 3px;
   white-space: nowrap;
-  color: white;
+  color: whitesmoke;
 }
 /*Add this arrow*/
 .map-label-arrow {
@@ -163,7 +170,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                         <div class="col-md-12" id="balai" >
                             <div id="streetmap-baru">
                                 {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
-                                <img src=" {{ asset('images') }}/oke4.jpg " alt="logo" width="100%" height="20%" style="" >
+                                <img src=" {{ asset('images') }}/oke9.bmp " alt="logo" width="100%" height="20%" style="" >
                                     <div id="map-baru" style="width:99%;height:500px;"></div>
                                 <p class="text-center " style="" > <strong class="" >{{ $sms }} </strong> </p>
                             </div>
@@ -178,8 +185,10 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    crossorigin=""></script>
+   <link rel="stylesheet" href="{{ asset('css') }}/L.Icon.Pulse.css" />
+    <script src="{{ asset('js') }}/L.Icon.Pulse.js"></script>
    <script src="{{ asset('gjson') }}/patahan.js" > </script>
-   <script src="{{ asset('gjson') }}/subduksi.js" > </script>
+   <script src="{{ asset('gjson') }}/subduksi.js" ></script>
    <script src="{{ asset('gjson') }}/plates.js" > </script>
 
         <script>
@@ -192,7 +201,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
         // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, id: 'mapbox.satellite' }).addTo(mymap);
 
         var eqIcon = L.icon({
-            iconUrl: '/images/icongempa.png',
+            iconUrl: '/images/earthquake.png',
 
             iconSize:     [40, 40], // size of the icon
         });
@@ -203,7 +212,6 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
             "weight": 0.7,
             "opacity": 0.9
         };
-
         //style for subduksi
 
         var subduksiStyle = {
@@ -211,7 +219,8 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
             "weight": 1,
             "opacity": 0.5,
             "fillColor": 'transparent',
-        }
+        };
+    var pulsingIcon = L.icon.pulse({iconSize:[30,30],color:'red'});
 
         function onEachFeature(feature, layer) {
         // does this feature have a property named popupContent?
@@ -243,24 +252,33 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
           ,iconSize: [100,100]
           // ,iconAnchor: [11,11]
         });
+        var whiteIcon = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'white-icon',
+          html: '<div class="white-icon"></div>'
+          // Set marker width and height
+          ,iconSize: [100,100]
+          // ,iconAnchor: [11,11]
+        });
 
     //add css icon as gps ring
-    L.marker([{{ $lat }}, {{ $lon }}], {icon: cssIcon}).addTo(mymap);
+    L.marker([{{ $lat }}, {{ $lon }}], {icon: pulsingIcon}).addTo(mymap);
+    L.marker([{{ $lat }}, {{ $lon }}], {icon: whiteIcon}).addTo(mymap);
     // KOta di Papua
 // -2.54;140.7;KOTA JAYAPURA;;;
     var Jayapura = L.divIcon({
           // Specify a class name we can refer to in CSS.
           className: 'kota',
-          html: '<div class="map-label"><div class="map-label-content">'+'Kota Jayapura'+'</div></div>'
+          html: '<div class="map-label"><div class="map-label-content">'+'Jayapura'+'</div></div>'
         });
-    L.marker([-2.54, 140.7], {icon: Jayapura}).addTo(mymap);
+    L.marker([-2.56, 140.7], {icon: Jayapura}).addTo(mymap);
 // -2.576;140.515;SENTANI;;;
     var Sentani = L.divIcon({
           // Specify a class name we can refer to in CSS.
           className: 'kota',
           html: '<div class="map-label"><div class="map-label-content">'+'Sentani'+'</div></div>'
         });
-    L.marker([-2.576, 140.515], {icon: Sentani}).addTo(mymap);
+    L.marker([-2.58, 140.350], {icon: Sentani}).addTo(mymap);
 // -1.183;136.09;BIAK;;;
     var biak = L.divIcon({
           // Specify a class name we can refer to in CSS.

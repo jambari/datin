@@ -116,7 +116,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
         </div>
     </div>
     {{-- Old Design --}}
-    <div class="row">
+{{--     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box box-header with-border">
@@ -142,16 +142,19 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                 </div>
             </div>
         </div>
-    </div>
+ --}}    </div>
 
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    crossorigin=""></script>
+    <link rel="stylesheet" href="{{ asset('css') }}/L.Icon.Pulse.css" />
+    <script src="{{ asset('js') }}/L.Icon.Pulse.js"></script>
+   <script src="{{ asset('gjson') }}/patahan.js" > </script>
    <script src="{{ asset('gjson') }}/patahan.js" > </script>
    <script src="{{ asset('gjson') }}/subduksi.js" > </script>
    <script src="{{ asset('gjson') }}/plates.js" > </script>
 
-    <script>
+{{--     <script>
         var mymap = L.map('map').setView([{{ $lat }}, {{ $lon }}], 7);
 
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -165,6 +168,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 
             iconSize:     [40, 40], // size of the icon
         });
+    var recentIcon = L.icon.pulse({iconSize:[50,50],color:'yellow'});
         L.marker([{{ $lat }}, {{ $lon }}], {icon: eqIcon}).addTo(mymap);
         //style for subduksi and patahan
         var patahanStyle = {
@@ -215,7 +219,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 
     //add css icon as gps ring
     L.marker([{{ $lat }}, {{ $lon }}], {icon: cssIcon}).addTo(mymap);
-    </script>
+    </script> --}}
 
         <script>
         var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
@@ -229,8 +233,9 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
         var eqIcon = L.icon({
             iconUrl: '/images/icongempa.png',
 
-            iconSize:     [40, 40], // size of the icon
+            iconSize:     [35, 35], // size of the icon
         });
+        var pulsingIcon = L.icon.pulse({iconSize:[50,50],color:'red'});
         L.marker([{{ $lat }}, {{ $lon }}], {icon: eqIcon}).addTo(mymap);
         //style for subduksi and patahan
         var patahanStyle = {
@@ -280,7 +285,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
         });
 
     //add css icon as gps ring
-    L.marker([{{ $lat }}, {{ $lon }}], {icon: cssIcon}).addTo(mymap);
+    L.marker([{{ $lat }}, {{ $lon }}], {icon: pulsingIcon}).addTo(mymap);
     </script>
 
 @endsection
