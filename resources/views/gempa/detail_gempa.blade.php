@@ -56,8 +56,7 @@
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <div id="streetmap">
-                <img class="d-none d-sm-block" src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px">
-                <div id="map" style="width:85%;height:500px; border-radius: 5px;"></div>
+                <div id="map" style="width:100%;height:500px; border-radius: 5px;"></div>
             </div>
         </div>
     </div>

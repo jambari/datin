@@ -110,7 +110,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
   /*border-color: #444;*/
   padding: 3px;
   white-space: nowrap;
-  color: whitesmoke;
+  color: black;
 }
 /*Add this arrow*/
 .map-label-arrow {
@@ -155,6 +155,31 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 {{-- Baru Uji Coba balai --}}
     <div class="row">
         <div class="col-md-12">
+            <div class="form-group row">
+              <label for="basemap" class="form-control">Modifikasi Peta</label>
+              <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)" class="form-control">
+                <option value="NationalGeographic"  >National Geographic</option>
+                <option value="Topographic">Topographic</option>
+                <option value="Streets">Streets</option>
+                <option value="Oceans">Oceans</option>
+                <option value="Gray">Gray</option>
+                <option value="DarkGray">Dark Gray</option>
+                <option value="Imagery">Imagery</option>
+                <option value="ImageryClarity" selected>Imagery (Clarity)</option>
+                <option value="ImageryFirefly">Imagery (Firefly)</option>
+                <option value="ShadedRelief">Shaded Relief</option>
+                <option value="Physical">Physical</option>
+              </select>
+{{--               <br>
+              <select name="Kota" id="kota" onChange="changeKota(basemaps)" class="form-control">
+                <option value="NyalakanKota"  >Munculkan Kota</option>
+                <option value="HilangkanKota">Hilangkan Kota</option>
+              </select> --}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box box-header with-border">
                     <h1 class="box-title">Info Gempabumi</h1>
@@ -185,6 +210,9 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    crossorigin=""></script>
+    <script src="https://unpkg.com/esri-leaflet@2.2.3/dist/esri-leaflet.js"
+    integrity="sha512-YZ6b5bXRVwipfqul5krehD9qlbJzc6KOGXYsDjU9HHXW2gK57xmWl2gU6nAegiErAqFXhygKIsWPKbjLPXVb2g=="
+    crossorigin=""></script>
    <link rel="stylesheet" href="{{ asset('css') }}/L.Icon.Pulse.css" />
     <script src="{{ asset('js') }}/L.Icon.Pulse.js"></script>
    <script src="{{ asset('gjson') }}/patahan.js" > </script>
@@ -192,11 +220,62 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
    <script src="{{ asset('gjson') }}/plates.js" > </script>
 
         <script>
-        var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
+var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
+    // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
+     var layer = L.esri.basemapLayer('Imagery').addTo(mymap);
+      var layerLabels;
 
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            maxZoom: 18
-        }).addTo(mymap);
+  function setBasemap(basemap) {
+    if (layer) {
+      mymap.removeLayer(layer);
+    }
+
+    layer = L.esri.basemapLayer(basemap);
+
+    mymap.addLayer(layer);
+
+    if (layerLabels) {
+      mymap.removeLayer(layerLabels);
+    }
+
+    if (basemap === 'ShadedRelief'
+     || basemap === 'Oceans'
+     || basemap === 'Gray'
+     || basemap === 'DarkGray'
+     || basemap === 'Terrain'
+   ) {
+      layerLabels = L.esri.basemapLayer(basemap + 'Labels');
+      mymap.addLayer(layerLabels);
+    } else if (basemap.includes('Imagery')) {
+      layerLabels = L.esri.basemapLayer('ImageryLabels');
+      mymap.addLayer(layerLabels);
+    }
+  }
+
+  function changeBasemap(basemaps){
+    var basemap = basemaps.value;
+    setBasemap(basemap);
+  }
+
+  //change kota
+ function changeKota(kota){
+    var kota = kota.value;
+      if (kota === 'NyalakanKota') {
+            var timika = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+              className: 'kota',
+              html: '<div class="map-label"><div class="map-label-content">'+'Timika'+'</div></div>'
+            });
+         L.marker([-4.542, 136.888], {icon: timika}).addTo(mymap);
+      } else {
+
+      }
+  }
+        // var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
+
+        // L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        //     maxZoom: 18
+        // }).addTo(mymap);
 
         // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, id: 'mapbox.satellite' }).addTo(mymap);
 
