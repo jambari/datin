@@ -110,7 +110,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
   /*border-color: #444;*/
   padding: 3px;
   white-space: nowrap;
-  color: black;
+  color: white;
 }
 /*Add this arrow*/
 .map-label-arrow {
@@ -218,7 +218,8 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
    <script src="{{ asset('gjson') }}/patahan.js" > </script>
    <script src="{{ asset('gjson') }}/subduksi.js" ></script>
    <script src="{{ asset('gjson') }}/plates.js" > </script>
-
+   <script src="{{ asset('gjson') }}/png.js" > </script>
+   <script src="{{ asset('gjson') }}/batasinapng.js" > </script>
         <script>
 var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
     // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
@@ -299,6 +300,32 @@ var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
             "opacity": 0.5,
             "fillColor": 'transparent',
         };
+        //Papua New Guinea
+        var pngStyle = {
+            fillColor: '#0AA53E',
+            weight: 1,
+            opacity: 1,
+            color: '#0AA53E',  //Outline color
+            fillOpacity: 1
+        };
+        //add PNG to Map
+        L.geoJSON(png, {
+            style : pngStyle,
+        }).addTo(mymap);
+        //batas Ina PNG
+        var batasStyle = {
+            fillColor: '#D31B1B',
+            weight: 2,
+            opacity: 1,
+            color: '#D31B1B',  //Outline color
+            fillOpacity: 1
+        };
+        //add PNG to Map
+        L.geoJSON(batasInapng, {
+            style : batasStyle,
+        }).addTo(mymap);
+
+
     var pulsingIcon = L.icon.pulse({iconSize:[30,30],color:'red'});
 
         function onEachFeature(feature, layer) {
@@ -498,6 +525,14 @@ var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
           html: '<div class="map-label"><div class="map-label-content">'+'Teminabuan'+'</div></div>'
         });
     L.marker([-1.45, 132.01], {icon: teminabuan}).addTo(mymap);
+
+//PNG
+    // var Png = L.divIcon({
+    //       // Specify a class name we can refer to in CSS.
+    //       html: 'Papua New Guinea'
+    //     });
+    // L.marker([-4.985, 142.36], {icon: Png}).addTo(mymap);
+// -2.576;140.515;SENTANI;;;
 
     </script>
 
