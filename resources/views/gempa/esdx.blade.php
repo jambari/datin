@@ -28,7 +28,7 @@ margin: 0 auto;
 							<div class="table-responsive">
 								<table class="table  table-bordred table-striped" width="100%">
                         		<thead>
-                        			<tr>
+                        			<tr><th>#</th>
                         				<th>SUMBER</th>
                         				<th>ELIP LINTANG</th>
                         				<th>ELIP BUJUR</th>
@@ -46,24 +46,25 @@ margin: 0 auto;
                         			@if ($joingempas)
                         				@foreach ($joingempas as $joingempa) 
                         				<tr >
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif > {{ $joingempa->sumber }}  </td>
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->eliplat }}</td>
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->eliplon }}</td>
+                        					<td>{{ $loop->itration }}</td>
+                        					<td > {{ $joingempa->sumber }}  </td>
+                        					<td >{{ $joingempa->eliplat }}</td>
+                        					<td >{{ $joingempa->eliplon }}</td>
 
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->rms }}</td>
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->elipdepth }}</td>
+                        					<td >{{ $joingempa->rms }}</td>
+                        					<td >{{ $joingempa->elipdepth }}</td>
 
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->tanggal }} {{ $joingempa->origin }} </td>
+                        					<td >{{ $joingempa->tanggal }} {{ $joingempa->origin }} </td>
 
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->lintang }}</td>
+                        					<td >{{ $joingempa->lintang }}</td>
 
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->bujur }}</td>
+                        					<td >{{ $joingempa->bujur }}</td>
 
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->magnitudo }}</td>
+                        					<td >{{ $joingempa->magnitudo }}</td>
 
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->depth }}</td>
+                        					<td >{{ $joingempa->depth }}</td>
 
-                        					<td @if ( $loop->index == 0) class="bg bg-primary" @endif>{{ $joingempa->ket }}</td>
+                        					<td >{{ $joingempa->ket }}</td>
                         				</tr>
                         				@endforeach
                         				@else 
