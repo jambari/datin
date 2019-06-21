@@ -72,4 +72,9 @@ Route::group([
     Route::get('balaisms/{id}/peta', 'BalaismsCrudController@peta');
     //Press Release
     Route::get('balaigempa/{id}/press', 'BalaigempaCrudController@press');
+
+    //Join gempa balai dan angkasa
+
+    Route::get('joingempa', 'JoingempaCrudController@join');
+
 }); // this should be the absolute last line of this file
