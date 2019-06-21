@@ -86,7 +86,7 @@ class JoinGempaCrudController extends CrudController
 
     //filter
     public function join() {
-        $joingempas = Joingempa::take(2)
+        $joingempas = Joingempa::take(8)
             ->orderBy('id','desc')
             ->orderBy('eliplat','asc')
             ->orderBy('eliplon','asc')
