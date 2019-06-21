@@ -46,7 +46,7 @@ margin: 0 auto;
                         			@if ($joingempas)
                         				@foreach ($joingempas as $joingempa) 
                         				<tr >
-                        					<td>{{ $loop->itration }}</td>
+                        					<td>{{ $loop->iteration }}</td>
                         					<td > {{ $joingempa->sumber }}  </td>
                         					<td >{{ $joingempa->eliplat }}</td>
                         					<td >{{ $joingempa->eliplon }}</td>
