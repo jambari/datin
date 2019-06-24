@@ -77,4 +77,9 @@ Route::group([
 
     Route::get('joingempa', 'JoingempaCrudController@join');
 
+    //signifikan
+
+	CRUD::resource('significant', 'SignificantCrudController');
+	Route::get('significant/{id}/peta', 'SignificantCrudController@peta');
+
 }); // this should be the absolute last line of this file
