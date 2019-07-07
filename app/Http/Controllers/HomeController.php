@@ -141,4 +141,11 @@ class HomeController extends Controller
         $magnets = Magnet::select()->where('tanggal', $tanggal)->get();
         return view('magnets.dailychart', compact('magnets', 'tanggal'));
     }
+
+    public function simimi ()
+    {
+        $eqs = \App\Models\Balaigempa::take(30)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
+        $last = \App\Models\Balaigempa::orderBy('id','desc')->first();
+        return view('gempa.simimi', compact('eqs','last'));
+    }
 }

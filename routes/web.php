@@ -34,3 +34,6 @@ Route::get('/siarans/{id}', 'Admin\SiaranCrudController@show'); //detail press r
 Route::get('/gempa/{id}', 'Admin\GempaCrudController@showmap'); // detail earthquake
 Route::resource('/mercallies', 'MercallyController');// Indeks Seismisitas
 
+//simimi
+Route::get('/simimi', 'HomeController@simimi');
+
