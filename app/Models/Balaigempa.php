@@ -48,35 +48,35 @@ class Balaigempa extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-    public function getWaktu ($value) {
+    // public function getWaktu ($value) {
 
 
-        $tanggal = $this->attributes['tanggal']; //get date of the eathquake
-        $jam = $this->attributes['origin']; // get origin time of eq
-        $bulan = array (
-            1 =>   'Januari',
-            'Februari',
-            'Maret',
-            'April',
-            'Mei',
-            'Juni',
-            'Juli',
-            'Agustus',
-            'September',
-            'Oktober',
-            'November',
-            'Desember'
-        );
-        //array hari senin-sabtu
-        $days = array (
-            0 =>   'Minggu',
-            'Senin',
-            'Selasa',
-            'Rabu',
-            'Kamis',
-            "Jum'at",
-            'Sabtu'
-        );
+        // $tanggal = $this->attributes['tanggal']; //get date of the eathquake
+        // $jam = $this->attributes['origin']; // get origin time of eq
+        // $bulan = array (
+        //     1 =>   'Januari',
+        //     'Februari',
+        //     'Maret',
+        //     'April',
+        //     'Mei',
+        //     'Juni',
+        //     'Juli',
+        //     'Agustus',
+        //     'September',
+        //     'Oktober',
+        //     'November',
+        //     'Desember'
+        // );
+        // //array hari senin-sabtu
+        // $days = array (
+        //     0 =>   'Minggu',
+        //     'Senin',
+        //     'Selasa',
+        //     'Rabu',
+        //     'Kamis',
+        //     "Jum'at",
+        //     'Sabtu'
+        // );
 
         // $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
         // $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
@@ -87,11 +87,11 @@ class Balaigempa extends Model
         // $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
         // $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
         // $value = $tanggalindo.' '.$jamwit;
-        $value = $jam;
-        return $value;
+        // $value = $jam;
+        // return $value;
 
 
-    }
+    // }
 
     public function getTerasaAttribute($value)
     {

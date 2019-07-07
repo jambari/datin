@@ -145,6 +145,47 @@ class HomeController extends Controller
     public function simimi ()
     {
         $eqs = \App\Models\Balaigempa::take(30)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
+        $neweqs = array();
+        foreach ($eqs as $eq) {
+            $tanggal = $eq['tanggal']; //get date of the eathquake
+            $jam = $eq['origin']; // get origin time of eq
+            $bulan = array (
+                1 =>   'Januari',
+                'Februari',
+                'Maret',
+                'April',
+                'Mei',
+                'Juni',
+                'Juli',
+                'Agustus',
+                'September',
+                'Oktober',
+                'November',
+                'Desember'
+            );
+            //array hari senin-sabtu
+            $days = array (
+                0 =>   'Minggu',
+                'Senin',
+                'Selasa',
+                'Rabu',
+                'Kamis',
+                "Jum'at",
+                'Sabtu'
+            );
+
+            $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
+            $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
+            $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
+            $hari = $days[$hari];
+            $pecahkan = explode('-',$tanggalbaru);
+            $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
+            $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
+            $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
+            $value = $tanggalindo.' '.$jamwit;
+            $eq['origin'] = $value;
+        }
+
         $last = \App\Models\Balaigempa::orderBy('id','desc')->first();
         return view('gempa.simimi', compact('eqs','last'));
     }
