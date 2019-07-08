@@ -15,7 +15,7 @@ class MercallyRequest extends FormRequest
     public function authorize()
     {
         // only allow updates if the user is logged in
-        return backpack_auth()->check();
+        return true;
     }
 
     /**
@@ -26,9 +26,8 @@ class MercallyRequest extends FormRequest
     public function rules()
     {
         return [
-            'gempa_id' => 'required',
-            'lintang' => 'required',
-            'bujur' => 'required',
+            'gempabalai_id' => 'required',
+            'lokasi' => 'required',
             'mmi' => 'required'
         ];
     }

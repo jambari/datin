@@ -46,7 +46,7 @@ crossorigin=""></script>
 	#tabel 
 	{ 
 
-
+		/*z-index: 500;*/
 	}
 
     body { padding:0; font-family: 'Arimo', sans-serif; }
@@ -56,7 +56,7 @@ crossorigin=""></script>
   }
 
   .param {
-  	font-size: 1em;
+  	font-size: 1rem;
   }
 
 .leaflet-verticalcenter {
@@ -92,24 +92,50 @@ crossorigin=""></script>
 }
 
   #map-example-container {height: 300px; width: 100%;};
+
+.circle {
+  width: 100px;
+  height: 100px;
+  line-height: 200px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 auto 40px;
+}
+
+.red {
+  background-color: #e74c3c;
+}
 </style>
 <body>
 	<div class="w3-row w3-bar w3-padding-16 w3-card w3-border-blue" style="position: ; top: 0;">
-	  <div class="w3-col w3-container m2 l1" style="display: flex; justify-content: center; align-items: center;" >
-			<img src="{{ asset('images') }}/logo-bmkg.png" alt="" width="45" height="55" >
-	  </div>
-	  <div class="w3-col w3-container m10 l11">
-			<h1>SiMIMI</h1>
+      <div class="w3-col w3-container m2 l1" style="display: flex; justify-content: center; align-items: center;" >
+            <a href="/simimi">
+            <img src="{{ asset('images') }}/logo-bmkg.png" alt="" width="45" height="55" >
+      </div>
+      <div class="w3-col w3-container m10 l11" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+        <a href="/simimi" style="text-decoration: none;">
+            <h3 >SiMIMI</h3>
+            </a>
 
-	  </div>
+            <a href="/" style="text-decoration: none;" >
+            <h3>Tentang</h3>
+            </a>
+
+      </div>
 	</div>
 
 	<div class="w3-row">
-	  	<div class="w3-col w3-container m4 l3 " style=";">
+	  	<div class="w3-col w3-container m4 l3" style=";">
 			<div class="tabel-wrapper">
 				@if ( $eqs )
 		            @foreach ( $eqs as $gempa )
-		            	<div class="w3-panel w3-container w3-border-bottom" id="tabel" >
+		            	<div class="w3-panel w3-container w3-border-bottom" id="tabel" onmouseover="" >
 		            		<table >
 		            			<tr>
 		            				<td><span class="w3-badge @if ($gempa->magnitudo < 5) w3-green @else w3-red @endif param">M{{ $gempa->magnitudo }}</span></td>
@@ -118,16 +144,23 @@ crossorigin=""></script>
 		            			</tr>
 		            		</table>
 		            		<div class="w3-container "style="padding-bottom: 10px;">
-	  							<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-block w3-red">Anda Merasakan ?</button>
+	  							<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-red w3-block" onmouseover="document.getElementById('gempaid').value = {{ $gempa->id }} ; console.log({{ $gempa->id }});"> Merasakan ?</button>
 		            		</div>
+                            <div class="w3-container "style="padding-bottom: 10px;">
+                                 <a class="w3-button w3-teal w3-block" href="/seismisitas/{{ $gempa->id }}">Seismisitas</a>
+                            </div>
 		            	</div>
 				  	@endforeach
 	 			@endif
 			</div>
 	  	</div>
-	  	<div class="w3-col m8 l9" id="peta-gempa">
+	  	<div class="w3-col w3-hide-small m8 l9" id="peta-gempa">
 			<div class="map-wrapper">
 				<div id="map" style="width:100%; height: 100%;"></div>
+                <div class="w3-container w3-center">
+                    <p >        <?php echo date("Y"); ?> SiMIMI <small>handcrafted by <a href="https://github.com/jambari" style="text-decoration: none;" class="w3-teal" target="_blank">Jambari</a></small>
+                        </p>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -140,169 +173,8 @@ crossorigin=""></script>
 	        <h2>Hi, silahkan lengkapi formulir di bawah ini !</h2>
 	      </header>
 	      <div class="w3-container w3-padding-16">
-	      	<form class="w3-container">
-	      		<div id="map-example-container"></div>
-				<input name="lokasi" type="search" id="input-map" placeholder="Dimana lokasi Anda merasakan gempa ?" required="required" class="w3-input" />
-{{-- 				<p>Lokasi terpilih: <strong id="address-value">Lokasi belum diinput</strong></p> --}}
-				<input class="w3-input" type="hidden" name="gempabalai_id" >
-				<p class="w3-label">Klik/pilih salah satu gambar di bawah ini sesuai apa yang anda rasakan</p>
-				{{-- Gambar MMI --}}
-				<div class="w3-row-padding w3-margin-top">
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="1" >
-						    <img src="{{ asset('images') }}/mmi1.png"  style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>I MMI</strong> Getaran tidak dirasakan oleh beberapa orang (kecuali dalam keadaan hening). </p>
-					    </div>
-					  </div>
-					</div>
 
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="2" >
-						    <img src="{{ asset('images') }}/mmi2.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>II MMI</strong> Getaran dirasakan oleh beberapa orang yang tinggal diam, terlebih dirumah bertingkat. Benda-benda ringan yang digantung bergoyang.</p>
-					    </div>
-					  </div>
-					</div>
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="3" >
-						    <img src="{{ asset('images') }}/mmi3.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>III MMI</strong> Getaran dirasakan nyata di rumah tingkat atas. Getaran seakan ada truk lewat.</p>
-					    </div>
-					  </div>
-					</div>
-					{{-- 4-6mmi --}}
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="4" >
-						    <img src="{{ asset('images') }}/mmi5.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>IV MMI</strong> Pada siang hari dirasakan oleh orang banyak dalam rumah, di luar oleh beberapa orang. Pada malam hari orang terbangun, piring dan gelas dapat pecah, jendela dan pintu berbunyi, dinding berderik karena pecah-pecah. Kacau seakan-akan truk besar melanggar rumah, kendaraan yang sedang berhenti bergerak dengan jelas.</p>
-					    </div>
-					  </div>
-					</div>
-
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="5" >
-						    <img src="{{ asset('images') }}/mmi5.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>V MMI</strong> Getaran dirasakan oleh hampir semua penduduk, orang banyak terbangun. Jendela kaca dan plester dinding pecah, barang-barang terpelanting, pohon-pohon tinggi dan barang-barang besar tampak bergoyang. Bandul lonceng dapat berhenti.</p>
-					    </div>
-					  </div>
-					</div>
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="6" >
-						    <img src="{{ asset('images') }}/mmi6.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>VI MMI</strong>Getaran dirasakan oleh semua penduduk, kebanyakan terkejut dan lari keluar, kadang-kadang meja kursi bergerak, plester dinding dan cerobong asap pabrik rusak. Kerusakan kategori ringan./p>
-					    </div>
-					  </div>
-					</div>
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="7" >
-						    <img src="{{ asset('images') }}/mmi7.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>VII MMI</strong> Semua orang keluar rumah, kerusakan ringan pada rumah-rumah konstruksi yang baik. Cerobong asap pecah atau retak-retak. Goncangan terasa oleh orang yang naik kendaraan.</p>
-					    </div>
-					  </div>
-					</div>
-
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="8" >
-						    <img src="{{ asset('images') }}/mmi8.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>VIII MMI</strong> Banyak kerusakan pada bangunan yang tidak kuat. Kerusakan ringan pada bangunan-bangunan dengan konstruksi yang kuat. Retak-retak pada bangunan yang kuat. Dinding dapat lepas dari kerangka rumah, cerobong asap pabrik-pabrik dan monumen-monumen roboh. Meja kursi terlempar, air menjadi keruh, orang naik sepeda motor terasa terganggu.</p>
-					    </div>
-					  </div>
-					</div>
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="9" >
-						    <img src="{{ asset('images') }}/mmi9.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>IX MMI</strong>Kerusakan pada bangunan yang kuat, rangka-rangka rumah menjadi tidak lurus. Rumah tampak bergeser dari pondasinya, pipa-pipa dalam tanah putus./p>
-					    </div>
-					  </div>
-					</div>
-					{{-- 10-12 mmi --}}
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="10" >
-						    <img src="{{ asset('images') }}/mmi10.png"  style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>X MMI</strong> Bangunan dari kayu yang kuat rusak, rangka-rangka rumah lepas dari pondasinya; tanah terbelah; Rel melengkung. Tanah longsor di sekitar sungai dan tempat-tempat yang curam serta terjadi air bah. </p>
-					    </div>
-					  </div>
-					</div>
-
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="11" >
-						    <img src="{{ asset('images') }}/mmi11.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>XI MMI</strong> Bangunan-bangunan kayu sedikit yang tetap berdiri, jembatan rusak, terjadi lembah. Pipa dalam tanah tidak dapat dipakai sama sekali, tanah terbelah, rel melengkung sekali.</p>
-					    </div>
-					  </div>
-					</div>
-					<div class="w3-third">
-					  <div class="w3-card">
-					  	<label>
-						  	<input type="radio" name="mmi" value="12" >
-						    <img src="{{ asset('images') }}/mmi12.png" style="width:100%">
-					    </label>
-					    <div class="w3-container">
-					    	<p class="w3-text" ><strong>XII MMI</strong> Hancur sama sekali. Gelombang tampak pada permukaan tanah, pemandangan menjadi gelap, benda-benda terlempar ke udara.</p>
-					    </div>
-					  </div>
-					</div>
-				</div>
-				<br>
-				<label class="w3-label" >Gambar Kerusakan Jika ada</label>
-{{-- 		        @for ($i=0; $i <= 4; $i++) --}}
-		        <div class="w3-row w3-container">
-		            <div class="w3-col w3-m12 l12">
-		                <input type="file" name="gambar" class="w3-input" value="">
-		            </div>
-		        </div>
-{{-- 		        @endfor --}}
-				<br>
-				<label class="w3-label" >Nama</label>
-				<input class="w3-input" type="text" name="nama" placeholder="Tidak Wajib" >
-
-				<input type="submit" class="w3-button w3-block w3-red w3-margin-top " value="Submit" />
-
-			</form>
+            @include('mercallies.formmodal')
 
 	      </div>
 	      <footer class="w3-container w3-pale-blue">
@@ -310,7 +182,6 @@ crossorigin=""></script>
 	      </footer>
 	    </div>
 	  </div>
-
 <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
@@ -405,7 +276,17 @@ crossorigin=""></script>
     var marker = L.marker(suggestion.latlng, {opacity: .4});
     marker.addTo(map);
     markers.push(marker);
+    console.log(suggestion.latlng);
+    // document.getElementById('lintang').value = suggestion.latlng.lat ;
+    // document.getElementById('bujur').value = suggestion.latlng.lng ;
   }
+
+  placesAutocomplete.on('change', function(e) {
+    //$address.textContent = e.suggestion.value;
+    document.getElementById('lintang').value = e.suggestion.latlng.lat ;
+    document.getElementById('bujur').value = e.suggestion.latlng.lng ;
+  });
+
 
   function removeMarker(marker) {
     map.removeLayer(marker);
@@ -477,38 +358,27 @@ var map = L.map('map').setView([-2.5104, 140.714], 6);
   }
 
 
-
-
-
-	//SEBELUM PAKE OPTIONAL
-	// var map = L.map('map').setView([-2.5104, 140.714], 6);
-	// L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18}).addTo(map)
-	// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, id: 'mapbox.light' }).addTo(map);
-
-	var white = L.icon({
-		iconUrl: '/images/whiteblack.png',
-		iconSize:     [30, 30], // size of the icon
-
-	});
-
-	var red = L.icon({
-		iconUrl: '/images/redblack.png',
-		iconSize:     [30, 30], // size of the icon
-
-	});
 	var lastIcon = L.icon({
 		iconUrl: '/images/icongempa.png',
 		iconSize:     [40, 40], // size of the icon
 
 	});
-	var recentIcon = L.icon.pulse({iconSize:[15,15],color:'yellow'});
+        var red = L.divIcon({
+          // Specify a class name we can refer to in CSS.
+          className: 'css-icon',
+          html: '<div class="circle red"></div>'
+          // Set marker width and height
+          ,iconSize: [100,100]
+          // ,iconAnchor: [11,11]
+        });
+
 	@if ($eqs->count() > 0)
 		@foreach ($eqs as $eq)
 		@if($eq->magnitudo < 5)
-			marker = new L.marker([{{ $eq->lintang }}, {{ $eq->bujur }}], { icon: white}).addTo(map)
+			marker = new L.circleMarker([{{ $eq->lintang }}, {{ $eq->bujur }}], {color: "#1A75FF", radius: 8}).addTo(map)
 		@endif
 		@if($eq->magnitudo >= 5)
-		marker = new L.marker([{{ $eq->lintang }}, {{ $eq->bujur }}], { icon: red}).addTo(map)
+		marker = new L.circleMarker([{{ $eq->lintang }}, {{ $eq->bujur }}], {color: "#ffd11a", radius: 12}).addTo(map)
 		@endif
 			.bindPopup(
 				`{{ $eq->tanggal }}

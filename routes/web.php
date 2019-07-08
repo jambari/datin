@@ -11,6 +11,10 @@
 |
 */
 
+Route::resource('/mercallies', 'MercallyController');
+
+Route::get('/seismisitas/{id}', 'MercallyController@seismisitas');
+
 Route::get('/', 'HomeController@index'); //home
 Route::get('/home', 'HomeController@index'); // home
 Route::get('/about', 'HomeController@about'); // about us
@@ -36,4 +40,6 @@ Route::resource('/mercallies', 'MercallyController');// Indeks Seismisitas
 
 //simimi
 Route::get('/simimi', 'HomeController@simimi');
+
+
 
