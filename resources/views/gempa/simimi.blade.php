@@ -23,13 +23,34 @@ crossorigin=""></script>
 integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
 crossorigin=""></script>
 <style type="text/css" media="screen">
-    body { margin:0; padding:0; font-family: 'Arimo', sans-serif; }
-/*    #map { position: absolute; right:0; left:0; }*/
 
-   #tabel-gempa {
-	height: 700px;
-	overflow-y: scroll;
-  }
+    html, body, {
+
+        height: 100%;
+
+        margin: 0px;
+
+    }
+
+	.map-wrapper { width: 100%; height:100%; position:absolute;}
+	#map { width: 80%; height:100%; position: relative;}
+
+	.tabel-wrapper { 
+		width:24% ; 
+		height: 100%; 
+		position:absolute;
+		overflow: auto;
+		z-index: 500;
+	}
+
+	#tabel 
+	{ 
+
+
+	}
+
+    body { padding:0; font-family: 'Arimo', sans-serif; }
+
   #tabel-gempa {
     margin-bottom: 5px;
   }
@@ -74,8 +95,8 @@ crossorigin=""></script>
 </style>
 <body>
 	<div class="w3-row w3-bar w3-padding-16 w3-card w3-border-blue" style="position: ; top: 0;">
-	  <div class="w3-col w3-container m2 l1">
-			<img src="{{ asset('images') }}/logo-bmkg.png" alt="" width="50" height="80" >
+	  <div class="w3-col w3-container m2 l1" style="display: flex; justify-content: center; align-items: center;" >
+			<img src="{{ asset('images') }}/logo-bmkg.png" alt="" width="45" height="55" >
 	  </div>
 	  <div class="w3-col w3-container m10 l11">
 			<h1>SiMIMI</h1>
@@ -84,26 +105,30 @@ crossorigin=""></script>
 	</div>
 
 	<div class="w3-row">
-	  	<div class="w3-col w3-container m4 l3 " id="tabel-gempa" style=";">
-			@if ( $eqs )
-	            @foreach ( $eqs as $gempa )
-	            	<div class="w3-panel w3-border-bottom">
-	            		<table>
-	            			<tr>
-	            				<td><span class="w3-badge @if ($gempa->magnitudo < 5) w3-green @else w3-red @endif param">M{{ $gempa->magnitudo }}</span></td>
-	            				<td class="param">{{ $gempa->ket }}<br>
-							{{ $gempa->origin }} WIT <br> Kdlmn: {{ $gempa->depth }} Km </td>
-	            			</tr>
-	            		</table>
-	            		<div class="w3-container "style="padding-bottom: 10px;">
-  							<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-block w3-red">Anda Merasakan ?</button>
-	            		</div>
-	            	</div>
-			  	@endforeach
-		 	@endif
+	  	<div class="w3-col w3-container m4 l3 " style=";">
+			<div class="tabel-wrapper">
+				@if ( $eqs )
+		            @foreach ( $eqs as $gempa )
+		            	<div class="w3-panel w3-container w3-border-bottom" id="tabel" >
+		            		<table >
+		            			<tr>
+		            				<td><span class="w3-badge @if ($gempa->magnitudo < 5) w3-green @else w3-red @endif param">M{{ $gempa->magnitudo }}</span></td>
+		            				<td class="param">{{ $gempa->ket }}<br>
+								{{ $gempa->origin }} WIT <br> Kdlmn: {{ $gempa->depth }} Km </td>
+		            			</tr>
+		            		</table>
+		            		<div class="w3-container "style="padding-bottom: 10px;">
+	  							<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-block w3-red">Anda Merasakan ?</button>
+		            		</div>
+		            	</div>
+				  	@endforeach
+	 			@endif
+			</div>
 	  	</div>
-	  	<div class="w3-col w3-container m8 l9">
-			<div id="map" style="width:100%; height: 700px; left:0; right: 0; "></div>
+	  	<div class="w3-col m8 l9" id="peta-gempa">
+			<div class="map-wrapper">
+				<div id="map" style="width:100%; height: 100%;"></div>
+			</div>
 		</div>
 	</div>
 
@@ -264,13 +289,13 @@ crossorigin=""></script>
 				</div>
 				<br>
 				<label class="w3-label" >Gambar Kerusakan Jika ada</label>
-		        @for ($i=0; $i <= 4; $i++)
+{{-- 		        @for ($i=0; $i <= 4; $i++) --}}
 		        <div class="w3-row w3-container">
 		            <div class="w3-col w3-m12 l12">
-		                <input type="file" name="gambar[{{ $i }}][value]" class="w3-input" value="{{ old('gambar['.$i.'][value]') }}">
+		                <input type="file" name="gambar" class="w3-input" value="">
 		            </div>
 		        </div>
-		        @endfor
+{{-- 		        @endfor --}}
 				<br>
 				<label class="w3-label" >Nama</label>
 				<input class="w3-input" type="text" name="nama" placeholder="Tidak Wajib" >
@@ -414,7 +439,7 @@ crossorigin=""></script>
 <script src="{{ asset('gjson') }}/plates.js" > </script>
 <script>
 
-var map = L.map('map').setView([{{ $last->lintang }}, {{ $last->bujur }}], 6);
+var map = L.map('map').setView([-2.5104, 140.714], 6);
 // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
  var layer = L.esri.basemapLayer('ShadedRelief').addTo(map);
   var layerLabels;
