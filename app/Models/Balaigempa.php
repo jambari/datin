@@ -113,4 +113,9 @@ class Balaigempa extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
+    public function mercally()
+    {
+        return $this->hasMany('App\Models\Mercally');    
+    }
 }
