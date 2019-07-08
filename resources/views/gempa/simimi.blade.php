@@ -35,6 +35,13 @@ crossorigin=""></script>
 	.map-wrapper { width: 100%; height:100%; position:absolute;}
 	#map { width: 80%; height:100%; position: relative;}
 
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+
 	.tabel-wrapper { 
 		width:24% ; 
 		height: 100%; 
@@ -43,11 +50,17 @@ crossorigin=""></script>
 		z-index: 500;
 	}
 
-	#tabel 
-	{ 
-
-		/*z-index: 500;*/
-	}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .tabel-wrapper {
+    width: 100%;
+    position: relative;
+  }
+  .map-wrapper {
+    width: 100%;
+    height: 45%;
+  }
+}
 
     body { padding:0; font-family: 'Arimo', sans-serif; }
 
@@ -154,7 +167,7 @@ crossorigin=""></script>
 	 			@endif
 			</div>
 	  	</div>
-	  	<div class="w3-col w3-hide-small m8 l9" id="peta-gempa">
+	  	<div class="w3-col m8 l9" id="peta-gempa">
 			<div class="map-wrapper">
 				<div id="map" style="width:100%; height: 100%;"></div>
                 <div class="w3-container w3-center">
