@@ -31,6 +31,12 @@ crossorigin=""></script>
         margin: 0px;
 
     }
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
 
 	.map-wrapper { width: 100%; height:100%; position:absolute;}
 	#map { width: 80%; height:100%; position: relative;}
@@ -58,7 +64,17 @@ crossorigin=""></script>
   .param {
   	font-size: 1rem;
   }
-
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .tabel-wrapper {
+    width: 100%;
+    position: relative;
+  }
+  .map-wrapper {
+    width: 100%;
+    height: 45%;
+  }
+}
 .leaflet-verticalcenter {
     position: absolute;
     z-index: 1000;
@@ -100,7 +116,7 @@ crossorigin=""></script>
 			<img src="{{ asset('images') }}/logo-bmkg.png" alt="" width="45" height="55" >
 	  </div>
 	  <div class="w3-col w3-container m10 l11">
-	  	<a href="/simimi" style="text-decoration: none;">
+	  	<a href="/simimi" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">
 			<h1>SiMIMI</h1>
 			</a>
 
@@ -165,7 +181,7 @@ crossorigin=""></script>
 				@endif
 			</div>
 	  	</div>
-	  	<div class="w3-col w3-hide-small m8 l9" id="peta-gempa">
+	  	<div class="w3-col m8 l9" id="peta-gempa">
 			<div class="map-wrapper">
 				<div id="map" style="width:100%; height: 100%;"></div>
                 <div class="w3-container w3-center">
