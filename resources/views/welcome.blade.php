@@ -31,14 +31,14 @@
 
 #mycarousel {
 
-/*background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));*/
+background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
 
 /*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));
 background: linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));*/
 
-background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
-background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
+/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
+background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 
 /*background: rgb(0,0,0);
 background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); */
