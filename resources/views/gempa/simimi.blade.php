@@ -60,6 +60,9 @@ crossorigin=""></script>
     width: 100%;
     height: 45%;
   }
+    #judulsimimi {
+        margin-left: -40px;
+    }
 }
 
     body { padding:0; font-family: 'Arimo', sans-serif; }
@@ -131,14 +134,14 @@ crossorigin=""></script>
             <a href="/simimi">
             <img src="{{ asset('images') }}/logo-bmkg.png" alt="" width="45" height="55" >
       </div>
-      <div class="w3-col w3-container m10 l11" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+      <div id="judulsimimi" class="w3-col w3-container m10 l11" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
         <a href="/simimi" style="text-decoration: none;">
             <h3 >SiMIMI</h3>
             </a>
 
-            <a href="/" style="text-decoration: none;" >
+<!--             <a href="#" style="text-decoration: none;" id="tentang" class="w3-hide-small">
             <h3>Tentang</h3>
-            </a>
+            </a> -->
 
       </div>
 	</div>
