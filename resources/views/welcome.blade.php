@@ -31,14 +31,14 @@
 
 #mycarousel {
 
-background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+/*background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));*/
 
 /*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));
 background: linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));*/
 
-/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
-background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
+background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
+background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
 
 /*background: rgb(0,0,0);
 background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); */
@@ -177,6 +177,15 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
   box-shadow: 0 0 7px #fff;
   text-shadow: 0 0 3px #fff;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+
+  #judul {
+    font-size: 0.8rem;
+  }
+
+}
 </style>
 @endsection
 @section('content')
@@ -205,8 +214,8 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
                             @foreach ($datas['articles'] as $article)
                         <div class="carousel-item {{ $loop->first ? 'active': '' }}">
                             <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="400" alt="{{ $article->title }}" style="border" >
-                            <div class="carousel-caption d-none d-md-block">
-                               <h5>{{ $article->title }}</h5>
+                            <div class="carousel-caption d-md-block">
+                               <h5 id="judul" >{{ $article->title }}</h5>
                                <a href="/berita/{{ $article->id }}" class=" btn bg-primary text-light" >Baca </a>
                             </div>
                         </div>
@@ -266,7 +275,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
     <h2 class="featurette-heading text-primary">Gempabumi Terkini</span></h2>
     <p class="lead text-primary"> @if ($datas['sms']) {{ $datas['sms']->sms }} @endif  </p>
   </div>
-  <div class="col-md-7 d-none d-sm-block" style="" >
+  <div class="col-md-7 d-none d-sm-block" style="" id="frengki" >
     <div id="map" class="" style="width:85%;height:400px; border-radius: 5px;"></div>
   </div>
 </div>

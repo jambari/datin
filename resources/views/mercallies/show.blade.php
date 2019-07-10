@@ -74,6 +74,7 @@ crossorigin=""></script>
     width: 100%;
     height: 45%;
   }
+
 }
 .leaflet-verticalcenter {
     position: absolute;
