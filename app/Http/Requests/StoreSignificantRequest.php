@@ -33,7 +33,7 @@ class StoreSignificantRequest extends FormRequest
             'magnitudo' => 'required',
             'depth' => 'required',
             'lokasi'=>'required',
-            'dirasakan' => 'required'
+            // 'dirasakan' => 'required'
         ];
     }
 

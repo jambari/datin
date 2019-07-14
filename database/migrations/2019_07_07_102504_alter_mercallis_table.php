@@ -17,7 +17,7 @@ class AlterMercallisTable extends Migration
             $table->dropColumn(['gempa_id','lintang','bujur']);
             $table->integer('gempabalai_id')->nullable()->after('id');
             $table->string('nama')->nullable()->after('gempabalai_id');
-            $table->json('lokasi')->nullable()->after('nama');
+            $table->text('lokasi')->nullable()->after('nama');
         });
     }
 

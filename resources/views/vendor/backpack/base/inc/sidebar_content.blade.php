@@ -67,6 +67,6 @@
 <li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li> --}}
 
 @endif
-<li><a href="{{ backpack_url('balaisms') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa PGR V</span></a></li>
+{{-- <li><a href="{{ backpack_url('balaisms') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa PGR V</span></a></li> --}}
 <li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PGR V DAN ANGKASA</span></a></li>
 <li><a href="{{ backpack_url('significant') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>SIGNIFIKAN / MANUAL</span></a></li>
