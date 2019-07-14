@@ -241,9 +241,19 @@ class SignificantCrudController extends CrudController
 
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {
-            $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
+            if (count($lat) > 4 ) {
+              $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
+            } else {
+              $lat = $lat[1].$lat[2].$lat[3].' LS';
+            }
+            
         } else {
-            $lat = $lat[1].$lat[2].'LU';
+            if (count($lat) >3  ) {
+              $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU'; //2.53
+            } else {
+              $lat = $lat[0].$lat[1].$lat[2].' LU'; //2.5 or 2.50
+            }
+            // $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
         
         return view('gempa.significant')->with(compact('event', 'lat', 'lon'));
