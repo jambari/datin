@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>SiMIMI</title>
+<title>Rasa Gempa ?</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="https://bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -113,12 +113,12 @@ crossorigin=""></script>
 <body>
 	<div class="w3-row w3-bar w3-padding-16 w3-card w3-border-blue" style="position: ; top: 0;">
 	  <div class="w3-col w3-container m2 l1" style="display: flex; justify-content: center; align-items: center;" >
-	  		<a href="/simimi">
+	  		<a href="/">
 			<img src="{{ asset('images') }}/logo-bmkg.png" alt="" width="45" height="55" >
 	  </div>
 	  <div class="w3-col w3-container m10 l11">
-	  	<a href="/simimi" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">
-			<h1>SiMIMI</h1>
+	  	<a href="/" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">
+			<h4>STASIUN GEOFISIKA KELAS I ANGKASAPURA JAYAPURA</h4>
 			</a>
 
 	  </div>
