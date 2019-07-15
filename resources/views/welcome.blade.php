@@ -427,7 +427,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
     $('#clock').fitText(1.3);
 
 function update() {
-  $('#clock').html(moment().format('D. MMMM YYYY H:mm:ss'));
+  $('#clock').html(moment().format('D-M-Y  H:mm:ss'));
 }
 
 setInterval(update, 1000);
