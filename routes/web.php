@@ -39,7 +39,7 @@ Route::get('/gempa/{id}', 'Admin\GempaCrudController@showmap'); // detail earthq
 Route::resource('/mercallies', 'MercallyController');// Indeks Seismisitas
 
 //simimi
-Route::get('/simimi', 'HomeController@simimi');
+Route::get('/rasagempa', 'HomeController@simimi');
 
 
 

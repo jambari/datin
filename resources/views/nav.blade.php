@@ -56,6 +56,9 @@
               
             </ul>
            <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+               <a href="/rasagempa" class="nav-link btn btn-default text-danger">Rasa Gempa ?</a>
+            </li>
              <li class="nav-item">
                <a href="/about" class="nav-link text-light">Tentang Kami</a>
              </li>

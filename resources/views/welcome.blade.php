@@ -237,22 +237,28 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
 <!-- </div> -->
 <!-- The Product Section -->
 <div class="row d-flex justify-content-center align-items-center" style="padding: 10% 5% 10% 5%;" >
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct " style="" >
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct " style="" >
         <p class="text-center" ><i class="wi wi-earthquake text-primary " style=" font-size: 4em " ></i></p>
         <h3 class=" text-center" >Gempabumi</h3>
         <p class="text-center" >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Angkasapura mengamati gempabumi 24/7 hari.</p>
     </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct ">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
         <p class="text-center" ><i class="wi wi-meteor text-primary " style=" font-size: 4em " ></i></p>
         <h3 class="text-center" >Geofisika Potensial</h3>
         <p class="text-center" >Pengamatan variasi harian magnetbumi, pengamatan absolut magnetbumi, dan listrik udara dilakukan secara berkelanjutan.</p>
     </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct ">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
         <p class="text-center" ><i class="wi wi-raindrops text-primary" style=" font-size: 4em "></i></p>
         <h3 class="text-center" >Kualitas Udara</h3>
         <p class="text-center" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
+        <p class="text-center" ><i class="wi wi-tsunami text-primary" style=" font-size: 4em "></i></p>
+        <h3 class="text-center" >Rasa Gempa ?</h3>
+        <p class="text-center" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa">disini</a>. </p>
     </div>
 </div>
 <!-- The Clock Section -->
