@@ -205,7 +205,7 @@ crossorigin=""></script>
 <script src="{{ asset('gjson') }}/plates.js" > </script>
 <script>
 
-var map = L.map('map').setView([-2.5104, 140.714], 8);
+var map = L.map('map').setView([{{ $event->lintang }}, {{ $event->bujur }}], 8);
 // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
  var layer = L.esri.basemapLayer('Topographic').addTo(map);
   var layerLabels;
