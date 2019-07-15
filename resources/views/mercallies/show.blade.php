@@ -186,7 +186,7 @@ crossorigin=""></script>
 			<div class="map-wrapper">
 				<div id="map" style="width:100%; height: 100%;"></div>
                 <div class="w3-container w3-center">
-                    <p >        <?php echo date("Y"); ?> SiMIMI <small>handcrafted by <a href="https://github.com/jambari" style="text-decoration: none;" class="w3-teal" target="_blank">Jambari</a></small>
+                    <p >        <?php echo date("Y"); ?> Stasiun Geofisika Kelas I Angkasapura Jayapura <small>handcrafted by <a href="https://github.com/jambari" style="text-decoration: none;" class="w3-teal" target="_blank">Jambari</a></small>
                         </p>
                 </div>
 			</div>
