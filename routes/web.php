@@ -13,7 +13,7 @@
 
 Route::resource('/mercallies', 'MercallyController');
 
-Route::get('/seismisitas/{id}', 'MercallyController@seismisitas');
+Route::get('/seismisitas/{id}', 'MercallyController@seismisitas')->name('seismisitas');
 
 Route::get('/', 'HomeController@index'); //home
 Route::get('/home', 'HomeController@index'); // home
@@ -43,3 +43,9 @@ Route::get('/simimi', 'HomeController@simimi');
 
 
 
+//buku tamu
+Route::get('/bukutamu', 'GuestController@index' );
+
+Route::resource('/guests', 'GuestController');
+//cari tamu
+Route::any( '/guests/search', 'GuestController@search');
