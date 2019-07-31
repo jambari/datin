@@ -41,7 +41,7 @@
                 <!-- Content -->
                 <h6 class="text-uppercase font-weight-bold">Stageof Angkasa</h6>
                 <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>Stasiun Geofisika Kelas I Angkasapura Jayapura merupakan salah satu UPT BMKG yang terletak di Kota Jayapura. Stageof Angkasa melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.</p>
+                <p>Stasiun Geofisika Kelas I Angkasapura Jayapura merupakan salah satu UPT BMKG yang terletak di Kota Jayapura. Stasiun Geofisika Angkasapura melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.</p>
             </div>
             <!-- Grid column -->
             <!-- Grid column -->
