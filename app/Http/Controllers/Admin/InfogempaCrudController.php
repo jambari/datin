@@ -80,8 +80,8 @@ class InfogempaCrudController extends CrudController
         // $this->crud->removeButtonFromStack($name, $stack);
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
-        $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
-        $this->crud->addButtonFromView('line', 'peta' , 'peta', 'end');
+        $this->crud->addButtonFromView('line', 'peta' , 'peta', 'beginning');
+        $this->crud->addButtonFromView('line', 'peta' , 'peta', 'beginning');
 
         // ------ CRUD ACCESS
         $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'peta']);
