@@ -135,7 +135,7 @@ class GempaCrudController extends CrudController
         // ------ CRUD ACCESS
         $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'press']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
-        $this->crud->addButtonFromView('line', 'press' , 'press', 'end');
+        $this->crud->addButtonFromView('line', 'press' , 'press', 'beginning');
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
