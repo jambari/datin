@@ -9,6 +9,16 @@
       <meta name="description" content="Salah satu UPT BMKG yang terletak di Kota Jayapura. Stasiun Geofisika Kelas I Angkasapura melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.">
       <meta name="keywords" content="Gempabumi terkini, Magnetbumi, Listrik Udara, Percepatan Tanah,Berita Gempabumi, Buletin, Siaran Press">
       <meta name="author" content="Jambari">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145443079-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145443079-1');
+      </script>
+
       @yield('title')
       <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css">
       <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"> 
@@ -40,12 +50,12 @@
          }
          .footer-copyright {
          border-top: 2px solid #95A5A6;
-         background-color: #031424;
+        background-image: url({{ asset('images/brick.png') }});
          }
 
          nav {
-          background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-          background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+/*          background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+          background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));*/
           
 /*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));
 background: linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));*/

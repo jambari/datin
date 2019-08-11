@@ -31,8 +31,8 @@
 
 #mycarousel {
 
-background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+/*background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
+background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));*/
 
 /*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));
 background: linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));*/
@@ -42,10 +42,16 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 
 /*background: rgb(0,0,0);
 background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); */
+
+background-image: url({{ asset('images/brick.png') }});
+margin-top: -1%;
 }
 
 #digital, #analog {
-    background-color: #031424;
+/*    background-color: #031424;*/
+background-image: url({{ asset('images/brick.png') }});
+/*background-size: cover;*/
+background-repeat: repeat;
 }
 
 #analog {
@@ -239,26 +245,25 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
 <div class="row d-flex justify-content-center align-items-center" style="padding: 10% 5% 10% 5%;" >
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct " style="" >
         <p class="text-center" ><i class="wi wi-earthquake text-primary " style=" font-size: 4em " ></i></p>
-        <h3 class=" text-center" >Gempabumi</h3>
-        <p class="text-center" >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Angkasapura mengamati gempabumi 24/7 hari.</p>
+        <h3 class=" text-center text-primary" >Gempabumi</h3>
+        <p class="text-center text-primary " >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Angkasapura mengamati gempabumi 24/7 hari.</p>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
         <p class="text-center" ><i class="wi wi-meteor text-primary " style=" font-size: 4em " ></i></p>
-        <h3 class="text-center" >Geofisika Potensial</h3>
-        <p class="text-center" >Pengamatan variasi harian magnetbumi, pengamatan absolut magnetbumi, dan listrik udara dilakukan secara berkelanjutan.</p>
+        <h3 class="text-center text-primary" >Geofisika Potensial</h3>
+        <p class="text-center text-primary" >Pengamatan variasi harian magnetbumi, pengamatan absolut magnetbumi, dan listrik udara dilakukan secara berkelanjutan.</p>
     </div>
-
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
-        <p class="text-center" ><i class="wi wi-raindrops text-primary" style=" font-size: 4em "></i></p>
-        <h3 class="text-center" >Kualitas Udara</h3>
-        <p class="text-center" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mainproduct ">
+        <p class="text-center " ><i class="wi wi-raindrops text-primary" style=" font-size: 4em "></i></p>
+        <h3 class="text-center text-primary" >Kualitas Udara</h3>
+        <p class="text-center text-primary" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
         <p class="text-center" ><i class="wi wi-tsunami text-primary" style=" font-size: 4em "></i></p>
-        <h3 class="text-center" >Rasa Gempa ?</h3>
-        <p class="text-center" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa">disini</a>. </p>
+        <h3 class="text-center text-primary" >Rasa Gempa ?</h3>
+        <p class="text-center text-primary" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa">disini</a>. </p>
     </div>
 </div>
 <!-- The Clock Section -->
