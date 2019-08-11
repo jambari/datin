@@ -263,7 +263,7 @@ background-repeat: repeat;
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
         <p class="text-center" ><i class="wi wi-tsunami text-primary" style=" font-size: 4em "></i></p>
         <h3 class="text-center text-primary" >Rasa Gempa ?</h3>
-        <p class="text-center text-primary" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa">disini</a>. </p>
+        <p class="text-center text-primary" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa" class="btn btn-primary">disini</a>. </p>
     </div>
 </div>
 <!-- The Clock Section -->

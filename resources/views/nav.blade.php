@@ -44,7 +44,7 @@
                </li>
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  LAYANAN DATA
+                  Layanan Data
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <a class="dropdown-item " href="/datald" target="_blank" >Peta Petir</a>
