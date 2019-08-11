@@ -3,7 +3,7 @@
 /public/berita
 /public/storage
 /storage/*.key
-/vendor
+/storage/app/
 /.idea
 /.vscode
 /.vagrant
