@@ -49,3 +49,6 @@ Route::get('/bukutamu', 'GuestController@index' );
 Route::resource('/guests', 'GuestController');
 //cari tamu
 Route::any( '/guests/search', 'GuestController@search');
+
+//layanan data
+Route::get('/datald', 'LayanandataController@indexpetir' );
