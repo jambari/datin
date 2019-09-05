@@ -87,7 +87,7 @@ class GempaCrudController extends CrudController
                 'name' => 'sumber',
                 'label' => 'Sumber',
                 'type' => 'select_from_array',
-                'options' => ['angkasa'=>'Angkasa', 'pgr v' => 'PGR V', 'pgn'=>'PGN'],
+                'options' => ['angkasa'=>'Angkasa', 'pgr v' => 'PGR V', 'pgn'=>'PGN', 'bmkg' => 'BMKG', 'usgs' => 'USGS'],
                 'default' => 'angkasa'
             ], [
                 'name' => 'petugas',
