@@ -21,6 +21,9 @@ Route::get('/about', 'HomeController@about'); // about us
 Route::get('/gempa/terkini', 'HomeController@terkini'); // table of up recent eqs
 Route::get('/gempa/recentmap', 'HomeController@recentmap'); //several latest eqs map
 Route::get('/gempa/statistik', 'HomeController@statistik'); // statistik and earthquake
+
+Route::any('/statistik/search', 'HomeController@searcheq'); // statistik and earthquake
+
 Route::get('/admin/dashboard', 'DashboardController@index'); // dashboard page
 Route::get('/charts', 'HomeController@charts' ); // charts
 Route::get('/magnet', 'HomeController@magnet' ); // charts

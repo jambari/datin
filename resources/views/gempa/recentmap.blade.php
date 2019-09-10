@@ -65,7 +65,7 @@ crossorigin=""/>
 		<div class="col-md-3">
 			<table class="table table-bordered">
 				<tr>
-					<td class="text-center"><img src="/images/earthquake.png" alt="" height="25" width="20" > <span>Gempa terakhir</span> </td>
+					<td class="text-center"><img src="/images/icongempa.png" alt="" height="25" width="20" > <span>Gempa terakhir</span> </td>
 				</tr>
 			</table>
 		</div>

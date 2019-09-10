@@ -43,13 +43,13 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 /*background: rgb(0,0,0);
 background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); */
 
-background-image: url({{ asset('images/brick.png') }});
+background-image: url({{ asset('images/snow.png') }});
 margin-top: -1%;
 }
 
 #digital, #analog {
 /*    background-color: #031424;*/
-background-image: url({{ asset('images/brick.png') }});
+background-image: url({{ asset('images/snow.png') }});
 /*background-size: cover;*/
 background-repeat: repeat;
 }
@@ -64,11 +64,13 @@ background-repeat: repeat;
       font-family: 'liquid_crystalregular', sans-serif;
   user-select: none;
   user-drag: none;
+
 }
 
 #mycarousel div h3 {
     font-family: 'Bad Script', cursive;
     padding: 5%;
+
 }
     .css-icon {}
 
@@ -101,7 +103,7 @@ background-repeat: repeat;
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.4)
     ),
-    url('./images/seiscomp3.jpg');
+    url('./images/lidya.jpg');
    background-size: cover;
    }
 
@@ -109,7 +111,7 @@ background-repeat: repeat;
         width:180px;
         height:180px;
         position:relative;
-        border:6px solid #ffffff;
+        border:6px solid #151414;
         border-radius:50%;
         box-shadow:0 1px 8px rgba(34, 34, 34, 0.3),inset 0 1px 8px rgba(34, 34, 34, 0.3);
     }
@@ -124,7 +126,7 @@ background-repeat: repeat;
     width:12px;
     height:12px;
     margin:-6px 0 0 -6px;
-    background:#ffffff;
+    background:#151414;
     border-radius:6px;
     content:"";
     display:block;
@@ -137,7 +139,7 @@ background-repeat: repeat;
     left:50%;
     margin:-4px 0 -4px -25%;
     padding:4px 0 4px 25%;
-    background:#ffffff;
+    background:#151414;
     -webkit-transform-origin:100% 50%;
     -ms-transform-origin:100% 50%;
     transform-origin:100% 50%;
@@ -151,7 +153,7 @@ background-repeat: repeat;
     left:50%;
     margin:-40% -3px 0;
     padding:40% 3px 0;
-    background:#ffffff;
+    background:#151414;
     -webkit-transform-origin:50% 100%;
     -ms-transform-origin:50% 100%;
     transform-origin:50% 100%;
@@ -165,7 +167,7 @@ background-repeat: repeat;
     left:50%;
     margin:-40% -1px 0 0;
     padding:40% 1px 0;
-    background:#ffffff;
+    background:#151414;
     -webkit-transform-origin:50% 100%;
     -ms-transform-origin:50% 100%;
     transform-origin:50% 100%;
@@ -177,7 +179,7 @@ background-repeat: repeat;
   line-height: 100px;
   margin: 150px auto 0;
   padding: 0 50px;
-  color: #ffffff;
+  color: #151414;
   text-align: center;
   border-radius: 15px;
   box-shadow: 0 0 7px #fff;
@@ -263,7 +265,7 @@ background-repeat: repeat;
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
         <p class="text-center" ><i class="wi wi-tsunami text-primary" style=" font-size: 4em "></i></p>
         <h3 class="text-center text-primary" >Rasa Gempa ?</h3>
-        <p class="text-center text-primary" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa" class="btn btn-primary">disini</a>. </p>
+        <p class="text-center text-primary" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa" class="text-primary">disini</a>. </p>
     </div>
 </div>
 <!-- The Clock Section -->

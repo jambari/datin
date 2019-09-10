@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Traits\UploadTrait;
 use App\Mercally;
-use App\Models\Balaigempa;
+use App\Models\Gempa;
 
 class MercallyController extends Controller
 {
@@ -61,7 +61,7 @@ class MercallyController extends Controller
     public function show(Mercally $mercally) {
 
     	$mmis = Mercally::where('gempabalai_id',$mercally)->get();
-        $event = Balaigempa::find($mercally);
+        $event = Gempa::find($mercally);
 
 		return view('mercallies.show', compact('mmis','event'));
     }
@@ -69,7 +69,7 @@ class MercallyController extends Controller
     public function seismisitas($id) {
 
     	$mmis = Mercally::where('gempabalai_id',$id)->get();
-        $event = Balaigempa::find($id);
+        $event = Gempa::find($id);
 
 		return view('mercallies.show', compact('mmis','event'));
     }

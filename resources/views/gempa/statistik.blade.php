@@ -10,6 +10,7 @@
 
 @section('content')
 <br>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -20,7 +21,29 @@
         </div>
     </div>
 </div>
-<div class="container">
+
+<div class="container" style="margin-top: 3%;">
+        <h5>Silahkan Lengkapi formulir di bawah ini !</h5>
+        <form action="/statistik/search" method="POST" role="search">
+            {{ csrf_field() }}
+             
+            <div class="form-group">
+                <label for="start">Tanggal awal / Start date</label>
+                <input type="date" class="form-control" name="start" required >
+            </div>
+            <div class="form-group">
+                <label for="akhir">Tanggal akhir / End date</label>
+                <input type="date" class="form-control" name="end" required>
+            </div>
+            <div class="form-group">
+            <button type="submit" class="btn btn-secondary btn-block btn-lg">
+                <span class="glyphicon glyphicon-search">Cari</span>
+            </button>
+            </div>
+        </form>
+</div>
+
+{{-- <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
@@ -90,6 +113,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <br>
 @endsection

@@ -31,6 +31,6 @@ class Mercally extends Model
 
     public function balaigempa()
     {
-        return $this->belongsTo('App\Models\Balaigempa');
+        return $this->belongsTo('App\Models\Gempa');
     } 
 }

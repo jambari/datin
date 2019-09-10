@@ -50,7 +50,7 @@
          }
          .footer-copyright {
          border-top: 2px solid #95A5A6;
-        background-image: url({{ asset('images/brick.png') }});
+        background-image: url({{ asset('images/snow.png') }});
          }
 
          nav {

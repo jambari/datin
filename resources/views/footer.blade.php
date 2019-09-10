@@ -39,9 +39,9 @@
             <!-- Grid column -->
             <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
                 <!-- Content -->
-                <h6 class="text-uppercase font-weight-bold">Stasiun Geofisika Kelas I ANgkasapura</h6>
+                <h6 class="text-uppercase font-weight-bold">Stasiun Geofisika Kelas I Jayapura</h6>
                 <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>Stasiun Geofisika Kelas I Angkasapura Jayapura merupakan salah satu UPT BMKG yang terletak di Kota Jayapura. Stasiun Geofisika Kelas I Angkasapura melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.</p>
+                <p>Stasiun Geofisika Kelas I  Jayapura merupakan salah satu UPT BMKG yang terletak di Kota Jayapura. Stasiun Geofisika Kelas I Jayapura melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.</p>
             </div>
             <!-- Grid column -->
             <!-- Grid column -->
@@ -100,7 +100,7 @@
     <!-- Copyright -->
     <div class="footer-copyright text-center text-light py-3">©
         <?php echo date("Y"); ?>
-            <a class="text-light" href="http://stageof.angkasa.bmkg.go.id"> Stasiun Geofisika Kelas I Angkasapura Jayapura</a>
+            <a class="text-light" href="http://stageof.angkasa.bmkg.go.id" style="text-decoration: none;" > Stasiun Geofisika Kelas I Jayapura</a>
     </div>
     <!-- Copyright -->
 </footer>

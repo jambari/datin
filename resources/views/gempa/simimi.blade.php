@@ -136,7 +136,7 @@ crossorigin=""></script>
       </div>
       <div id="judulsimimi" class="w3-col w3-container m10 l11" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
         <a href="/" style="text-decoration: none;">
-            <h4>STASIUN GEOFISIKA KELAS I ANGKASAPURA JAYAPURA</h4>
+            <h4>STASIUN GEOFISIKA KELAS I JAYAPURA</h4>
             </a>
 
 <!--             <a href="#" style="text-decoration: none;" id="tentang" class="w3-hide-small">

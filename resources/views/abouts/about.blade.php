@@ -2,7 +2,7 @@
 
 @extends('main')
 @section('title')
-<title>Tentang - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+<title>Tentang - Stasiun Geofisika Kelas I Jayapura</title>
 @section('after_style')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
 <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
@@ -40,9 +40,9 @@
                             <br>
                             <p class="text-justify" > <strong class="text-primary" >Stasiun 
                                 Geofisika Kelas I 
-                                Angkasapura  Jayapura</strong>
+                                 Jayapura</strong>
                                 terletak  di  jalan  Drs.  Krisna 
-                                Sunarya   No.   26   Kelurahan   Angkasapura   Distrik   Jayapura   Utara   Provinsi 
+                                Sunarya   No.   26   Kelurahan     Distrik   Jayapura   Utara   Provinsi 
                                 Papua.Titik   dasar   stasiun   terletak   pada   02°30
                                 '
                                 52,59375"Lintang   Selatan   dan 
@@ -50,7 +50,7 @@
                                 dengan  elevasi 444.97 meter dan gravitasi sebesar 
                                 978105.39  mgal
                                 .  Stasiun  Geofisika 
-                                Angkasapura  Jayapura  merupakan  salah  satu 
+                                 Jayapura  merupakan  salah  satu 
                                 dari dua Stasiun Geofisika yang terdapat di Papua dan merupakan Unit Pelaksana 
                                 Teknis   (UPT)   yang   berta
                                 nggung   jawab   langsung   kepada   Kepala   Badan 
@@ -70,9 +70,9 @@
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
                                 <p class="text-justify">
-                                <strong class="text-primary" >Stasiun  Geofisika  Klas  I  Angkasapura  Jayapura</strong> mulai  beroperasi  sejak  tahun  1972 dibawah  Lembaga  Meteorologi  dan  Geofisika  Jakarta dan  pada tanggal  9 Pebruari 1973 diresmikan  operasionalnya  oleh Menteri  Perhubungan  Drs.   Frans   Seda. Pada   tanggal   3   Pebruari   1973 pertama kali   dioperasikan peralatan Seismograph    Fotografik    Sprengnether    3    Komponen. Melalui kerjasama Pusat  Meteorologi  dan  Geofisika  dengan  <a href="https://en.unesco.org">UNESCO</a> , pada  tahun  1977 dibantu    peralatan    operasional Visual    Seismograph    Short    Period    SPS-1 (Kinematric) dan Strong    Motion    Accelerograph    (SMA-1) untuk    deteksi gempabumi kuat. Pada tahun 1998 kerjasama BMG dengan ERI Tokyo University sebagai   bagian   dalam OHP   (Ocean Hemisphere   of   Pacific   Project) yang diprakarsai  oleh JAMSTEC  ( <a href="https://jamstec.go.jp/e/">Japan  Agency  for  Marine - Earth  Science  And Technology</a>),  mengoperasikan peralatan Digital  Broadband  Seismograph  STS-1 Very  Broadband  Seismometer.
+                                <strong class="text-primary" >Stasiun  Geofisika  Klas  I   Jayapura</strong> mulai  beroperasi  sejak  tahun  1972 dibawah  Lembaga  Meteorologi  dan  Geofisika  Jakarta dan  pada tanggal  9 Pebruari 1973 diresmikan  operasionalnya  oleh Menteri  Perhubungan  Drs.   Frans   Seda. Pada   tanggal   3   Februari   1973 pertama kali   dioperasikan peralatan Seismograph    Fotografik    Sprengnether    3    Komponen. Melalui kerjasama Pusat  Meteorologi  dan  Geofisika  dengan  <a href="https://en.unesco.org">UNESCO</a> , pada  tahun  1977 dibantu    peralatan    operasional Visual    Seismograph    Short    Period    SPS-1 (Kinematric) dan Strong    Motion    Accelerograph    (SMA-1) untuk    deteksi gempabumi kuat. Pada tahun 1998 kerjasama BMG dengan ERI Tokyo University sebagai   bagian   dalam OHP   (Ocean Hemisphere   of   Pacific   Project) yang diprakarsai  oleh JAMSTEC  ( <a href="https://jamstec.go.jp/e/">Japan  Agency  for  Marine - Earth  Science  And Technology</a>),  mengoperasikan peralatan Digital  Broadband  Seismograph  STS-1 Very  Broadband  Seismometer.
                                 </p>
-                                <p class="text-justify">Kemudian pada tahun 2000, kerjasama BMG dengan <a href="https:/ctbto.org">CTBTO (Comprehensive Nuclear-Test-Ban Treaty Organization)</a> sebagai salah satu stasiun pendukung ( <em>Auxialary Station</em>) dengan kode AS041, mengoperasikan peralatan Digital Broadband Seismograph CMG - 3T,  dan pada tanggal  10 Desember 2011 digantikan  dengan <em>Digital  Broadband Seismograph Trilium</em>. Pasca gempabumi Aceh 26  Nopember 2004, pada tahun 2005 dibangun peralatan InaTEWS (Indonesia Tsunami Early Warning System) berupa peralatan <em>Digital Broadband Seismograph STS-2</em> dengan sarana komunikasi LIBRA. Duplikasi fungsi antara peralatan <a href="https:/ctbto.org">CTBTO</a> dan InaTEWS Libra maka kemudian pada tahun 2010  peralatan <em>Digital  Broadband  Seismograph  STS-2</em> dipindahkan ke Nabire. Fungsi jaringan InaTEWS di Jayapura hanya mengoperasikan peralatan <a href="https:/ctbto.org">CTBTO</a>. Pada  tahun 2010 dan 2012 berturut-turut melalui kegiatan Belanja  Modal BMKG Jakarta, <strong class="text-primary">Stasiun  Geofisika Kelas  I Angkasapura  Jayapura</strong>  mendapat  tambahan  peralatan survery berupa <em>Portable Digital Seismograph Taide  TDV-23S</em>, dan <em>Accelerograph  Titan_0077</em> untuk mengukur nilai PGA ( <em>Peak Ground Acceleration</em> ). </p>
+                                <p class="text-justify">Kemudian pada tahun 2000, kerjasama BMG dengan <a href="https:/ctbto.org">CTBTO (Comprehensive Nuclear-Test-Ban Treaty Organization)</a> sebagai salah satu stasiun pendukung ( <em>Auxialary Station</em>) dengan kode AS041, mengoperasikan peralatan Digital Broadband Seismograph CMG - 3T,  dan pada tanggal  10 Desember 2011 digantikan  dengan <em>Digital  Broadband Seismograph Trilium</em>. Pasca gempabumi Aceh 26  Desember 2004, pada tahun 2005 dibangun peralatan InaTEWS (Indonesia Tsunami Early Warning System) berupa peralatan <em>Digital Broadband Seismograph STS-2</em> dengan sarana komunikasi LIBRA. Duplikasi fungsi antara peralatan <a href="https:/ctbto.org">CTBTO</a> dan InaTEWS Libra maka kemudian pada tahun 2010  peralatan <em>Digital  Broadband  Seismograph  STS-2</em> dipindahkan ke Nabire. Fungsi jaringan InaTEWS di Jayapura hanya mengoperasikan peralatan <a href="https:/ctbto.org">CTBTO</a>. Pada  tahun 2010 dan 2012 berturut-turut melalui kegiatan Belanja  Modal BMKG Jakarta, <strong class="text-primary">Stasiun  Geofisika Kelas  I  Jayapura</strong>  mendapat  tambahan  peralatan survery berupa <em>Portable Digital Seismograph Taide  TDV-23S</em>, dan <em>Accelerograph  Titan_0077</em> untuk mengukur nilai PGA ( <em>Peak Ground Acceleration</em> ). </p>
                             </div>
                         </div>
                     </div>

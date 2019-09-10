@@ -55,7 +55,7 @@
 				      	<td> {{ $gempa->magnitudo }} </td>
 				      	<td> {{ $gempa->depth }} </td>
 				      	<td> {{ $gempa->ket }} </td>
-				      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-success" > Peta </a></td>
+				      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-secondary" > Peta </a></td>
 				    </tr>
 		  	@endforeach
 		 	@endif

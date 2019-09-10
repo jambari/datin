@@ -118,7 +118,7 @@ crossorigin=""></script>
 	  </div>
 	  <div class="w3-col w3-container m10 l11">
 	  	<a href="/" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">
-			<h4>STASIUN GEOFISIKA KELAS I ANGKASAPURA JAYAPURA</h4>
+			<h4>STASIUN GEOFISIKA KELAS I JAYAPURA</h4>
 			</a>
 
 	  </div>
