@@ -1,6 +1,6 @@
 @extends('main')
 @section('title')
-<title>Buletin - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+<title>Buletin - Stasiun Geofisika Kelas I Jayapura</title>
 @section('after_style')
 <style type="text/css" media="screen">
 #news ul a:hover{

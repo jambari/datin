@@ -1,6 +1,6 @@
 @extends('main')
 @section('title')
-<title>Petir realtime  - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+<title>Petir realtime  - Stasiun Geofisika Kelas I Jayapura</title>
 @section('after_style')
 
 

@@ -19,7 +19,7 @@
                         <i class="fa fa-twitter text-primary mr-4"> </i>
                     </a>
                     <!-- Google +-->
-                    <a class="gplus-ic" href="mailto:stageof.angkasa@gmail.com" target="_blank">
+                    <a class="gplus-ic" href="mailto:stageof.jayapura@gmail.com" target="_blank">
                         <i class="fa fa-google-plus text-primary mr-4"> </i>
                     </a>
                     <!--Instagram-->

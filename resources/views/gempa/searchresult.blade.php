@@ -1,6 +1,6 @@
 @extends('main')
 @section('title')
-<title>Gempabumi - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+<title>Pencarian Gempabumi - Stasiun Geofisika Kelas I Jayapura</title>
 @endsection
 @section('after_style')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"

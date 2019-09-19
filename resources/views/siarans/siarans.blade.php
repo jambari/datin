@@ -1,6 +1,6 @@
 @extends('main')
 @section('title')
-<title>Siaran Press - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+<title>Siaran Press - Stasiun Geofisika Kelas I Jayapura</title>
 @endsection
 
 

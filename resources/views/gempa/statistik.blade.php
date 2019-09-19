@@ -1,6 +1,6 @@
 @extends('main')
 @section('title')
-<title>Gempabumi - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+<title>Gempabumi statistik- Stasiun Geofisika Kelas I Jayapura</title>
 @section('after_style')
 
 <style type="text/css" media="screen">

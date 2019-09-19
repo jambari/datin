@@ -1,6 +1,6 @@
 @extends('main')
 @section('title')
-<title>Berita - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+<title>Berita - Stasiun Geofisika Kelas I Jayapura</title>
 @endsection
 @section('after_style')
 <link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">

@@ -20,7 +20,7 @@ margin: 0 auto;
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box box-header with-border">
-                    <h1 class="box-title">ESDX PGR V dan ANGKASA</h1>
+                    <h1 class="box-title">ESDX PGR V dan Jayapura</h1>
                 </div>
                 <div class="box-body">
                     <div class="row">

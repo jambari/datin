@@ -1,6 +1,6 @@
 @extends('main')
 @section('title')
-<title>Grafik - Stasiun Geofisika Kelas I Angkasapura Jayapura</title>
+<title>Grafik - Stasiun Geofisika Kelas I Jayapura</title>
 @endsection
 
 @section('after_style')

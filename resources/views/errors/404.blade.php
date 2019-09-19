@@ -14,6 +14,13 @@
         display: table;
         font-weight: 100;
         font-family: 'Lato';
+        background:
+        linear-gradient(
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.4)
+    ),
+    url({{ asset('images/error404.jpg') }});
+        background-size: cover;
       }
 
       .container {
@@ -37,6 +44,7 @@
 
       .explanation {
         font-size: 24px;
+
       }
     </style>
   </head>
@@ -44,12 +52,12 @@
     <div class="container">
       <div class="content">
         <div class="title">404</div>
-        <div class="quote">Page not found.</div>
+        <div class="quote">Adooh, de pu halaman yang ko cari tra ada !</div>
         <div class="explanation">
           <br>
           <small>
             <?php
-              $default_error_message = "Please return to <a href='".url('')."'>our homepage</a>.";
+              $default_error_message = "Co kembali ke <a href='".url('')."' style='text-decoration: none; color: white;'>halaman beranda</a>.";
             ?>
             {!! isset($exception)? ($exception->getMessage()?$exception->getMessage():$default_error_message): $default_error_message !!}
          </small>
