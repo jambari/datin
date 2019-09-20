@@ -122,7 +122,7 @@ crossorigin=""/>
         <div class="col-md-3">
             <table class="table table-bordered">
                 <tr>
-                    <td class="text-center"><img src="/images/felt.png" alt="" width="30" height="30" > <span>Gempa terakhir</span> </td>
+                    <td class="text-center"><img src="/images/felt.png" alt="" width="30" height="30" > <span>Gempa dirasakan</span> </td>
                 </tr>
             </table>
         </div>
@@ -312,6 +312,42 @@ var map = L.map('map').setView([-2.5104, 140.714], 6);
         iconSize:     [27, 27], // size of the icon
 
     });
+
+        var patahanStyle = {
+            "color": "#2C4B48",
+            "weight": 0.7,
+            "opacity": 0.9
+        };
+
+        //style for subduksi
+
+        var subduksiStyle = {
+            "color": "#0A70C4",
+            "weight": 1,
+            "opacity": 0.5,
+            "fillColor": 'transparent',
+        }
+
+        function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+            if (feature.properties && feature.properties.PlateName) {
+                layer.bindPopup(feature.properties.PlateName);
+            }
+        }
+
+        L.geoJSON(pataHan, {
+            style : patahanStyle,
+        }).addTo(map); //add patahan symbol
+
+        // L.geoJSON(worldPlates, {
+        //     style: subduksiStyle,
+        //     onEachFeature: onEachFeature
+        // }).addTo(mymap);
+
+        //plot subduction
+        L.geoJSON(subDuksi, {
+            style: subduksiStyle
+        }).addTo(map);
 
     @if ($eq1s->count() > 0)
         @foreach ($eq1s as $eq)
