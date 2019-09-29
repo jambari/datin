@@ -32,6 +32,15 @@
       .content {
         text-align: center;
         display: inline-block;
+        background-color: #990033;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";       /* IE 8 */
+        filter: alpha(opacity=50);  /* IE 5-7 */
+        -moz-opacity: 0.2;          /* Netscape */
+        -khtml-opacity: 0.5;        /* Safari 1.x */
+        opacity: 0.5; 
+        text-decoration: weight; 
+        padding: 2%;
+        border-radius: 1%;
       }
 
       .title {
@@ -50,17 +59,17 @@
   </head>
   <body>
     <div class="container">
-      <div class="content">
+      <div class="content" style="">
         <div class="title">404</div>
-        <div class="quote">Adooh, de pu halaman yang ko cari tra ada !</div>
+        <div class="quote" style="z-index: 1;">Adooh, de pu halaman yang ko cari tra ada !</div>
         <div class="explanation">
           <br>
-          <small>
+          <strong style="z-index: 1; text-decoration: weight;">
             <?php
               $default_error_message = "Co kembali ke <a href='".url('')."' style='text-decoration: none; color: white;'>halaman beranda</a>.";
             ?>
             {!! isset($exception)? ($exception->getMessage()?$exception->getMessage():$default_error_message): $default_error_message !!}
-         </small>
+         </strong>
        </div>
       </div>
     </div>
