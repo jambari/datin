@@ -26,10 +26,20 @@
       </a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Tentang</a></li>
+        <li><a href="#">Alur</a></li>
+        <li><a href="#">Data</a></li>
+        <li><a href="#">Jasa</a></li>
+        <li><a href="#">Study Tour</a></li>
+        <li><a href="#">Goes to School</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
         <li><a href="#">Tentang</a></li>
+        <li><a href="#">Alur</a></li>
+        <li><a href="#">Data</a></li>
+        <li><a href="#">Jasa</a></li>
+        <li><a href="#">Study Tour</a></li>
+        <li><a href="#">Goes to School</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
@@ -253,34 +263,34 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+          <h5 class="white-text">Layanan Data dan Jasa <small>Stasiun Geofisika Kelas I Jayapura</small> </h5>
+          <p class="grey-text text-lighten-4">Laman situs ini merupakan platform pelayanan jasa dan data di Stasiun Geofisika Kelas I Jayapura yang bertujuan untuk memudahkan pengguna data dan jasa tanpa harus datang langsung ke kantor kami.</p>
 
 
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
+          <h5 class="white-text">Jenis Layanan</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+            <li><a class="white-text" href="#!">Data</a></li>
+            <li><a class="white-text" href="#!">Jasa</a></li>
+            <li><a class="white-text" href="#!">Study Tour</a></li>
+            <li><a class="white-text" href="#!">Goes To School</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
+          <h5 class="white-text">Kontak</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+            <li><a class="white-text" href="#!">Jayapura, 99613, ID</a></li>
+            <li><a class="white-text" href="#!"><i class="material-icons" >mail</i> stageof.jayapura@gmail.com</a></li>
+            <li><a class="white-text" href="#!"><i class="material-icons" >local_phone</i> (0967) 533533</a></li>
+            <li><a class="white-text" href="#!"><i class="material-icons" >stay_current_portrait</i> +6285254010512</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      &copy; Hak Cipta <a class="brown-text text-lighten-3" href="http://materializecss.com">Stasiun Geofisika Kelas I Jayapura <?php echo date("Y"); ?></a>
+      &copy; Hak Cipta <a class="brown-text text-lighten-3" href="http://stageof.jayapura.bmkg.go.id">Stasiun Geofisika Kelas I Jayapura <?php echo date("Y"); ?></a>
       </div>
     </div>
   </footer>

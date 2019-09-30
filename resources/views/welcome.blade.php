@@ -248,7 +248,7 @@ background-repeat: repeat;
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct " style="" >
         <p class="text-center" ><i class="wi wi-earthquake text-primary " style=" font-size: 4em " ></i></p>
         <h3 class=" text-center text-primary" >Gempabumi</h3>
-        <p class="text-center text-primary " >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Angkasapura mengamati gempabumi 24/7 hari.</p>
+        <p class="text-center text-primary " >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Jayapura mengamati gempabumi 24/7 hari.</p>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
