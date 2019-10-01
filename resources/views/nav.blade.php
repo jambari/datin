@@ -18,7 +18,7 @@
                </li>
                <li class="nav-item ">
                   <a class="nav-link text-light" href="/bulletins">Buletin</a>
-               </li>                 
+               </li>
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="/gempa" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Gempabumi
@@ -33,7 +33,7 @@
                </li>
                <li class="nav-item ">
                   <a class="nav-link text-light" href="/magnet">Magnetbumi</a>
-               </li>        
+               </li>
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Listrik Udara
@@ -43,17 +43,17 @@
                   </div>
                </li>
                <li class="nav-item ">
-                  <a class="nav-link text-light" href="/layanandata">Layanan Data</a>
-               </li>    
+                  <a class="nav-link text-light" href="/layanan">Layanan Data dan Jasa</a>
+               </li>
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Media 
+                  Media
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <a class="dropdown-item " href="https://www.youtube.com/channel/UCS5S4ImDRZmuC80EzvqKU6A" target="_blank" >Youtube</a>
                   </div>
                </li>
-              
+
             </ul>
            <ul class="navbar-nav ml-auto">
             <li class="nav-item ">

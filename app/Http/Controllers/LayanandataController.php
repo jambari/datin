@@ -8,6 +8,6 @@ class LayanandataController extends Controller
 {
     public function index()
     {
-    	return view('petirs.index');
+    	return view('layanans.index');
     }
 }
