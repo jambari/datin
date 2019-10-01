@@ -1,4 +1,3 @@
-
 @extends('main')
 @section('title')
 <title>Home - Stasiun Geofisika Kelas I Jayapura</title>

@@ -54,4 +54,4 @@ Route::resource('/guests', 'GuestController');
 Route::any( '/guests/search', 'GuestController@search');
 
 //layanan data
-Route::get('/datald', 'LayanandataController@indexpetir' );
+Route::get('/layanandata', 'LayanandataController@index' );

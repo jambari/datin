@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class LayanandataController extends Controller
 {
-    public function indexpetir()
+    public function index()
     {
     	return view('petirs.index');
     }

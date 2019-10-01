@@ -42,14 +42,9 @@
                      <a class="dropdown-item " href="http://36.91.166.187/angkasa/" target="_blank" >Realtime</a>
                   </div>
                </li>
-               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-light" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Layanan Data
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <a class="dropdown-item " href="/datald" target="_blank" >Peta Petir</a>
-                  </div>
-               </li>
+               <li class="nav-item ">
+                  <a class="nav-link text-light" href="/layanandata">Layanan Data</a>
+               </li>    
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Media 
