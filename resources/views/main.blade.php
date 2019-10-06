@@ -49,27 +49,14 @@
          text-align: center;
          }
          .footer-copyright {
-         border-top: 2px solid #95A5A6;
-        background-image: url({{ asset('images/snow.png') }});
+         border-top: 2px solid #95A5A6;    
+         background-color: #23B5C8;          
          }
 
          nav {
-/*          background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-          background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));*/
-          
-/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));
-background: linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));*/
-
-
-
-
-        /*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
-        background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
-/*
-background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); 
-
-*/
+              background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;ckground: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%);
          }
       </style>
       @yield('after_style')
@@ -90,6 +77,12 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rg
 <!--End of Tawk.to Script-->
    </head>
    <body>
+    <div style="position: fixed; top: -10px; bottom:0; width: 100%; height: 100%; z-index: -1;">
+        <video id="video" autoplay muted loop  style="width:100%; height:100%">
+          <source id="mp4" src="video/seiscomp3.mp4" type="video/mp4">
+          <p>Your user agent does not support the HTML5 Video element.</p>
+        </video>
+    </div>
          <div id="fb-root"></div>
          <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=331075104258748&autoLogAppEvents=1"></script>
       @yield('alert')

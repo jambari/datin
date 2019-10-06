@@ -45,7 +45,11 @@
     </div>
   </nav>
 
-  <div id="index-banner" class="parallax-container">
+  <div id="index-banner" class="parallax-container" style="    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.3)
+    );">
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
@@ -53,14 +57,14 @@
         <div class="row center">
           <h5 class="header col s12 light">Di Pelayanan Data dan Jasa Stasiun Geofisika Kelas I Jayapura</h5>
         </div>
-        <div class="row center">
-          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Mulai Jelajah</a>
-        </div>
+{{--         <div class="row center">
+          <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Mulai Jelajah</a>
+        </div> --}}
         <br><br>
 
       </div>
     </div>
-    <div class="parallax"><img src="{{ asset('images/background1.jpg') }}" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="{{ asset('images/background4.JPG') }}" alt="Unsplashed background img 1"></div>
   </div>
 
 
@@ -76,6 +80,9 @@
 
             <p class="light center-align">Ajukan permintaan data anda secara online. Kami akan mengirimkannya ke email anda. Permintaan data belum pernah semudah ini.</p>
           </div>
+          <div class="row center">
+            <a href="#" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
+          </div>
         </div>
 
         <div class="col s12 m3">
@@ -86,14 +93,20 @@
             <p class="light center-align">
             Anda dapat menyewa peralatan kami untuk keperluan penelitian anda. Bingung mengoperasikannya ? Kami memiliki tim ahli yang siap memandu anda.</p>
           </div>
+          <div class="row center">
+            <a href="#" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
+          </div>
         </div>
 
         <div class="col s12 m3">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">local_library</i><i class="material-icons">drive_eta</i></h2>
-            <h5 class="center">Study Tour</h5>
+            <h5 class="center">Internship</h5>
 
-            <p class="light center-align">Ajak siswa-siswi anda mempelajari gempabumi, magnetbumi, dan listrik udara serta berbagai jenis peralatan geofisika langsung di kantor kami.</p>
+            <p class="light center-align">Dapatkan pengalaman kerja dengan praktik kerja (magang) di Stasiun Geofisika.</p>
+          </div>
+          <div class="row center">
+            <a href="#" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
 
@@ -103,7 +116,10 @@
             <h5 class="center">Goes To School</h5>
 
             <p class="light center-align">
-            Undang tim dari Stasiun Geofisika Kelas I Jayapura berkunjung ke sekolah anda. Selain hemat waktu dan transportasi, sekolah anda juga akan menerima sertifikat dari kami.</p>
+            Silahkan berkunjung ke kantor kami atau undang kami ke sekolah anda. Berbagi pengetahuan seputar gempabumi dan tsunami serta dampaknya dengan sosialisasi.</p>
+          </div>
+          <div class="row center">
+            <a href="#" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
       </div>
@@ -112,7 +128,7 @@
   </div>
 
 
-  <div class="parallax-container valign-wrapper">
+{{--   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
@@ -121,9 +137,9 @@
       </div>
     </div>
     <div class="parallax"><img src="{{ asset('images/background2.jpg') }}" alt="Unsplashed background img 2"></div>
-  </div>
+  </div> --}}
 
-  <div class="container">
+{{--   <div class="container">
     <div class="section">
 
       <div class="row">
@@ -183,10 +199,10 @@
       </div>
 
     </div>
-  </div>
+  </div> --}}
 
 
-  <div class="parallax-container valign-wrapper">
+{{--   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
@@ -195,9 +211,9 @@
       </div>
     </div>
     <div class="parallax"><img src="{{ asset('images/background3.jpg') }}" alt="Unsplashed background img 3"></div>
-  </div>
+  </div> --}}
 
-  <div class="container">
+{{--   <div class="container">
     <div class="section">
 
       <div class="row">
@@ -257,7 +273,7 @@
       </div>
 
     </div>
-  </div>
+  </div> --}}
 
   <footer class="page-footer teal">
     <div class="container">

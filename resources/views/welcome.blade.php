@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
 <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 <style>
+html, body {  }
+
     .carousel-item:after {
       content:"";
       display:block;
@@ -31,29 +33,27 @@
 
 #mycarousel {
 
-/*background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));*/
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;ckground: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%);
+    margin-top: -1%;
+}
 
-/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));
-background: linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));*/
-
-/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
-background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
-
-/*background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); */
-
-background-image: url({{ asset('images/snow.png') }});
-margin-top: -1%;
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 #digital, #analog {
-/*    background-color: #031424;*/
-background-image: url({{ asset('images/snow.png') }});
-/*background-size: cover;*/
-background-repeat: repeat;
+    background-color: #23B5C8;
 }
-
 #analog {
     padding-top: 3%;
     margin-bottom: -4%;
@@ -194,9 +194,18 @@ background-repeat: repeat;
   }
 
 }
+
+
+
 </style>
 @endsection
 @section('content')
+    <div style="position: fixed; top: -10px; bottom:0; width: 100%; height: 100%; z-index: -1;">
+        <video id="video" autoplay muted loop  style="width:100%; height:100%">
+          <source id="mp4" src="video/seiscomp3.mp4" type="video/mp4">
+          <p>Your user agent does not support the HTML5 Video element.</p>
+        </video>
+    </div>
 <!-- <br>
 <div class="container"> -->
     <div class="row" id="mycarousel">
@@ -268,8 +277,8 @@ background-repeat: repeat;
         <p class="text-center text-primary" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa" class="text-primary">disini</a>. </p>
     </div>
 </div>
-<!-- The Clock Section -->
-<div class="row d-flex justify-content-center align-items-center" style="" id="analog" >
+
+<div class="row d-flex justify-content-center align-items-center " style="" id="analog" >
     <div class="hero-circle">
         <div class="hero-face">
             <div id="hour" class="hero-hour"></div>

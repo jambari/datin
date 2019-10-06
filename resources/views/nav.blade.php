@@ -1,4 +1,4 @@
-      <nav class="navbar navbar-expand-lg fixed-top" style="background-image: url({{ asset('images/snow.png') }});" >
+      <nav class="navbar navbar-expand-lg fixed-top" style="" >
          <a class="navbar-brand bg-light" href="/" style="padding: 0.5%;" >
          <img src="{{ asset('images') }}/logo-bmkg.png" alt="logo" width="35" height="40" >
          </a>
