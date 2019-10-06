@@ -77,12 +77,6 @@
 <!--End of Tawk.to Script-->
    </head>
    <body>
-    <div style="position: fixed; top: -10px; bottom:0; width: 100%; height: 100%; z-index: -1;">
-        <video id="video" autoplay muted loop  style="width:100%; height:100%">
-          <source id="mp4" src="video/seiscomp3.mp4" type="video/mp4">
-          <p>Your user agent does not support the HTML5 Video element.</p>
-        </video>
-    </div>
          <div id="fb-root"></div>
          <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=331075104258748&autoLogAppEvents=1"></script>
       @yield('alert')

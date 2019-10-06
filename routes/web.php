@@ -55,3 +55,9 @@ Route::any( '/guests/search', 'GuestController@search');
 
 //layanan data
 Route::get('/layanan', 'LayanandataController@index' );
+Route::get('/layanan/tentang', 'LayanandataController@tentang' );
+Route::get('/layanan/tarif', 'LayanandataController@tarif' );
+Route::get('/layanan/magang', 'LayanandataController@magang' );
+Route::get('/layanan/gts', 'LayanandataController@gts' );
+Route::get('/layanan/data', 'LayanandataController@data' );
+Route::get('/layanan/jasa', 'LayanandataController@jasa' );

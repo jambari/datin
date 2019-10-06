@@ -200,12 +200,7 @@ html, body {  }
 </style>
 @endsection
 @section('content')
-    <div style="position: fixed; top: -10px; bottom:0; width: 100%; height: 100%; z-index: -1;">
-        <video id="video" autoplay muted loop  style="width:100%; height:100%">
-          <source id="mp4" src="video/seiscomp3.mp4" type="video/mp4">
-          <p>Your user agent does not support the HTML5 Video element.</p>
-        </video>
-    </div>
+
 <!-- <br>
 <div class="container"> -->
     <div class="row" id="mycarousel">

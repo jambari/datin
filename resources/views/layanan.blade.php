@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="google-site-verification" content="crkf_-9RUsSJIOL-JaHqe4PvArgwD5mQmqGd4P3bbS8" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Pelayanan Data dan Jasa Stasiun Geofisika Kelas I Jayapura</title>
+  @yield('title')
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <meta name="description" content="Platform Pelayanan Jasa di Stasiun Geofisika Kelas I Jayapura">
+      <meta name="keywords" content="Pelayanan Data dan Informasi, Pelayanan Jasa, Magang, Goes TO School">
+      <meta name="author" content="Jambari">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145443079-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'UA-145443079-1');
+      </script>
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="{{ asset('css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="shortcut icon" href="https://bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
   <style>
     @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -17,6 +31,20 @@
   }
 }
   </style>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5cd3aeaed07d7e0c6392a561/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    console.log('Developer: jambari07@gmail.com ');
+    console.log('Github: https://github.com/jambari ');
+</script>
 </head>
 <body>
   <nav class="white" role="navigation">
@@ -25,107 +53,27 @@
         <img src="{{ asset('images/logo-bmkg.png') }}" alt="" class="responsive-img" style="width: 20%" >
       </a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Tentang</a></li>
-        <li><a href="#">Alur</a></li>
-        <li><a href="#">Data</a></li>
-        <li><a href="#">Jasa</a></li>
-        <li><a href="#">Study Tour</a></li>
-        <li><a href="#">Goes to School</a></li>
+        <li><a href="/layanan/tentang">Tentang</a></li>
+        <li><a href="/layanan/tarif">Tarif</a></li>
+        <li><a href="/layanan/data">Data</a></li>
+        <li><a href="/layanan/jasa">Jasa</a></li>
+        <li><a href="/layanan/magang">Magang</a></li>
+        <li><a href="/layanan/gts">Goes to School</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Tentang</a></li>
-        <li><a href="#">Alur</a></li>
-        <li><a href="#">Data</a></li>
-        <li><a href="#">Jasa</a></li>
-        <li><a href="#">Study Tour</a></li>
-        <li><a href="#">Goes to School</a></li>
+        <li><a href="/layanan/tentang">Tentang</a></li>
+        <li><a href="/layanan/tarif">Tarif</a></li>
+        <li><a href="/layanan/data">Data</a></li>
+        <li><a href="/layanan/jasa">Jasa</a></li>
+        <li><a href="/layanan/magang">Magang</a></li>
+        <li><a href="/layanan/gts">Goes to School</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
 
-  <div id="index-banner" class="parallax-container" style="    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.8),
-      rgba(0, 0, 0, 0.3)
-    );">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br><br>
-        <h1 class="header center teal-text text-lighten-2">Selamat Datang</h1>
-        <div class="row center">
-          <h5 class="header col s12 light">Di Pelayanan Data dan Jasa Stasiun Geofisika Kelas I Jayapura</h5>
-        </div>
-{{--         <div class="row center">
-          <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Mulai Jelajah</a>
-        </div> --}}
-        <br><br>
-
-      </div>
-    </div>
-    <div class="parallax"><img src="{{ asset('images/background4.JPG') }}" alt="Unsplashed background img 1"></div>
-  </div>
-
-
-  <div class="">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m3">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">donut_small</i><i class="material-icons">insert_chart</i></h2>
-            <h5 class="center">Permintaan Data</h5>
-
-            <p class="light center-align">Ajukan permintaan data anda secara online. Kami akan mengirimkannya ke email anda. Permintaan data belum pernah semudah ini.</p>
-          </div>
-          <div class="row center">
-            <a href="#" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
-          </div>
-        </div>
-
-        <div class="col s12 m3">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">transfer_within_a_station</i><i class="material-icons">business_center</i></h2>
-            <h5 class="center">Pelayanan Jasa</h5>
-
-            <p class="light center-align">
-            Anda dapat menyewa peralatan kami untuk keperluan penelitian anda. Bingung mengoperasikannya ? Kami memiliki tim ahli yang siap memandu anda.</p>
-          </div>
-          <div class="row center">
-            <a href="#" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
-          </div>
-        </div>
-
-        <div class="col s12 m3">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">local_library</i><i class="material-icons">drive_eta</i></h2>
-            <h5 class="center">Internship</h5>
-
-            <p class="light center-align">Dapatkan pengalaman kerja dengan praktik kerja (magang) di Stasiun Geofisika.</p>
-          </div>
-          <div class="row center">
-            <a href="#" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
-          </div>
-        </div>
-
-        <div class="col s12 m3">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i><i class="material-icons">business</i></h2>
-            <h5 class="center">Goes To School</h5>
-
-            <p class="light center-align">
-            Silahkan berkunjung ke kantor kami atau undang kami ke sekolah anda. Berbagi pengetahuan seputar gempabumi dan tsunami serta dampaknya dengan sosialisasi.</p>
-          </div>
-          <div class="row center">
-            <a href="#" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+  @yield('content')
 
 
 {{--   <div class="parallax-container valign-wrapper">
@@ -299,14 +247,14 @@
             <li><a class="white-text" href="#!">Jayapura, 99613, ID</a></li>
             <li><a class="white-text" href="#!"><i class="material-icons" >mail</i> stageof.jayapura@gmail.com</a></li>
             <li><a class="white-text" href="#!"><i class="material-icons" >local_phone</i> (0967) 533533</a></li>
-            <li><a class="white-text" href="#!"><i class="material-icons" >stay_current_portrait</i> +6285254010512</a></li>
+            <li><a class="white-text" href="#!"><i class="material-icons" >stay_current_portrait</i> +628114891151</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      &copy; Hak Cipta <a class="brown-text text-lighten-3" href="http://stageof.jayapura.bmkg.go.id">Stasiun Geofisika Kelas I Jayapura <?php echo date("Y"); ?></a>
+      &copy; Hak Cipta <a class="brown-text text-lighten-3" href="http://stageof.jayapura.bmkg.go.id">Stasiun Geofisika Kelas I Jayapura <?php echo date("Y"); ?></a> Crafted By <a href="https://github.com/jambari" class="brown-text text-lighten-3" target="_blank">Author</a>
       </div>
     </div>
   </footer>
