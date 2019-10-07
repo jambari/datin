@@ -23,6 +23,7 @@
   <link href="{{ asset('css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="shortcut icon" href="https://bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
+  @yield('after_style')
   <style>
     @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -264,6 +265,6 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{{ asset('js/materialize.js') }}"></script>
   <script src="{{ asset('js/init.js') }}"></script>
-
+  @yield('after_script')
   </body>
 </html>
