@@ -23,12 +23,12 @@
 				        </div>
 				        <div class="card-content">
 				        	<span class="card-title teal-text lighten-2">Peta Kegempaan</span>
-				          	<p>Peta Kegempaan merupakan informasi sebaran gempabumi untuk perencanaan kontruksi. Tarif dibawah berlaku untuk data per tahun. Tarif berlaku kelipatan sesuai jumlah tahun yang tahun.</p>
+				          	<p>Peta Kegempaan merupakan informasi sebaran gempabumi untuk perencanaan kontruksi. Tarif dibawah berlaku untuk data per tahun. Tarif berlaku kelipatan sesuai jumlah tahun yang diminta.</p>
 				        </div>
 						<div class="card sticky-action">
 						    <div class="card-action">
 				               <a href="#">Rp250.000</a>
-				               <a href="#">Pesan</a>
+				               <a href="/layanan/formulir/1">Pesan</a>
 							</div>
 						</div>
 	           
@@ -47,7 +47,7 @@
 			        <div class="card sticky-action">
 					    <div class="card-action">
 			               <a href="#">Rp200.000</a>
-			               <a href="#">Pesan</a>
+			               <a href="/layanan/formulir/2">Pesan</a>
 						</div>
 			        </div>
 			      </div>
@@ -65,12 +65,35 @@
 			        <div class="card sticky-action">
 						<div class="card-action">
 							<a href="#">Rp50.000</a>
-			            	<a href="#">Pesan</a>
+			            	<a href="/layanan/formulir/3">Pesan</a>
 						</div>
 			        </div>
 			      </div>
 			    </div>
 			  </div>
+		</div>
+		<div class="section">
+			  <div class="row">
+			    <div class="col s12 m4">
+				    <div class="card">
+				        <div class="card-image">
+				          <img src="{{ asset('images/layanan/kejadianpetir.jpg') }}">
+				        </div>
+				        <div class="card-content">
+				        	<span class="card-title teal-text lighten-2">Peta Kejadian Petir</span>
+				          	<p>Peta Kejadian Petir  merupakan informasi geofisika berisi sebaran sambaran petir per hari per lokasi.Tarif berlaku kelipatan sesuai jumlah hari</p>
+				        </div>
+						<div class="card sticky-action">
+						    <div class="card-action">
+				               <a href="#">Rp75.000</a>
+				               <a href="/layanan/formulir/4">Pesan</a>
+							</div>
+						</div>
+	           
+				    </div>
+			    </div>
+
+			</di>
 		</div>
 	</div>
 @endsection

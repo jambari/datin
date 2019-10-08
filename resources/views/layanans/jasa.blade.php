@@ -28,7 +28,7 @@
 						<div class="card sticky-action">
 						    <div class="card-action">
 				               <a href="#">Rp230.000</a>
-				               <a href="#">Pesan</a>
+				               <a href="/layanan/formulir/5">Pesan</a>
 							</div>
 						</div>
 	           
@@ -47,7 +47,7 @@
 			        <div class="card sticky-action">
 					    <div class="card-action">
 			               <a href="#">Rp640.000</a>
-			               <a href="#">Pesan</a>
+			               <a href="/layanan/formulir/6">Pesan</a>
 						</div>
 			        </div>
 			      </div>
@@ -65,7 +65,7 @@
 			        <div class="card sticky-action">
 						<div class="card-action">
 							<a href="#">Rp400.000</a>
-			            	<a href="#">Pesan</a>
+			            	<a href="/layanan/formulir/7">Pesan</a>
 						</div>
 			        </div>
 			      </div>

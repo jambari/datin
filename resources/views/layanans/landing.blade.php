@@ -84,4 +84,45 @@
 
     </div>
   </div>
+  <div class="divider"></div>
+  <div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l10">
+              <h5 class="teal-text lighten-2 center-align " >Status Permohonan</h5>
+                <table class="striped highlight">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nama</th>
+                        <th>Jenis Permohonan/perihal</th>
+                        <th>Status</th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Stefani Ambyar</td>
+                      <td>Peta Kegempaan 2018 Papua</td>
+                      <td><span class=" badge red darken-1 white-text">Belum diproses</span></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Judika</td>
+                      <td>Peta Kerawanan Petir Kota Jayapura 2016</td>
+                      <td><span class=" badge yellow darken-1 white-text">Sedang diproses</span></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Nabila</td>
+                      <td>Peta Kejadian Petir 01 Oktober 2019</td>
+                      <td><span class=" badge green darken-1 white-text">Selesai diproses</span></td>
+                    </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+    </div>
+  </div>
 @endsection

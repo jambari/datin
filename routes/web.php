@@ -61,3 +61,4 @@ Route::get('/layanan/magang', 'LayanandataController@magang' );
 Route::get('/layanan/gts', 'LayanandataController@gts' );
 Route::get('/layanan/data', 'LayanandataController@data' );
 Route::get('/layanan/jasa', 'LayanandataController@jasa' );
+Route::get('/layanan/formulir/{id}', 'LayanandataController@formulir' );

@@ -50,7 +50,7 @@
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="/layanan" class="brand-logo">
+      <a id="logo-container" href="/" class="brand-logo">
         <img src="{{ asset('images/logo-bmkg.png') }}" alt="" class="responsive-img" style="width: 20%" >
       </a>
       <ul class="right hide-on-med-and-down">
@@ -236,10 +236,11 @@
         <div class="col l3 s12">
           <h5 class="white-text">Jenis Layanan</h5>
           <ul>
-            <li><a class="white-text" href="#!">Data</a></li>
-            <li><a class="white-text" href="#!">Jasa</a></li>
-            <li><a class="white-text" href="#!">Study Tour</a></li>
-            <li><a class="white-text" href="#!">Goes To School</a></li>
+            <li><a class="white-text" href="/layanan/tarif">Tarif</a></li>
+            <li><a class="white-text" href="/layanan/data">Data</a></li>
+            <li><a class="white-text" href="/layanan/jasa">Jasa</a></li>
+            <li><a class="white-text" href="/layanan/magang">Magang</a></li>
+            <li><a class="white-text" href="/layanan/gts">Goes To School</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
