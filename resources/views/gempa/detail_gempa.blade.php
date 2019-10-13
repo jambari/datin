@@ -69,11 +69,21 @@
         </div>
     </div>
 </div>
-<br>
+<div class="container">
+    <div class="row">
+        <div class="col align-self-center">
+            <div class="alert alert-warning">
+                <p>
+                    Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-JAY
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group row">
+            <div class="form-group">
               <label for="basemap" class="form-control">Pilih Jenis Peta</label>
               <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)" class="form-control">
                 <option value="NationalGeographic" selected >National Geographic</option>
@@ -92,28 +102,27 @@
         </div>
     </div>
 </div>
-<br>
 <!-- this is eq map -->
-<div class="container" id="isi">
-    <div class="row">
+<div class="container" id="isi" >
+    <div class="row" style="margin: px;">
         <div class="col-md-12 col-lg-12">
             <div id="streetmap">
-                <div id="map" style="width:100%;height:500px; border-radius: 5px;"></div>
+                <div id="map" style="width:100%;height:550px; border-radius: 5px;"></div>
             </div>
         </div>
     </div>
 </div>
 <br>
 <!-- eq parameter -->
-<div class="container">
-    <div class="row">
+<div class="container" >
+    <div class="row" style="margin: px;">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
                     <img src="{{ asset('images/mag.png') }}" alt="Magnitude" aria-hidden="true"> Magnitudo
                 </div>
                 <div class="card-body">
-                    <p class="card-text" style="font-size: " >M <span class="badge badge-primary">{{ $mag }}</span></p>
+                    <p class="card-text" style="font-size:1.5em" >M <span class="badge badge-danger">{{ $mag }}</span></p>
                 </div>
             </div>
         </div>
@@ -172,10 +181,10 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
+<div class="container" >
+    <div class="row" style="margin: px;">
         <div class="col-md-12">
-            <img class="img-responsive" src=" {{ asset('images') }}/green2.png " alt="logo" width="100%" height="%" style="" >
+            <img class="img-responsive" src=" {{ asset('images') }}/medsos2.JPG " alt="logo" width="100%" height="%" style="" >
         </div>
     </div>
 </div>
