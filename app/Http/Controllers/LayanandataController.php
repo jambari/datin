@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Layanan;
+
 
 class LayanandataController extends Controller
 {
@@ -42,6 +44,13 @@ class LayanandataController extends Controller
     public function gts()
     {
     	return view('layanans.gts');
+    }
+
+    public function daftar()
+    {
+        $permohonans = Layanan::latest()->paginate(10);
+        return view('layanans.daftar',compact('permohonans'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     //Permintaan magang

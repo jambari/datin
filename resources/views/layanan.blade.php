@@ -54,21 +54,23 @@
         <img src="{{ asset('images/logo-bmkg.png') }}" alt="" class="responsive-img" style="width: 20%" >
       </a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/layanan/tentang">Tentang</a></li>
-        <li><a href="/layanan/tarif">Tarif</a></li>
-        <li><a href="/layanan/data">Data</a></li>
-        <li><a href="/layanan/jasa">Jasa</a></li>
-        <li><a href="/layanan/magang">Magang</a></li>
-        <li><a href="/layanan/gts">Goes to School</a></li>
+        <li><a href="/layanandata/tentang">Tentang</a></li>
+        <li><a href="/layanandata/tarif">Tarif</a></li>
+        <li><a href="/layanandata/data">Data</a></li>
+        <li><a href="/layanandata/jasa">Jasa</a></li>
+        <li><a href="/layanandata/magang">Magang</a></li>
+        <li><a href="/layanandata/gts">Goes to School</a></li>
+        <li><a href="/layanandata/daftar">Daftar Permohonan</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="/layanan/tentang">Tentang</a></li>
-        <li><a href="/layanan/tarif">Tarif</a></li>
-        <li><a href="/layanan/data">Data</a></li>
-        <li><a href="/layanan/jasa">Jasa</a></li>
-        <li><a href="/layanan/magang">Magang</a></li>
-        <li><a href="/layanan/gts">Goes to School</a></li>
+        <li><a href="/layanandata/tentang">Tentang</a></li>
+        <li><a href="/layanandata/tarif">Tarif</a></li>
+        <li><a href="/layanandata/data">Data</a></li>
+        <li><a href="/layanandata/jasa">Jasa</a></li>
+        <li><a href="/layanandata/magang">Magang</a></li>
+        <li><a href="/layanandata/gts">Goes to School</a></li>
+        <li><a href="/layanandata/daftar">Daftar Permohonan</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
@@ -236,11 +238,11 @@
         <div class="col l3 s12">
           <h5 class="white-text">Jenis Layanan</h5>
           <ul>
-            <li><a class="white-text" href="/layanan/tarif">Tarif</a></li>
-            <li><a class="white-text" href="/layanan/data">Data</a></li>
-            <li><a class="white-text" href="/layanan/jasa">Jasa</a></li>
-            <li><a class="white-text" href="/layanan/magang">Magang</a></li>
-            <li><a class="white-text" href="/layanan/gts">Goes To School</a></li>
+            <li><a class="white-text" href="/layanandata/tarif">Tarif</a></li>
+            <li><a class="white-text" href="/layanandata/data">Data</a></li>
+            <li><a class="white-text" href="/layanandata/jasa">Jasa</a></li>
+            <li><a class="white-text" href="/layanandata/magang">Magang</a></li>
+            <li><a class="white-text" href="/layanandata/gts">Goes To School</a></li>
           </ul>
         </div>
         <div class="col l3 s12">

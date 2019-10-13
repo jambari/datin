@@ -8,8 +8,8 @@
 			  <nav>
 			    <div class="nav-wrapper teal">
 			      <div class="col s12">
-			        <a href="/layanan" class="breadcrumb">Home</a>
-			        <a href="/layanan/jasa" class="breadcrumb">Jasa Penyewaan Peralatan</a>
+			        <a href="/layanandata" class="breadcrumb">Home</a>
+			        <a href="/layanandata/jasa" class="breadcrumb">Jasa Penyewaan Peralatan</a>
 			      </div>
 			    </div>
 			  </nav>
@@ -28,7 +28,7 @@
 						<div class="card sticky-action">
 						    <div class="card-action">
 				               <a href="#">Rp230.000</a>
-				               <a href="/layanan/formulir/5">Pesan</a>
+				               <a href="/layanandata/formulir/5">Pesan</a>
 							</div>
 						</div>
 	           
@@ -47,7 +47,7 @@
 			        <div class="card sticky-action">
 					    <div class="card-action">
 			               <a href="#">Rp640.000</a>
-			               <a href="/layanan/formulir/6">Pesan</a>
+			               <a href="/layanandata/formulir/6">Pesan</a>
 						</div>
 			        </div>
 			      </div>
@@ -65,7 +65,7 @@
 			        <div class="card sticky-action">
 						<div class="card-action">
 							<a href="#">Rp400.000</a>
-			            	<a href="/layanan/formulir/7">Pesan</a>
+			            	<a href="/layanandata/formulir/7">Pesan</a>
 						</div>
 			        </div>
 			      </div>

@@ -54,11 +54,16 @@ Route::resource('/guests', 'GuestController');
 Route::any( '/guests/search', 'GuestController@search');
 
 //layanan data
-Route::get('/layanan', 'LayanandataController@index' );
-Route::get('/layanan/tentang', 'LayanandataController@tentang' );
-Route::get('/layanan/tarif', 'LayanandataController@tarif' );
-Route::get('/layanan/magang', 'LayanandataController@magang' );
-Route::get('/layanan/gts', 'LayanandataController@gts' );
-Route::get('/layanan/data', 'LayanandataController@data' );
-Route::get('/layanan/jasa', 'LayanandataController@jasa' );
-Route::get('/layanan/formulir/{id}', 'LayanandataController@formulir' );
+Route::get('/layanandata', 'LayanandataController@index',['name' => 'layanan.data']);
+Route::get('/layanandata/tentang', 'LayanandataController@tentang' );
+Route::get('/layanandata/tarif', 'LayanandataController@tarif' );
+Route::get('/layanandata/magang', 'LayanandataController@magang' );
+Route::get('/layanandata/gts', 'LayanandataController@gts' );
+Route::get('/layanandata/data', 'LayanandataController@data' );
+Route::get('/layanandata/jasa', 'LayanandataController@jasa' );
+Route::get('/layanandata/formulir/{id}', 'LayanandataController@formulir' );
+Route::get('/layanandata/daftar', 'LayanandataController@daftar' );
+
+//crud Layanan
+Route::resource('/layanans', 'LayananController');
+//cari tamu

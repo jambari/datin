@@ -43,7 +43,7 @@
                   </div>
                </li>
                <li class="nav-item ">
-                  <a class="nav-link text-light" href="/layanan">Layanan Data dan Jasa</a>
+                  <a class="nav-link text-light" href="/layanandata">Layanan Data dan Jasa</a>
                </li>  
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

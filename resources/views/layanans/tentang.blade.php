@@ -8,8 +8,8 @@
 			  <nav>
 			    <div class="nav-wrapper teal">
 			      <div class="col s12">
-			        <a href="/layanan" class="breadcrumb">Home</a>
-			        <a href="/layanan/tentang" class="breadcrumb">Tentang</a>
+			        <a href="/layanandata" class="breadcrumb">Home</a>
+			        <a href="/layanandata/tentang" class="breadcrumb">Tentang</a>
 			      </div>
 			    </div>
 			  </nav>

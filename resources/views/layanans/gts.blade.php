@@ -33,8 +33,8 @@
 			  <nav>
 			    <div class="nav-wrapper teal">
 			      <div class="col s12">
-			        <a href="/layanan" class="breadcrumb">Home</a>
-			        <a href="/layanan/gts" class="breadcrumb">Goes To School</a>
+			        <a href="/layanandata" class="breadcrumb">Home</a>
+			        <a href="/layanandata/gts" class="breadcrumb">Goes To School</a>
 			      </div>
 			    </div>
 			  </nav>
@@ -136,55 +136,71 @@
 		        <div class="col s12 center">
 		          <h3><i class="mdi-content-send brown-text"></i></h3>
 		          <h4 class="teal-text lighten-2">FORMLIR PERMOHONAN GOES TO SCHOOL/FIELDTRIP</h4>
-		          <form class="col s12">
-		              <div class="row">
-		                <div class="input-field col s6">
-		                  <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-		                  <label for="nama">Nama lengkap</label>
-		                </div>
-		                <div class="input-field col s6">
-		                  <input id="last_name" type="text" class="validate">
-		                  <label for="instansi">Instansi/Perusahaan/Perguruan Tinggi</label>
-		                </div>
-		              </div>
-		              <div class="row">
-		                <div class="input-field col s6">
-		                  <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-		                  <label for="alamat">Alamat</label>
-		                </div>
-		                <div class="input-field col s6">
-		                  <input id="last_name" type="email" class="validate">
-		                  <label for="email">Email</label>
-		                </div>
-		              </div>
-		              <div class="row">
-		                <div class="input-field col s6">
-		                  <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-		                  <label for="telepon">No Telepon/HP</label>
-		                </div>
-		                <div class="input-field col s6">
-		                  <input id="last_name" type="text" class="validate" value="" >
-		                  <label for="jenis">Perihal</label>
-		                </div>
-		              </div>
-		              <div class="row">
-		                <div class="input-field col s12">
-		                  <div class="file-field input-field">
-		                    <div class="btn">
-		                      <span>File</span>
-		                      <input type="file" multiple>
-		                    </div>
-		                    <div class="file-path-wrapper">
-		                      <input class="file-path validate" type="text" placeholder="Unggah surat permohonan">
-		                    </div>
-		                  </div>
-		                </div>
-		              </div>
-		                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-		                  <i class="material-icons right">send</i>
-		                </button>
-		            </div>
-		          </form>
+	          <form class="col s12" action="{{ action('LayananController@store') }}" method="POST" enctype="multipart/form-data">
+	          	{{ csrf_field() }}
+	              <div class="row">
+                    @if ($errors->any())
+                        <div class="badge red darken-2">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+	                <div class="input-field col s6">
+	                  <input placeholder="Placeholder" id="first_name" type="text" class="validate" required="required" name="nama"  >
+	                  <label for="nama">Nama lengkap</label>
+	                  @if($errors->has('email'))<span class="helper-text" data-error="wrong" data-success="right">Helper text</span>@endif
+	                </div>
+	                <div class="input-field col s6">
+	                  <input id="last_name" type="text" class="validate" name="instansi" required="required">
+	                  <label for="instansi">Instansi/Perusahaan/Perguruan Tinggi</label>
+
+	                  @if($errors->has('email'))<span class="helper-text" data-error="wrong" data-success="right">Helper text</span>@endif
+	                </div>
+	              </div>
+	              <div class="row">
+	                <div class="input-field col s6">
+	                  <input placeholder="Placeholder" id="first_name" type="text" class="validate" required="required" name="alamat">
+	                  <label for="alamat">Alamat</label>
+	                  @if($errors->has('email'))<span class="helper-text" data-error="wrong" data-success="right">Helper text</span>@endif
+	                </div>
+	                <div class="input-field col s6">
+	                  <input id="last_name" type="email" class="validate" name="email" required="required">
+	                  <label for="email">Email</label>
+	                  @if($errors->has('email'))<span class="helper-text" data-error="wrong" data-success="right">Helper text</span>@endif
+	                </div>
+	              </div>
+	              <div class="row">
+	                <div class="input-field col s6">
+	                  <input placeholder="Placeholder" id="first_name" type="text" class="validate" name="handphone" required="required">
+	                  <label for="telepon">No Telepon/HP</label>
+	                  @if($errors->has('email'))<span class="helper-text" data-error="wrong" data-success="right">Helper text</span>@endif
+	                </div>
+	                <div class="input-field col s6">
+	                  <input id="last_name" type="text" class="validate" value="Goes To School" name="jenis_data" required="required">
+	                  <label for="jenis">Jenis Data</label>
+	                </div>
+	              </div>
+	              <div class="row">
+	                <div class="input-field col s12">
+	                  <div class="file-field input-field">
+	                    <div class="btn">
+	                      <span>File</span>
+	                      <input type="file" multiple name="surat" required="required">
+	                    </div>
+	                    <div class="file-path-wrapper">
+	                      <input class="file-path validate" type="text" placeholder="Unggah surat permohonan">
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+	                  <i class="material-icons right">send</i>
+	                </button>
+	            </div>
+	          </form>
 		        </div>
 		    </div>
 	    </div>

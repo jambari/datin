@@ -39,7 +39,7 @@
             <p class="light center-align">Ajukan permintaan data anda secara online. Kami akan mengirimkannya ke email anda. Permintaan data belum pernah semudah ini.</p>
           </div>
           <div class="row center">
-            <a href="/layanan/data" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
+            <a href="/layanandata/data" id="download-button" class="btn waves-effect waves-light teal lighten-1 "><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
 
@@ -52,7 +52,7 @@
             Anda dapat menyewa peralatan kami untuk keperluan penelitian anda. Bingung mengoperasikannya ? Kami memiliki tim ahli yang siap memandu anda.</p>
           </div>
           <div class="row center">
-            <a href="/layanan/jasa" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
+            <a href="/layanandata/jasa" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
 
@@ -64,7 +64,7 @@
             <p class="light center-align">Dapatkan pengalaman kerja dengan praktik kerja (magang) di Stasiun Geofisika.</p>
           </div>
           <div class="row center">
-            <a href="/layanan/magang" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
+            <a href="/layanandata/magang" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
 
@@ -77,7 +77,7 @@
             Silahkan berkunjung ke kantor kami atau undang kami ke sekolah anda. Berbagi pengetahuan seputar gempabumi dan tsunami serta dampaknya dengan sosialisasi.</p>
           </div>
           <div class="row center">
-            <a href="/layanan/gts" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
+            <a href="/layanandata/gts" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
       </div>
@@ -125,4 +125,20 @@
         </div>
     </div>
   </div>
+@endsection
+
+@section('after_script')
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+</script>
 @endsection

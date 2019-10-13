@@ -6,7 +6,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\LayananRequest as StoreRequest;
-use App\Http\Requests\LayananRequest as UpdateRequest;
+use App\Http\Requests\UpdateLayananRequest as UpdateRequest;
 
 /**
  * Class LayananCrudController
@@ -36,8 +36,11 @@ class LayananCrudController extends CrudController
 
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
+        // $this->crud->addColumns([
+        //     'nama','instansi', 'alamat', 'email', 'handphone', 'jenis_data', 'surat', 'status'
+        // ]);
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
-        // $this->crud->removeColumn('column_name'); // remove a column from the stack
+        //$this->crud->removeColumn('surat'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
@@ -47,6 +50,63 @@ class LayananCrudController extends CrudController
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
+        $this->crud->setColumnDetails('surat', ['label' => 'Surat']);
+        $this->crud->addField([
+                'name' => 'nama',
+                'label' => 'Nama',
+                'type' => 'text',
+        ]);
+
+        $this->crud->addField([
+                'name' => 'instansi',
+                'label' => 'Instansi',
+                'type' => 'text',
+        ]);
+
+        $this->crud->addField([
+                'name' => 'alamat',
+                'label' => 'Alamat',
+                'type' => 'text',
+        ]);
+
+        $this->crud->addField([
+                'name' => 'email',
+                'label' => 'Email',
+                'type' => 'text',
+        ]);
+
+        $this->crud->addField([
+                'name' => 'handphone',
+                'label' => 'Nomor HP',
+                'type' => 'text',
+        ]);
+
+        $this->crud->addField([
+                'name' => 'jenis_data',
+                'label' => 'Jenis Data',
+                'type' => 'text',
+        ]);
+
+
+        $this->crud->addField([   // Upload
+            'name' => 'surat',
+            'label' => 'Surat Permohonan',
+            'type' => 'upload',
+            'upload' => true,
+            'disk' => 'uploads', // if you store files in the /public folder, please ommit this; if you store them in /storage or S3, please specify it;
+            // optional:
+          ]);
+
+        $this->crud->addField(
+            [ // select_from_array
+                'name' => 'status',
+                'label' => "Status",
+                'type' => 'select_from_array',
+                'options' => ['1' => 'sedang diproses', '2' => 'selesai diproses', '3' => 'Tagihan belum ditransfer', '4' => 'Telah diterima pemohon' ],
+                'allows_null' => false,
+                // 'allows_multiple' => true, // OPTIONAL; needs you to cast this to array in your model;
+            ]);
+
 
         // add asterisk for fields that are required in LayananRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
@@ -63,7 +123,7 @@ class LayananCrudController extends CrudController
         // $this->crud->removeAllButtonsFromStack('line');
 
         // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
