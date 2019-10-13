@@ -84,7 +84,7 @@
 
     </div>
   </div>
-  <div class="divider"></div>
+{{--   <div class="divider"></div>
   <div class="section">
     <div class="container">
         <div class="row">
@@ -124,7 +124,7 @@
           </div>
         </div>
     </div>
-  </div>
+  </div> --}}
 @endsection
 
 @section('after_script')
