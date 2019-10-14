@@ -46,6 +46,13 @@ class LayanandataController extends Controller
     	return view('layanans.gts');
     }
 
+    //Alur Pelayanan
+    public function alur()
+    {
+        return view('layanans.alur');
+    }
+
+    //Daftar Permohonan
     public function daftar()
     {
         $permohonans = Layanan::latest()->paginate(10);

@@ -2,6 +2,19 @@
 @section('title')
   <title>Pelayanan Data dan Jasa Stasiun Geofisika Kelas I Jayapura</title>
 @endsection
+@section('after_style')
+  <style>
+/*    #alur {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.0),
+      rgba(0, 0, 0, 0.0)
+    ),
+    url('./images/layanan/Slide1.PNG');
+   background-size: cover;
+    }*/
+  </style>
+@endsection
 @section('content')
   <div id="index-banner" class="parallax-container" style="    background:
     linear-gradient(
@@ -11,7 +24,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">Selamat Datang</h1>
+        <h1 class="header center teal-text text-lighten-2">SELAMAT DATANG</h1>
         <div class="row center">
           <h5 class="header col s12 light">Di Pelayanan Data dan Jasa Stasiun Geofisika Kelas I Jayapura</h5>
         </div>
@@ -84,61 +97,39 @@
 
     </div>
   </div>
-{{--   <div class="divider"></div>
-  <div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m12 l10">
-              <h5 class="teal-text lighten-2 center-align " >Status Permohonan</h5>
-                <table class="striped highlight">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Nama</th>
-                        <th>Jenis Permohonan/perihal</th>
-                        <th>Status</th>
-                      </tr>
-                  </thead>
 
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Stefani Ambyar</td>
-                      <td>Peta Kegempaan 2018 Papua</td>
-                      <td><span class=" badge red darken-1 white-text">Belum diproses</span></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Judika</td>
-                      <td>Peta Kerawanan Petir Kota Jayapura 2016</td>
-                      <td><span class=" badge yellow darken-1 white-text">Sedang diproses</span></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Nabila</td>
-                      <td>Peta Kejadian Petir 01 Oktober 2019</td>
-                      <td><span class=" badge green darken-1 white-text">Selesai diproses</span></td>
-                    </tr>
-                  </tbody>
-              </table>
-          </div>
+    <div id="" class="parallax-container" style="    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.3)
+    );">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <h3 class="header center light text-lighten-2" style="margin-top: 10%;">ALUR PERMOHONAN</h3>
+        <div class="row center">
+            <a href="/layanandata/alur" id="download-button" class="btn btn-large pulse waves-effect waves-light teal lighten-1 "><i class="material-icons left">arrow_forward</i>Selengkapnya</a>
         </div>
+{{--         <div class="row center">
+          <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Mulai Jelajah</a>
+        </div> --}}
+        <br><br>
+
+      </div>
     </div>
-  </div> --}}
+    <div class="parallax"><img src="{{ asset('images/background3.jpg') }}" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="section " id="alur">
+    <div class="parallax-container">
+           <img class="materialboxed" width="100%" src="images/layanan/Slide1.PNG">
+         <div class="parallax"><img src="{{ asset('images/seiscomp3.jpg') }}" alt="Unsplashed background img 1"></div>
+    </div>
+  </div>
 @endsection
 
 @section('after_script')
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, options);
-  });
-
-  // Or with jQuery
-
-  $(document).ready(function(){
-    $('.modal').modal();
-  });
 </script>
 @endsection

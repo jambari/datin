@@ -7,7 +7,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\LayananRequest as StoreRequest;
 use App\Http\Requests\UpdateLayananRequest as UpdateRequest;
-
+use App\Models\Layanan;
 /**
  * Class LayananCrudController
  * @package App\Http\Controllers\Admin
@@ -115,6 +115,7 @@ class LayananCrudController extends CrudController
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
+        $this->crud->addButtonFromView('line', 'download' , 'download', 'beginning');
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model
         // $this->crud->addButtonFromView($stack, $name, $view, $position); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
         // $this->crud->removeButton($name);
@@ -123,7 +124,7 @@ class LayananCrudController extends CrudController
         // $this->crud->removeAllButtonsFromStack('line');
 
         // ------ CRUD ACCESS
-        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'download']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -183,5 +184,12 @@ class LayananCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
+    }
+
+    public function download($id)
+    {
+        $permohonan = Layanan::find($id);
+        $pathToFile = "uploads".'/'.$permohonan['surat'];
+        return response()->download($pathToFile);
     }
 }

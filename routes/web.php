@@ -63,6 +63,7 @@ Route::get('/layanandata/data', 'LayanandataController@data' );
 Route::get('/layanandata/jasa', 'LayanandataController@jasa' );
 Route::get('/layanandata/formulir/{id}', 'LayanandataController@formulir' );
 Route::get('/layanandata/daftar', 'LayanandataController@daftar' );
+Route::get('/layanandata/alur', 'LayanandataController@alur' );
 
 //crud Layanan
 Route::resource('/layanans', 'LayananController');

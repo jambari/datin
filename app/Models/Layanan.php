@@ -55,10 +55,6 @@ class Layanan extends Model
 
 public function setSuratAttribute($value)
     {
-        $attribute_name = "file";
-        $disk = "public";
-        $destination_path = "/uploads";
 
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
 }

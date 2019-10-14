@@ -22,7 +22,7 @@
 				<div class="row">
 			    	<div class="col s12 m12 l10">
 		              <h5 class="teal-text lighten-2 center-align " >Daftar Permohonan</h5>
-		              	<table class="striped highlight">
+		              	<table class="responsive-table striped highlight">
 		                    <thead>
 		                      <tr>
 		                        <th>#</th>
