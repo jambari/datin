@@ -36,7 +36,7 @@ class LayananController extends Controller
       	$ukuran_file = $file->getSize();
    
       // Proses Upload File
-     	 $destinationPath = 'uploads';
+     	$destinationPath = 'uploads';
       	$file->move($destinationPath,$file->getClientOriginalName());
         $layanan = new Layanan;
         $layanan->nama = $request->input('nama');
