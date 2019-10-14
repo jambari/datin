@@ -47,7 +47,7 @@ class LayananController extends Controller
         $layanan->jenis_data = $request->input('jenis_data');
         $layanan->surat = $file->getClientOriginalName();
         $layanan->save();
-        Session::flash('success', 'Data berhasil ditambahkan'); 
+        // Session::flash('success', 'Data berhasil ditambahkan'); 
         return redirect('/layanandata/daftar');
 
     }
