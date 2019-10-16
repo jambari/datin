@@ -48,20 +48,21 @@
 </script>
 </head>
 <body>
-  <nav class="white" role="navigation">
+  <nav class="" role="navigation" style="background-color: #C30F42;">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="/" class="brand-logo">
-        <img src="{{ asset('images/logo-bmkg.png') }}" alt="" class="responsive-img" style="width: 20%" >
+      <a id="logo-container" href="/layanandata" class="brand-logo white-text">
+        {{-- <img src="{{ asset('images/logobukadata.png') }}" alt="" class="responsive-img" style="width: 20%" > --}}
+        BukaData
       </a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/layanandata/tentang">Tentang</a></li>
-        <li><a href="/layanandata/tarif">Tarif</a></li>
-        <li><a href="/layanandata/alur">Alur</a></li>
-        <li><a href="/layanandata/data">Data</a></li>
-        <li><a href="/layanandata/jasa">Jasa</a></li>
-        <li><a href="/layanandata/magang">Magang</a></li>
-        <li><a href="/layanandata/gts">Goes to School</a></li>
-        <li><a href="/layanandata/daftar">Daftar Permohonan</a></li>
+        <li ><a href="/layanandata/tentang" class="white-text">Tentang</a></li>
+        <li><a href="/layanandata/tarif" class="white-text">Tarif</a></li>
+        <li><a href="/layanandata/alur" class="white-text">Alur</a></li>
+        <li><a href="/layanandata/data" class="white-text">Data</a></li>
+        <li><a href="/layanandata/jasa" class="white-text">Jasa</a></li>
+        <li><a href="/layanandata/magang" class="white-text">Magang</a></li>
+        <li><a href="/layanandata/gts" class="white-text">Goes to School</a></li>
+        <li><a href="/layanandata/daftar" class="white-text">Daftar Permohonan</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -80,11 +81,11 @@
 
   @yield('content')
 
-  <footer class="page-footer teal">
+  <footer class="page-footer red accent-3">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Layanan Data dan Jasa <small>Stasiun Geofisika Kelas I Jayapura</small> </h5>
+          <h5 class="white-text"><strong style="background-color: #C30F42; border-radius: 5px;" >BukaData</strong> <small>Stasiun Geofisika Kelas I Jayapura</small> </h5>
           <p class="grey-text text-lighten-4">Laman situs ini merupakan platform pelayanan jasa dan data di Stasiun Geofisika Kelas I Jayapura yang bertujuan untuk memudahkan pengguna data dan jasa tanpa harus datang langsung ke kantor kami.</p>
 
 

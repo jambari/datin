@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="section">
 			  <nav>
-			    <div class="nav-wrapper teal">
+			    <div class="nav-wrapper red accent-3">
 			      <div class="col s12">
 			        <a href="/layanandata" class="breadcrumb">Home</a>
 			        <a href="/layanandata/tarif" class="breadcrumb">Tarif</a>
@@ -18,7 +18,7 @@
 			<div class="container">
 				<div class="row">
 			    	<div class="col s12 m12 l10">
-			    		<h5 class="teal-text lighten-2" >Daftar Tarif Pelayanan Data dan Jasa di Stasiun Geofisika Kelas I Jayapura</h5>
+			    		<h5 class="red-text text-accent-3" >Daftar Tarif Pelayanan Data dan Jasa di Stasiun Geofisika Kelas I Jayapura</h5>
 				      	<table class="striped highlight">
 				            <thead>
 				            	<tr>
@@ -70,7 +70,7 @@
 			  	</div>
 			  	<div class="row">
 			  		<div class="col s12 m12 l10">
-			  			<h5 class="teal-text lighten-2" >Bagaimana cara pengajuan permohonan bagi mahasiwa untuk penyelesaian tugas akhir atau skripsi (tarif nol rupiah) ?</h5>
+			  			<h5 class="red-text text-accent-3" >Bagaimana cara pengajuan permohonan bagi mahasiwa untuk penyelesaian tugas akhir atau skripsi (tarif nol rupiah) ?</h5>
 			  			<p>Pemohon wajib melengkapi berkas berupa: </p>
 			  			<ul style="">
 			  				<li>1. Proposal yang sudah dijilid dan disetujui dosen pembimbing,</li>

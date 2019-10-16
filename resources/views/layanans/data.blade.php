@@ -6,7 +6,7 @@
 <div class="container">
     <div class="section">
         <nav>
-            <div class="nav-wrapper teal">
+            <div class="nav-wrapper red accent-3">
                 <div class="col s12">
                     <a href="/layanandata" class="breadcrumb">Home</a>
                     <a href="/layanandata/data" class="breadcrumb">Permintaan Data dan Informasi</a>
@@ -22,7 +22,7 @@
                         <img src="{{ asset('images/layanan/page01.jpg') }}">
                     </div>
                     <div class="card-content">
-                        <span class="card-title teal-text lighten-2">Peta Kegempaan</span>
+                        <span class="card-title red-text text-accent-3">Peta Kegempaan</span>
                         <p>Peta Kegempaan merupakan informasi sebaran gempabumi untuk perencanaan kontruksi. Tarif dibawah berlaku untuk data per tahun. Tarif berlaku kelipatan sesuai jumlah tahun yang diminta.</p>
                     </div>
                     <div class="card sticky-action">
@@ -39,7 +39,7 @@
                         <img src="{{ asset('images/layanan/page03.jpg') }}">
                     </div>
                     <div class="card-content">
-                        <span class="card-title teal-text lighten-2">Peta Tingkat Kerawanan Petir</span>
+                        <span class="card-title red-text text-accent-3">Peta Tingkat Kerawanan Petir</span>
                         <p>Informasi geofisika berupa peta tingkat kerawanan petir per lokasi per tahun</p>
                     </div>
                     <div class="card sticky-action">
@@ -56,7 +56,7 @@
                         <img src="{{ asset('images/layanan/page04.jpg') }}">
                     </div>
                     <div class="card-content">
-                        <span class="card-title teal-text lighten-2">Waktu Terbit dan Terbenam Matahari atau Bulan</span>
+                        <span class="card-title red-text text-accent-3">Waktu Terbit dan Terbenam Matahari atau Bulan</span>
                         <p>Informasi geofisika berupa waktu terbit dan terbenam matahari dan bulan per lokasi per tahun</p>
                     </div>
                     <div class="card sticky-action">
@@ -77,7 +77,7 @@
                         <img src="{{ asset('images/layanan/kejadianpetir.jpg') }}">
                     </div>
                     <div class="card-content">
-                        <span class="card-title teal-text lighten-2">Peta Kejadian Petir</span>
+                        <span class="card-title red-text text-accent-3">Peta Kejadian Petir</span>
                         <p>Peta Kejadian Petir merupakan informasi geofisika berisi sebaran sambaran petir per hari per lokasi.Tarif berlaku kelipatan sesuai jumlah hari</p>
                     </div>
                     <div class="card sticky-action">

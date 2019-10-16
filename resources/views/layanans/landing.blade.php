@@ -24,9 +24,9 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">SELAMAT DATANG</h1>
+        <h1 class="header center red-text text-accent-3">SELAMAT DATANG</h1>
         <div class="row center">
-          <h5 class="header col s12 light">Di Pelayanan Data dan Jasa Stasiun Geofisika Kelas I Jayapura</h5>
+          <h5 class="header col s12 light">Di <strong style="background-color: #C30F42; border-radius: 5px;" >BukaData</strong>, Platform Pelayanan Data dan Jasa Stasiun Geofisika Kelas I Jayapura</h5>
         </div>
 {{--         <div class="row center">
           <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Mulai Jelajah</a>
@@ -52,7 +52,7 @@
             <p class="light center-align">Ajukan permintaan data anda secara online. Kami akan mengirimkannya ke email anda. Permintaan data belum pernah semudah ini.</p>
           </div>
           <div class="row center">
-            <a href="/layanandata/data" id="download-button" class="btn waves-effect waves-light teal lighten-1 "><i class="material-icons left">search</i>Masuk</a>
+            <a href="/layanandata/data" id="download-button" class="btn waves-effect waves-light red accent-3 "><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
 
@@ -65,7 +65,7 @@
             Anda dapat menyewa peralatan kami untuk keperluan penelitian anda. Bingung mengoperasikannya ? Kami memiliki tim ahli yang siap memandu anda.</p>
           </div>
           <div class="row center">
-            <a href="/layanandata/jasa" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
+            <a href="/layanandata/jasa" id="download-button" class="btn waves-effect waves-light red accent-3"><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
 
@@ -77,7 +77,7 @@
             <p class="light center-align">Dapatkan pengalaman kerja dengan praktik kerja (magang) di Stasiun Geofisika.</p>
           </div>
           <div class="row center">
-            <a href="/layanandata/magang" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
+            <a href="/layanandata/magang" id="download-button" class="btn waves-effect waves-light red accent-3"><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
 
@@ -90,7 +90,7 @@
             Silahkan berkunjung ke kantor kami atau undang kami ke sekolah anda. Berbagi pengetahuan seputar gempabumi dan tsunami serta dampaknya dengan sosialisasi.</p>
           </div>
           <div class="row center">
-            <a href="/layanandata/gts" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">search</i>Masuk</a>
+            <a href="/layanandata/gts" id="download-button" class="btn waves-effect waves-light red accent-3"><i class="material-icons left">search</i>Masuk</a>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@
       <div class="container">
         <h3 class="header center light text-lighten-2" style="margin-top: 10%;">ALUR PERMOHONAN</h3>
         <div class="row center">
-            <a href="/layanandata/alur" id="download-button" class="btn btn-large pulse waves-effect waves-light teal lighten-1 "><i class="material-icons left">arrow_forward</i>Selengkapnya</a>
+            <a href="/layanandata/alur" id="download-button" class="btn btn-large pulse waves-effect waves-light red accent-3 "><i class="material-icons left">arrow_forward</i>Selengkapnya</a>
         </div>
 {{--         <div class="row center">
           <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Mulai Jelajah</a>

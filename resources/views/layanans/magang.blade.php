@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="section">
 			  <nav>
-			    <div class="nav-wrapper teal">
+			    <div class="nav-wrapper red accent-3">
 			      <div class="col s12">
 			        <a href="/layanandata" class="breadcrumb">Home</a>
 			        <a href="/layanandata/magang" class="breadcrumb">Magang</a>
@@ -89,7 +89,7 @@
 		    <div class="row">
 		        <div class="col s12 center">
 		          <h3><i class="mdi-content-send brown-text"></i></h3>
-		          <h4 class="teal-text lighten-2">FORMLIR PERMOHONAN MAGANG</h4>
+		          <h4 class="red-text text-accent-3">FORMLIR PERMOHONAN MAGANG</h4>
 	          <form class="col s12" action="{{ action('LayananController@store') }}" method="POST" enctype="multipart/form-data">
 	          	{{ csrf_field() }}
 	              <div class="row">
@@ -140,7 +140,7 @@
 	              <div class="row">
 	                <div class="input-field col s12">
 	                  <div class="file-field input-field">
-	                    <div class="btn">
+	                    <div class="btn red accent-3">
 	                      <span>File</span>
 	                      <input type="file" multiple name="surat" required="required">
 	                    </div>
@@ -150,7 +150,7 @@
 	                  </div>
 	                </div>
 	              </div>
-	                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+	                <button class="btn waves-effect waves-light red accent-3" type="submit" name="action">Submit
 	                  <i class="material-icons right">send</i>
 	                </button>
 	            </div>

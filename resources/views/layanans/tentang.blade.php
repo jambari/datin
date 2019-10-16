@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="section">
 			  <nav>
-			    <div class="nav-wrapper teal">
+			    <div class="nav-wrapper red accent-3">
 			      <div class="col s12">
 			        <a href="/layanandata" class="breadcrumb">Home</a>
 			        <a href="/layanandata/tentang" class="breadcrumb">Tentang</a>
