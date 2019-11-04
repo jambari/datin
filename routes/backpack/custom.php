@@ -19,7 +19,7 @@ Route::group([
 	CRUD::resource('infogempa', 'InfogempaCrudController');
 	Route::get('infogempa/{id}/peta', 'InfogempaCrudController@peta');
 	CRUD::resource('mercally', 'MercallyCrudController');
-	//Hujan 
+	//Hujan
 
 	CRUD::resource('hujan', 'HujanCrudController');
 
@@ -38,14 +38,14 @@ Route::group([
 	CRUD::resource('deklinasi', 'DeklinasiCrudController');
 
 	//Inklinasi
-	CRUD::resource('inklinasi', 'InklinasiCrudController');	
+	CRUD::resource('inklinasi', 'InklinasiCrudController');
 
 	//Absolut
-	CRUD::resource('absolut', 'AbsolutCrudController');	
+	CRUD::resource('absolut', 'AbsolutCrudController');
 	//Kegiatan
-	CRUD::resource('kegiatan', 'KegiatanCrudController');	
+	CRUD::resource('kegiatan', 'KegiatanCrudController');
 	//summary
-	CRUD::resource('summary', 'SummaryCrudController');	
+	CRUD::resource('summary', 'SummaryCrudController');
 
 	//Menuitem
 	CRUD::resource('menu-item', 'MenuItemCrudController');
@@ -85,6 +85,9 @@ Route::group([
 	//LAYANAN
 	CRUD::resource('layanan', 'LayananCrudController');
 	Route::get('layanan/{id}/download', 'LayananCrudController@download');
+
+	//review seismisitas
+	CRUD::resource('seismisita', 'SeismisitaCrudController');
 
 }); // this should be the absolute last line of this file
 

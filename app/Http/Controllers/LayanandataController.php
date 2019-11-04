@@ -81,7 +81,10 @@ class LayanandataController extends Controller
     	} elseif ($id == 6) {
     		$jenisdata = "Digital Portable Short Period Seismograph";
     		$jpg = "page07.jpg";
-    	} else {
+    	} elseif ($id == 7) {
+    		$jenisdata = "Buku dan Peta Variasi Magnetbumi (EPOCH)";
+    		$jpg = "epoch.jpeg";
+    	}else {
     		$jenisdata = "Deklinasi dan Inklinasi Magnetometer";
     		$jpg = "page08.jpg";
     	}

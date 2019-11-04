@@ -56,6 +56,7 @@
 	  	<li><a href="{{ backpack_url('tag') }}"><i class="fa fa-tag"></i> <span>Tags</span></a></li>
 		<li><a href="{{ backpack_url('siaran') }}"><i class="fa fa-bullhorn"></i> <span>Siaran Press</span></a></li>
 	  	<li><a href="{{ backpack_url('pengumuman') }}"><i class="fa fa-bullhorn"></i> <span>Pengumuman</span></a></li>
+	  	<li><a href="{{ backpack_url('seismisita') }}"><i class="fa fa-bullhorn"></i> <span>Review Seismisitas</span></a></li>
 	</ul>
 </li>
 

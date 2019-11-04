@@ -72,9 +72,9 @@
         <div class="col s12 m3">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">local_library</i><i class="material-icons">drive_eta</i></h2>
-            <h5 class="center">Magang</h5>
+            <h5 class="center">PKL</h5>
 
-            <p class="light center-align">Dapatkan pengalaman kerja dengan praktik kerja (magang) di Stasiun Geofisika.</p>
+            <p class="light center-align">Dapatkan pengalaman kerja dengan melakukan Praktik Kerja Lapangan di Stasiun Geofisika Kelas I Jayapura.</p>
           </div>
           <div class="row center">
             <a href="/layanandata/magang" id="download-button" class="btn waves-effect waves-light red accent-3"><i class="material-icons left">search</i>Masuk</a>

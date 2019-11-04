@@ -88,6 +88,24 @@
                     </div>
                 </div>
             </div>
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ asset('images/layanan/card-epoch.jpeg') }}">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title red-text text-accent-3">Buku dan Peta Variasi Magnetbumi (Epoch)</span>
+                        <p>Buku berisi peta variasi magnet bumi per tahun yang dirangkum selama 5 (lima) tahun. Semua tujuh komponen magnetbumi (H,D,Z,I, dan F) berada dalam buku ini.</p>
+                    </div>
+                    <div class="card sticky-action">
+                        <div class="card-action">
+                            <a href="#">Rp300.000</a>
+                            <a href="/layanandata/formulir/7">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

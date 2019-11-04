@@ -27,6 +27,7 @@
                      <a class="dropdown-item " href="/gempa/terkini">Gempabumi terkini</a>
                      <a class="dropdown-item " href="/gempa/recentmap">Peta Gempabumi</a>
                      <a class="dropdown-item " href="/gempa/statistik">Statistik</a>
+                     <a class="dropdown-item " href="/gempa/seismisitas">Review Seismisitas</a>
 {{--                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="#">Something else here</a> --}}
                   </div>
