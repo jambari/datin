@@ -6,7 +6,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <meta name="description" content="Salah satu UPT BMKG yang terletak di Kota Jayapura. Stasiun Geofisika Kelas I Angkasapura melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.">
+      <meta name="description" content="Salah satu UPT BMKG yang terletak di Kota Jayapura. Stasiun Geofisika Kelas I Jayapura melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.">
       <meta name="keywords" content="Gempabumi terkini, Magnetbumi, Listrik Udara, Percepatan Tanah,Berita Gempabumi, Buletin, Siaran Press">
       <meta name="author" content="Jambari">
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -49,27 +49,14 @@
          text-align: center;
          }
          .footer-copyright {
-         border-top: 2px solid #95A5A6;
-        background-image: url({{ asset('images/snow.png') }});
+         border-top: 2px solid #95A5A6;    
+         background-color: #23B5C8;          
          }
 
          nav {
-/*          background: -webkit-linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));
-          background: linear-gradient(90deg, rgb(1, 4, 7), rgb(40, 74, 107));*/
-          
-/*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));
-background: linear-gradient(90deg, rgb(1, 3, 6), rgb(39, 92, 148));*/
-
-
-
-
-        /*background: -webkit-linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));
-        background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
-/*
-background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%); 
-
-*/
+              background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;ckground: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%);
          }
       </style>
       @yield('after_style')

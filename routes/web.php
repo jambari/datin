@@ -54,4 +54,17 @@ Route::resource('/guests', 'GuestController');
 Route::any( '/guests/search', 'GuestController@search');
 
 //layanan data
-Route::get('/layanan', 'LayanandataController@index' );
+Route::get('/layanandata', 'LayanandataController@index',['name' => 'layanan.data']);
+Route::get('/layanandata/tentang', 'LayanandataController@tentang' );
+Route::get('/layanandata/tarif', 'LayanandataController@tarif' );
+Route::get('/layanandata/magang', 'LayanandataController@magang' );
+Route::get('/layanandata/gts', 'LayanandataController@gts' );
+Route::get('/layanandata/data', 'LayanandataController@data' );
+Route::get('/layanandata/jasa', 'LayanandataController@jasa' );
+Route::get('/layanandata/formulir/{id}', 'LayanandataController@formulir' );
+Route::get('/layanandata/daftar', 'LayanandataController@daftar' );
+Route::get('/layanandata/alur', 'LayanandataController@alur' );
+
+//crud Layanan
+Route::resource('/layanans', 'LayananController');
+//cari tamu
