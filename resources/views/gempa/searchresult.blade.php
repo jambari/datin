@@ -201,6 +201,7 @@ crossorigin=""/>
         </div>
     </div>
 </div>
+{{-- {{ $lintangmax }} {{ $lintangmin }} --}}
 <br>
 
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"

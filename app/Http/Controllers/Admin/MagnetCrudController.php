@@ -96,7 +96,20 @@ class MagnetCrudController extends CrudController
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         //Pen Does not work well with AJAX datatables.
-        //$this->crud->enableExportButtons();
+        $this->crud->enableExportButtons();
+
+        //filter magnitudo 
+        $this->crud->addFilter([ // daterange filter
+           'type' => 'date_range',
+           'name' => 'tanggal',
+           'label'=> 'Tanggal'
+         ],
+         false,
+         function($value) { // if the filter is active, apply these constraints
+           $dates = json_decode($value);
+           $this->crud->addClause('where', 'tanggal', '>=', $dates->from);
+           $this->crud->addClause('where', 'tanggal', '<=', $dates->to);
+        });
 
         // ------ ADVANCED QUERIES
         // $this->crud->addClause('active');

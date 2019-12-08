@@ -25,31 +25,31 @@ use App\Models\Magnet;
 class HomeController extends Controller
 {
 
-	public function index()
-	{
+    public function index()
+    {
 
-		$gempas = Gempa::orderBy('id','desc')->first();
-		$articles = Article::take(8)->orderBy('id','desc')->get();
-		$galleries = Article::take(8)->orderBy('id','desc')->get();
-		$pengumuman = Pengumuman::orderBy('id','desc')->first();
-		$sms = Infogempa::orderBy('id','desc')->first();
-		$siarans = Siaran::take(3)->orderBy('id','desc')->get();
+        $gempas = Gempa::orderBy('id','desc')->first();
+        $articles = Article::take(8)->orderBy('id','desc')->get();
+        $galleries = Article::take(8)->orderBy('id','desc')->get();
+        $pengumuman = Pengumuman::orderBy('id','desc')->first();
+        $sms = Infogempa::orderBy('id','desc')->first();
+        $siarans = Siaran::take(3)->orderBy('id','desc')->get();
         $bulletin = Bulletin::orderBy('id','desc')->first();
 
-		$datas = [
-			// 'terasa' => $terasa,
-			// 'tidakterasa' => $tidakterasa,
-			'gempas' => $gempas,
-			'articles' => $articles,
-			'galleries' => $galleries,
-			'pengumuman' => $pengumuman,
-			'siarans' => $siarans,
-			'sms' => $sms,
+        $datas = [
+            // 'terasa' => $terasa,
+            // 'tidakterasa' => $tidakterasa,
+            'gempas' => $gempas,
+            'articles' => $articles,
+            'galleries' => $galleries,
+            'pengumuman' => $pengumuman,
+            'siarans' => $siarans,
+            'sms' => $sms,
             'bulletin' => $bulletin,
         ];
 
-    	return view('welcome', compact('datas'));
-	}
+        return view('welcome', compact('datas'));
+    }
 
     //recent earthquakes tables
     public function terkini() {
@@ -82,7 +82,7 @@ class HomeController extends Controller
         $Dverydeep = Gempa::where('depth','>=', 300)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         return view('gempa.statistik', compact('gempa', 'Mbelowthree', 'Mthreefive', 'Mabovefive',
-        	'Dshallow', 'Dmediate', 'Dverydeep'
+            'Dshallow', 'Dmediate', 'Dverydeep'
     ));
     }
 
@@ -129,7 +129,7 @@ class HomeController extends Controller
             'kindeks' => $kindeks,
             'hujans' => $hujans,
         ];
-    	return view('charts.index', compact('datas'));
+        return view('charts.index', compact('datas'));
     }
 
     //Magnetbumi Page
