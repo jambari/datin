@@ -94,7 +94,7 @@ class GempaCrudController extends CrudController
                 'label' => 'On Duty',
                 'type' => 'select_from_array',
                 'options' => ['akram'=>'Akram', 'berlian' => 'Berlian', 'canggih'=>'Canggih',
-                    'danang' => 'Danang' ,'dedy' => 'Dedy', 'jambari' => 'Jambari',
+                    'danang' => 'Danang' ,'dedy' => 'Dedy','gogo' => 'Gogo', 'jambari' => 'Jambari',
                     'lidya' => 'Lidya', 'netty' => 'Netty', 'purnama' => 'Purnama', 'risma' => 'Risma',
                     'rosi' => 'Rosi', 'syawal' => 'Syawal' 
                 ],
