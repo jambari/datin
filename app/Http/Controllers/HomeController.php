@@ -178,6 +178,11 @@ class HomeController extends Controller
             $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
             $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
             $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
+            $jamnya = (int)date("H", strtotime($tanggaljam)); //ambil angka jam dalam sebuah minggu
+            $selisih = ($jamnya+ 9) - 24;
+            if ($selisih >=0) {
+               $tanggalbaru = date('d-m-Y', strtotime($tanggaljam . ' +1 day'));
+            }
             $hari = $days[$hari];
             $pecahkan = explode('-',$tanggalbaru);
             $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
