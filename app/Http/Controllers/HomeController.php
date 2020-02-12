@@ -53,7 +53,7 @@ class HomeController extends Controller
 
     //recent earthquakes tables
     public function terkini() {
-        $gempas = Gempa::take(60)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
+        $gempas = Gempa::take(10)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
         return view('gempa.terkini',compact('gempas'));
     }
 
