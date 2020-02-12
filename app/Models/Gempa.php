@@ -103,6 +103,39 @@ class Gempa extends Model
             $value = $jarak;
             return $value;
         }
+        //Utara
+        if ($latitude > $cities[0]['latitude'] && $longitude == $cities[0]['longitude']) {
+            $arah = 'Utara';
+            $jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
+            $value = $jarak;
+            return $value;
+        }
+
+        //Selatan
+        if ($latitude < $cities[0]['latitude'] && $longitude == $cities[0]['longitude']) {
+            $arah = 'Utara';
+            $jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
+            $value = $jarak;
+            return $value;
+        }
+
+        //Barat
+        if ($latitude == $cities[0]['latitude'] && $longitude < $cities[0]['longitude']) {
+            $arah = 'Utara';
+            $jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
+            $value = $jarak;
+            return $value;
+        }
+        //Timur
+        if ($latitude == $cities[0]['latitude'] && $longitude > $cities[0]['longitude']) {
+            $arah = 'Utara';
+            $jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
+            $value = $jarak;
+            return $value;
+        }
+
+        //Utara
+        
         //$jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
         //$arah = 'coba';
         //$jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'].' '.$latitude.' '.$cities[0]['latitude'].' '.$longitude.' '.$cities[0]['longitude'];
