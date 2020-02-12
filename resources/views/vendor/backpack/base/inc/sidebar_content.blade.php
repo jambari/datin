@@ -85,4 +85,5 @@
 <li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li> --}}
 <li><a href='{{ backpack_url('layanan') }}'><i class='fa fa-envelope'></i> <span>Pelayanan</span></a></li>
 <li><a href='{{ backpack_url('city') }}'><i class='fa fa-envelope'></i> <span>Daftar Kota</span></a></li>
+<li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori Gempa Nabire</span></a></li>
 @endif
