@@ -18,7 +18,10 @@
 	</ul>
 </li>
 
+@elseif (backpack_auth()->user()->name == 'nabire')
+<li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori Gempa Nabire</span></a></li>
 @else
+
 <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
 {{-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> --}}
 
@@ -85,5 +88,4 @@
 <li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li> --}}
 <li><a href='{{ backpack_url('layanan') }}'><i class='fa fa-envelope'></i> <span>Pelayanan</span></a></li>
 <li><a href='{{ backpack_url('city') }}'><i class='fa fa-envelope'></i> <span>Daftar Kota</span></a></li>
-<li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori Gempa Nabire</span></a></li>
 @endif
