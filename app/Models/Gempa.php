@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Support\Facades\DB;
+use App\Models\City;
 
 class Gempa extends Model
 {
@@ -63,6 +65,49 @@ class Gempa extends Model
     public function getTanggalAttribute($value)
     {
         return date("d-m-Y", strtotime($value));
+    }
+    public function getKetAttribute($value)
+    {
+        $latitude = $this->attributes['lintang'];
+        $longitude = $this->attributes['bujur'];
+        $cities = City::select(DB::raw('*, ( 6367 * acos( cos( radians('.$latitude.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$longitude.') ) + sin( radians('.$latitude.') ) * sin( radians( latitude ) ) ) ) AS distance'))
+            // ->having('distance', '<', 25)
+            ->orderBy('distance')
+            ->get();
+
+        //BaratDaya
+        if ($latitude < $cities[0]['latitude'] && $longitude < $cities[0]['longitude']) {
+            $arah = 'BaratDaya';
+            $jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
+            $value = $jarak;
+            return $value;
+        }
+        //BaratLaut
+        if ($latitude > $cities[0]['latitude'] && $longitude < $cities[0]['longitude']) {
+            $arah = 'BaratLaut';
+            $jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
+            $value = $jarak;
+            return $value;
+        }
+        //TimurLaut
+        if ($latitude > $cities[0]['latitude'] && $longitude > $cities[0]['longitude']) {
+            $arah = 'TimurLaut';
+            $jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
+            $value = $jarak;
+            return $value;
+        }
+        //Tenggara
+        if ($latitude < $cities[0]['latitude'] && $longitude > $cities[0]['longitude']) {
+            $arah = 'Tenggara';
+            $jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
+            $value = $jarak;
+            return $value;
+        }
+        //$jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
+        //$arah = 'coba';
+        //$jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'].' '.$latitude.' '.$cities[0]['latitude'].' '.$longitude.' '.$cities[0]['longitude'];
+        // $value = $jarak;
+        // return $value;
     }
     /*
     |--------------------------------------------------------------------------
