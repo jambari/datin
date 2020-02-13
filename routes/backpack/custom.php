@@ -89,5 +89,6 @@ Route::group([
 	CRUD::resource('city', 'CityCrudController');
 	//Nabire
 	CRUD::resource('gempanabire', 'GempanabireCrudController');
+	Route::get('gempanabire/{id}/infonabire', 'GempanabireCrudController@infogempa');
 }); // this should be the absolute last line of this file
 

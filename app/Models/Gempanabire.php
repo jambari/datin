@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use App\Models\City;
 use Backpack\CRUD\CrudTrait;
 
 class Gempanabire extends Model
