@@ -47,7 +47,6 @@ return [
     |
     | By default the registration is open only on localhost.
     */
-
     'registration_open' => true,
 
     /*

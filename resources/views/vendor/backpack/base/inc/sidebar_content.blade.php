@@ -18,10 +18,14 @@
 	</ul>
 </li>
 
+<<<<<<< HEAD
 @elseif (backpack_auth()->user()->name == 'nabire')
 <li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori Gempa Nabire</span></a></li>
 @else
 
+=======
+@else
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
 <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
 {{-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> --}}
 

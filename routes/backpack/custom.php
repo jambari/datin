@@ -87,8 +87,12 @@ Route::group([
 	Route::get('layanan/{id}/download', 'LayananCrudController@download');
 	//City
 	CRUD::resource('city', 'CityCrudController');
+<<<<<<< HEAD
 	//Nabire
 	CRUD::resource('gempanabire', 'GempanabireCrudController');
 	Route::get('gempanabire/{id}/infonabire', 'GempanabireCrudController@infogempa');
+=======
+
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
 }); // this should be the absolute last line of this file
 

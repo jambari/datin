@@ -67,7 +67,6 @@ class Gempa extends Model
         return date("d-m-Y", strtotime($value));
     }
 
-
     public function getKetAttribute($value)
     {
         $latitude = $this->attributes['lintang'];

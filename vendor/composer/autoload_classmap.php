@@ -15,11 +15,17 @@ return array(
     'App\\Http\\Controllers\\Admin\\BalaismsCrudController' => $baseDir . '/app/Http/Controllers/Admin/BalaismsCrudController.php',
     'App\\Http\\Controllers\\Admin\\BulletinCrudController' => $baseDir . '/app/Http/Controllers/Admin/BulletinCrudController.php',
     'App\\Http\\Controllers\\Admin\\CategoryCrudController' => $baseDir . '/app/Http/Controllers/Admin/CategoryCrudController.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\Admin\\CityCrudController' => $baseDir . '/app/Http/Controllers/Admin/CityCrudController.php',
     'App\\Http\\Controllers\\Admin\\DeklinasiCrudController' => $baseDir . '/app/Http/Controllers/Admin/DeklinasiCrudController.php',
     'App\\Http\\Controllers\\Admin\\GalleryCrudController' => $baseDir . '/app/Http/Controllers/Admin/GalleryCrudController.php',
     'App\\Http\\Controllers\\Admin\\GempaCrudController' => $baseDir . '/app/Http/Controllers/Admin/GempaCrudController.php',
     'App\\Http\\Controllers\\Admin\\GempanabireCrudController' => $baseDir . '/app/Http/Controllers/Admin/GempanabireCrudController.php',
+=======
+    'App\\Http\\Controllers\\Admin\\DeklinasiCrudController' => $baseDir . '/app/Http/Controllers/Admin/DeklinasiCrudController.php',
+    'App\\Http\\Controllers\\Admin\\GalleryCrudController' => $baseDir . '/app/Http/Controllers/Admin/GalleryCrudController.php',
+    'App\\Http\\Controllers\\Admin\\GempaCrudController' => $baseDir . '/app/Http/Controllers/Admin/GempaCrudController.php',
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'App\\Http\\Controllers\\Admin\\HujanCrudController' => $baseDir . '/app/Http/Controllers/Admin/HujanCrudController.php',
     'App\\Http\\Controllers\\Admin\\InfogempaCrudController' => $baseDir . '/app/Http/Controllers/Admin/InfogempaCrudController.php',
     'App\\Http\\Controllers\\Admin\\InklinasiCrudController' => $baseDir . '/app/Http/Controllers/Admin/InklinasiCrudController.php',
@@ -55,9 +61,13 @@ return array(
     'App\\Http\\Requests\\BalaismsRequest' => $baseDir . '/app/Http/Requests/BalaismsRequest.php',
     'App\\Http\\Requests\\BulletinRequest' => $baseDir . '/app/Http/Requests/BulletinRequest.php',
     'App\\Http\\Requests\\CategoryRequest' => $baseDir . '/app/Http/Requests/CategoryRequest.php',
+<<<<<<< HEAD
     'App\\Http\\Requests\\CityRequest' => $baseDir . '/app/Http/Requests/CityRequest.php',
     'App\\Http\\Requests\\GalleryRequest' => $baseDir . '/app/Http/Requests/GalleryRequest.php',
     'App\\Http\\Requests\\GempanabireRequest' => $baseDir . '/app/Http/Requests/GempanabireRequest.php',
+=======
+    'App\\Http\\Requests\\GalleryRequest' => $baseDir . '/app/Http/Requests/GalleryRequest.php',
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'App\\Http\\Requests\\JoingempaRequest' => $baseDir . '/app/Http/Requests/JoingempaRequest.php',
     'App\\Http\\Requests\\LayananRequest' => $baseDir . '/app/Http/Requests/LayananRequest.php',
     'App\\Http\\Requests\\MagnetRequest' => $baseDir . '/app/Http/Requests/MagnetRequest.php',
@@ -103,11 +113,17 @@ return array(
     'App\\Models\\Balaisms' => $baseDir . '/app/Models/Balaisms.php',
     'App\\Models\\Bulletin' => $baseDir . '/app/Models/Bulletin.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
+<<<<<<< HEAD
     'App\\Models\\City' => $baseDir . '/app/Models/City.php',
     'App\\Models\\Deklinasi' => $baseDir . '/app/Models/Deklinasi.php',
     'App\\Models\\Gallery' => $baseDir . '/app/Models/Gallery.php',
     'App\\Models\\Gempa' => $baseDir . '/app/Models/Gempa.php',
     'App\\Models\\Gempanabire' => $baseDir . '/app/Models/Gempanabire.php',
+=======
+    'App\\Models\\Deklinasi' => $baseDir . '/app/Models/Deklinasi.php',
+    'App\\Models\\Gallery' => $baseDir . '/app/Models/Gallery.php',
+    'App\\Models\\Gempa' => $baseDir . '/app/Models/Gempa.php',
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'App\\Models\\Hujan' => $baseDir . '/app/Models/Hujan.php',
     'App\\Models\\Infogempa' => $baseDir . '/app/Models/Infogempa.php',
     'App\\Models\\Inklinasi' => $baseDir . '/app/Models/Inklinasi.php',
@@ -810,7 +826,10 @@ return array(
     'Faker\\Provider\\cs_CZ\\Payment' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/cs_CZ/Payment.php',
     'Faker\\Provider\\cs_CZ\\Person' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/cs_CZ/Person.php',
     'Faker\\Provider\\cs_CZ\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/cs_CZ/PhoneNumber.php',
+<<<<<<< HEAD
     'Faker\\Provider\\cs_CZ\\Text' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/cs_CZ/Text.php',
+=======
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'Faker\\Provider\\da_DK\\Address' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/da_DK/Address.php',
     'Faker\\Provider\\da_DK\\Company' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/da_DK/Company.php',
     'Faker\\Provider\\da_DK\\Internet' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/da_DK/Internet.php',
@@ -849,7 +868,10 @@ return array(
     'Faker\\Provider\\el_GR\\Payment' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/el_GR/Payment.php',
     'Faker\\Provider\\el_GR\\Person' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/el_GR/Person.php',
     'Faker\\Provider\\el_GR\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/el_GR/PhoneNumber.php',
+<<<<<<< HEAD
     'Faker\\Provider\\el_GR\\Text' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/el_GR/Text.php',
+=======
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'Faker\\Provider\\en_AU\\Address' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/en_AU/Address.php',
     'Faker\\Provider\\en_AU\\Internet' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/en_AU/Internet.php',
     'Faker\\Provider\\en_AU\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/en_AU/PhoneNumber.php',
@@ -947,7 +969,10 @@ return array(
     'Faker\\Provider\\fr_FR\\Payment' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/fr_FR/Payment.php',
     'Faker\\Provider\\fr_FR\\Person' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/fr_FR/Person.php',
     'Faker\\Provider\\fr_FR\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/fr_FR/PhoneNumber.php',
+<<<<<<< HEAD
     'Faker\\Provider\\fr_FR\\Text' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/fr_FR/Text.php',
+=======
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'Faker\\Provider\\he_IL\\Address' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/he_IL/Address.php',
     'Faker\\Provider\\he_IL\\Company' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/he_IL/Company.php',
     'Faker\\Provider\\he_IL\\Payment' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/he_IL/Payment.php',
@@ -963,7 +988,10 @@ return array(
     'Faker\\Provider\\hu_HU\\Payment' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/hu_HU/Payment.php',
     'Faker\\Provider\\hu_HU\\Person' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/hu_HU/Person.php',
     'Faker\\Provider\\hu_HU\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/hu_HU/PhoneNumber.php',
+<<<<<<< HEAD
     'Faker\\Provider\\hu_HU\\Text' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/hu_HU/Text.php',
+=======
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'Faker\\Provider\\hy_AM\\Address' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/hy_AM/Address.php',
     'Faker\\Provider\\hy_AM\\Color' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/hy_AM/Color.php',
     'Faker\\Provider\\hy_AM\\Company' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/hy_AM/Company.php',
@@ -1009,7 +1037,10 @@ return array(
     'Faker\\Provider\\ka_GE\\Payment' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/ka_GE/Payment.php',
     'Faker\\Provider\\ka_GE\\Person' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/ka_GE/Person.php',
     'Faker\\Provider\\ka_GE\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/ka_GE/PhoneNumber.php',
+<<<<<<< HEAD
     'Faker\\Provider\\ka_GE\\Text' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/ka_GE/Text.php',
+=======
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'Faker\\Provider\\kk_KZ\\Address' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/kk_KZ/Address.php',
     'Faker\\Provider\\kk_KZ\\Color' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/kk_KZ/Color.php',
     'Faker\\Provider\\kk_KZ\\Company' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/kk_KZ/Company.php',
@@ -1106,7 +1137,10 @@ return array(
     'Faker\\Provider\\ru_RU\\Payment' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/ru_RU/Payment.php',
     'Faker\\Provider\\ru_RU\\Person' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/ru_RU/Person.php',
     'Faker\\Provider\\ru_RU\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/ru_RU/PhoneNumber.php',
+<<<<<<< HEAD
     'Faker\\Provider\\ru_RU\\Text' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/ru_RU/Text.php',
+=======
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'Faker\\Provider\\sk_SK\\Address' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/sk_SK/Address.php',
     'Faker\\Provider\\sk_SK\\Company' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/sk_SK/Company.php',
     'Faker\\Provider\\sk_SK\\Internet' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/sk_SK/Internet.php',
@@ -1154,7 +1188,10 @@ return array(
     'Faker\\Provider\\uk_UA\\Payment' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Payment.php',
     'Faker\\Provider\\uk_UA\\Person' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Person.php',
     'Faker\\Provider\\uk_UA\\PhoneNumber' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/uk_UA/PhoneNumber.php',
+<<<<<<< HEAD
     'Faker\\Provider\\uk_UA\\Text' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Text.php',
+=======
+>>>>>>> d7edd9a88522e586064669cd5b7005b30d8f500a
     'Faker\\Provider\\vi_VN\\Address' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/vi_VN/Address.php',
     'Faker\\Provider\\vi_VN\\Color' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/vi_VN/Color.php',
     'Faker\\Provider\\vi_VN\\Internet' => $vendorDir . '/fzaninotto/faker/src/Faker/Provider/vi_VN/Internet.php',
