@@ -1,0 +1,57 @@
+/node_modules
+/public/hot
+/public/berita
+/public/storage
+/storage/*.key
+/storage/app/
+/.idea
+/.vscode
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+
+../.ICEauthority
+	../.PlayOnLinux/
+	../.Xauthority
+	../.bash_history
+	../.bash_logout
+	../.bashrc
+	../.cache/
+	../.compiz/
+	../.config/
+	../.dmrc
+	../.gimp-2.8/
+	../.gitconfig
+	../.gnome/
+	../.local/
+	../.macromedia/
+	../.mozilla/
+	../.mysql_history
+	../.pki/
+	../.profile
+	../.sudo_as_admin_successful
+	../.thumbnails/
+	../.xsession-errors
+	../.xsession-errors.old
+	../Desktop/
+	../Documents/
+	../Downloads/
+	../Microsoft Office 2010 Proffesional/
+	../Music/
+	../Pedoman Penulisan Proposal Skripsi dan Skripsi STMKG       2014.pdf-1
+	../Pictures/
+	../PlayOnLinux's virtual drives
+	./
+	../examples.desktop
+	../gmt-dev/
+	../inna_database.tar.gz
+	../inna_database/
+	../logo-stmkg.jpeg
+	../maluku.sh
+	../phpspread/
+	../projects/
+	../rosid/
+
