@@ -43,7 +43,9 @@ Route::resource('/mercallies', 'MercallyController');// Indeks Seismisitas
 
 //simimi
 Route::get('/rasagempa', 'HomeController@simimi');
-
+//seismisitas / aktivitas kegempaan
+Route::get('/kegempaan', 'Admin\ArticleCrudController@seismisitas'); // list semua bulletin
+Route::get('/kegempaan/{id}', 'Admin\ArticleCrudController@seismisitasShow');
 
 
 //buku tamu

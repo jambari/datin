@@ -29,12 +29,90 @@ class HomeController extends Controller
     {
 
         $gempas = Gempa::orderBy('id','desc')->first();
-        $articles = Article::take(8)->orderBy('id','desc')->get();
+        $articles = Article::take(8)->where('category_id','!=', 8)->orderBy('id','desc')->get();
         $galleries = Article::take(8)->orderBy('id','desc')->get();
         $pengumuman = Pengumuman::orderBy('id','desc')->first();
         $sms = Infogempa::orderBy('id','desc')->first();
         $siarans = Siaran::take(3)->orderBy('id','desc')->get();
         $bulletin = Bulletin::orderBy('id','desc')->first();
+
+        //INFO GEMPA DI DEPAN
+
+        //Penanggalan
+        //array bulan
+        $event = $gempas;
+            $bulan = array (
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+
+            $bulansms = array (
+            1 =>   'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'Mei',
+            'Jun',
+            'Jul',
+            'Agu',
+            'Sep',
+            'Okt',
+            'Nov',
+            'Des'
+        );
+
+        //array hari senin-sabtu
+        $days = array (
+            0 =>   'Minggu',
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            "Jum'at",
+            'Sabtu'
+    );
+        $tanggal = $event['tanggal']; //get date of the eathquake
+        $jam = $event['origin']; // get origin time of eq
+        $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
+        $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
+        $tanggalbarusms = date("d-m-y", strtotime($tanggaljam)); //mengubah ke tipe datetime untuk sms
+        $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
+        $jamnya = (int)date("H", strtotime($tanggaljam)); //ambil angka jam dalam sebuah minggu
+        $selisih = ($jamnya+ 9) - 24;
+        if ($selisih >=0) {
+           $tanggalbaru = date('d-m-Y', strtotime($tanggaljam . ' +1 day'));
+           $tanggalbarusms = date('d-m-y', strtotime($tanggaljam . ' +1 day'));
+        }
+        $hari = $days[$hari];
+        $pecahkan = explode('-',$tanggalbaru); //membuat array yang terdiri dari hari index 0, bulan index 1, tahun index 2
+        $pecahkansms = explode('-',$tanggalbarusms);
+        $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
+        $tanggalindosms= $pecahkan[0] . '-' . $bulansms[ (int)$pecahkansms[1] ] . '-' . $pecahkansms[2]; //Menggabungkan jadi tanggal format indonesia
+        $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
+        $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
+        $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
+        $lat = $event['lintang'];
+        $lon = $event['bujur'].' BT';
+        $mag = round($event['magnitudo'],1);
+        $depth = $event['depth'];
+        $lat = str_split($lat); //break latitude to an array
+        if ($lat[0] == '-') {
+            $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
+        } else {
+            $lat = $lat[1].$lat[2].'LU';
+        }
+
+        //'lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'
 
         $datas = [
             // 'terasa' => $terasa,
@@ -46,6 +124,15 @@ class HomeController extends Controller
             'siarans' => $siarans,
             'sms' => $sms,
             'bulletin' => $bulletin,
+            'lat' => $lat,
+            'lon' => $lon,
+            'mag' => $mag,
+            'depth' => $depth,
+            'event' => $event,
+            'tanggalindo' => $tanggalindo,
+            'hari' => $hari,
+            'jamwit' => $jamwit,
+            'tanggalindosms' => $tanggalindosms,
         ];
 
         return view('welcome', compact('datas'));

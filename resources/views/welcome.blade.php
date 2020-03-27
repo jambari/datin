@@ -290,7 +290,7 @@ html, body {  }
 <div class="row d-flex justify-content-center align-items-center border " style="padding-top: 5%; padding-bottom: 5%;" id="info">
   <div class="col-md-5 d-none d-sm-block" style="padding: 3%;">
     <h2 class="featurette-heading text-primary">Gempabumi Terkini</span></h2>
-    <p class="lead text-primary"> @if ($datas['sms']) {{ $datas['sms']->sms }} @endif  </p>
+    <p class="lead text-primary"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
   </div>
   <div class="col-md-7 d-none d-sm-block" style="" id="frengki" >
     <div id="map" class="" style="width:85%;height:400px; border-radius: 5px;"></div>

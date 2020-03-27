@@ -151,14 +151,31 @@ class ArticleCrudController extends CrudController
     public function show($id) {
         $article = $this->crud->getEntry($id);
         $galleries = Gallery::where('article_id',$id)->get();
-        $beritas = Article::take(5)->orderBy('id','desc')->get();
+        $beritas = Article::take(5)->where('category_id','!=', 8)->orderBy('id','desc')->get();
         return view('articles.show')->with(compact('article','beritas','galleries'));
     }
 
     //for news page
     public function news() {
-        $news = Article::latest()->paginate(6);
+        $news = Article::latest()->where('category_id','!=', 8)->paginate(6);
         return view('articles.news',compact('news'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
+    //for seismisitas
+    public function seismisitasShow($id) {
+        $infografis = $this->crud->getEntry($id);
+        $galleries = Gallery::where('article_id',$id)->get();
+        $seismisitas = Article::take(5)->where('category_id', 8)->orderBy('id','desc')->get();
+        return view('kegempaans.show')->with(compact('infografis','galleries','seismisitas'));
+    }
+
+    //for news page
+    public function seismisitas() {
+        $kegempaans = Article::where('category_id', 8)->latest()->paginate(6);
+        return view('kegempaans.kegempaan',compact('kegempaans'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+
 }
