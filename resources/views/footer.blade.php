@@ -58,6 +58,9 @@
                 <p>
                     <a class="text-primary" href="/siarans">Siaran Press</a>
                 </p>
+                <p>
+                    <a class="text-primary" href="/kegempaan">Kegempaan</a>
+                </p>
             </div>
             <!-- Grid column -->
             <!-- Grid column -->
@@ -98,7 +101,7 @@
     </div>
     <!-- Footer Links -->
     <!-- Copyright -->
-    <div class="footer-copyright text-center text-light py-3">©
+    <div class="footer-copyright text-center text-light py-3 bg-primary">©
         <?php echo date("Y"); ?>
             <a class="text-light" href="http://stageof.angkasa.bmkg.go.id" style="text-decoration: none;" > Stasiun Geofisika Kelas I Jayapura</a>
     </div>

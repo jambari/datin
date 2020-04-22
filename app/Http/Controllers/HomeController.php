@@ -30,11 +30,12 @@ class HomeController extends Controller
 
         $gempas = Gempa::orderBy('id','desc')->first();
         $articles = Article::take(8)->where('category_id','!=', 8)->orderBy('id','desc')->get();
-        $galleries = Article::take(8)->orderBy('id','desc')->get();
+        $galleries = Article::take(3)->where('category_id','!=', 8)->orderBy('id','desc')->get();
         $pengumuman = Pengumuman::orderBy('id','desc')->first();
         $sms = Infogempa::orderBy('id','desc')->first();
         $siarans = Siaran::take(3)->orderBy('id','desc')->get();
         $bulletin = Bulletin::orderBy('id','desc')->first();
+        $kegempaans = Article::take(3)->where('category_id', 8)->orderBy('id','desc')->get();
 
         //INFO GEMPA DI DEPAN
 
@@ -133,6 +134,7 @@ class HomeController extends Controller
             'hari' => $hari,
             'jamwit' => $jamwit,
             'tanggalindosms' => $tanggalindosms,
+            'kegempaans' => $kegempaans
         ];
 
         return view('welcome', compact('datas'));

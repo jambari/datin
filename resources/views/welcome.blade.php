@@ -33,13 +33,13 @@ html, body {  }
 
 #mycarousel {
 
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+/*    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;ckground: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%);
-    margin-top: -1%;
+    margin-top: -1%;*/
 }
 
-@keyframes gradientBG {
+/*@keyframes gradientBG {
     0% {
         background-position: 0% 50%;
     }
@@ -49,7 +49,7 @@ html, body {  }
     100% {
         background-position: 0% 50%;
     }
-}
+}*/
 
 #digital, #analog {
     background-color: #23B5C8;
@@ -201,54 +201,105 @@ html, body {  }
 @endsection
 @section('content')
 
+
+<div class="modal hide fade" id="myModal">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…ddddd</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+</div>
+
+
 <!-- <br>
 <div class="container"> -->
-    <div class="row" id="mycarousel">
-        <div class="col-lg-6 col-md-6 d-flex justify-content-center align-self-center ">
-            @if ($datas['pengumuman'])
-            <h3 class="text-light ml-5 d-none d-sm-block " >
-                    {!! $datas['pengumuman']->isi !!}
-            </h4>
-            @endif
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 3%;">
-            <div class="bd-example" >
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
-                    <ol class="carousel-indicators">
-                          @if ($datas['articles'])
-                          @foreach ($datas['articles'] as $article)
-                             <li data-target="#carouselExampleCaptions" data-slide-to="{{ $loop->index }}"></li>
-                          @endforeach
-                       @endif
-                    </ol>
-                        <div class="carousel-inner">
-                            @if ($datas['articles'])
-                            @foreach ($datas['articles'] as $article)
-                        <div class="carousel-item {{ $loop->first ? 'active': '' }}">
-                            <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="400" alt="{{ $article->title }}" style="border" >
-                            <div class="carousel-caption d-md-block">
-                               <h5 id="judul" >{{ $article->title }}</h5>
-                               <a href="/berita/{{ $article->id }}" class=" btn bg-primary text-light" >Baca </a>
-                            </div>
+<div class="row border" id="mycarousel">
+    <div class="col-lg-6 col-md-6 d-flex flex-column" style="padding: 3%;">
+
+        @if ( $datas['galleries'] )
+            @foreach ( $datas['galleries'] as $article )
+                <ul class="list-unstyled">
+                    <a href="/berita/{{ $article->id }}" title="{{ $article->title }}" class="text-primary">
+                    <li class="media">
+                        <img class="mr-3" src="/{{ $article->image }}" alt="image of {{ $article->title }}" width="150" height="100" >
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">{{ $article->title }}</h5>
                         </div>
-                            @endforeach
-                            @endif
+                    </li>
+                    </a>
+                    <hr>
+                </ul>
+            @endforeach
+        @endif
+<!--             @if ($datas['pengumuman'])
+        <h3 class="text-primary ml-5 d-none d-sm-block " >
+                {!! $datas['pengumuman']->isi !!}
+        </h4>
+        @endif -->
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 3%;">
+        <div class="bd-example" >
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
+                <ol class="carousel-indicators">
+                      @if ($datas['articles'])
+                      @foreach ($datas['articles'] as $article)
+                         <li data-target="#carouselExampleCaptions" data-slide-to="{{ $loop->index }}"></li>
+                      @endforeach
+                   @endif
+                </ol>
+                    <div class="carousel-inner">
+                        @if ($datas['articles'])
+                        @foreach ($datas['articles'] as $article)
+                    <div class="carousel-item {{ $loop->first ? 'active': '' }}">
+                        <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="400" alt="{{ $article->title }}" style="border" >
+                        <div class="carousel-caption d-md-block">
+                           <h5 id="judul" >{{ $article->title }}</h5>
+                           <a href="/berita/{{ $article->id }}" class=" btn bg-primary text-light" >Baca </a>
                         </div>
-                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                    </a>
-                </div>
+                    </div>
+                        @endforeach
+                        @endif
+                    </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="col-md-12 " style="" id="" >
+        <div id="map" class="" style="width:100%;height:600px; border-radius: 5px;"></div>
+    </div>
+</div>
+<div class="container" style="padding: 20px;">
+    <div class="row" >
+        <div class="col-md-12 ">
+            <h2 class="featurette-heading text-primary text-center">Gempabumi Terkini</span></h2>
+        </div>   
+    </div>
+</div>
+<div class="container">
+    <div class="row d-flex">
+        <div class="col-md-12 ">
+            <p class="lead text-primary text-center"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
+        </div>
+    </div>
+</div>
 <!-- </div> -->
 <!-- The Product Section -->
-<div class="row d-flex justify-content-center align-items-center" style="padding: 10% 5% 10% 5%;" >
+<!-- <div class="row d-flex justify-content-center align-items-center" style="padding: 10% 5% 10% 5%;" >
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct " style="" >
         <p class="text-center" ><i class="wi wi-earthquake text-primary " style=" font-size: 4em " ></i></p>
         <h3 class=" text-center text-primary" >Gempabumi</h3>
@@ -271,9 +322,27 @@ html, body {  }
         <h3 class="text-center text-primary" >Rasa Gempa ?</h3>
         <p class="text-center text-primary" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa" class="text-primary">disini</a>. </p>
     </div>
+</div> -->
+<!-- Review Seismisitas -->
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center" style="padding-top: 5%; padding-bottom: 5%;" >
+        @if ($datas['kegempaans'])
+        @foreach ($datas['kegempaans'] as $kegempaan)
+        <div id="" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/{{ $kegempaan->image }}" alt="Card image cap" height="300" >
+                <div class="card-body">
+                    <h5 class="card-title">{{ $kegempaan->title }}</h5>
+                    <a href="/kegempaan/{{ $kegempaan->id }}" class="btn bg-primary btn-block text-light">Detail</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @endif
+    </div>
 </div>
 
-<div class="row d-flex justify-content-center align-items-center " style="" id="analog" >
+<!-- <div class="row d-flex justify-content-center align-items-center " style="" id="analog" >
     <div class="hero-circle">
         <div class="hero-face">
             <div id="hour" class="hero-hour"></div>
@@ -281,13 +350,13 @@ html, body {  }
             <div id="second" class="hero-second"></div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- The Clock Section -->
-<div class="row d-flex justify-content-center align-items-center" style="" id="digital" >
+<!-- <div class="row d-flex justify-content-center align-items-center" style="" id="digital" >
     <div id="clock" class="clock">loading ...</div>
-</div>
+</div> -->
 <!-- recent earthquake section -->
-<div class="row d-flex justify-content-center align-items-center border " style="padding-top: 5%; padding-bottom: 5%;" id="info">
+<!-- <div class="row d-flex justify-content-center align-items-center border " style="padding-top: 5%; padding-bottom: 5%;" id="info">
   <div class="col-md-5 d-none d-sm-block" style="padding: 3%;">
     <h2 class="featurette-heading text-primary">Gempabumi Terkini</span></h2>
     <p class="lead text-primary"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
@@ -295,7 +364,7 @@ html, body {  }
   <div class="col-md-7 d-none d-sm-block" style="" id="frengki" >
     <div id="map" class="" style="width:85%;height:400px; border-radius: 5px;"></div>
   </div>
-</div>
+</div> -->
 
 {{-- Buletin Section --}}
     <div class="row d-flex justify-content-center align-items-center border " style="padding: 5%; padding-bottom: 5%;" id="bulletin">
@@ -350,14 +419,20 @@ html, body {  }
 @if ($datas['gempas'])
 <script>
     var mymap = L.map('map').setView([ {{ $datas['gempas']->lintang }}, {{ $datas['gempas']->bujur }}], 6);
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 18 // has a coma here
-        // id: 'mapbox.streets'
-    }).addTo(mymap);
+        // L.tileLayer('http://ecn.t3.tiles.virtualearth.net/tiles/a%7Bq%7D.jpeg?g%3D1&zmax=19&zmin=1', {
+        // maxZoom: 18, // has a coma here
+        //  id: 'mapbox.terrain'
+    // }).addTo(mymap);
     // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     //     maxZoom: 18,
     //     id: 'mapbox.streets'
     // }).addTo(mymap);
+L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}).addTo(mymap);
+
+    //L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}'
 
     var eqIcon = L.icon({
         iconUrl: '/images/icongempa.png',
@@ -390,9 +465,9 @@ html, body {  }
         }
     }
 
-    // L.geoJSON(pataHan, {
-    //     style: patahanStyle,
-    // }).addTo(mymap); //add patahan symbol
+    L.geoJSON(pataHan, {
+        style: patahanStyle,
+    }).addTo(mymap); //add patahan symbol
 
     //plot subduction
     L.geoJSON(subDuksi, {
@@ -444,5 +519,12 @@ function update() {
 setInterval(update, 1000);
 </script>
 @endif
+
+
+<script type="text/javascript">
+    $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
+</script>
 @endsection
 

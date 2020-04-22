@@ -80,7 +80,7 @@
         </div>
     </div>
 </div>
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
@@ -101,7 +101,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- this is eq map -->
 <div class="container" id="isi" >
     <div class="row" style="margin: px;">
@@ -206,8 +206,13 @@
 <script>
     var mymap = L.map('map').setView([{{ $event['lintang'] }}, {{ $event['bujur'] }}], 7);
     // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
-     var layer = L.esri.basemapLayer('NationalGeographic').addTo(mymap);
-      var layerLabels;
+     // var layer = L.esri.basemapLayer('NationalGeographic').addTo(mymap);
+     //  var layerLabels;
+
+     L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}).addTo(mymap);
 
   function setBasemap(basemap) {
     if (layer) {
@@ -253,7 +258,7 @@
         L.marker([{{ $event['lintang'] }}, {{ $event['bujur'] }}], {icon: eqIcon}).addTo(mymap);
         //style for subduksi and patahan
         var patahanStyle = {
-            "color": "#2C4B48",
+            "color": "#000000",
             "weight": 0.7,
             "opacity": 0.9
         };
@@ -261,7 +266,7 @@
         //style for subduksi
 
         var subduksiStyle = {
-            "color": "#0A70C4",
+            "color": "#FF1919",
             "weight": 1,
             "opacity": 0.5,
             "fillColor": 'transparent',
@@ -284,9 +289,9 @@
         // }).addTo(mymap);
 
         //plot subduction
-        L.geoJSON(subDuksi, {
-            style: subduksiStyle
-        }).addTo(mymap);
+        // L.geoJSON(subDuksi, {
+        //     style: subduksiStyle
+        // }).addTo(mymap);
 
         // Define an icon called cssIcon
         var cssIcon = L.divIcon({

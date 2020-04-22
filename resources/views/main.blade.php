@@ -50,13 +50,13 @@
          }
          .footer-copyright {
          border-top: 2px solid #95A5A6;    
-         background-color: #23B5C8;          
+/*         background-color: #23B5C8; */         
          }
 
          nav {
-              background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+/*              background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;ckground: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%);
+    animation: gradientBG 15s ease infinite;ckground: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%);*/
          }
       </style>
       @yield('after_style')
