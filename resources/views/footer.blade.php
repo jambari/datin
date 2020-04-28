@@ -67,7 +67,7 @@
             </div>
             <!-- Grid column -->
             <!-- Grid column -->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-light ">
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-primary ">
                 <!-- Links -->
                 <h6 class="text-uppercase font-weight-bold">Link Terkait</h6>
                 <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
