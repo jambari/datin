@@ -225,7 +225,7 @@ html, body {  }
         @if ( $datas['galleries'] )
             @foreach ( $datas['galleries'] as $article )
                 <ul class="list-unstyled">
-                    <a href="/berita/{{ $article->id }}" title="{{ $article->title }}" class="text-primary">
+                    <a href="/populer/{{ $article->id }}" title="{{ $article->title }}" class="text-primary">
                     <li class="media">
                         <img class="mr-3" src="/{{ $article->image }}" alt="image of {{ $article->title }}" width="150" height="100" >
                         <div class="media-body">

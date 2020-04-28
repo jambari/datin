@@ -42,7 +42,7 @@
 	        <hr>
 	        <p><i class="fa fa-calendar"></i> Posted on {{ Carbon\Carbon::parse($populer->created_at)->diffForHumans() }} </p>
 	        <hr>
-	        <img src="/{{ $infografis->image }}" class="img-fluid">
+	        <img src="/{{ $populer->image }}" class="img-fluid">
 	        <hr>
 	        {!! $populer->content !!}
 			<div class="demo-gallery">

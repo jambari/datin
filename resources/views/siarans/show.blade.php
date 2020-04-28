@@ -24,7 +24,7 @@
 	<div class="row">
 		<div class="col-md-8 col-sm-12 col-xs-12">
 	        <!-- the actual blog post: title/author/date/content -->
-	        <h3 class="">{{ $siaran->title }} </h3>
+	        <h3 class="" style="">{{ $siaran->title }} </h3>
 	        <p class="lead"><i class="fa fa-user"></i> by <a href="" class="text-primary">{{ $siaran->author or '-' }}</a>
 	        </p>
 	        <hr>
