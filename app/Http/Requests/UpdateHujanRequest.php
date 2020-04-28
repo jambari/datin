@@ -27,8 +27,8 @@ class UpdateHujanRequest extends FormRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
-            'obs' => 'numeric|between:0,400',
-            'hilman' => 'numeric|between:0,400'
+            'obs' => 'numeric|between:0,10000',
+            'hilman' => 'numeric|between:0,10000',
         ];
     }
 

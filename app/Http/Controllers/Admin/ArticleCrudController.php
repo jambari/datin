@@ -151,13 +151,13 @@ class ArticleCrudController extends CrudController
     public function show($id) {
         $article = $this->crud->getEntry($id);
         $galleries = Gallery::where('article_id',$id)->get();
-        $beritas = Article::take(5)->where('category_id','!=', 8)->orderBy('id','desc')->get();
+        $beritas = Article::take(5)->where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('id','desc')->get();
         return view('articles.show')->with(compact('article','beritas','galleries'));
     }
 
     //for news page
     public function news() {
-        $news = Article::latest()->where('category_id','!=', 8)->paginate(6);
+        $news = Article::latest()->where('category_id','!=', 8)->where('category_id','!=', 10)->paginate(6);
         return view('articles.news',compact('news'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -176,6 +176,25 @@ class ArticleCrudController extends CrudController
         return view('kegempaans.kegempaan',compact('kegempaans'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
+
+    // Artikel Populer
+
+        //for seismisitas
+    public function populerShow($id) {
+        $populer = $this->crud->getEntry($id);
+        $thumbnails = Gallery::where('article_id',$id)->get();
+        $populers = Article::take(5)->where('category_id', 10)->orderBy('id','desc')->get();
+        return view('populers.show')->with(compact('populer','thumbnails','populers'));
+    }
+
+    //for news page
+    public function populer() {
+        $populers = Article::where('category_id', 10)->latest()->paginate(6);
+        return view('populers.populer',compact('populers'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
 
 
 }

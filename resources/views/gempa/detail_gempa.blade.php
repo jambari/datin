@@ -4,6 +4,7 @@
 @endsection 
 @section('after_style')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 <style type="text/css" media="screen">
     #streetmap {
         display: flex;
@@ -50,10 +51,7 @@
   }
 
 
-#isi {
 
-
-}
 </style>
 
 @endsection 
@@ -72,8 +70,8 @@
 <div class="container">
     <div class="row">
         <div class="col align-self-center">
-            <div class="alert alert-warning">
-                <p>
+            <div class=" @if ($mag < 3) alert alert-success @elseif ($mag >= 3 && $mag < 5) alert alert-warning @else alert alert-danger @endif">
+                <p class="text-center" style="font-size: 1.1em; font-family: 'Quicksand', sans-serif;" >
                     Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-JAY
                 </p>
             </div>
@@ -122,7 +120,7 @@
                     <img src="{{ asset('images/mag.png') }}" alt="Magnitude" aria-hidden="true"> Magnitudo
                 </div>
                 <div class="card-body">
-                    <p class="card-text" style="font-size:1.5em" >M <span class="badge badge-danger">{{ $mag }}</span></p>
+                    <p class="card-text" style="font-size:1.5em" >M <span class="@if ($mag < 3) badge badge-success @elseif ($mag >= 3 && $mag < 5) badge badge-warning @else badge badge-danger @endif">{{ $mag }}</span></p>
                 </div>
             </div>
         </div>

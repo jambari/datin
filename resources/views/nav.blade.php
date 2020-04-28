@@ -2,8 +2,8 @@
          <a class="navbar-brand bg-light" href="/" style="padding: 0.5%;" >
          <img src="{{ asset('images') }}/logo-bmkg.png" alt="logo" width="35" height="40" >
          </a>
-         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon "></span>
+         <button class="navbar-toggler  " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -18,7 +18,10 @@
                </li>
                <li class="nav-item ">
                   <a class="nav-link text-primary" href="/bulletins">Buletin</a>
-               </li>                 
+               </li>
+               <li class="nav-item ">
+                  <a class="nav-link text-primary" href="/populer">Populer</a>
+               </li>                  
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-primary" href="/gempa" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Gempabumi

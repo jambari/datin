@@ -29,8 +29,8 @@ class HomeController extends Controller
     {
 
         $gempas = Gempa::orderBy('id','desc')->first();
-        $articles = Article::take(8)->where('category_id','!=', 8)->orderBy('id','desc')->get();
-        $galleries = Article::take(3)->where('category_id','!=', 8)->orderBy('id','desc')->get();
+        $articles = Article::take(8)->where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('id','desc')->get();
+        $galleries = Article::take(3)->where('category_id','=', 10)->orderBy('id','desc')->get();
         $pengumuman = Pengumuman::orderBy('id','desc')->first();
         $sms = Infogempa::orderBy('id','desc')->first();
         $siarans = Siaran::take(3)->orderBy('id','desc')->get();

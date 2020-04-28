@@ -30,10 +30,12 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Cabin|Quicksand&display=swap" rel="stylesheet">
 
       <style>
         body {
           padding-top: 75px;
+          font-family: 'Cabin', serif;
         }
          #stasiun {
          font-family: 'Karla', sans-serif;
@@ -53,11 +55,9 @@
 /*         background-color: #23B5C8; */         
          }
 
-         nav {
-/*              background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;ckground: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%);*/
-         }
+      .navbar-toggler-icon {
+          background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(50,140,186,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
       </style>
       @yield('after_style')
 <!--Start of Tawk.to Script-->

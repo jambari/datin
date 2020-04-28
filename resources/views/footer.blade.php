@@ -61,6 +61,9 @@
                 <p>
                     <a class="text-primary" href="/kegempaan">Kegempaan</a>
                 </p>
+                <p>
+                    <a class="text-primary" href="/populer">Populer</a>
+                </p>
             </div>
             <!-- Grid column -->
             <!-- Grid column -->

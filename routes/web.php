@@ -46,8 +46,9 @@ Route::get('/rasagempa', 'HomeController@simimi');
 //seismisitas / aktivitas kegempaan
 Route::get('/kegempaan', 'Admin\ArticleCrudController@seismisitas'); // list semua bulletin
 Route::get('/kegempaan/{id}', 'Admin\ArticleCrudController@seismisitasShow');
-
-
+//Populer
+Route::get('/populer', 'Admin\ArticleCrudController@populer'); // list semua bulletin
+Route::get('/populer/{id}', 'Admin\ArticleCrudController@populerShow');
 //buku tamu
 Route::get('/bukutamu', 'GuestController@index' );
 
