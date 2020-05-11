@@ -229,7 +229,7 @@ html, body {  }
         @if ( $datas['galleries'] )
             @foreach ( $datas['galleries'] as $article )
                 <ul class="list-unstyled">
-                    <a href="/populer/{{ $article->id }}" title="{{ $article->title }}" class="text-primary">
+                    <a href="/populer/{{ $article->slug }}" title="{{ $article->title }}" class="text-primary">
                     <li class="media">
                         <img class="mr-3" src="/{{ $article->image }}" alt="image of {{ $article->title }}" width="150" height="100" >
                         <div class="media-body">
@@ -264,7 +264,7 @@ html, body {  }
                         <img src="{{ $article->image }}" id="carimage" class="d-block w-100" height="400" alt="{{ $article->title }}" style="border" >
                         <div class="carousel-caption d-md-block">
                            <h5 id="judul" >{{ $article->title }}</h5>
-                           <a href="/berita/{{ $article->id }}" class=" btn bg-primary text-light" >Baca </a>
+                           <a href="/berita/{{ $article->slug }}" class=" btn bg-primary text-light" >Baca </a>
                         </div>
                     </div>
                         @endforeach
