@@ -1,6 +1,10 @@
 @extends('main')
+@section('meta')
+      <meta name="description" content="{{ \Illuminate\Support\Str::limit($infografis->content, 300, $end='...') }}">
+      <meta name="keywords" content="Review Seismisitas">
+@endsection
 @section('title')
-<title>Review Seismisitas - Stasiun Geofisika Kelas I Jayapura</title>
+<title>{{ $infografis->title }}</title>
 @endsection
 @section('after_style')
 <link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
@@ -63,7 +67,7 @@
 	       	@if ( $seismisitas )
             @foreach ( $seismisitas as $kegempaan )
             <ul class="list-unstyled">
-             	<a href="/kegempaan/{{ $kegempaan->id }}" title="{{ $kegempaan->title }}" class="text-primary">
+             	<a href="/kegempaan/{{ $kegempaan->slug }}" title="{{ $kegempaan->title }}" class="text-primary">
 			  	<li class="media">
 			    	<img class="mr-3" src="/{{ $kegempaan->image }}" alt="" width="100" height="80" >
 			    	<div class="media-body">

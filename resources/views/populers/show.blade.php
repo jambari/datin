@@ -1,6 +1,10 @@
 @extends('main')
+@section('meta')
+      <meta name="description" content="{{ \Illuminate\Support\Str::limit($populer->content, 300, $end='...') }}">
+      <meta name="keywords" content="Berita">
+@endsection
 @section('title')
-<title>Artikel Populer - Stasiun Geofisika Kelas I Jayapura</title>
+<title>{{ $populer->title }}</title>
 @endsection
 @section('after_style')
 <link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
@@ -63,7 +67,7 @@
 	       	@if ( $populers )
             @foreach ( $populers as $populer )
             <ul class="list-unstyled">
-             	<a href="/kegempaan/{{ $populer->id }}" title="{{ $populer->title }}" class="text-primary">
+             	<a href="/populer/{{ $populer->slug }}" title="{{ $populer->title }}" class="text-primary">
 			  	<li class="media">
 			    	<img class="mr-3" src="/{{ $populer->image }}" alt="" width="100" height="80" >
 			    	<div class="media-body">

@@ -1,4 +1,8 @@
 @extends('main')
+@section('meta')
+      <meta name="description" content="Artikel Populer">
+      <meta name="keywords" content="Populer">
+@endsection
 @section('title')
 <title>Artikel Populer - Stasiun Geofisika Kelas I Jayapura</title>
 @section('after_style')
@@ -38,7 +42,7 @@
 	       	@if ( $populers )
             @foreach ( $populers as $populer )
             <ul class="list-unstyled">
-             	<a href="/populer/{{ $populer->id }}" title="{{ $populer->title }}" class="text-primary">
+             	<a href="/populer/{{ $populer->slug }}" title="{{ $populer->title }}" class="text-primary">
 			  	<li class="media">
 			    	<img class="mr-3" src="/{{ $populer->image }}" alt="image of {{ $populer->title }}" width="200" height="150" >
 			    	<div class="media-body">

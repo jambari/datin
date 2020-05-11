@@ -1,6 +1,10 @@
 @extends('main')
+@section('meta')
+      <meta name="description" content="{{ \Illuminate\Support\Str::limit($siaran->content, 300, $end='...') }}">
+      <meta name="keywords" content="Siaran Press">
+@endsection
 @section('title')
-<title>Siaran Press - Stasiun Geofisika Kelas I Jayapura</title>
+<title>{{ $siaran->title }}</title>
 @section('after_style')
 <style type="text/css" media="screen">
 </style>

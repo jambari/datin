@@ -38,7 +38,7 @@
 	       	@if ( $kegempaans )
             @foreach ( $kegempaans as $kegempaan )
             <ul class="list-unstyled">
-             	<a href="/kegempaan/{{ $kegempaan->id }}" title="{{ $kegempaan->title }}" class="text-primary">
+             	<a href="/kegempaan/{{ $kegempaan->slug }}" title="{{ $kegempaan->title }}" class="text-primary">
 			  	<li class="media">
 			    	<img class="mr-3" src="/{{ $kegempaan->image }}" alt="image of {{ $kegempaan->title }}" width="200" height="150" >
 			    	<div class="media-body">

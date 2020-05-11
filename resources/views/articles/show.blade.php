@@ -1,6 +1,12 @@
 @extends('main')
+@section('meta')
+    <meta property="og:url" content="/berita/{{ $article->slug }}">
+    <meta property="og:image" content="/{{ $article->image }}">
+    <meta property="og:description" content="{!! \Illuminate\Support\Str::limit($article->content, 300, $end='...') !!}">
+    <meta name="keywords" content="Berita">
+@endsection
 @section('title')
-<title>Berita - Stasiun Geofisika Kelas I Jayapura</title>
+<title>{{ $article->title }}</title>
 @endsection
 @section('after_style')
 <link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
@@ -63,7 +69,7 @@
 	       	@if ( $beritas )
             @foreach ( $beritas as $berita )
             <ul class="list-unstyled">
-             	<a href="/berita/{{ $berita->id }}" title="{{ $berita->title }}" class="text-primary">
+             	<a href="/berita/{{ $berita->slug }}" title="{{ $berita->title }}" class="text-primary">
 			  	<li class="media">
 			    	<img class="mr-3" src="/{{ $berita->image }}" alt="" width="100" height="80" >
 			    	<div class="media-body">

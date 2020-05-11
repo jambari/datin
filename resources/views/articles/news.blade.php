@@ -1,4 +1,7 @@
 @extends('main')
+@section('meta')
+
+@endsection
 @section('title')
 <title>Berita - Stasiun Geofisika Kelas I Jayapura</title>
 @section('after_style')
@@ -38,7 +41,7 @@
 	       	@if ( $news )
             @foreach ( $news as $berita )
             <ul class="list-unstyled">
-             	<a href="/berita/{{ $berita->id }}" title="{{ $berita->title }}" class="text-primary">
+             	<a href="/berita/{{ $berita->slug }}" title="{{ $berita->title }}" class="text-primary">
 			  	<li class="media">
 			    	<img class="mr-3" src="/{{ $berita->image }}" alt="image of {{ $berita->title }}" width="200" height="150" >
 			    	<div class="media-body">

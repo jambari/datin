@@ -1,5 +1,9 @@
 
 @extends('main')
+@section('meta')
+      <meta name="description" content="Salah satu UPT BMKG yang terletak di Kota Jayapura. Stasiun Geofisika Kelas I Jayapura melakukan pengamatan gempabumi, magnetbumi, listrik udara, dan kualitas udara.">
+      <meta name="keywords" content="Gempabumi terkini, Magnetbumi, Listrik Udara, Percepatan Tanah,Berita Gempabumi, Buletin, Siaran Press">
+@endsection
 @section('title')
 <title>Home - Stasiun Geofisika Kelas I Jayapura</title>
 @endsection

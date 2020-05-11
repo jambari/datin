@@ -148,9 +148,11 @@ class ArticleCrudController extends CrudController
 
 
     //for article detail page
-    public function show($id) {
-        $article = $this->crud->getEntry($id);
-        $galleries = Gallery::where('article_id',$id)->get();
+    public function show($slug) {
+        $article = Article::where('slug',$slug)->first();
+        // $article_id = $this->crud->getEntry($article->id);
+        $article_id = $article->id;
+        $galleries = Gallery::where('article_id',$article_id)->get();
         $beritas = Article::take(5)->where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('id','desc')->get();
         return view('articles.show')->with(compact('article','beritas','galleries'));
     }
@@ -163,9 +165,10 @@ class ArticleCrudController extends CrudController
     }
 
     //for seismisitas
-    public function seismisitasShow($id) {
-        $infografis = $this->crud->getEntry($id);
-        $galleries = Gallery::where('article_id',$id)->get();
+    public function seismisitasShow($slug) {
+        $infografis = Article::where('slug',$slug)->first();
+        $infografis_id = $infografis->id;
+        $galleries = Gallery::where('article_id',$infografis_id)->get();
         $seismisitas = Article::take(5)->where('category_id', 8)->orderBy('id','desc')->get();
         return view('kegempaans.show')->with(compact('infografis','galleries','seismisitas'));
     }
@@ -181,9 +184,10 @@ class ArticleCrudController extends CrudController
     // Artikel Populer
 
         //for seismisitas
-    public function populerShow($id) {
-        $populer = $this->crud->getEntry($id);
-        $thumbnails = Gallery::where('article_id',$id)->get();
+    public function populerShow($slug) {
+        $populer = Article::where('slug',$slug)->first();
+        $populer_id = $populer->id;
+        $thumbnails = Gallery::where('article_id',$populer_id)->get();
         $populers = Article::take(5)->where('category_id', 10)->orderBy('id','desc')->get();
         return view('populers.show')->with(compact('populer','thumbnails','populers'));
     }

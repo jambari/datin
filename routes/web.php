@@ -30,7 +30,7 @@ Route::get('/magnet', 'HomeController@magnet' ); // charts
 //api
 //Website Kantor
 Route::get('/news', 'Admin\ArticleCrudController@news'); // list semua berita
-Route::get('/berita/{id}', 'Admin\ArticleCrudController@show');
+Route::get('/berita/{slug}', 'Admin\ArticleCrudController@show');
 //Bulletin
 Route::get('/bulletins', 'Admin\BulletinCrudController@bulletin'); // list semua bulletin
 Route::get('/bulletins/{id}', 'Admin\BulletinCrudController@show');
@@ -45,10 +45,10 @@ Route::resource('/mercallies', 'MercallyController');// Indeks Seismisitas
 Route::get('/rasagempa', 'HomeController@simimi');
 //seismisitas / aktivitas kegempaan
 Route::get('/kegempaan', 'Admin\ArticleCrudController@seismisitas'); // list semua bulletin
-Route::get('/kegempaan/{id}', 'Admin\ArticleCrudController@seismisitasShow');
+Route::get('/kegempaan/{slug}', 'Admin\ArticleCrudController@seismisitasShow');
 //Populer
 Route::get('/populer', 'Admin\ArticleCrudController@populer'); // list semua bulletin
-Route::get('/populer/{id}', 'Admin\ArticleCrudController@populerShow');
+Route::get('/populer/{slug}', 'Admin\ArticleCrudController@populerShow');
 //buku tamu
 Route::get('/bukutamu', 'GuestController@index' );
 

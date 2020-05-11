@@ -17,7 +17,6 @@ class Article extends Model
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
-
     protected $table = 'articles';
     protected $primaryKey = 'id';
     public $timestamps = true;
@@ -43,7 +42,10 @@ class Article extends Model
             ],
         ];
     }
-
+    public function getPageLink()
+    {
+        return url($this->slug);
+    }
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -93,6 +95,11 @@ class Article extends Model
         }
 
         return $this->title;
+    }
+
+        public function getRouteKeyName()
+    {
+        return 'slug';
     }
     public function gallery()
     {
