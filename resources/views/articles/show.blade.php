@@ -4,8 +4,8 @@
 	<meta name="description" content="{{ \Illuminate\Support\Str::limit($article->content, 300, $end='...') }}">
     <meta property="og:url" content="/berita/{{ $article->slug }}">
     <meta property="og:image" content="/{{ $article->image }}">
-    <meta property="og:description" content="{{ \Illuminate\Support\Str::limit($article->content, 300, $end='...') }}">
     <meta property="og:type" content="article" />
+    <meta content="{{ \Illuminate\Support\Str::limit($article->content, 300, $end='...') }}" />
     <meta name="twitter:card" content="summary_large_image">
     <meta name="keywords" content="Berita">
 @endsection

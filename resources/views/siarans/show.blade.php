@@ -1,6 +1,7 @@
 @extends('main')
 @section('meta')
       <meta name="description" content="{{ \Illuminate\Support\Str::limit($siaran->content, 300, $end='...') }}">
+      <meta property="og:image" content="/{{ $siaran->image }}">
       <meta name="keywords" content="Siaran Press">
 @endsection
 @section('title')

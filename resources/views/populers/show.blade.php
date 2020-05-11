@@ -1,6 +1,7 @@
 @extends('main')
 @section('meta')
       <meta name="description" content="{{ \Illuminate\Support\Str::limit($populer->content, 300, $end='...') }}">
+      <meta property="og:image" content="/{{ $populer->image }}">
       <meta name="keywords" content="Berita">
 @endsection
 @section('title')

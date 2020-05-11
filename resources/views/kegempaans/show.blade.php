@@ -1,6 +1,7 @@
 @extends('main')
 @section('meta')
       <meta name="description" content="{{ \Illuminate\Support\Str::limit($infografis->content, 300, $end='...') }}">
+      <meta property="og:image" content="/{{ $infografis->image }}">
       <meta name="keywords" content="Review Seismisitas">
 @endsection
 @section('title')
