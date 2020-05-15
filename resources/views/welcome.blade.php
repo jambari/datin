@@ -337,7 +337,7 @@ html, body {  }
                 <img class="card-img-top" src="/{{ $kegempaan->image }}" alt="Card image cap" height="300" >
                 <div class="card-body">
                     <h5 class="card-title">{{ $kegempaan->title }}</h5>
-                    <a href="/kegempaan/{{ $kegempaan->id }}" class="btn bg-primary btn-block text-light">Detail</a>
+                    <a href="/kegempaan/{{ $kegempaan->slug }}" class="btn bg-primary btn-block text-light">Detail</a>
                 </div>
             </div>
         </div>
