@@ -143,6 +143,50 @@ class HomeController extends Controller
     //recent earthquakes tables
     public function terkini() {
         $gempas = Gempa::take(10)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
+        foreach ($gempas as $eq) {
+            $tanggal = $eq['tanggal']; //get date of the eathquake
+            $jam = $eq['origin']; // get origin time of eq
+            $bulan = array (
+                1 =>   'Januari',
+                'Februari',
+                'Maret',
+                'April',
+                'Mei',
+                'Juni',
+                'Juli',
+                'Agustus',
+                'September',
+                'Oktober',
+                'November',
+                'Desember'
+            );
+            //array hari senin-sabtu
+            $days = array (
+                0 =>   'Minggu',
+                'Senin',
+                'Selasa',
+                'Rabu',
+                'Kamis',
+                "Jum'at",
+                'Sabtu'
+            );
+
+            $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
+            $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
+            $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
+            $jamnya = (int)date("H", strtotime($tanggaljam)); //ambil angka jam dalam sebuah minggu
+            $selisih = ($jamnya+ 9) - 24;
+            if ($selisih >=0) {
+               $tanggalbaru = date('d-m-Y', strtotime($tanggaljam . ' +1 day'));
+            }
+            $hari = $days[$hari];
+            $pecahkan = explode('-',$tanggalbaru);
+            $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
+            $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
+            $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
+            $value = $tanggalindo.' '.$jamwit;
+            $eq['origin'] = $value;
+        }
         return view('gempa.terkini',compact('gempas'));
     }
 

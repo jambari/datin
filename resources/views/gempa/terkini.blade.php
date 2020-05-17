@@ -32,13 +32,13 @@
 				  <thead>
 				   <tr>
 					    <th scope="col">#</th>
-					    <th scope="col">Date</th>
-					    <th scope="col"> UTC </th>
-					    <th scope="col">Lat</th>
-					    <th scope="col">Lon</th>
+					    <th scope="col"> Origin (WIT) </th>
+					    <th scope="col">Lintang</th>
+					    <th scope="col">Bujur</th>
 					    <th scope="col">Mag</th>
-					    <th scope="col">Depth</th>
-					    <th scope="col">Loc</th>
+					    <th scope="col">Kedlmn</th>
+					    <th scope="col">Lokasi</th>
+					    <th scope="col">Dirasakan</th>
 					    <th scope="col">Action</th>
 				    </tr>
 				</thead>
@@ -46,15 +46,15 @@
 			@if ( $gempas )
             @foreach ( $gempas as $gempa )
             
-				    <tr>
-				      	<th scope="row"> {{ $loop->iteration }}</th>
-				      	<td>{{ $gempa->tanggal }}</td>
+				    <tr class="@if ($gempa->terasa == 'dirasakan') bg-red @endif">
+				      	<td  scope="row"> {{ $loop->iteration }}</td>
 				      	<td> {{ $gempa->origin }} </td>
 				      	<td> {{ $gempa->lintang }} </td>
 				      	<td> {{ $gempa->bujur }} </td>
 				      	<td> {{ $gempa->magnitudo }} </td>
 				      	<td> {{ $gempa->depth }} </td>
 				      	<td> {{ $gempa->ket }} </td>
+				      	<td>{{ $gempa->terasa }}</td>
 				      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-secondary" > Peta </a></td>
 				    </tr>
 		  	@endforeach
