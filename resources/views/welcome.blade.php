@@ -11,7 +11,11 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
 <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 <style>
-html, body {  }
+html, body { 
+    background-image: url('/images/hilal1.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+ }
 
     .carousel-item:after {
       content:"";
@@ -107,7 +111,7 @@ html, body {  }
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.4)
     ),
-    url('./images/lidya.jpg');
+    url('./images/margi1.jpg');
    background-size: cover;
    }
 
@@ -204,32 +208,15 @@ html, body {  }
 </style>
 @endsection
 @section('content')
-
-
-<div class="modal hide fade" id="myModal">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">×</a>
-    <h3>Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…ddddd</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn">Close</a>
-    <a href="#" class="btn btn-primary">Save changes</a>
-  </div>
-</div>
-
-
 <!-- <br>
 <div class="container"> -->
-<div class="row border" id="mycarousel">
+<div class="row border" id="mycarousel" style="background-image: url('/images/hilal1.jpeg'); background-size: cover; background-repeat: no-repeat;">
     <div class="col-lg-6 col-md-6 d-flex flex-column" style="padding: 3%;">
 
         @if ( $datas['galleries'] )
             @foreach ( $datas['galleries'] as $article )
                 <ul class="list-unstyled">
-                    <a href="/populer/{{ $article->slug }}" title="{{ $article->title }}" class="text-primary">
+                    <a href="/populer/{{ $article->slug }}" title="{{ $article->title }}" class="text-white">
                     <li class="media">
                         <img class="mr-3" src="/{{ $article->image }}" alt="image of {{ $article->title }}" width="150" height="100" >
                         <div class="media-body">
@@ -242,7 +229,7 @@ html, body {  }
             @endforeach
         @endif
 <!--             @if ($datas['pengumuman'])
-        <h3 class="text-primary ml-5 d-none d-sm-block " >
+        <h3 class="text-white ml-5 d-none d-sm-block " >
                 {!! $datas['pengumuman']->isi !!}
         </h4>
         @endif -->
@@ -290,14 +277,14 @@ html, body {  }
 <div class="container" style="padding: 20px;">
     <div class="row" >
         <div class="col-md-12 ">
-            <h2 class="featurette-heading text-primary text-center">Gempabumi Terkini</span></h2>
+            <h2 class="featurette-heading text-white text-center">Gempabumi Terkini</span></h2>
         </div>   
     </div>
 </div>
 <div class="container">
     <div class="row d-flex">
         <div class="col-md-12 ">
-            <p class="lead text-primary text-center"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
+            <p class="lead text-white text-center"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
         </div>
     </div>
 </div>
@@ -305,26 +292,26 @@ html, body {  }
 <!-- The Product Section -->
 <!-- <div class="row d-flex justify-content-center align-items-center" style="padding: 10% 5% 10% 5%;" >
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct " style="" >
-        <p class="text-center" ><i class="wi wi-earthquake text-primary " style=" font-size: 4em " ></i></p>
-        <h3 class=" text-center text-primary" >Gempabumi</h3>
-        <p class="text-center text-primary " >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Jayapura mengamati gempabumi 24/7 hari.</p>
+        <p class="text-center" ><i class="wi wi-earthquake text-white " style=" font-size: 4em " ></i></p>
+        <h3 class=" text-center text-white" >Gempabumi</h3>
+        <p class="text-center text-white " >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Jayapura mengamati gempabumi 24/7 hari.</p>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
-        <p class="text-center" ><i class="wi wi-meteor text-primary " style=" font-size: 4em " ></i></p>
-        <h3 class="text-center text-primary" >Geofisika Potensial</h3>
-        <p class="text-center text-primary" >Pengamatan variasi harian magnetbumi, pengamatan absolut magnetbumi, dan listrik udara dilakukan secara berkelanjutan.</p>
+        <p class="text-center" ><i class="wi wi-meteor text-white " style=" font-size: 4em " ></i></p>
+        <h3 class="text-center text-white" >Geofisika Potensial</h3>
+        <p class="text-center text-white" >Pengamatan variasi harian magnetbumi, pengamatan absolut magnetbumi, dan listrik udara dilakukan secara berkelanjutan.</p>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
-        <p class="text-center " ><i class="wi wi-raindrops text-primary" style=" font-size: 4em "></i></p>
-        <h3 class="text-center text-primary" >Kualitas Udara</h3>
-        <p class="text-center text-primary" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
+        <p class="text-center " ><i class="wi wi-raindrops text-white" style=" font-size: 4em "></i></p>
+        <h3 class="text-center text-white" >Kualitas Udara</h3>
+        <p class="text-center text-white" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
-        <p class="text-center" ><i class="wi wi-tsunami text-primary" style=" font-size: 4em "></i></p>
-        <h3 class="text-center text-primary" >Rasa Gempa ?</h3>
-        <p class="text-center text-primary" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa" class="text-primary">disini</a>. </p>
+        <p class="text-center" ><i class="wi wi-tsunami text-white" style=" font-size: 4em "></i></p>
+        <h3 class="text-center text-white" >Rasa Gempa ?</h3>
+        <p class="text-center text-white" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa" class="text-white">disini</a>. </p>
     </div>
 </div> -->
 <!-- Review Seismisitas -->
@@ -362,8 +349,8 @@ html, body {  }
 <!-- recent earthquake section -->
 <!-- <div class="row d-flex justify-content-center align-items-center border " style="padding-top: 5%; padding-bottom: 5%;" id="info">
   <div class="col-md-5 d-none d-sm-block" style="padding: 3%;">
-    <h2 class="featurette-heading text-primary">Gempabumi Terkini</span></h2>
-    <p class="lead text-primary"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
+    <h2 class="featurette-heading text-white">Gempabumi Terkini</span></h2>
+    <p class="lead text-white"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
   </div>
   <div class="col-md-7 d-none d-sm-block" style="" id="frengki" >
     <div id="map" class="" style="width:85%;height:400px; border-radius: 5px;"></div>

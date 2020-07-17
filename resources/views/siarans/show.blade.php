@@ -33,7 +33,7 @@
 	        <p class="lead"><i class="fa fa-user"></i> by <a href="" class="text-primary">{{ $siaran->author or '-' }}</a>
 	        </p>
 	        <hr>
-	        <p><i class="fa fa-calendar"></i> Posted on {{ Carbon\Carbon::parse($siaran->created_at)->diffForHumans() }} </p>
+	        <p><i class="fa fa-calendar"></i> Posted on {{ $tanggal }} </p>
 	        <hr>
 	        <img src="/{{ $siaran->image }}" class="img-fluid">
 	        <hr>

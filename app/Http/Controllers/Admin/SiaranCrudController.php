@@ -40,7 +40,10 @@ class SiaranCrudController extends CrudController
                                 'label' => 'Judul',
                             ]);
 
-
+        $this->crud->addColumn([
+                                'name' => 'created_at',
+                                'label' => 'created at',
+                            ]);
         // ------ CRUD FIELDS
         $this->crud->addField([    // TEXT
                                 'name' => 'title',
@@ -160,8 +163,9 @@ class SiaranCrudController extends CrudController
     //for article detail page
     public function show($id) {
         $siaran = $this->crud->getEntry($id);
+        $tanggal = date('d M Y', strtotime($siaran->created_at));
         $siarans = Siaran::take(5)->orderBy('id','desc')->get();
-        return view('siarans.show')->with(compact('siaran','siarans'));
+        return view('siarans.show')->with(compact('siaran','siarans', 'tanggal'));
     }
 
     //for news page

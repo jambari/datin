@@ -45,7 +45,7 @@
 	        <p class="lead"><i class="fa fa-user"></i> by <a href="" class="text-primary">{{ $infografis->author or '-' }}</a>
 	        </p>
 	        <hr>
-	        <p><i class="fa fa-calendar"></i> Posted on {{ Carbon\Carbon::parse($infografis->created_at)->diffForHumans() }} </p>
+	        <p><i class="fa fa-calendar"></i> Posted on {{ date('d M Y', strtotime($infografis->date)) }} </p>
 	        <hr>
 	        <img src="/{{ $infografis->image }}" class="img-fluid">
 	        <hr>

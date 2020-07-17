@@ -58,7 +58,10 @@ class ArticleCrudController extends CrudController
                                 'model' => "App\Models\Category",
                             ]);
 
-
+        $this->crud->addColumn([
+                                'name' => 'created_at',
+                                'label' => 'created at',
+                            ]);
         // ------ CRUD FIELDS
         $this->crud->addField([    // TEXT
                                 'name' => 'title',
@@ -147,23 +150,22 @@ class ArticleCrudController extends CrudController
     }
 
 
+    //for news page
+    public function news() {
+        $news = Article::where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('date', 'desc')->paginate(6);
+        return view('articles.news',compact('news'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
     //for article detail page
     public function show($slug) {
         $article = Article::where('slug',$slug)->first();
+        $tanggal = date('d M Y', strtotime($article->date));
         // $article_id = $this->crud->getEntry($article->id);
         $article_id = $article->id;
         $galleries = Gallery::where('article_id',$article_id)->get();
         $beritas = Article::take(5)->where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('id','desc')->get();
-        return view('articles.show')->with(compact('article','beritas','galleries'));
+        return view('articles.show')->with(compact('article','beritas','galleries','tanggal'));
     }
-
-    //for news page
-    public function news() {
-        $news = Article::latest()->where('category_id','!=', 8)->where('category_id','!=', 10)->paginate(6);
-        return view('articles.news',compact('news'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
-
     //for seismisitas
     public function seismisitasShow($slug) {
         $infografis = Article::where('slug',$slug)->first();
@@ -175,7 +177,7 @@ class ArticleCrudController extends CrudController
 
     //for news page
     public function seismisitas() {
-        $kegempaans = Article::where('category_id', 8)->latest()->paginate(6);
+        $kegempaans = Article::where('category_id', 8)->orderBy('date', 'desc')->paginate(6);
         return view('kegempaans.kegempaan',compact('kegempaans'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -194,7 +196,7 @@ class ArticleCrudController extends CrudController
 
     //for news page
     public function populer() {
-        $populers = Article::where('category_id', 10)->latest()->paginate(6);
+        $populers = Article::where('category_id', 10)->orderBy('date', 'desc')->paginate(6);
         return view('populers.populer',compact('populers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

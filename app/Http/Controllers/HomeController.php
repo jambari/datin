@@ -335,19 +335,19 @@ class HomeController extends Controller
         $end = $request->input( 'end' );
         if($start != "" and $start < $end ){
         // m < 3 and depth < 70 icon small red
-        $eq1s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '<=', 70)->where('terasa', '=',0)->get();
+        $eq1s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '<=', 60)->where('terasa', '=',0)->get();
         // m betwen 3 to 5 and depth < 70 icon small red
-        $eq2s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '<=', 70)->where('terasa', '=',0)->get();
+        $eq2s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
         // m >= 5 and depth < 70 icon small red
-        $eq3s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '<=', 70)->where('terasa', '=',0)->get();
+        $eq3s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
 
         // depth 70-300
 
-        $eq4s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->whereBetween('depth', [71, 300])->where('terasa', '=',0)->get();
+        $eq4s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
         // m betwen 3 to 5 and depth 71-300 icon small red
-        $eq5s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->whereBetween('depth', [71, 300])->where('terasa', '=',0)->get();
+        $eq5s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
         // m >= 5 and depth 71-300 icon small red
-        $eq6s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->whereBetween('depth', [71, 300])->where('terasa', '=',0)->get();
+        $eq6s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
 
         // depth > 300
 
@@ -368,9 +368,9 @@ class HomeController extends Controller
                     ->whereBetween('tanggal', [$start, $end])->count();
 
         //depth\
-        $Dshallow = Gempa::where('depth','<', 70)
+        $Dshallow = Gempa::where('depth','<', 60)
                     ->whereBetween('tanggal', [$start, $end])->count();
-        $Dmediate = Gempa::whereBetween('depth',[70, 249])
+        $Dmediate = Gempa::whereBetween('depth',[60, 249])
                     ->whereBetween('tanggal', [$start, $end])->count();
         $Dverydeep = Gempa::where('depth','>=', 300)
                     ->whereBetween('tanggal', [$start, $end])->count();
@@ -379,4 +379,10 @@ class HomeController extends Controller
         return view ( 'gempa.searchresult' )->with(compact('start', 'end', 'eq1s', 'eq2s', 'eq3s', 'eq4s', 'eq5s', 'eq6s', 'eq7s', 'eq8s', 'eq9s', 'felts', 'Mbelowthree', 'Mthreefive', 'Mabovefive', 'Dshallow', 'Dmediate', 'Dverydeep'));
         }
     }
+
+    public function slideshow () {
+        $articles = Article::take(8)->where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('id','desc')->get();
+        return view('slideshow')->with(compact('articles'));
+    }
+
 }

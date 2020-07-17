@@ -1,5 +1,5 @@
-<footer class="page-footer font-small text-primary bg-light">
-    <div style="" class=" bg-light text-primary border border-bottom">
+<footer class="page-footer font-small text-white bg-light">
+    <div style="" class=" bg-light text-white border border-bottom">
         <div class="container">
             <!-- Grid row-->
             <div class="row py-4 d-flex align-items-center">
@@ -12,19 +12,19 @@
                 <div class="col-md-6 col-lg-7 text-center text-md-right">
                     <!-- Facebook -->
                     <a class="fb-ic" href="https://www.facebook.com/profile.php?id=100013155312444&ref=bookmarks" target="_blank">
-                        <i class="fa fa-facebook text-primary mr-4"> </i>
+                        <i class="fa fa-facebook text-white mr-4"> </i>
                     </a>
                     <!-- Twitter -->
                     <a class="tw-ic" href="https://twitter.com/AngkasaStageof" target="_blank">
-                        <i class="fa fa-twitter text-primary mr-4"> </i>
+                        <i class="fa fa-twitter text-white mr-4"> </i>
                     </a>
                     <!-- Google +-->
                     <a class="gplus-ic" href="mailto:stageof.jayapura@gmail.com" target="_blank">
-                        <i class="fa fa-google-plus text-primary mr-4"> </i>
+                        <i class="fa fa-google-plus text-white mr-4"> </i>
                     </a>
                     <!--Instagram-->
                     <a class="ins-ic" href="https://www.instagram.com/stageofangkasa/" target="_blank">
-                        <i class="fa fa-instagram text-primary"> </i>
+                        <i class="fa fa-instagram text-white"> </i>
                     </a>
                 </div>
                 <!-- Grid column -->
@@ -50,35 +50,35 @@
                 <h6 class="text-uppercase font-weight-bold">Produk</h6>
                 <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
-                    <a class="text-primary" href="/gempa/terkini">Gempabumi</a>
+                    <a class="text-white" href="/gempa/terkini">Gempabumi</a>
                 </p>
                 <p>
-                    <a class="text-primary" href="/bulletins">Buletin</a>
+                    <a class="text-white" href="/bulletins">Buletin</a>
                 </p>
                 <p>
-                    <a class="text-primary" href="/siarans">Siaran Press</a>
+                    <a class="text-white" href="/siarans">Siaran Press</a>
                 </p>
                 <p>
-                    <a class="text-primary" href="/kegempaan">Kegempaan</a>
+                    <a class="text-white" href="/kegempaan">Kegempaan</a>
                 </p>
                 <p>
-                    <a class="text-primary" href="/populer">Populer</a>
+                    <a class="text-white" href="/populer">Sains</a>
                 </p>
             </div>
             <!-- Grid column -->
             <!-- Grid column -->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-primary ">
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-white ">
                 <!-- Links -->
                 <h6 class="text-uppercase font-weight-bold">Link Terkait</h6>
                 <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
-                    <a class="text-primary" href="https://bmkg.go.id">BMKG</a>
+                    <a class="text-white" href="https://bmkg.go.id">BMKG</a>
                 </p>
                 <p>
-                    <a class="text-primary" href="https://inatews.bmkg.go.id">InaTEWS</a>
+                    <a class="text-white" href="https://inatews.bmkg.go.id">InaTEWS</a>
                 </p>
                 <p>
-                    <a class="text-primary" href="balai5.bmkg.go.id">BBMKG V</a>
+                    <a class="text-white" href="balai5.bmkg.go.id">BBMKG V</a>
                 </p>
                 <p>
             </div>
@@ -104,9 +104,9 @@
     </div>
     <!-- Footer Links -->
     <!-- Copyright -->
-    <div class="footer-copyright text-center text-light py-3 bg-primary">©
+    <div class="footer-copyright text-center text-light py-3 ">©
         <?php echo date("Y"); ?>
-            <a class="text-light" href="http://stageof.angkasa.bmkg.go.id" style="text-decoration: none;" > Stasiun Geofisika Kelas I Jayapura</a>
+            <a class="text-white" href="http://stageof.angkasa.bmkg.go.id" style="text-decoration: none;" > Stasiun Geofisika Kelas I Jayapura</a>
     </div>
     <!-- Copyright -->
 </footer>

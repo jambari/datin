@@ -1,5 +1,5 @@
-      <nav class="navbar navbar-expand-lg fixed-top bg-light" style="" >
-         <a class="navbar-brand bg-light" href="/" style="padding: 0.5%;" >
+      <nav class="navbar navbar-expand-lg fixed-top " style="" >
+         <a class="navbar-brand" href="/" style="padding: 0.5%; background: white;" >
          <img src="{{ asset('images') }}/logo-bmkg.png" alt="logo" width="35" height="40" >
          </a>
          <button class="navbar-toggler  " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,22 +8,22 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                <li class="nav-item active">
-                  <a class="nav-link text-primary" href="/">Beranda <span class="sr-only">(current)</span></a>
+                  <a class="nav-link text-white" href="/">Beranda <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item ">
-                  <a class="nav-link text-primary" href="/news">Berita</a>
+                  <a class="nav-link text-white" href="/news">Berita</a>
                </li>
                <li class="nav-item ">
-                  <a class="nav-link text-primary" href="/siarans">Siaran Press</a>
+                  <a class="nav-link text-white" href="/siarans">Siaran Press</a>
                </li>
                <li class="nav-item ">
-                  <a class="nav-link text-primary" href="/bulletins">Buletin</a>
+                  <a class="nav-link text-white" href="/bulletins">Buletin</a>
                </li>
                <li class="nav-item ">
-                  <a class="nav-link text-primary" href="/populer">Populer</a>
+                  <a class="nav-link text-white" href="/populer">Sains</a>
                </li>                  
                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-primary" href="/gempa" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle text-white" href="/gempa" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Gempabumi
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -36,10 +36,10 @@
                   </div>
                </li>
                <li class="nav-item ">
-                  <a class="nav-link text-primary" href="/magnet">Magnetbumi</a>
+                  <a class="nav-link text-white" href="/magnet">Magnetbumi</a>
                </li>        
                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-primary" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle text-white" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Listrik Udara
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -47,10 +47,10 @@
                   </div>
                </li>
                <li class="nav-item ">
-                  <a class="nav-link text-primary" href="/layanandata">Layanan Data dan Jasa</a>
+                  <a class="nav-link text-white" href="/layanandata">Layanan Data dan Jasa</a>
                </li>  
                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-primary" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Media 
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -61,10 +61,10 @@
             </ul>
            <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-               <a href="/rasagempa" class="nav-link btn btn-default text-primary">Rasa Gempa ?</a>
+               <a href="/rasagempa" class="nav-link btn btn-outline-primary">Rasa Gempa ?</a>
             </li>
              <li class="nav-item">
-               <a href="/about" class="nav-link text-primary">Tentang Kami</a>
+               <a href="/about" class="nav-link text-white">Tentang Kami</a>
              </li>
             </ul>
          </div>

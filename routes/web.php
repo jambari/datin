@@ -24,6 +24,8 @@ Route::get('/gempa/statistik', 'HomeController@statistik'); // statistik and ear
 
 Route::any('/statistik/search', 'HomeController@searcheq'); // statistik and earthquake
 
+//caraousel
+Route::get('/slideshow', 'HomeController@slideshow');
 Route::get('/admin/dashboard', 'DashboardController@index'); // dashboard page
 Route::get('/charts', 'HomeController@charts' ); // charts
 Route::get('/magnet', 'HomeController@magnet' ); // charts

@@ -46,6 +46,9 @@
 			    	<img class="mr-3" src="/{{ $berita->image }}" alt="image of {{ $berita->title }}" width="200" height="150" >
 			    	<div class="media-body">
 				      	<h5 class="mt-0 mb-1">{{ $berita->title }}</h5>
+				      	<small>{{ date('d M Y', strtotime($berita->date)) }}</small>
+				      	<hr>
+				      	<small>Oleh {{ $berita->author }}</small>
 			    	</div>
 			  	</li>
 			  	</a>

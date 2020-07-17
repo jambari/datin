@@ -177,7 +177,7 @@ crossorigin=""/>
                         new Chart(document.getElementById("Depth-chart"), {
                         type: 'bar',
                         data: {
-                        labels: ["Depth<70", "70>Depth<300", "Depth>300"],
+                        labels: ["Depth<60", "60>Depth<300", "Depth>300"],
                         datasets: [
                             {
                             label: "Gempabumi",

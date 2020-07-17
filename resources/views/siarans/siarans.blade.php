@@ -46,6 +46,9 @@
 			    	<img class="mr-3" src="/{{ $siaran->image }}" alt="image of {{ $siaran->title }}" width="200" height="150" >
 			    	<div class="media-body">
 				      	<h5 class="mt-0 mb-1">{{ $siaran->title }}</h5>
+				      	<small>{{ date('d M Y', strtotime($siaran->created_at)) }}</small>
+				      	<hr>
+				      	<small>Oleh {{ $siaran->author }}</small>
 			    	</div>
 			  	</li>
 			  	</a>

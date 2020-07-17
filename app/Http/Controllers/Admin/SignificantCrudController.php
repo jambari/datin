@@ -175,7 +175,17 @@ class SignificantCrudController extends CrudController
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
-
+        $this->crud->addFilter([ // daterange filter
+           'type' => 'date_range',
+           'name' => 'tanggal',
+           'label'=> 'Tanggal'
+         ],
+         false,
+         function($value) { // if the filter is active, apply these constraints
+           $dates = json_decode($value);
+           $this->crud->addClause('where', 'tanggal', '>=', $dates->from);
+           $this->crud->addClause('where', 'tanggal', '<=', $dates->to);
+        });
         // ------ CRUD DETAILS ROW
         // $this->crud->enableDetailsRow();
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');

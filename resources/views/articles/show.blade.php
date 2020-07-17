@@ -46,7 +46,7 @@
 	        <p class="lead"><i class="fa fa-user"></i> by <a href="" class="text-primary">{{ $article->author or '-' }}</a>
 	        </p>
 	        <hr>
-	        <p><i class="fa fa-calendar"></i> Posted on {{ Carbon\Carbon::parse($article->created_at)->diffForHumans() }} </p>
+	        <p><i class="fa fa-calendar"></i> Posted on {{ $tanggal }} </p>
 	        <hr>
 	        <img src="/{{ $article->image }}" class="img-fluid">
 	        <hr>

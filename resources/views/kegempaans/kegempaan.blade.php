@@ -43,6 +43,9 @@
 			    	<img class="mr-3" src="/{{ $kegempaan->image }}" alt="image of {{ $kegempaan->title }}" width="200" height="150" >
 			    	<div class="media-body">
 				      	<h5 class="mt-0 mb-1">{{ $kegempaan->title }}</h5>
+				      	<small>{{ date('d M Y', strtotime($kegempaan->date)) }}</small>
+				      	<hr>
+				      	<small>Oleh {{ $kegempaan->author }}</small>
 			    	</div>
 			  	</li>
 			  	</a>
