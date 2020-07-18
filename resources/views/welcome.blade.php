@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 <style>
 html, body { 
-    background-image: url('/images/hilal1.jpeg');
+    background-image: url('/images/hilal.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
  }
@@ -40,38 +40,6 @@ html, body {
 }*/
 
 #mycarousel {
-
-/*    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;ckground: linear-gradient(90deg, rgba(0,0,0,1) 23%, rgba(0,151,255,1) 100%, rgba(32,11,195,0.8519607672170431) 100%);
-    margin-top: -1%;*/
-}
-
-/*@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}*/
-
-#digital, #analog {
-    background-color: #23B5C8;
-}
-#analog {
-    padding-top: 3%;
-    margin-bottom: -4%;
-}
-
-#digital {
-    padding-bottom: 5%;
-      font-family: 'liquid_crystalregular', sans-serif;
-  user-select: none;
-  user-drag: none;
 
 }
 
@@ -115,84 +83,10 @@ html, body {
    background-size: cover;
    }
 
-.hero-circle{
-        width:180px;
-        height:180px;
-        position:relative;
-        border:6px solid #151414;
-        border-radius:50%;
-        box-shadow:0 1px 8px rgba(34, 34, 34, 0.3),inset 0 1px 8px rgba(34, 34, 34, 0.3);
-    }
-.hero-face{
-    width:100%;
-    height:100%;
-}
-.hero-face:after{
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:12px;
-    height:12px;
-    margin:-6px 0 0 -6px;
-    background:#151414;
-    border-radius:6px;
-    content:"";
-    display:block;
-}
-.hero-hour{
-    width:0;
-    height:0;
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin:-4px 0 -4px -25%;
-    padding:4px 0 4px 25%;
-    background:#151414;
-    -webkit-transform-origin:100% 50%;
-    -ms-transform-origin:100% 50%;
-    transform-origin:100% 50%;
-    border-radius:4px 0 0 4px;
-}
-.hero-minute{
-    width:0;
-    height:0;
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin:-40% -3px 0;
-    padding:40% 3px 0;
-    background:#151414;
-    -webkit-transform-origin:50% 100%;
-    -ms-transform-origin:50% 100%;
-    transform-origin:50% 100%;
-    border-radius:3px 3px 0 0;
-}
-.hero-second{
-    width:0;
-    height:0;
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin:-40% -1px 0 0;
-    padding:40% 1px 0;
-    background:#151414;
-    -webkit-transform-origin:50% 100%;
-    -ms-transform-origin:50% 100%;
-    transform-origin:50% 100%;
-}
+/*#videoDiv {width: 100%; min-height: 100%; position: relative;}
+#videoBlock {width: 100%; min-height: 100%;  display: flex;  justify-content: center; align-items: center;}*/
+/*#videoMessage {width: 100%; height:100%; position: absolute; top: 0; left: 0;}*/
 
-.clock {
-  height: 100px;
-  width: 70%;
-  line-height: 100px;
-  margin: 150px auto 0;
-  padding: 0 50px;
-  color: #151414;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 0 7px #fff;
-  text-shadow: 0 0 3px #fff;
-}
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -210,7 +104,13 @@ html, body {
 @section('content')
 <!-- <br>
 <div class="container"> -->
-<div class="row border" id="mycarousel" style="background-image: url('/images/hilal1.jpeg'); background-size: cover; background-repeat: no-repeat;">
+<div class="row" id="mycarousel" style="background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url('./images/hilal1.jpeg');
+   background-size: cover; background-repeat: no-repeat;">
     <div class="col-lg-6 col-md-6 d-flex flex-column" style="padding: 3%;">
 
         @if ( $datas['galleries'] )
@@ -288,35 +188,10 @@ html, body {
         </div>
     </div>
 </div>
-<!-- </div> -->
-<!-- The Product Section -->
-<!-- <div class="row d-flex justify-content-center align-items-center" style="padding: 10% 5% 10% 5%;" >
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct " style="" >
-        <p class="text-center" ><i class="wi wi-earthquake text-white " style=" font-size: 4em " ></i></p>
-        <h3 class=" text-center text-white" >Gempabumi</h3>
-        <p class="text-center text-white " >Menggunakan peralatan mutakhir <em>Seiscomp3</em> Stasiun Geofisika Kelas I Jayapura mengamati gempabumi 24/7 hari.</p>
-    </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
-        <p class="text-center" ><i class="wi wi-meteor text-white " style=" font-size: 4em " ></i></p>
-        <h3 class="text-center text-white" >Geofisika Potensial</h3>
-        <p class="text-center text-white" >Pengamatan variasi harian magnetbumi, pengamatan absolut magnetbumi, dan listrik udara dilakukan secara berkelanjutan.</p>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
-        <p class="text-center " ><i class="wi wi-raindrops text-white" style=" font-size: 4em "></i></p>
-        <h3 class="text-center text-white" >Kualitas Udara</h3>
-        <p class="text-center text-white" >Pengamatan Intensitas Hujan, Kimia Air Hujan, dan Suspended Particulate Matter sebagai indikator kualitas udara.</p>
-    </div>
-
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mainproduct ">
-        <p class="text-center" ><i class="wi wi-tsunami text-white" style=" font-size: 4em "></i></p>
-        <h3 class="text-center text-white" >Rasa Gempa ?</h3>
-        <p class="text-center text-white" >Jika anda merasakan guncangan gempabumi, anda dapat melaporkan tingkat guncangan dan kerusakannya <a href="/rasagempa" class="text-white">disini</a>. </p>
-    </div>
-</div> -->
 <!-- Review Seismisitas -->
-<div class="container">
-    <div class="row d-flex justify-content-center align-items-center" style="padding-top: 5%; padding-bottom: 5%;" >
+<div class="container" id="videoDiv" >
+    <div id="videoMessage" class="row d-flex justify-content-center align-items-center" style="padding-top: 5%; padding-bottom: 5%;" >
         @if ($datas['kegempaans'])
         @foreach ($datas['kegempaans'] as $kegempaan)
         <div id="" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -333,29 +208,6 @@ html, body {
     </div>
 </div>
 
-<!-- <div class="row d-flex justify-content-center align-items-center " style="" id="analog" >
-    <div class="hero-circle">
-        <div class="hero-face">
-            <div id="hour" class="hero-hour"></div>
-            <div id="minute" class="hero-minute"></div>
-            <div id="second" class="hero-second"></div>
-        </div>
-    </div>
-</div> -->
-<!-- The Clock Section -->
-<!-- <div class="row d-flex justify-content-center align-items-center" style="" id="digital" >
-    <div id="clock" class="clock">loading ...</div>
-</div> -->
-<!-- recent earthquake section -->
-<!-- <div class="row d-flex justify-content-center align-items-center border " style="padding-top: 5%; padding-bottom: 5%;" id="info">
-  <div class="col-md-5 d-none d-sm-block" style="padding: 3%;">
-    <h2 class="featurette-heading text-white">Gempabumi Terkini</span></h2>
-    <p class="lead text-white"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
-  </div>
-  <div class="col-md-7 d-none d-sm-block" style="" id="frengki" >
-    <div id="map" class="" style="width:85%;height:400px; border-radius: 5px;"></div>
-  </div>
-</div> -->
 
 {{-- Buletin Section --}}
     <div class="row d-flex justify-content-center align-items-center border " style="padding: 5%; padding-bottom: 5%;" id="bulletin">

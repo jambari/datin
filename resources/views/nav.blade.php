@@ -1,4 +1,4 @@
-      <nav class="navbar navbar-expand-lg fixed-top " style="" >
+      <nav class="navbar navbar-expand-lg fixed-top bg-dark" style="" >
          <a class="navbar-brand" href="/" style="padding: 0.5%; background: white;" >
          <img src="{{ asset('images') }}/logo-bmkg.png" alt="logo" width="35" height="40" >
          </a>
