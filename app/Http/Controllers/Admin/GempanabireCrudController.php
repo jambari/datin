@@ -6,7 +6,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\GempanabireRequest as StoreRequest;
-use App\Http\Requests\GempanabireRequest as UpdateRequest;
+use App\Http\Requests\UpdateGempanabireRequest as UpdateRequest;
 
 /**
  * Class GempanabireCrudController

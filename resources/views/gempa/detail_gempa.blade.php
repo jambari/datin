@@ -245,7 +245,7 @@
   }
 
         var eqIcon = L.icon({
-            iconUrl: '/images/icongempa.png',
+            iconUrl: '/images/earthquake.png',
 
             iconSize:     [35, 35], // size of the icon
         });

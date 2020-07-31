@@ -81,7 +81,8 @@
 	  	<li><a href="{{ backpack_url('pengumuman') }}"><i class="fa fa-bullhorn"></i> <span>Pengumuman</span></a></li>
 	</ul>
 </li>
-
+<!--  
+<li><a href="{{ backpack_url('lapbul') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Laporan Bulanan (Under Construction)</span></a></li>-->
 <li><a href="{{ backpack_url('bulletin') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Bulletin</span></a></li>
 {{-- <li><a href="{{ backpack_url('kegiatan') }}"><i class="fa fa-user" style="margin-right: 0.5em;"></i> <span>Kegiatan</span></a></li> --}}
 <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-file" style="margin-right: 0.5em;"></i> <span>File Manager</span></a></li>
