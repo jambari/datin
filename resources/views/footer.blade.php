@@ -1,5 +1,11 @@
-<footer class="page-footer font-small text-white bg-light">
-    <div style="" class=" bg-light text-white border border-bottom">
+<footer class="page-footer font-small text-white " style="background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url('./images/indonesia-maju.jpg');
+   background-size: ; background-repeat: repeat;">
+    <div style="" class=" text-white border border-bottom">
         <div class="container">
             <!-- Grid row-->
             <div class="row py-4 d-flex align-items-center">
@@ -104,8 +110,8 @@
     </div>
     <!-- Footer Links -->
     <!-- Copyright -->
-    <div class="footer-copyright text-center text-light py-3 ">©
-        <?php echo date("Y"); ?>
+    <div class="footer-copyright text-center text-light py-3 ">
+        <i style="color: white;" >© <?php echo date("Y"); ?> </i>
             <a class="text-white" href="http://stageof.angkasa.bmkg.go.id" style="text-decoration: none;" > Stasiun Geofisika Kelas I Jayapura</a>
     </div>
     <!-- Copyright -->

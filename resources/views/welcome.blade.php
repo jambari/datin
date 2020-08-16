@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 <style>
 html, body { 
-    background-image: url('/images/hilal.jpeg');
+/*    background-image: url('/images/template-of-hut-ri-75.jpg');*/
     background-size: cover;
     background-repeat: no-repeat;
  }
@@ -79,8 +79,8 @@ html, body {
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.4)
     ),
-    url('./images/margi1.jpg');
-   background-size: cover;
+    url('./images/indonesia_independence.jpg');
+   background-size: no-repeat;
    }
 
 /*#videoDiv {width: 100%; min-height: 100%; position: relative;}
@@ -99,6 +99,13 @@ html, body {
 
 
 
+/*style="background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url('./images/hilal1.jpeg');
+   background-size: cover; background-repeat: no-repeat;"*/
 </style>
 @endsection
 @section('content')
@@ -109,7 +116,7 @@ html, body {
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.4)
     ),
-    url('./images/hilal1.jpeg');
+    url('./images/indonesia-maju.jpeg');
    background-size: cover; background-repeat: no-repeat;">
     <div class="col-lg-6 col-md-6 d-flex flex-column" style="padding: 3%;">
 
@@ -190,7 +197,7 @@ html, body {
 </div>
 
 <!-- Review Seismisitas -->
-<div class="container" id="videoDiv" >
+<div class="container" id="videoDiv"  >
     <div id="videoMessage" class="row d-flex justify-content-center align-items-center" style="padding-top: 5%; padding-bottom: 5%;" >
         @if ($datas['kegempaans'])
         @foreach ($datas['kegempaans'] as $kegempaan)
