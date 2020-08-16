@@ -79,7 +79,7 @@ html, body {
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.4)
     ),
-    url('./images/indonesia_independence.jpg');
+    url('./images/Indonesia_Independence.jpg');
    background-size: no-repeat;
    }
 
