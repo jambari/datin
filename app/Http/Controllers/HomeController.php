@@ -20,7 +20,8 @@ use App\Models\Pengumuman;
 use App\Models\Siaran;
 use App\Models\Bulletin;
 use App\Models\Magnet;
-
+use App\Models\Petir;
+use App\Models\Queryld;
 
 class HomeController extends Controller
 {
@@ -218,11 +219,110 @@ class HomeController extends Controller
             'Dshallow', 'Dmediate', 'Dverydeep'
     ));
     }
+    //Search eq statistik
+    public function searcheq (Request $request) {
+        $start = $request->input( 'start' );
+        $end = $request->input( 'end' );
+        if($start != "" and $start < $end ){
+        // m < 3 and depth < 70 icon small red
+        $eq1s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '<=', 60)->where('terasa', '=',0)->get();
+        // m betwen 3 to 5 and depth < 70 icon small red
+        $eq2s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
+        // m >= 5 and depth < 70 icon small red
+        $eq3s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
 
+        // depth 70-300
+
+        $eq4s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
+        // m betwen 3 to 5 and depth 71-300 icon small red
+        $eq5s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
+        // m >= 5 and depth 71-300 icon small red
+        $eq6s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
+
+        // depth > 300
+
+        $eq7s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '>', 300)->where('terasa', '=',0)->get();
+        // m betwen 3 to 5 and depth 71-300 icon small red
+        $eq8s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '>', 300)->where('terasa', '=',0)->get();
+        // m >= 5 and depth 71-300 icon small red
+        $eq9s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '>', 300)->where('terasa', '=',0)->get();
+
+        $felts = Gempa::whereBetween('tanggal', [$start, $end])->where('terasa', '=',1)->get();
+
+
+        $Mbelowthree = Gempa::where('magnitudo','<', 3)
+                    ->whereBetween('tanggal', [$start, $end])->count();
+        $Mthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])
+                    ->whereBetween('tanggal', [$start, $end])->count();
+        $Mabovefive = Gempa::where('magnitudo','>=', 5)
+                    ->whereBetween('tanggal', [$start, $end])->count();
+
+        //depth\
+        $Dshallow = Gempa::where('depth','<', 60)
+                    ->whereBetween('tanggal', [$start, $end])->count();
+        $Dmediate = Gempa::whereBetween('depth',[60, 249])
+                    ->whereBetween('tanggal', [$start, $end])->count();
+        $Dverydeep = Gempa::where('depth','>=', 300)
+                    ->whereBetween('tanggal', [$start, $end])->count();
+
+        Session::flash('info', 'Data Gempabumi Periode '.$start.' s.d '.$end); 
+        return view ( 'gempa.searchresult' )->with(compact('start', 'end', 'eq1s', 'eq2s', 'eq3s', 'eq4s', 'eq5s', 'eq6s', 'eq7s', 'eq8s', 'eq9s', 'felts', 'Mbelowthree', 'Mthreefive', 'Mabovefive', 'Dshallow', 'Dmediate', 'Dverydeep'));
+        }
+    }
     //Tentang Kami
 
     public function about () {
         return view('abouts.about');
+    }
+
+    public function caripetir() {
+        return view('petirs.caripetir');
+    }
+
+    public function querypetir(Request $request) {
+        $start = $request->input( 'start' );
+        $end = $request->input( 'end' );
+        if($start != "" and $start < $end ) {
+        $intraclouds = Petir::where('type','=', 2)
+                    ->whereBetween('tanggaljam', [$start, $end])->count();
+        $cgpositives = Petir::where('type','=',0)
+                    ->whereBetween('tanggaljam', [$start, $end])->count();
+        $cgnegatives = Petir::where('type','=', 1)
+                    ->whereBetween('tanggaljam', [$start, $end])->count();
+        //plot ke peta
+        $sambarans = Queryld::whereBetween('tanggaljam', [$start, $end])->get();
+
+        //per sambaran per hari
+
+        $icdails = Queryld::select([
+                // This aggregates the data and makes available a 'count' attribute
+                DB::raw('count(*) as count'),
+                // This throws away the timestamp portion of the date
+                DB::raw('DATE(tanggaljam) as day')
+                // Group these records according to that day
+                ])->groupBy('day')->where('type', '=',2)->whereBetween('tanggaljam', [$start, $end])->get();
+        $cgplusdails = Queryld::select([
+                // This aggregates the data and makes available a 'count' attribute
+                DB::raw('count(*) as count'),
+                // This throws away the timestamp portion of the date
+                DB::raw('DATE(tanggaljam) as day')
+                // Group these records according to that day
+                ])->groupBy('day')->where('type', '=',0)->whereBetween('tanggaljam', [$start, $end])->get();
+                // And restrict these results to only those created in the last week
+                // ->whereBetween('created_at', [ '2018-04-09 00:00:00:59', '2018-05-06 23:59:59' ])
+        $cgminusdails = Queryld::select([
+                // This aggregates the data and makes available a 'count' attribute
+                DB::raw('count(*) as count'),
+                // This throws away the timestamp portion of the date
+                DB::raw('DATE(tanggaljam) as day')
+                // Group these records according to that day
+                ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $end])->get();
+
+        }
+
+
+        Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end); 
+        return view('petirs.queryld')->with(compact('intraclouds','cgpositives', 'cgnegatives', 'sambarans', 'icdails', 'cgplusdails', 'cgminusdails', 'start', 'end'));
     }
 
     // chart
@@ -329,56 +429,7 @@ class HomeController extends Controller
         return view('gempa.simimi', compact('eqs','last'));
     }
 
-    //Search eq statistik
-    public function searcheq (Request $request) {
-        $start = $request->input( 'start' );
-        $end = $request->input( 'end' );
-        if($start != "" and $start < $end ){
-        // m < 3 and depth < 70 icon small red
-        $eq1s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '<=', 60)->where('terasa', '=',0)->get();
-        // m betwen 3 to 5 and depth < 70 icon small red
-        $eq2s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
-        // m >= 5 and depth < 70 icon small red
-        $eq3s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
 
-        // depth 70-300
-
-        $eq4s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
-        // m betwen 3 to 5 and depth 71-300 icon small red
-        $eq5s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
-        // m >= 5 and depth 71-300 icon small red
-        $eq6s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
-
-        // depth > 300
-
-        $eq7s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '>', 300)->where('terasa', '=',0)->get();
-        // m betwen 3 to 5 and depth 71-300 icon small red
-        $eq8s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '>', 300)->where('terasa', '=',0)->get();
-        // m >= 5 and depth 71-300 icon small red
-        $eq9s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '>', 300)->where('terasa', '=',0)->get();
-
-        $felts = Gempa::whereBetween('tanggal', [$start, $end])->where('terasa', '=',1)->get();
-
-
-        $Mbelowthree = Gempa::where('magnitudo','<', 3)
-                    ->whereBetween('tanggal', [$start, $end])->count();
-        $Mthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])
-                    ->whereBetween('tanggal', [$start, $end])->count();
-        $Mabovefive = Gempa::where('magnitudo','>=', 5)
-                    ->whereBetween('tanggal', [$start, $end])->count();
-
-        //depth\
-        $Dshallow = Gempa::where('depth','<', 60)
-                    ->whereBetween('tanggal', [$start, $end])->count();
-        $Dmediate = Gempa::whereBetween('depth',[60, 249])
-                    ->whereBetween('tanggal', [$start, $end])->count();
-        $Dverydeep = Gempa::where('depth','>=', 300)
-                    ->whereBetween('tanggal', [$start, $end])->count();
-
-        Session::flash('info', 'Data Gempabumi Periode '.$start.' s.d '.$end); 
-        return view ( 'gempa.searchresult' )->with(compact('start', 'end', 'eq1s', 'eq2s', 'eq3s', 'eq4s', 'eq5s', 'eq6s', 'eq7s', 'eq8s', 'eq9s', 'felts', 'Mbelowthree', 'Mthreefive', 'Mabovefive', 'Dshallow', 'Dmediate', 'Dverydeep'));
-        }
-    }
 
     public function slideshow () {
         $articles = Article::take(8)->where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('id','desc')->get();

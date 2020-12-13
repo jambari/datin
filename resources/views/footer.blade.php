@@ -3,7 +3,7 @@
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.4)
     ),
-    url('./images/indonesia-maju.jpg');
+    url('/images/indonesia-maju.jpg');
    background-size: ; background-repeat: repeat;">
     <div style="" class=" text-white border border-bottom">
         <div class="container">

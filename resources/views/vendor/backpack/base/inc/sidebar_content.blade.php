@@ -51,6 +51,13 @@
 </li>
 
 
+<!-- <li class="treeview">
+	<a href="#"><i class="fa fa-lightning"></i><span>Petir</span><i class="fa fa-angle-left pull-right"></i></a>
+	<ul class="treeview-menu"> -->
+	<li><a href="{{ backpack_url('petir') }}"><i class="wi wi-lightning" style="margin-right: 0.5em;"></i> <span>Petir</span></a></li>
+<!-- 	</ul>
+</li>
+ -->
 
 {{-- <li class="treeview">
 	<a href="#"> <i class="wi wi-lightning" style="margin-right: 0.5em;"></i><span>Listrik Udara</span> <i class="fa fa-angle-left pull-right"></i> </a>

@@ -86,6 +86,7 @@ return array(
     'App\\Http\\Requests\\UpdateBalaismsRequest' => $baseDir . '/app/Http/Requests/UpdateBalaismsRequest.php',
     'App\\Http\\Requests\\UpdateDeklinasiRequest' => $baseDir . '/app/Http/Requests/UpdateDeklinasiRequest.php',
     'App\\Http\\Requests\\UpdateGempaRequest' => $baseDir . '/app/Http/Requests/UpdateGempaRequest.php',
+    'App\\Http\\Requests\\UpdateGempanabireRequest' => $baseDir . '/app/Http/Requests/UpdateGempanabireRequest.php',
     'App\\Http\\Requests\\UpdateHujanRequest' => $baseDir . '/app/Http/Requests/UpdateHujanRequest.php',
     'App\\Http\\Requests\\UpdateInfogempaRequest' => $baseDir . '/app/Http/Requests/UpdateInfogempaRequest.php',
     'App\\Http\\Requests\\UpdateInklinasiRequest' => $baseDir . '/app/Http/Requests/UpdateInklinasiRequest.php',

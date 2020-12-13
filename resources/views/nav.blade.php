@@ -1,4 +1,4 @@
-      <nav class="navbar navbar-expand-lg fixed-top" style="background-image: url(./images/indonesia-maju.jpeg); background-size: cover;" >
+      <nav class="navbar navbar-expand-lg fixed-top" style="background-image: url(/images/indonesia-maju.jpeg); background-size: cover;" >
          <a class="navbar-brand" href="/" style="padding: 0.5%; background: white;" >
          <img src="{{ asset('images') }}/logo-bmkg.png" alt="logo" width="35" height="40" >
          </a>
@@ -44,6 +44,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <a class="dropdown-item " href="http://36.91.166.187/angkasa/" target="_blank" >Realtime</a>
+                     <a class="dropdown-item " href="/caripetir" target="_blank" >Query LD</a>
                   </div>
                </li>
                <li class="nav-item ">
