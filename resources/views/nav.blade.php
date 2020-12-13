@@ -1,4 +1,4 @@
-      <nav class="navbar navbar-expand-lg fixed-top" style="background-image: url(/images/indonesia-maju.jpeg); background-size: cover;" >
+      <nav class="navbar navbar-expand-lg fixed-top bg-success"  style="" >
          <a class="navbar-brand" href="/" style="padding: 0.5%; background: white;" >
          <img src="{{ asset('images') }}/logo-bmkg.png" alt="logo" width="35" height="40" >
          </a>
@@ -62,7 +62,7 @@
             </ul>
            <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-               <a href="/rasagempa" class="nav-link btn btn-outline-primary">Rasa Gempa ?</a>
+               <a href="/rasagempa" class="nav-link btn btn-outline">Rasa Gempa ?</a>
             </li>
              <li class="nav-item">
                <a href="/about" class="nav-link text-white">Tentang Kami</a>

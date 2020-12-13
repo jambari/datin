@@ -111,13 +111,14 @@ html, body {
 @section('content')
 <!-- <br>
 <div class="container"> -->
-<div class="row" id="mycarousel" style="background:
+<div class="row" id="mycarousel" >
+<!--     style="background:
     linear-gradient(
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.4)
     ),
     url('./images/indonesia-maju.jpeg');
-   background-size: cover; background-repeat: no-repeat;">
+   background-size: cover; background-repeat: no-repeat;" -->
     <div class="col-lg-6 col-md-6 d-flex flex-column" style="padding: 3%;">
 
         @if ( $datas['galleries'] )
