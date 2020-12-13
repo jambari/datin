@@ -19,7 +19,7 @@
       </script>
 
       @yield('title')
-      <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
       <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"> 
       <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet"> 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -50,8 +50,7 @@
          text-align: center;
          }
          .footer-copyright {
-         border-top: 2px solid #95A5A6;    
-/*         background-color: #23B5C8; */         
+         border-top: 2px solid #95A5A6;            
          }
 
       .navbar-toggler-icon {
@@ -74,15 +73,18 @@
     console.log('Github: https://github.com/jambari ');
 </script>
 <!--End of Tawk.to Script-->
+
    </head>
    <body>
          <div id="fb-root"></div>
          <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=331075104258748&autoLogAppEvents=1"></script>
+
       @yield('alert')
       @include('nav')
       @yield('content')
       @include('footer')
       @yield('script')
+
    </body>
 </html>
 
