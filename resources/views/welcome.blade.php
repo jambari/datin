@@ -124,11 +124,11 @@ html, body {
         @if ( $datas['galleries'] )
             @foreach ( $datas['galleries'] as $article )
                 <ul class="list-unstyled">
-                    <a href="/populer/{{ $article->slug }}" title="{{ $article->title }}" class="text-white">
+                    <a href="/populer/{{ $article->slug }}" title="{{ $article->title }}" class="text-primary">
                     <li class="media">
                         <img class="mr-3" src="/{{ $article->image }}" alt="image of {{ $article->title }}" width="150" height="100" >
                         <div class="media-body">
-                            <h5 class="mt-0 mb-1">{{ $article->title }}</h5>
+                            <h5 class="mt-0 mb-1 text-primary">{{ $article->title }}</h5>
                         </div>
                     </li>
                     </a>
