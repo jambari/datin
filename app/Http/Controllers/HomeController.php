@@ -22,7 +22,9 @@ use App\Models\Bulletin;
 use App\Models\Magnet;
 use App\Models\Petir;
 use App\Models\Queryld;
-
+use DatePeriod;
+use DateTime;
+use DateInterval;
 class HomeController extends Controller
 {
 
@@ -283,6 +285,7 @@ class HomeController extends Controller
         $start = $request->input( 'start' );
         $end = $request->input( 'end' );
         if($start != "" and $start < $end ) {
+
         $intraclouds = Petir::where('type','=', 2)
                     ->whereBetween('tanggaljam', [$start, $end])->count();
         $cgpositives = Petir::where('type','=',0)
@@ -291,38 +294,38 @@ class HomeController extends Controller
                     ->whereBetween('tanggaljam', [$start, $end])->count();
         //plot ke peta
         $sambarans = Queryld::whereBetween('tanggaljam', [$start, $end])->get();
-
+        $all = Queryld::whereBetween('tanggaljam', [$start, $end])->count();
         //per sambaran per hari
 
-        $icdails = Queryld::select([
+        $icdails =  Queryld::select([
                 // This aggregates the data and makes available a 'count' attribute
-                DB::raw('count(*) as count'),
+                DB::raw('count(id) as count'),
                 // This throws away the timestamp portion of the date
                 DB::raw('DATE(tanggaljam) as day')
                 // Group these records according to that day
-                ])->groupBy('day')->where('type', '=',2)->whereBetween('tanggaljam', [$start, $end])->get();
-        $cgplusdails = Queryld::select([
+                ])->groupBy('day')->where('type', '=',2)->whereBetween('tanggaljam', [$start, $end])->orderBy('day','ASC')->get();
+        $cgplusdails =  Queryld::select([
                 // This aggregates the data and makes available a 'count' attribute
-                DB::raw('count(*) as count'),
+                DB::raw('count(id) as count'),
                 // This throws away the timestamp portion of the date
                 DB::raw('DATE(tanggaljam) as day')
                 // Group these records according to that day
-                ])->groupBy('day')->where('type', '=',0)->whereBetween('tanggaljam', [$start, $end])->get();
-                // And restrict these results to only those created in the last week
-                // ->whereBetween('created_at', [ '2018-04-09 00:00:00:59', '2018-05-06 23:59:59' ])
+                ])->groupBy('day')->where('type', '=',0)->whereBetween('tanggaljam', [$start, $end])->orderBy('day','ASC')->get();
         $cgminusdails = Queryld::select([
                 // This aggregates the data and makes available a 'count' attribute
-                DB::raw('count(*) as count'),
+                DB::raw('count(id) as count'),
                 // This throws away the timestamp portion of the date
                 DB::raw('DATE(tanggaljam) as day')
                 // Group these records according to that day
-                ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $end])->get();
-
-        }
-
-
+                ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $end])->orderBy('day','ASC')->get();
         Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end); 
-        return view('petirs.queryld')->with(compact('intraclouds','cgpositives', 'cgnegatives', 'sambarans', 'icdails', 'cgplusdails', 'cgminusdails', 'start', 'end'));
+        return view('petirs.queryld')->with(compact('intraclouds','cgpositives', 'cgnegatives', 'sambarans', 'icdails', 'cgplusdails', 'cgminusdails', 'start', 'end','all'));
+        } else {
+
+            Session::flash('warning', 'Tanggal awal harus lebih kecil dari tanggal akhir '); 
+            return view('petirs.caripetir');
+        }
+        
     }
 
     // chart

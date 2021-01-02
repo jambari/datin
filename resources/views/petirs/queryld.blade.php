@@ -9,7 +9,49 @@ crossorigin=""/>
 
 
 <style type="text/css" media="screen">
+#totalsambaran {
+background: rgb(49,123,218);
+background: linear-gradient(270deg, rgba(49,123,218,1) 0%, rgba(26,145,125,0.7959558823529411) 42%, rgba(2,0,36,1) 99%);
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
 
+#totalcgplus {
+color: white; background-color: #1D2B38; display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+
+#totalcgminus {
+color: white; background-color: #1D2B38; display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+
+#totalintraclouds {
+    color: white; background-color: #1D2B38; display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+
+#logoContainer {
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    background: rgb(49,123,218);
+    background: linear-gradient(270deg, rgba(49,123,218,1) 0%, rgba(26,145,125,0.7959558823529411) 42%, rgba(2,0,36,1) 99%);
+    width: 1200px;
+    height: 60px;
+    margin-top: -1rem;
+    margin-left: -1rem;
+
+}
+
+#medsos {
+    background-color: #14222F;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+}
 </style>
 @section('content')
 @include('guests.pesan')
@@ -19,14 +61,14 @@ crossorigin=""/>
         <div class="col-md-12">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-                <li class="breadcrumb-item active"><a href="/petir/query" class="text-primary" >Query Sambaran Petir</a></li>
+                <li class="breadcrumb-item active"><a href="/caripetir" class="text-primary" >Query Sambaran Petir</a></li>
             </ol>
         </div>
     </div>
 </div>
 
 <div class="container" style="margin-top: 3%;">
-        <form action="/petir/query" method="POST" role="search">
+        <form action="/caripetir/query" method="POST" role="search">
             {{ csrf_field() }}
              
             <div class="form-group">
@@ -45,18 +87,47 @@ crossorigin=""/>
         </form>
 </div>
 
+
+<div class="container" id="medsos" >
+    <div>
+        <i class="fa fa-facebook" style="color:white; font-size: 1em;"></i>
+        <i class="fa fa-twitter" style="color:white; font-size: 1em;"></i>
+        <i class="fa fa-instagram" style="color:white; font-size: 1em;"></i>
+        <span style="color: white; font-size: 1em;">stageof.jayapura</span>
+    </div>
+    <div>
+        <i class="fa fa-mobile-phone" style="color: white; font-size: 1em;"></i>
+        <i class="fa fa-whatsapp" style="color: white; font-size: 1em;"></i>
+        <i class="fa fa-telegram" style="color: white; font-size: 1em;"></i>
+        <span style="color:white; font-size: 1em">08114891151</span>
+    </div>
+    <div>
+        <i class="fa fa-envelope" style="color:white; font-size: 1em; margin-left: 20px;"></i>
+        <span style="color: white; font-size: 1em; ">stageof.angkasa@gmail.com</span> 
+    </div>
+    <div>
+        <i class="fa fa-globe" style="color:white; font-size: 1em; margin-left: 20px;"></i>
+        <span style="color: white; font-size: 1em; ">stageof.jayapura.bmkg.go.id</span> 
+    </div>
+</div>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div id="map" style="width:100%; height: 750px; border-radius: 5px; "></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color:#14222F; ">
+            <div id="map" style="width:100%; height: 600px; border-radius: 5px; ">
+            </div>
+            <div id="logoContainer" style="display: flex; justify-content: space-around; align-items: center;">
+                <span style="font-size:2em; color: white" >Peta Sebaran Petir {{ \Carbon\Carbon::parse($start)->format('d M') }} - {{ \Carbon\Carbon::parse($end)->format('d M') }} {{ \Carbon\Carbon::parse($end)->format('Y') }}</span> 
+                <img src="/images/logo-bmkg.png" width="40px" height="50px">
+            </div>
+
         </div>
     </div>
 </div>
-<br>
+<!-- <br>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12">
-			            <table class="table">
+			<table class="table">
                 <tr>
                     <td class="text-center"><img src="/images/cgplus.png" alt="" width="27" height="35"> <span>CG+ </span> </td>
                     <td class="text-center"><img src="/images/cgminus.png" alt="" width="27" height="35"> <span>CG- </span> </td>
@@ -66,45 +137,109 @@ crossorigin=""/>
 		</div>
 	</div>
 </div>
-<!-- <br class="" >
+<br class="" > -->
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="card-header align-middle">
-                    <img src="{{ asset('images/mag.png') }} " alt="Magnitude" aria-hidden="true">
-                    Sambaran Petir
+    <div class="row" style="display: flex; flex-direction: row; justify-content: space-between;">
+            <div class="col-lg-2 col-md-2 " style="display: flex; flex-direction: column; justify-content: space-around; align-content: space-between; background-color: #14222F; ">
+                <div id="totalsambaran">
+                    <p style="color: white; font-size: 2.5em;" >{{ $all }}</p>
+                    <p style="color: white" >Sambaran</p>
                 </div>
-                <div class="card-body">
-
-                    <canvas id="Mag-chart" width="800" height="450"></canvas>
-                    <script>
-                        new Chart(document.getElementById("Mag-chart"), {
-                        type: 'bar',
-                        data: {
-                        labels: ["M<3", "3>M<5", "M>5"],
-                        datasets: [
-                            {
-                            label: "Sambaran",
-                            backgroundColor: ["#804715", "#D49C6A","#FFD2AA"],
-                            data: [ 20 ,30, 50]
-                            }
-                        ]
-                        },
-                        options: {
-                        legend: { display: false },
-                        title: {
-                            display: true,
-                            text: 'Gempabumi periode {{ $start }} s.d {{ $end }}'
-                        }
-                        }
-                    });
-                    </script>
+                <div id="totalcgplus">
+                    <p>CG+</p>
+                    <p style="font-size: 1.5em;">{{ $cgpositives }}</p>
+                    <img src="/images/cgplus.png" width="30px" height="38px">
                 </div>
             </div>
+            <div class="col-lg-2 col-md-2" style="display: flex; flex-direction: column; justify-content: space-around; align-content: space-between; background-color: #14222F">
+                <div id="totalcgminus">
+                    <p>CG-</p>
+                    <p style="font-size: 1.5em;">{{ $cgnegatives }}</p>
+                    <img src="/images/cgminus.png" width="27px" height="35px">
+                </div>
+                <div id="totalintraclouds">
+                    <p>IC</p>
+                    <p style="font-size: 1.5em;">{{ $intraclouds }}</p>
+                    <img src="/images/intraclouds.png" width="27px" height="35px">
+                </div>
+            </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="background-color: #14222F;">
+<!--        <div class="card">
+                <div class="card-header align-middle">
+                    <img src="{{ asset('images/mag.png') }} " alt="Sambaran" aria-hidden="true">
+                    <i class="wi wi-lightning" style="color: orange;"></i>
+                    Sambaran Petir
+                </div>
+                <div class="card-body"> -->
+
+                    <canvas id="bar-chart-grouped" width="800" height="350" ></canvas>
+                    <script>
+                        @php
+                            $periods = new DatePeriod(
+                            new DateTime($start),
+                            new DateInterval('P1D'),
+                            new DateTime($end));
+                        @endphp
+						new Chart(document.getElementById("bar-chart-grouped"), {
+						    type: 'bar',
+						    data: {
+						      labels: [	
+						                @foreach ($periods as $key => $value)
+										    "{{ $value->format("d-m-Y")  }}",     
+									    @endforeach
+                        			],
+						      datasets: [
+						        {
+						          label: "CG+",
+						          backgroundColor: 
+						          	[@foreach($cgplusdails as $cgplus)
+                               			"#E62129",
+                        			@endforeach
+                        			],
+						          data: [
+						         	@foreach($cgplusdails as $cgplus)
+                               			{{ $cgplus->count.',' }}
+                        			@endforeach
+
+						          ]
+						        }, {
+						          label: "CG-",
+						          backgroundColor: [
+						          	@foreach($cgminusdails as $cgminus)
+                               			"#F18E1B",
+                        			@endforeach],
+						          data: [
+						         	@foreach($cgminusdails as $cgminus)
+                               			{{ $cgminus->count.',' }}
+                        			@endforeach
+						          ]
+						        }, {
+						          label: "IC",
+						          backgroundColor: 
+						          		[@foreach($icdails as $ic)
+                               			"#317bda",
+                        			@endforeach
+                        			],
+						          data: [						         	
+						          	@foreach($icdails as $ic)
+                               			{{ $ic->count.',' }}
+                        			@endforeach]
+						        }
+						      ]
+						    },
+						    options: {
+						      title: {
+						        display: true,
+						        text: 'Jumlah Sambaran Petir Per Hari'
+						      }
+						    }
+						});
+                    </script>
+<!--                 </div>
+            </div> -->
         </div>
     </div>
-</div> -->
+</div>
 <br>
 
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
@@ -115,7 +250,7 @@ crossorigin=""/>
     crossorigin=""></script>
 <script>
 
-var mymap = L.map('map').setView([-2.5104, 140.714], 9);
+var mymap = L.map('map').setView([-2.5104, 140.714], 11);
 // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
@@ -145,21 +280,24 @@ var mymap = L.map('map').setView([-2.5104, 140.714], 9);
         	@if ($sambaran->type == 0)
             marker = new L.marker([{{ $sambaran->latitude }}, {{ $sambaran->longitude }}], { icon: cgplus}).addTo(mymap)
             .bindPopup(
-                `Cloud to ground positives`);
+                `Cloud to ground positives`+' {{ $sambaran->tanggaljam }}');
             @endif
         	@if ($sambaran->type == 1)
             marker = new L.marker([{{ $sambaran->latitude }}, {{ $sambaran->longitude }}], { icon: cgminus}).addTo(mymap)
             .bindPopup(
-                `Cloud to ground negatives`);
+                `Cloud to ground negatives`+' {{ $sambaran->tanggaljam }}');
             @endif
 
         	@if ($sambaran->type == 2)
             marker = new L.marker([{{ $sambaran->latitude }}, {{ $sambaran->longitude }}], { icon: intraclouds}).addTo(mymap)
             .bindPopup(
-                `Intraclouds`);
+                `Intraclouds`+' {{ $sambaran->tanggaljam }}');
             @endif
 
         @endforeach
     @endif
+    var mapControlsContainer = document.getElementsByClassName("leaflet-control")[0];
+    var logoContainer = document.getElementById("logoContainer");
+    mapControlsContainer.appendChild(logoContainer);
 </script>
 @endsection

@@ -1,6 +1,6 @@
 @extends('main')
 @section('title')
-<title>Gempabumi statistik- Stasiun Geofisika Kelas I Jayapura</title>
+<title>Sambaran Petir- Stasiun Geofisika Kelas I Jayapura</title>
 @section('after_style')
 
 <style type="text/css" media="screen">
@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+@include('guests.pesan')
 <br>
 
 <div class="container">
@@ -44,3 +45,4 @@
 </div>
 <br>
 @endsection
+
