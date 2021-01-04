@@ -25,6 +25,7 @@ use App\Models\Queryld;
 use DatePeriod;
 use DateTime;
 use DateInterval;
+
 class HomeController extends Controller
 {
 
@@ -295,8 +296,24 @@ class HomeController extends Controller
         //plot ke peta
         $sambarans = Queryld::whereBetween('tanggaljam', [$start, $end])->get();
         $all = Queryld::whereBetween('tanggaljam', [$start, $end])->count();
+        $alltanpaic = (int)$all-((int)$cgpositives+(int)$cgnegatives);
         //per sambaran per hari
+        // sambaran tertinggi per hari
+        // $tertinggi = DB::table('petirs')->select(
+        //             DB::raw('DATE(tanggaljam) as date'), DB::raw('count(*) as harian'))
+        //             ->groupBy('date')->get();
 
+
+        // Queryld::select([
+        //         // This aggregates the data and makes available a 'count' attribute
+        //         DB::raw('count(id) as count'),
+        //         // This throws away the timestamp portion of the date
+        //         DB::raw('DATE(tanggaljam) as day')
+        //         // Group these records according to that day
+        //         ])->groupBy('day')->whereBetween('tanggaljam', [$start, $end])->get();
+        //sambaran terendah per hari
+
+        //rata-rata sambaran per hari
         $icdails =  Queryld::select([
                 // This aggregates the data and makes available a 'count' attribute
                 DB::raw('count(id) as count'),
@@ -319,7 +336,7 @@ class HomeController extends Controller
                 // Group these records according to that day
                 ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $end])->orderBy('day','ASC')->get();
         Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end); 
-        return view('petirs.queryld')->with(compact('intraclouds','cgpositives', 'cgnegatives', 'sambarans', 'icdails', 'cgplusdails', 'cgminusdails', 'start', 'end','all'));
+        return view('petirs.queryld')->with(compact('intraclouds','cgpositives', 'cgnegatives', 'sambarans', 'icdails', 'cgplusdails', 'cgminusdails', 'start', 'end','all','alltanpaic'));
         } else {
 
             Session::flash('warning', 'Tanggal awal harus lebih kecil dari tanggal akhir '); 
