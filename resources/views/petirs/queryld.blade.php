@@ -159,7 +159,7 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
                 <div class="totalcgplus">
                     <p>CG+</p>
                     <p style="font-size: 1.5em;">{{ $cgpositives }}</p>
-                    <img src="/images/Red.png" width="30px" height="38px" alt="Cloud to ground positive">
+                    <img src="/images/red.png" width="30px" height="38px" alt="Cloud to ground positive">
                 </div>
             </div>
             <div class="col-lg-2 col-md-2" style="display: flex; flex-direction: column; justify-content: space-around; align-content: space-between; background-color: #14222F">
@@ -325,7 +325,7 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
                 <div class="totalcgplus">
                     <p>CG+</p>
                     <p style="font-size: 1.5em;">{{ $cgpositives }}</p>
-                    <img src="/images/Red.png" width="30px" height="38px" alt="Cloud to ground positive">
+                    <img src="/images/red.png" width="30px" height="38px" alt="Cloud to ground positive">
                 </div>
             </div>
             <div class="col-lg-2 col-md-2" style="display: flex; flex-direction: column; justify-content: space-around; align-content: space-between; background-color: #14222F">
