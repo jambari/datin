@@ -171,7 +171,7 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
                 <div class="totalintraclouds">
                     <p>IC</p>
                     <p style="font-size: 1.5em;">{{ $intraclouds }}</p>
-                    <img src="/images/Yellow.png" width="27px" height="35px" alt="Intraclouds icon">
+                    <img src="/images/yellow.png" width="27px" height="35px" alt="Intraclouds icon">
                 </div>
             </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="background-color: #14222F;">
