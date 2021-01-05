@@ -159,19 +159,19 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
                 <div class="totalcgplus">
                     <p>CG+</p>
                     <p style="font-size: 1.5em;">{{ $cgpositives }}</p>
-                    <img src="/images/red.png" width="30px" height="38px" alt="Cloud to ground positive">
+                    <img src="/images/newcgplus.png" width="30px" height="38px" alt="Cloud to ground positive">
                 </div>
             </div>
             <div class="col-lg-2 col-md-2" style="display: flex; flex-direction: column; justify-content: space-around; align-content: space-between; background-color: #14222F">
                 <div class="totalcgminus">
                     <p>CG-</p>
                     <p style="font-size: 1.5em;">{{ $cgnegatives }}</p>
-                    <img src="/images/Orange.png" width="27px" height="35px" alt="Cloud to ground negative icon">
+                    <img src="/images/newcgminus.png" width="27px" height="35px" alt="Cloud to ground negative icon">
                 </div>
                 <div class="totalintraclouds">
                     <p>IC</p>
                     <p style="font-size: 1.5em;">{{ $intraclouds }}</p>
-                    <img src="/images/yellow.png" width="27px" height="35px" alt="Intraclouds icon">
+                    <img src="/images/newic.png" width="27px" height="35px" alt="Intraclouds icon">
                 </div>
             </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="background-color: #14222F;">
@@ -325,14 +325,14 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
                 <div class="totalcgplus">
                     <p>CG+</p>
                     <p style="font-size: 1.5em;">{{ $cgpositives }}</p>
-                    <img src="/images/red.png" width="30px" height="38px" alt="Cloud to ground positive">
+                    <img src="/images/newcgplus.png" width="30px" height="38px" alt="Cloud to ground positive">
                 </div>
             </div>
             <div class="col-lg-2 col-md-2" style="display: flex; flex-direction: column; justify-content: space-around; align-content: space-between; background-color: #14222F">
                 <div class="totalcgminus">
                     <p>CG-</p>
                     <p style="font-size: 1.5em;">{{ $cgnegatives }}</p>
-                    <img src="/images/Orange.png" width="27px" height="35px" alt="Cloud to ground negative icon">
+                    <img src="/images/newcgminus.png" width="27px" height="35px" alt="Cloud to ground negative icon">
                 </div>
                 <div class="totalintraclouds">
 <!--                     <p>IC</p>
@@ -444,19 +444,19 @@ var mymap = L.map('map').setView([-2.5104, 140.714], 11);
 }).addTo(mymap);
 
     var cgplus = L.icon({
-        iconUrl: '/images/red.png',
+        iconUrl: '/images/newcgplus.png',
         iconSize:     [25, 25], // size of the icon
 
     });
 
     var cgminus = L.icon({
-        iconUrl: '/images/Orange.png',
+        iconUrl: '/images/newcgminus.png',
         iconSize:     [25, 25], // size of the icon
 
     });
 
     var intraclouds = L.icon({
-        iconUrl: '/images/yellow.png',
+        iconUrl: '/images/newic.png',
         iconSize:     [25, 25], // size of the icon
 
     });
@@ -496,19 +496,19 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
 }).addTo(ic);
 
     var cgplus = L.icon({
-        iconUrl: '/images/red.png',
+        iconUrl: '/images/newcgplus.png',
         iconSize:     [25, 25], // size of the icon
 
     });
 
     var cgminus = L.icon({
-        iconUrl: '/images/Orange.png',
+        iconUrl: '/images/newcgminus.png',
         iconSize:     [25, 25], // size of the icon
 
     });
 
     var intraclouds = L.icon({
-        iconUrl: '/images/yellow.png',
+        iconUrl: '/images/newic.png',
         iconSize:     [25, 25], // size of the icon
 
     });
