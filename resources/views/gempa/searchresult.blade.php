@@ -60,9 +60,9 @@ crossorigin=""/>
             <div id="map" style="width:100%; height: 750px; border-radius: 5px; "></div>
             <div id="basemaps-wrapper" class="leaflet-bar">
               <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
-                <option value="NationalGeographic" selected >National Geographic</option>
+                <option value="NationalGeographic"  >National Geographic</option>
                 <option value="Topographic">Topographic</option>
-                <option value="Streets">Streets</option>
+                <option value="Streets" selected>Streets</option>
                 <option value="Oceans">Oceans</option>
                 <option value="Gray">Gray</option>
                 <option value="DarkGray">Dark Gray</option>
@@ -82,26 +82,26 @@ crossorigin=""/>
         <div class="col-md-3">
             <table class="table">
                 <tr>
-                    <td class="text-center"><img src="/images/red.png" alt="" width="9" height="9"> <span>M &#60; 3 & Depth &#8804; 70 Km </span> </td>
+                    <td class="text-center"><img src="/images/redeq.png" alt="" width="9" height="9"> <span>M &#60; 3 & Depth &#8804; 70 Km </span> </td>
                 </tr>
                 <tr>
-                    <td class="text-center"><img src="/images/red.png" alt="" width="18" height="18"> <span>3 &#8805; M &#60; 5 & Depth &#8804; 70 Km </span> </td>
+                    <td class="text-center"><img src="/images/redeq.png" alt="" width="18" height="18"> <span>3 &#8805; M &#60; 5 & Depth &#8804; 70 Km </span> </td>
                 </tr>
                 <tr>
-                    <td class="text-center"><img src="/images/red.png" alt="" width="27" height="27"> <span>M &#8805; 5 & Depth &#8804; 70 Km </span> </td>
+                    <td class="text-center"><img src="/images/redeq.png" alt="" width="27" height="27"> <span>M &#8805; 5 & Depth &#8804; 70 Km </span> </td>
                 </tr>
             </table>
         </div>
         <div class="col-md-3">
             <table class="table table-bordered">
                 <tr>
-                    <td class="text-center"><img src="/images/yellow.png" alt="" width="9" height="9"> <span>M &#60; 3 &  70 Km &#8805; Depth &#60; 300 Km</span> </td>
+                    <td class="text-center"><img src="/images/yelloweq.png" alt="" width="9" height="9"> <span>M &#60; 3 &  70 Km &#8805; Depth &#60; 300 Km</span> </td>
                 </tr>
                 <tr>
-                    <td class="text-center"><img src="/images/yellow.png" alt="" width="18" height="18"> <span>3 &#8805; M &#60; 5 & 70 Km &#8805; Depth &#60; 300 Km </span> </td>
+                    <td class="text-center"><img src="/images/yelloweq.png" alt="" width="18" height="18"> <span>3 &#8805; M &#60; 5 & 70 Km &#8805; Depth &#60; 300 Km </span> </td>
                 </tr>
                 <tr>
-                    <td class="text-center"><img src="/images/yellow.png" alt="" width="27" height="27"> <span>M &#8805; 5 & 70 Km &#8805; Depth &#60; 300 Km </span> </td>
+                    <td class="text-center"><img src="/images/yelloweq.png" alt="" width="27" height="27"> <span>M &#8805; 5 & 70 Km &#8805; Depth &#60; 300 Km </span> </td>
                 </tr>
             </table>
         </div>
@@ -219,7 +219,7 @@ crossorigin=""/>
 
 var map = L.map('map').setView([-2.5104, 140.714], 6);
 // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
- var layer = L.esri.basemapLayer('NationalGeographic').addTo(map);
+ var layer = L.esri.basemapLayer('Streets').addTo(map);
   var layerLabels;
 
   function setBasemap(basemap) {
@@ -261,37 +261,37 @@ var map = L.map('map').setView([-2.5104, 140.714], 6);
     });
 
     var red1 = L.icon({
-        iconUrl: '/images/red.png',
+        iconUrl: '/images/redeq.png',
         iconSize:     [9, 9], // size of the icon
 
     });
 
     var red2 = L.icon({
-        iconUrl: '/images/red.png',
+        iconUrl: '/images/redeq.png',
         iconSize:     [18, 18], // size of the icon
 
     });
 
     var red3 = L.icon({
-        iconUrl: '/images/red.png',
+        iconUrl: '/images/redeq.png',
         iconSize:     [27, 27], // size of the icon
 
     });
 
     var yellow1 = L.icon({
-        iconUrl: '/images/yellow.png',
+        iconUrl: '/images/yelloweq.png',
         iconSize:     [9, 9], // size of the icon
 
     });
 
     var yellow2 = L.icon({
-        iconUrl: '/images/yellow.png',
+        iconUrl: '/images/yelloweq.png',
         iconSize:     [18, 18], // size of the icon
 
     });
 
     var yellow3 = L.icon({
-        iconUrl: '/images/yellow.png',
+        iconUrl: '/images/yelloweq.png',
         iconSize:     [27, 27], // size of the icon
 
     });
