@@ -444,7 +444,7 @@ var mymap = L.map('map').setView([-2.5104, 140.714], 11);
 }).addTo(mymap);
 
     var cgplus = L.icon({
-        iconUrl: '/images/Red.png',
+        iconUrl: '/images/red.png',
         iconSize:     [25, 25], // size of the icon
 
     });
@@ -456,7 +456,7 @@ var mymap = L.map('map').setView([-2.5104, 140.714], 11);
     });
 
     var intraclouds = L.icon({
-        iconUrl: '/images/Yellow.png',
+        iconUrl: '/images/yellow.png',
         iconSize:     [25, 25], // size of the icon
 
     });
@@ -496,7 +496,7 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
 }).addTo(ic);
 
     var cgplus = L.icon({
-        iconUrl: '/images/Red.png',
+        iconUrl: '/images/red.png',
         iconSize:     [25, 25], // size of the icon
 
     });
@@ -508,7 +508,7 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
     });
 
     var intraclouds = L.icon({
-        iconUrl: '/images/Yellow.png',
+        iconUrl: '/images/yellow.png',
         iconSize:     [25, 25], // size of the icon
 
     });
