@@ -197,7 +197,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                                 {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
                                 <img src=" {{ asset('images') }}/oke9.bmp " alt="logo" width="100%" height="20%" style="" >
                                     <div id="map-baru" style="width:99%;height:500px;"></div>
-                                <p class="text-center " style="" > <strong class="" >{{ $sms }} </strong> </p>
+                                <p class="text-center " style="" > <strong class="" >Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] ?? '-' }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-PGR-V </strong> </p>
                             </div>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
    <script src="{{ asset('gjson') }}/png.js" > </script>
    <script src="{{ asset('gjson') }}/batasinapng.js" > </script>
         <script>
-var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
+var mymap = L.map('map-baru').setView([{{ $event['lintang'] }}, {{ $event['bujur'] }}], 7);
     // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
      var layer = L.esri.basemapLayer('Imagery').addTo(mymap);
       var layerLabels;
@@ -285,7 +285,7 @@ var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
 
             iconSize:     [40, 40], // size of the icon
         });
-        L.marker([{{ $lat }}, {{ $lon }}], {icon: eqIcon}).addTo(mymap);
+        L.marker([{{ $event['lintang'] }}, {{ $event['bujur'] }}], {icon: eqIcon}).addTo(mymap);
         //style for subduksi and patahan
         var patahanStyle = {
             "color": "#ffff00",
@@ -368,8 +368,8 @@ var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
         });
 
     //add css icon as gps ring
-    L.marker([{{ $lat }}, {{ $lon }}], {icon: pulsingIcon}).addTo(mymap);
-    L.marker([{{ $lat }}, {{ $lon }}], {icon: whiteIcon}).addTo(mymap);
+    L.marker([{{ $event['lintang'] }}, {{ $event['bujur'] }}], {icon: pulsingIcon}).addTo(mymap);
+    L.marker([{{ $event['lintang'] }}, {{ $event['bujur'] }}], {icon: whiteIcon}).addTo(mymap);
     // KOta di Papua
 // -2.54;140.7;KOTA JAYAPURA;;;
     var Jayapura = L.divIcon({

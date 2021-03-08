@@ -34,7 +34,7 @@ class BalaiGempaCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        //$this->crud->setFromDb();
 
         $fields = [
             [
@@ -83,12 +83,12 @@ class BalaiGempaCrudController extends CrudController
         ];
         // ------ CRUD COLUMNS
         // $this->crud->addColumn('terasa');
-        // $this->crud->addColumn('terdampak'); 
-        //$this->crud->addColumn('created_at'); 
+        // $this->crud->addColumn('terdampak');
+        //$this->crud->addColumn('created_at');
         // add a single column, at the end of the stack
-        //$this->crud->addColumns('terasa','terdampak'); // add multiple columns, at the end of the stack
+        $this->crud->addColumns(['tanggal', 'origin', 'lintang', 'bujur', 'magnitudo','depth', 'ket']); // add multiple columns, at the end of the stack
         //$this->crud->removeColumn('narasi'); // remove a column from the stack
-        // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
+        $this->crud->removeColumns(['type', 'terdampak']); // remove an array of columns from the stack
         $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']);
         $this->crud->setColumnDetails('terasa', ['label' => 'Terasa']); // adjusts the properties of the passed in column (by name)
         $this->crud->setColumnsDetails(['origin'], ['label' => 'Origin (UTC)']);
@@ -113,7 +113,7 @@ class BalaiGempaCrudController extends CrudController
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
         // ------ CRUD ACCESS
-        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'press']);
+        $this->crud->allowAccess(['list', 'create','sms', 'update', 'reorder', 'delete']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -123,9 +123,11 @@ class BalaiGempaCrudController extends CrudController
         // ------ CRUD DETAILS ROW
         $this->crud->enableDetailsRow();
         $this->crud->allowAccess('details_row');
+        $this->crud->allowAccess('sms');
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
-        $this->crud->addButtonFromView('line', 'press' , 'press', 'end');
+        //$this->crud->addButtonFromView('line', 'press' , 'press', 'end');
+        $this->crud->addButtonFromView('line', 'sms' , 'sms', 'beginning');
         // ------ REVISIONS
         // You also need to use \Venturecraft\Revisionable\RevisionableTrait;
         // Please check out: https://laravel-backpack.readme.io/docs/crud#revisions
@@ -159,7 +161,7 @@ class BalaiGempaCrudController extends CrudController
         $this->crud->orderBy('tanggal','desc');
         $this->crud->orderBy('origin','desc');
 
-        //filter magnitudo 
+        //filter magnitudo
         $this->crud->addFilter([ // daterange filter
            'type' => 'date_range',
            'name' => 'tanggal',
@@ -353,6 +355,91 @@ class BalaiGempaCrudController extends CrudController
             $lat = $lat[1].$lat[2].'LU';
         }
         return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah','wilayah1', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
+    }
+
+
+    public function sms($id)
+    {
+      $event = Balaigempa::find($id);
+      //Penanggalan
+      //array bulan
+          $bulan = array (
+          1 =>   'Januari',
+          'Februari',
+          'Maret',
+          'April',
+          'Mei',
+          'Juni',
+          'Juli',
+          'Agustus',
+          'September',
+          'Oktober',
+          'November',
+          'Desember'
+      );
+
+          $bulansms = array (
+          1 =>   'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'Mei',
+          'Jun',
+          'Jul',
+          'Agu',
+          'Sep',
+          'Okt',
+          'Nov',
+          'Des'
+      );
+
+      //array hari senin-sabtu
+      $days = array (
+          0 =>   'Minggu',
+          'Senin',
+          'Selasa',
+          'Rabu',
+          'Kamis',
+          "Jum'at",
+          'Sabtu'
+  );
+      $tanggal = $event['tanggal']; //get date of the eathquake
+      $jam = $event['origin']; // get origin time of eq
+      $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
+      $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
+      $tanggalbarusms = date("d-m-y", strtotime($tanggaljam)); //mengubah ke tipe datetime untuk sms
+      $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
+      $jamnya = (int)date("H", strtotime($tanggaljam)); //ambil angka jam dalam sebuah minggu
+      $selisih = ($jamnya+ 9) - 24;
+      if ($selisih >=0) {
+         $tanggalbaru = date('d-m-Y', strtotime($tanggaljam . ' +1 day'));
+         $tanggalbarusms = date('d-m-y', strtotime($tanggaljam . ' +1 day'));
+      }
+      $hari = $days[$hari];
+      $pecahkan = explode('-',$tanggalbaru); //membuat array yang terdiri dari hari index 0, bulan index 1, tahun index 2
+      $pecahkansms = explode('-',$tanggalbarusms);
+      $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
+      $tanggalindosms= $pecahkan[0] . '-' . $bulansms[ (int)$pecahkansms[1] ] . '-' . $pecahkansms[2]; //Menggabungkan jadi tanggal format indonesia
+      $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
+      $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
+      $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
+      $lat = $event['lintang'];
+      $lon = $event['bujur'].' BT';
+      $mag = round($event['magnitudo'],1);
+      $depth = $event['depth'];
+      //wilayah yang diguncang gempa
+      // $wilayah = $event['ket'];
+      // $ket = explode(" ", $wilayah);
+      // $wilayah = $ket[3];
+      // $arah = $ket[2];
+      // $jarak = $ket[0];
+      $lat = str_split($lat); //break latitude to an array
+      if ($lat[0] == '-') {
+          $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
+      } else {
+          $lat = $lat[1].$lat[2].'LU';
+      }
+      return view('gempa.balaisms', compact('lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
     }
 
 }

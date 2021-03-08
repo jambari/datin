@@ -3,8 +3,8 @@
 @if (backpack_auth()->user()->name == 'balai5')
 	<li><a href="{{ backpack_url('balaigempa') }}"><i class="fa fa-book"></i> <span>Repositori PGR V</span></a></li>
 
-	<li><a href="{{ backpack_url('balaisms') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa PGR V</span></a></li>
-{{-- <li><a href="{{ backpack_url('balaisms') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa PGR V</span></a></li> --}}
+	<!-- <li><a href="{{ backpack_url('balaisms') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa PGR V</span></a></li> -->
+<!-- <li><a href="{{ backpack_url('balaisms') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa PGR V</span></a></li> -->
 <li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PGR V JAY NBPI</span></a></li>
 <li><a href="{{ backpack_url('significant') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>SIGNIFIKAN / MANUAL</span></a></li>
 
@@ -62,9 +62,9 @@
 {{-- <li class="treeview">
 	<a href="#"> <i class="wi wi-lightning" style="margin-right: 0.5em;"></i><span>Listrik Udara</span> <i class="fa fa-angle-left pull-right"></i> </a>
 	<ul class="treeview-menu">
-		<li><a href="{{ backpack_url('summary') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Summary</span></a></li>		
+		<li><a href="{{ backpack_url('summary') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Summary</span></a></li>
 	</ul>
-	
+
 </li> --}}
 
 
@@ -88,7 +88,7 @@
 	  	<li><a href="{{ backpack_url('pengumuman') }}"><i class="fa fa-bullhorn"></i> <span>Pengumuman</span></a></li>
 	</ul>
 </li>
-<!--  
+<!--
 <li><a href="{{ backpack_url('lapbul') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Laporan Bulanan (Under Construction)</span></a></li>-->
 <li><a href="{{ backpack_url('bulletin') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Bulletin</span></a></li>
 {{-- <li><a href="{{ backpack_url('kegiatan') }}"><i class="fa fa-user" style="margin-right: 0.5em;"></i> <span>Kegiatan</span></a></li> --}}

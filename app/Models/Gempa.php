@@ -133,14 +133,6 @@ class Gempa extends Model
             $value = $jarak;
             return $value;
         }
-
-        //Utara
-        
-        //$jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'];
-        //$arah = 'coba';
-        //$jarak = round($cities[0]['distance']).' km'.' '.$arah.' '.$cities[0]['name'].' '.$latitude.' '.$cities[0]['latitude'].' '.$longitude.' '.$cities[0]['longitude'];
-        // $value = $jarak;
-        // return $value;
     }
     /*
     |--------------------------------------------------------------------------
