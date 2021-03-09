@@ -228,6 +228,16 @@ var mymap = L.map('map-baru').setView([{{ $latmap }}, {{ $lonmap }}], 7);
      var layer = L.esri.basemapLayer('Streets').addTo(mymap);
       var layerLabels;
 
+// var mymap = L.map('map-baru').setView([{{ $latmap }}, {{ $lonmap }}], 7);
+// // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
+//  // var layer = L.esri.basemapLayer('NationalGeographic').addTo(mymap);
+//  //  var layerLabels;
+//
+//  L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+// maxZoom: 18,
+// attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+// }).addTo(mymap);
+
   function setBasemap(basemap) {
     if (layer) {
       mymap.removeLayer(layer);

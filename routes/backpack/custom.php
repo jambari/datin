@@ -73,7 +73,7 @@ Route::group([
     //Press Release
     Route::get('balaigempa/{id}/press', 'BalaigempaCrudController@press');
     Route::get('/balaigempa/{id}/sms', 'BalaigempaCrudController@sms'); // sms balai
-
+    Route::get('/balaigempa/{id}/injectbalai', 'BalaigempaCrudController@inject'); // inject hasil analisis balai
     //Join gempa balai dan angkasa
 
     Route::get('joingempa', 'JoingempaCrudController@join');
@@ -91,5 +91,6 @@ Route::group([
 	//Nabire
 	CRUD::resource('gempanabire', 'GempanabireCrudController');
 	Route::get('gempanabire/{id}/infonabire', 'GempanabireCrudController@infogempa');
+      Route::get('/gempanabire/{id}/injectnabire', 'GempanabireCrudController@inject'); // inject hasil analisis nabire
 	CRUD::resource('petir', 'PetirCrudController');
 }); // this should be the absolute last line of this file

@@ -96,19 +96,20 @@ class GempaCrudController extends CrudController
                 'options' => ['akram'=>'Akram', 'berlian' => 'Berlian', 'canggih'=>'Canggih',
                     'danang' => 'Danang' ,'dedy' => 'Dedy','gogo' => 'Gogo', 'jambari' => 'Jambari',
                     'lidya' => 'Lidya', 'netty' => 'Netty', 'purnama' => 'Purnama', 'risma' => 'Risma',
-                    'rosi' => 'Rosi', 'syawal' => 'Syawal' 
+                    'rosi' => 'Rosi', 'syawal' => 'Syawal'
                 ],
                 'default' => 'umum'
             ]
         ];
         // ------ CRUD COLUMNS
         // $this->crud->addColumn('terasa');
-        // $this->crud->addColumn('terdampak'); 
+        // $this->crud->addColumn('terdampak');
         $this->crud->addColumn('created_at');
-        $this->crud->addColumn('updated_at'); 
+        $this->crud->addColumn('updated_at');
         // add a single column, at the end of the stack
         //$this->crud->addColumns('terasa','terdampak'); // add multiple columns, at the end of the stack
         $this->crud->removeColumn('narasi'); // remove a column from the stack
+        $this->crud->removeColumn('type'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']);
         $this->crud->setColumnDetails('terasa', ['label' => 'Terasa']); // adjusts the properties of the passed in column (by name)
@@ -180,7 +181,7 @@ class GempaCrudController extends CrudController
         $this->crud->orderBy('tanggal','desc');
         $this->crud->orderBy('origin','desc');
 
-        //filter magnitudo 
+        //filter magnitudo
         $this->crud->addFilter([ // daterange filter
            'type' => 'date_range',
            'name' => 'tanggal',

@@ -7,6 +7,8 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\GempanabireRequest as StoreRequest;
 use App\Http\Requests\UpdateGempanabireRequest as UpdateRequest;
+use App\Models\Gempanabire;
+use App\Models\Gempa;
 
 /**
  * Class GempanabireCrudController
@@ -117,8 +119,15 @@ class GempanabireCrudController extends CrudController
         // $this->crud->removeAllButtonsFromStack('line');
 
         // ------ CRUD ACCESS
-        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'infogempa']);
+        //$this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'infogempa']);
+        if (backpack_auth()->user()->name == 'angkasa') {
+        $this->crud->allowAccess(['list', 'infogempa','reorder','injectnabire']);
+        $this->crud->addButtonFromView('line', 'inject' , 'injectnabire', 'end');
+      } else {
+        $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
+      }
         $this->crud->addButtonFromView('line', 'press' , 'infogempa', 'end');
+
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -163,7 +172,7 @@ class GempanabireCrudController extends CrudController
         $this->crud->orderBy('tanggal','desc');
         $this->crud->orderBy('origin','desc');
 
-        //filter magnitudo 
+        //filter magnitudo
         $this->crud->addFilter([ // daterange filter
            'type' => 'date_range',
            'name' => 'tanggal',
@@ -266,7 +275,7 @@ class GempanabireCrudController extends CrudController
             $this->crud->addClause('where', 'terasa', $value);
         });
 
-        
+
     }
 
     public function store(StoreRequest $request)
@@ -370,5 +379,22 @@ public function infogempa($id) {
             $lat = $lat[1].$lat[2].'LU';
         }
         return view('gempa.infonabire', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
+    }
+
+    public function inject($id)
+    {
+      $event = Gempanabire::find($id);
+      $gempa = new Gempa;
+      $tanggal = $event['tanggal'];
+      $gempa->tanggal = date("Y-m-d", strtotime($tanggal));
+      $gempa->origin = $event['origin'];
+      $gempa->lintang = $event['lintang'];
+      $gempa->bujur = $event['bujur'];
+      $gempa->magnitudo = $event['magnitudo'];
+      $gempa->depth = $event['depth'];
+      $gempa->ket = '.';
+      $gempa->sumber = 'BMKG-NBPI';
+      $gempa->save();
+      return back();
     }
 }

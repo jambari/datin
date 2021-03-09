@@ -38,6 +38,8 @@
 {{-- <li><a href="{{ backpack_url('balaisms') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa PGR V</span></a></li> --}}
 <li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PGR V DAN ANGKASA</span></a></li>
 <li><a href="{{ backpack_url('significant') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>SIGNIFIKAN / MANUAL</span></a></li>
+<li><a href="{{ backpack_url('balaigempa') }}"><i class="fa fa-book"></i> <span>Repositori PGR V</span></a></li>
+<li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori Nabire</span></a></li>
 
 	</ul>
 </li>

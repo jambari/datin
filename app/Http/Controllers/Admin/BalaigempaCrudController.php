@@ -9,6 +9,8 @@ use App\Http\Requests\StoreBalaigempaRequest as StoreRequest;
 use App\Http\Requests\UpdateBalaigempaRequest as UpdateRequest;
 use App\Models\Balaisms;
 use App\Models\Balaigempa;
+use App\Models\Gempa;
+use Carbon\Carbon;
 
 /**
  * Class GempaCrudController
@@ -113,7 +115,13 @@ class BalaiGempaCrudController extends CrudController
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
         // ------ CRUD ACCESS
+
+        if (backpack_auth()->user()->name == 'angkasa') {
+        $this->crud->allowAccess(['list', 'create','sms', 'update', 'reorder', 'delete','injectbalai']);
+        $this->crud->addButtonFromView('line', 'inject' , 'injectbalai', 'end');
+      } else {
         $this->crud->allowAccess(['list', 'create','sms', 'update', 'reorder', 'delete']);
+      }
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -440,6 +448,23 @@ class BalaiGempaCrudController extends CrudController
           $lat = $lat[1].$lat[2].'LU';
       }
       return view('gempa.balaisms', compact('lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
+    }
+
+    public function inject($id)
+    {
+      $event = Balaigempa::find($id);
+      $gempa = new Gempa;
+      $tanggal = $event['tanggal'];
+      $gempa->tanggal = date("Y-m-d", strtotime($tanggal));
+      $gempa->origin = $event['origin'];
+      $gempa->lintang = $event['lintang'];
+      $gempa->bujur = $event['bujur'];
+      $gempa->magnitudo = $event['magnitudo'];
+      $gempa->depth = $event['depth'];
+      $gempa->ket = '.';
+      $gempa->sumber = 'PGR V';
+      $gempa->save();
+      return back();
     }
 
 }

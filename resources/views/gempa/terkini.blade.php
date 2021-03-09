@@ -45,7 +45,7 @@
 				<tbody>
 			@if ( $gempas )
             @foreach ( $gempas as $gempa )
-            
+
 				    <tr class="@if ($gempa->terasa == 'dirasakan') bg-red @endif">
 				      	<td  scope="row"> {{ $loop->iteration }}</td>
 				      	<td> {{ $gempa->origin }} </td>
