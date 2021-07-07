@@ -22,6 +22,8 @@ Route::get('/gempa/terkini', 'HomeController@terkini'); // table of up recent eq
 Route::get('/gempa/recentmap', 'HomeController@recentmap'); //several latest eqs map
 Route::get('/gempa/statistik', 'HomeController@statistik'); // statistik and earthquake
 
+//Reminder page
+Route::get('/reminder', 'HomeController@reminder'); // statistik and earthquake
 Route::any('/statistik/search', 'HomeController@searcheq'); // statistik and earthquake
 
 //Cari Petir

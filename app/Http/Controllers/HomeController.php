@@ -268,7 +268,7 @@ class HomeController extends Controller
         $Dverydeep = Gempa::where('depth','>=', 300)
                     ->whereBetween('tanggal', [$start, $end])->count();
 
-        Session::flash('info', 'Data Gempabumi Periode '.$start.' s.d '.$end); 
+        Session::flash('info', 'Data Gempabumi Periode '.$start.' s.d '.$end);
         return view ( 'gempa.searchresult' )->with(compact('start', 'end', 'eq1s', 'eq2s', 'eq3s', 'eq4s', 'eq5s', 'eq6s', 'eq7s', 'eq8s', 'eq9s', 'felts', 'Mbelowthree', 'Mthreefive', 'Mabovefive', 'Dshallow', 'Dmediate', 'Dverydeep'));
         }
     }
@@ -335,14 +335,14 @@ class HomeController extends Controller
                 DB::raw('DATE(tanggaljam) as day')
                 // Group these records according to that day
                 ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $end])->orderBy('day','ASC')->get();
-        Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end); 
+        Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end);
         return view('petirs.queryld')->with(compact('intraclouds','cgpositives', 'cgnegatives', 'sambarans', 'icdails', 'cgplusdails', 'cgminusdails', 'start', 'end','all','alltanpaic'));
         } else {
 
-            Session::flash('warning', 'Tanggal awal harus lebih kecil dari tanggal akhir '); 
+            Session::flash('warning', 'Tanggal awal harus lebih kecil dari tanggal akhir ');
             return view('petirs.caripetir');
         }
-        
+
     }
 
     // chart
@@ -454,6 +454,11 @@ class HomeController extends Controller
     public function slideshow () {
         $articles = Article::take(8)->where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('id','desc')->get();
         return view('slideshow')->with(compact('articles'));
+    }
+
+    public function reminder()
+    {
+      return view('reminder');
     }
 
 }
