@@ -43,15 +43,15 @@
 
 	</ul>
 </li>
-
-<li class="treeview">
+<li><a href="{{ backpack_url('hujan') }}"><i class="wi wi-raindrops" style="margin-right: 0.5em;"></i> <span>Hujan</span></a></li>
+<!-- <li class="">
 		<a href="{{ backpack_url('hujan') }}"> <i class="wi wi-dust" style="margin-right: 0.5em;"></i><span>Hujan</span> <i class="fa fa-angle-left pull-right"></i> </a>
-	<!-- <ul class="treeview-menu">
+	 <ul class="treeview-menu">
 		<li><a href="{{ backpack_url('hujan') }}"><i class="wi wi-raindrops" style="margin-right: 0.5em;"></i> <span>Hujan</span></a></li>
-{{-- 		<li><a href="{{ backpack_url('kah') }}"><i class="wi wi-dust" style="margin-right: 0.5em;"></i> <span>KAH</span></a></li>
+	<li><a href="{{ backpack_url('kah') }}"><i class="wi wi-dust" style="margin-right: 0.5em;"></i> <span>KAH</span></a></li>
 		<li><a href="{{ backpack_url('spm') }}"><i class="wi wi-humidity" style="margin-right: 0.5em;"></i> <span>SPM</span></a></li> --}}
-	</ul> -->
-</li>
+	</ul>
+</li> -->
 
 <li class="treeview">
 	<a href="#"><i class="fa fa-magnet"></i><span>Magnetbumi</span><i class="fa fa-angle-left pull-right"></i></a>
