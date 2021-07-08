@@ -37,7 +37,7 @@
     <input type="checkbox" name="enam" value="">
     <label for="satu"> Khusus hari senin dan kamis, jan lupa prekursor. </label> <br>
     <input type="checkbox" name="tujuh" value="">
-    <label for="satu"> Khusus hari selasa, infografis sambaran petir. cara buat peta tanya Ka Netty, Ber, dan Gogo </label> <br>
+    <label for="satu"> Khusus hari selasa, infografis sambaran petir. cara buat peta tanya Ka Netty, Ber, dan  Gogo </label> <br>
     <input type="checkbox" name="enam" value="">
     <label for="satu"> Khusus hari rabu, Absolut jam 09. </label> <br>
     <input type="checkbox" name="sembilan" value="">

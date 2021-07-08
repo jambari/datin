@@ -57,12 +57,20 @@ Route::get('/kegempaan/{slug}', 'Admin\ArticleCrudController@seismisitasShow');
 //Populer
 Route::get('/populer', 'Admin\ArticleCrudController@populer'); // list semua bulletin
 Route::get('/populer/{slug}', 'Admin\ArticleCrudController@populerShow');
+
 //buku tamu
 Route::get('/bukutamu', 'GuestController@index' );
 
 Route::resource('/guests', 'GuestController');
 //cari tamu
 Route::any( '/guests/search', 'GuestController@search');
+
+//Buku Tamu balai
+Route::get('/bukutamubalai', 'BalaiguestController@index' );
+
+Route::resource('/balaiguests', 'BalaiguestController');
+//cari tamu
+Route::any( '/balaiguests/search', 'BalaiguestController@search');
 
 //layanan data
 Route::get('/layanandata', 'LayanandataController@index',['name' => 'layanan.data']);
