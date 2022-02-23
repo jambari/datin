@@ -295,7 +295,7 @@ class HomeController extends Controller
                     ->whereBetween('tanggaljam', [$start, $end])->count();
         //plot ke peta
         $sambarans = Queryld::whereBetween('tanggaljam', [$start, $end])->get();
-        $all = Queryld::whereBetween('tanggaljam', [$start, $end])->count();
+        //$all = Queryld::whereBetween('tanggaljam', [$start, $end])->count();
         //$alltanpaic = (int)$all-((int)$cgpositives+(int)$cgnegatives);
         $alltanpaic = (int)$cgpositives+(int)$cgnegatives;
         //per sambaran per hari
@@ -337,7 +337,7 @@ class HomeController extends Controller
                 // Group these records according to that day
                 ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $end])->orderBy('day','ASC')->get();
         Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end);
-        return view('petirs.queryld')->with(compact('cgpositives', 'cgnegatives', 'sambarans', 'cgplusdails', 'cgminusdails', 'start', 'end','all','alltanpaic'));
+        return view('petirs.queryld')->with(compact('cgpositives', 'cgnegatives', 'sambarans', 'cgplusdails', 'cgminusdails', 'start', 'end','alltanpaic'));
         } else {
 
             Session::flash('warning', 'Tanggal awal harus lebih kecil dari tanggal akhir ');
