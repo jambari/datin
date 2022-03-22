@@ -67,6 +67,8 @@
         </div>
     </div>
 </div>
+
+
 <div class="container">
     <div class="row">
         <div class="col align-self-center">
@@ -186,6 +188,17 @@
         </div>
     </div>
 </div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col align-self-center">
+            <div class="bg bg-border-info">
+                <button class="btn btn-danger" >Observer : {{ ucfirst($event['petugas']) ?? 'tidak' }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
 @endsection @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="{{ asset('js') }}/jquery.fittext.js"> </script>

@@ -192,7 +192,7 @@ html, body {
 <div class="container">
     <div class="row d-flex">
         <div class="col-md-12 ">
-            <p class="lead text-white text-center"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
+            <p class="lead text-dark text-center"> @if ($datas['gempas']) Info Gempa Mag:{{ $datas['mag'] }}, {{ $datas['tanggalindosms'] }} {{ $datas['jamwit'] }} WIT, Lok:{{ $datas['lat'] }}, {{ $datas['lon'] }} ({{ $datas['event']['ket'] }}), Kedlmn:{{ $datas['event']['depth'] }} Km ::BMKG-JAY @endif  </p>
         </div>
     </div>
 </div>

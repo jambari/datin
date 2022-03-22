@@ -40,6 +40,7 @@
 					    <th scope="col">Lokasi</th>
 					    <th scope="col">Dirasakan</th>
 					    <th scope="col">Action</th>
+					    <th scope="col">Observer</th>
 				    </tr>
 				</thead>
 				<tbody>
@@ -48,19 +49,27 @@
 
 				    <tr class="@if ($gempa->terasa == 'dirasakan') bg-red @endif">
 				      	<td  scope="row"> {{ $loop->iteration }}</td>
-				      	<td> {{ $gempa->origin }} </td>
-				      	<td> {{ $gempa->lintang }} </td>
-				      	<td> {{ $gempa->bujur }} </td>
-				      	<td> {{ $gempa->magnitudo }} </td>
-				      	<td> {{ $gempa->depth }} </td>
-				      	<td> {{ $gempa->ket }} </td>
-				      	<td>{{ $gempa->terasa }}</td>
+				      	<td> {{ $gempa->origin ?? '' }} </td>
+				      	<td> {{ $gempa->lintang ?? '' }} </td>
+				      	<td> {{ $gempa->bujur ?? '' }} </td>
+				      	<td> {{ $gempa->magnitudo ?? '' }} </td>
+				      	<td> {{ $gempa->depth ?? '' }} </td>
+				      	<td> {{ $gempa->ket ?? '' }} </td>
+				      	<td>{{ $gempa->terasa ?? '' }}</td>
 				      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-outline-success" > Peta </a></td>
+				      	<td>{{ $gempa->petugas ?? '' }}</td>
 				    </tr>
 		  	@endforeach
 		 	@endif
 		 		</tbody>
 			</table>
+	    </div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+	    	<p>{!! $gempas->links() !!}</p>
 	    </div>
 	</div>
 </div>
