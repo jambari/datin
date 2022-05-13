@@ -152,6 +152,6 @@ class BalaismsCrudController extends CrudController
         $lat = $event['lintang'];
         $lon = $event['bujur'];
         $sms = $event['sms'];
-        return view('gempa.balaisms')->with(compact('sms', 'lat', 'lon'));
+        return view('gempa.smsbalaibaru')->with(compact('sms', 'lat', 'lon'));
     }
 }
