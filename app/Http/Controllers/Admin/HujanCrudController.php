@@ -72,7 +72,7 @@ class HujanCrudController extends CrudController
                 'name' => 'petugas',
                 'label' => 'On Duty',
                 'type' => 'select_from_array',
-                'options' => ['berlian' => 'Berlian', 'canggih'=>'Canggih',
+                'options' => ['alif' => 'Alif','berlian' => 'Berlian', 'canggih'=>'Canggih',
                     'danang' => 'Danang' ,'gogo' => 'Gogo', 'jambari' => 'Jambari',
                     'lidya' => 'Lidya', 'netty' => 'Netty','prasetia'=>'Prasetia', 'purnama' => 'Purnama',
                     'rosi' => 'Rosi', 'syawal' => 'Syawal'

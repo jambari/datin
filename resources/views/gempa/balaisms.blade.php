@@ -220,6 +220,8 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
    <script src="{{ asset('gjson') }}/plates.js" > </script>
    <script src="{{ asset('gjson') }}/png.js" > </script>
    <script src="{{ asset('gjson') }}/batasinapng.js" > </script>
+   <script src="{{ asset('gjson') }}/indofaults.js">
+</script>
         <script>
 var mymap = L.map('map-baru').setView([{{ $event['lintang'] }}, {{ $event['bujur'] }}], 7);
     // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
@@ -335,9 +337,9 @@ var mymap = L.map('map-baru').setView([{{ $event['lintang'] }}, {{ $event['bujur
             }
         }
 
-        L.geoJSON(pataHan, {
-            style : patahanStyle,
-        }).addTo(mymap); //add patahan symbol
+        // L.geoJSON(pataHan, {
+        //     style : patahanStyle,
+        // }).addTo(mymap); //add patahan symbol
 
         // L.geoJSON(worldPlates, {
         //     style: subduksiStyle,
@@ -345,7 +347,11 @@ var mymap = L.map('map-baru').setView([{{ $event['lintang'] }}, {{ $event['bujur
         // }).addTo(mymap);
 
         //plot subduction
-        L.geoJSON(subDuksi, {
+        // L.geoJSON(subDuksi, {
+        //     style: subduksiStyle
+        // }).addTo(mymap);
+
+        L.geoJSON(indoFaults, {
             style: subduksiStyle
         }).addTo(mymap);
 

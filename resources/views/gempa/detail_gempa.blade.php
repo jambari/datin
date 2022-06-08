@@ -1,7 +1,7 @@
-@extends('main') 
+@extends('main')
 @section('title')
 <title>Gempabumi - Stasiun Geofisika Kelas I Jayapura</title>
-@endsection 
+@endsection
 @section('after_style')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
     top: 10px;
     right: 10px;
     z-index: 500;
-    margin: 3px; 
+    margin: 3px;
     margin-right: 10px;
   }
 
@@ -54,7 +54,7 @@
 
 </style>
 
-@endsection 
+@endsection
 @section('content')
 <br>
 <div class="container">
@@ -68,18 +68,6 @@
     </div>
 </div>
 
-
-<div class="container">
-    <div class="row">
-        <div class="col align-self-center">
-            <div class=" @if ($mag < 3) alert alert-success @elseif ($mag >= 3 && $mag < 5) alert alert-warning @else alert alert-danger @endif">
-                <p class="text-center" style="font-size: 1.1em; font-family: 'Quicksand', sans-serif; font-weight: bold; color: black;" >
-                    Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-JAY
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -88,6 +76,7 @@
               <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)" class="form-control">
                 <option value="NationalGeographic" selected >National Geographic</option>
                 <option value="Topographic">Topographic</option>
+                <option value="Terrain">Terrain</option>
                 <option value="Streets">Streets</option>
                 <option value="Oceans">Oceans</option>
                 <option value="Gray">Gray</option>
@@ -102,6 +91,19 @@
         </div>
     </div>
 </div> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col align-self-center">
+            <div class=" @if ($mag < 3) alert alert-success @elseif ($mag >= 3 && $mag < 5) alert alert-warning @else alert alert-danger @endif">
+                <p class="text-center" style="font-size: 1.1em; font-family: 'Quicksand', sans-serif; font-weight: bold; color: black;" >
+                    Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-JAY
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- this is eq map -->
 <div class="container" id="isi" >
     <div class="row" style="margin: px;">
@@ -213,17 +215,26 @@
 </script>
 <script src="{{ asset('gjson') }}/plates.js">
 </script>
+<script src="{{ asset('gjson') }}/indofaults.js">
+</script>
 
 <script>
     var mymap = L.map('map').setView([{{ $event['lintang'] }}, {{ $event['bujur'] }}], 7);
     // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
-     // var layer = L.esri.basemapLayer('NationalGeographic').addTo(mymap);
-     //  var layerLabels;
+    //  var layer = L.esri.basemapLayer('NationalGeographic').addTo(mymap);
+    //  var layerLabels;
 
      L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 }).addTo(mymap);
+
+//      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+//     maxZoom: 18,
+//     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+// }).addTo(mymap);
+
+
 
   function setBasemap(basemap) {
     if (layer) {
@@ -283,16 +294,24 @@
             "fillColor": 'transparent',
         }
 
+        var indoFaultsStyle = {
+            "color": "#E04D01",
+            "weight": 1,
+            "opacity": 1,
+            "fillColor": '#E04D01',
+        }
+
         function onEachFeature(feature, layer) {
         // does this feature have a property named popupContent?
-            if (feature.properties && feature.properties.PlateName) {
-                layer.bindPopup(feature.properties.PlateName);
+            if (feature.properties && feature.properties.indoFaults) {
+                layer.bindPopup(feature.properties.indoFaults);
             }
         }
 
-        L.geoJSON(pataHan, {
-            style : patahanStyle,
-        }).addTo(mymap); //add patahan symbol
+        // L.geoJSON(pataHan, {
+        //     style : patahanStyle,
+        // }).addTo(mymap); //add patahan symbol
+
 
         // L.geoJSON(worldPlates, {
         //     style: subduksiStyle,
@@ -300,9 +319,9 @@
         // }).addTo(mymap);
 
         //plot subduction
-        // L.geoJSON(subDuksi, {
-        //     style: subduksiStyle
-        // }).addTo(mymap);
+        L.geoJSON(indoFaults, {
+            style: indoFaultsStyle
+        }).addTo(mymap);
 
         // Define an icon called cssIcon
         var cssIcon = L.divIcon({

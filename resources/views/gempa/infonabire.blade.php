@@ -98,6 +98,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
   display: flex;
   flex-direction: column;
   text-align: center;
+  border-radius: 50%;
 }
 /*Wrap the content of the divicon (text) in this class*/
 .map-label-content {
@@ -110,7 +111,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
   /*border-color: #444;*/
   padding: 3px;
   white-space: nowrap;
-  color: white;
+  color: black;
 }
 /*Add this arrow*/
 .map-label-arrow {
@@ -153,7 +154,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 
 @section('content')
 {{-- Baru Uji Coba balai --}}
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12">
             <div class="form-group row">
               <label for="basemap" class="form-control">Modifikasi Peta</label>
@@ -177,7 +178,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
               </select> --}}
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
@@ -221,22 +222,24 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
    <script src="{{ asset('gjson') }}/subduksi.js" ></script>
    <script src="{{ asset('gjson') }}/plates.js" > </script>
    <script src="{{ asset('gjson') }}/png.js" > </script>
+   <script src="{{ asset('gjson') }}/indofaults.js"></script>
    <script src="{{ asset('gjson') }}/batasinapng.js" > </script>
+   
         <script>
 var mymap = L.map('map-baru').setView([{{ $latmap }}, {{ $lonmap }}], 7);
-    // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
-     var layer = L.esri.basemapLayer('Streets').addTo(mymap);
-      var layerLabels;
+//     // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
+//      var layer = L.esri.basemapLayer('Streets').addTo(mymap);
+//       var layerLabels;
 
 // var mymap = L.map('map-baru').setView([{{ $latmap }}, {{ $lonmap }}], 7);
 // // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
 //  // var layer = L.esri.basemapLayer('NationalGeographic').addTo(mymap);
 //  //  var layerLabels;
 //
-//  L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-// maxZoom: 18,
-// attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-// }).addTo(mymap);
+ L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+maxZoom: 18,
+attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}).addTo(mymap);
 
   function setBasemap(basemap) {
     if (layer) {
@@ -307,9 +310,9 @@ var mymap = L.map('map-baru').setView([{{ $latmap }}, {{ $lonmap }}], 7);
         //style for subduksi
 
         var subduksiStyle = {
-            "color": "#ffff00",
+            "color": "#E04D01",
             "weight": 1,
-            "opacity": 0.5,
+            "opacity": 0.8,
             "fillColor": 'transparent',
         };
         //Papua New Guinea
@@ -347,9 +350,9 @@ var mymap = L.map('map-baru').setView([{{ $latmap }}, {{ $lonmap }}], 7);
             }
         }
 
-        L.geoJSON(pataHan, {
-            style : patahanStyle,
-        }).addTo(mymap); //add patahan symbol
+        // L.geoJSON(pataHan, {
+        //     style : patahanStyle,
+        // }).addTo(mymap); //add patahan symbol
 
         // L.geoJSON(worldPlates, {
         //     style: subduksiStyle,
@@ -357,7 +360,11 @@ var mymap = L.map('map-baru').setView([{{ $latmap }}, {{ $lonmap }}], 7);
         // }).addTo(mymap);
 
         //plot subduction
-        L.geoJSON(subDuksi, {
+        // L.geoJSON(subDuksi, {
+        //     style: subduksiStyle
+        // }).addTo(mymap);
+
+        L.geoJSON(indoFaults, {
             style: subduksiStyle
         }).addTo(mymap);
 
