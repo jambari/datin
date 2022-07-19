@@ -135,6 +135,11 @@ class SignificantCrudController extends CrudController
            'label'=> 'Daerah yang merasakan',
          ]);
 
+        $this->crud->addColumn([ // daterange filter
+           'name' => 'created_at',
+           'label'=> 'created_at',
+         ]);
+
 
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
@@ -175,17 +180,17 @@ class SignificantCrudController extends CrudController
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
-        $this->crud->addFilter([ // daterange filter
-           'type' => 'date_range',
-           'name' => 'tanggal',
-           'label'=> 'Tanggal'
-         ],
-         false,
-         function($value) { // if the filter is active, apply these constraints
-           $dates = json_decode($value);
-           $this->crud->addClause('where', 'tanggal', '>=', $dates->from);
-           $this->crud->addClause('where', 'tanggal', '<=', $dates->to);
-        });
+        // $this->crud->addFilter([ // daterange filter
+        //    'type' => 'date_range',
+        //    'name' => 'created_at',
+        //    'label'=> 'Tanggal'
+        //  ],
+        //  false,
+        //  function($value) { // if the filter is active, apply these constraints
+        //    $dates = json_decode($value);
+        //    $this->crud->addClause('where', 'created_at', '>=', $dates->from);
+        //    $this->crud->addClause('where', 'created_at', '<=', $dates->to);
+        // });
         // ------ CRUD DETAILS ROW
         // $this->crud->enableDetailsRow();
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
@@ -205,7 +210,7 @@ class SignificantCrudController extends CrudController
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         // Does not work well with AJAX datatables.
-        // $this->crud->enableExportButtons();
+        $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
         // $this->crud->addClause('active');
