@@ -283,18 +283,24 @@ class HomeController extends Controller
     }
 
     public function querypetir(Request $request) {
-        $start = $request->input( 'start' );
-        $end = $request->input( 'end' );
+        // $start = $request->input( 'start' );
+        // $end = $request->input( 'end' );
+
+
+        $start = \Carbon\Carbon::parse($request->input( 'start' ))->format('Y-m-d');
+        $end = \Carbon\Carbon::parse($request->input( 'end' ))->format('Y-m-d');
+        $akhir = \Carbon\Carbon::parse($request->input( 'end' ))->addDays(1)->format('Y-m-d');
+
         if($start != "" and $start < $end ) {
 
         // $intraclouds = Petir::where('type','=', 2)
         //             ->whereBetween('tanggaljam', [$start, $end])->count();
         $cgpositives = Petir::where('type','=',0)
-                    ->whereBetween('tanggaljam', [$start, $end])->count();
+                    ->whereBetween('tanggaljam', [$start, $akhir])->count();
         $cgnegatives = Petir::where('type','=', 1)
-                    ->whereBetween('tanggaljam', [$start, $end])->count();
+                    ->whereBetween('tanggaljam', [$start, $akhir])->count();
         //plot ke peta
-        $sambarans = Queryld::whereBetween('tanggaljam', [$start, $end])->get();
+        $sambarans = Queryld::whereBetween('tanggaljam', [$start, $akhir])->get();
         //$all = Queryld::whereBetween('tanggaljam', [$start, $end])->count();
         //$alltanpaic = (int)$all-((int)$cgpositives+(int)$cgnegatives);
         $alltanpaic = (int)$cgpositives+(int)$cgnegatives;
@@ -328,16 +334,16 @@ class HomeController extends Controller
                 // This throws away the timestamp portion of the date
                 DB::raw('DATE(tanggaljam) as day')
                 // Group these records according to that day
-                ])->groupBy('day')->where('type', '=',0)->whereBetween('tanggaljam', [$start, $end])->orderBy('day','ASC')->get();
+                ])->groupBy('day')->where('type', '=',0)->whereBetween('tanggaljam', [$start, $akhir])->orderBy('day','ASC')->get();
         $cgminusdails = Queryld::select([
                 // This aggregates the data and makes available a 'count' attribute
                 DB::raw('count(id) as count'),
                 // This throws away the timestamp portion of the date
                 DB::raw('DATE(tanggaljam) as day')
                 // Group these records according to that day
-                ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $end])->orderBy('day','ASC')->get();
+                ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $akhir])->orderBy('day','ASC')->get();
         Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end);
-        return view('petirs.queryld')->with(compact('cgpositives', 'cgnegatives', 'sambarans', 'cgplusdails', 'cgminusdails', 'start', 'end','alltanpaic'));
+        return view('petirs.queryld')->with(compact('cgpositives', 'cgnegatives', 'sambarans', 'cgplusdails', 'cgminusdails', 'start', 'end','alltanpaic','akhir'));
         } else {
 
             Session::flash('warning', 'Tanggal awal harus lebih kecil dari tanggal akhir ');

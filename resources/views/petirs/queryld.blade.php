@@ -195,7 +195,7 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
                             $periods = new DatePeriod(
                             new DateTime($start),
                             new DateInterval('P1D'),
-                            new DateTime($end));
+                            new DateTime($akhir));
                         @endphp
                         new Chart(document.getElementById("chart-tanpaic"), {
                             type: 'bar',

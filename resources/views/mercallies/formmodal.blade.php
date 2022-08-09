@@ -17,7 +17,7 @@
     @include('mercallies.mmi')
 
     <br>
-    <label class="w3-label">Gambar Kerusakan Jika ada</label>
+<!--     <label class="w3-label">Gambar Kerusakan Jika ada</label> -->
 
 {{--     <div class="w3-row w3-container">
         <div class="w3-col w3-m12 l12">
@@ -26,7 +26,7 @@
     </div> --}}
     <br>
     <label class="w3-label">Nama</label>
-    <input class="w3-input" type="text" name="nama" placeholder="Tidak Wajib">
+    <input class="w3-input" type="text" name="nama" placeholder="Nama">
 
     <input type="submit" class="w3-button w3-block w3-red w3-margin-top " value="Submit" />
 

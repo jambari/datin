@@ -130,13 +130,13 @@ crossorigin=""></script>
 </style>
 <body>
 	<div class="w3-row w3-bar w3-padding-16 w3-card w3-border-blue" style="position: ; top: 0;">
-      <div class="w3-col w3-container m2 l1" style="display: flex; justify-content: center; align-items: center;" >
+<!--       <div class="w3-col w3-container m2 l1" style="display: flex; justify-content: center; align-items: center;" >
             <a href="/">
             <img src="{{ asset('images') }}/logo-bmkg.png" alt="" width="45" height="55" >
-      </div>
+      </div> -->
       <div id="judulsimimi" class="w3-col w3-container m10 l11" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
-        <a href="/" style="text-decoration: none;">
-            <h4>STASIUN GEOFISIKA KELAS I JAYAPURA</h4>
+        <a href="/" style="text-decoration: none;"> 
+            <h4><img src="{{ asset('images') }}/logo-bmkg.png" alt="" width="45" height="55" >  STASIUN GEOFISIKA KELAS I JAYAPURA</h4>
             </a>
 
 <!--             <a href="#" style="text-decoration: none;" id="tentang" class="w3-hide-small">
@@ -338,7 +338,7 @@ crossorigin=""></script>
 
 var map = L.map('map').setView([-2.5104, 140.714], 6);
 // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
- var layer = L.esri.basemapLayer('ShadedRelief').addTo(map);
+ var layer = L.esri.basemapLayer('Topographic').addTo(map);
   var layerLabels;
 
   function setBasemap(basemap) {
