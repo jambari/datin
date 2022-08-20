@@ -5,6 +5,7 @@
 @section('after_style')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 <style type="text/css" media="screen">
     #streetmap {
         display: flex;
@@ -51,6 +52,43 @@
   }
 
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 
 </style>
 
@@ -97,7 +135,8 @@
         <div class="col align-self-center">
             <div class=" @if ($mag < 3) alert alert-success @elseif ($mag >= 3 && $mag < 5) alert alert-warning @else alert alert-danger @endif">
                 <p class="text-center" style="font-size: 1.1em; font-family: 'Quicksand', sans-serif; font-weight: bold; color: black;" >
-                    Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-JAY
+                    <input type="text" name="" id="isiSms" hidden value=" Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-JAY" >
+                    Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-JAY <button class="btn btn-outline-dark" onclick="copySms()" onmouseout="outFunc()"> <i class="la la-copy"></i>  <span class="tooltiptext" id="myTooltip">Salin pesan </span></button>
                 </p>
             </div>
         </div>
@@ -335,5 +374,27 @@
 
     //add css icon as gps ring
     L.marker([{{ $event['lintang'] }}, {{ $event['bujur'] }}], {icon: cssIcon}).addTo(mymap);
+
+
+            function copySms() {
+            /* Get the text field */
+            var copyText = document.getElementById("isiSms");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.value);
+            var tooltip = document.getElementById("myTooltip");
+              tooltip.innerHTML = "Pesan disalin";
+            /* Alert the copied text */
+            // alert("Pesan disalin: " + copyText.value);
+        }
+
+        function outFunc() {
+              var tooltip = document.getElementById("myTooltip");
+              tooltip.innerHTML = "Salin pesan";
+        }
 </script>
 @endsection

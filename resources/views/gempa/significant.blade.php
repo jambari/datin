@@ -1,5 +1,6 @@
 
 @extends('backpack::layout')
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 <style>
     #peta {
         display: flex;
@@ -140,6 +141,43 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
   background-color: #e00;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 </style>
 
 @section('header')
@@ -203,6 +241,13 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <input type="text" name="" id="isiSms" hidden value="Info Gempa Mag: {{ $event->magnitudo }}, {{ $event->tanggal }} {{ $event->jam }} WIT, Lok: {{ $lat }}-{{ $lon }} BT ({{ $event->lokasi }}), Kdlmn: {{ $event->depth }} Km @if($event->dirasakan), dirasakan {{ $event->dirasakan }} @endif :: BMKG-PGR-V " >
+        <button class="btn btn-primary btn-lg btn-block" onclick="copySms()" onmouseout="outFunc()"> <i class="la la-copy"></i>  <span class="tooltiptext" id="myTooltip">Salin pesan </span></button>
+      </div>
     </div>
     {{-- Old Design --}}
 
@@ -526,6 +571,26 @@ var mymap = L.map('map-baru').setView([{{ $event->lintang }}, {{ $lon }}], 7);
     // L.marker([-4.985, 142.36], {icon: Png}).addTo(mymap);
 // -2.576;140.515;SENTANI;;;
 
+            function copySms() {
+            /* Get the text field */
+            var copyText = document.getElementById("isiSms");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.value);
+            var tooltip = document.getElementById("myTooltip");
+              tooltip.innerHTML = "Pesan telah disalin : "+copyText.value ;
+            /* Alert the copied text */
+            // alert("Pesan disalin: " + copyText.value);
+        }
+
+        function outFunc() {
+              var tooltip = document.getElementById("myTooltip");
+              tooltip.innerHTML = "Salin pesan";
+        }
     </script>
 
 @endsection

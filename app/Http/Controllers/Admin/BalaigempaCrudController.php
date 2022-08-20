@@ -169,7 +169,6 @@ class BalaiGempaCrudController extends CrudController
         $this->crud->orderBy('tanggal','desc');
         $this->crud->orderBy('origin','desc');
 
-        //filter magnitudo
         $this->crud->addFilter([ // daterange filter
            'type' => 'date_range',
            'name' => 'tanggal',
