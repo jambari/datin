@@ -91,6 +91,12 @@ Route::group([
 	//Nabire
 	CRUD::resource('gempanabire', 'GempanabireCrudController');
 	Route::get('gempanabire/{id}/infonabire', 'GempanabireCrudController@infogempa');
-      Route::get('/gempanabire/{id}/injectnabire', 'GempanabireCrudController@inject'); // inject hasil analisis nabire
+    Route::get('/gempanabire/{id}/injectnabire', 'GempanabireCrudController@inject'); // inject hasil analisis nabire
+
+
+	//Gempa Sorong
+	CRUD::resource('gempasorong', 'GempasorongCrudController');
+	Route::get('gempasorong/{id}/infosorong', 'GempasorongCrudController@infosorong');
+
 	CRUD::resource('petir', 'PetirCrudController');
 }); // this should be the absolute last line of this file

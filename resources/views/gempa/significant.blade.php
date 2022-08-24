@@ -230,7 +230,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                 </div>
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-12" id="balai" >
+                        <div class="col-md-8 col-md-offset-2" id="balai" >
                             <div id="streetmap-baru">
                                 <img src=" {{ asset('images') }}/oke9.bmp " alt="logo" width="100%" height="20%" style="" >
                                     <div id="map-baru" style="width:99%;height:500px;"></div>
@@ -244,9 +244,9 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
     </div>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8 col-md-offset-2" style="display:flex; justify-content: center; " >
         <input type="text" name="" id="isiSms" hidden value="Info Gempa Mag: {{ $event->magnitudo }}, {{ $event->tanggal }} {{ $event->jam }} WIT, Lok: {{ $lat }}-{{ $lon }} BT ({{ $event->lokasi }}), Kdlmn: {{ $event->depth }} Km @if($event->dirasakan), dirasakan {{ $event->dirasakan }} @endif :: BMKG-PGR-V " >
-        <button class="btn btn-primary btn-lg btn-block" onclick="copySms()" onmouseout="outFunc()"> <i class="la la-copy"></i>  <span class="tooltiptext" id="myTooltip">Salin pesan </span></button>
+        <button class="btn btn-primary btn-lg" onclick="copySms()" onmouseout="outFunc()"> <i class="la la-copy"></i>  <span class="tooltiptext" id="myTooltip">Salin pesan </span></button>
       </div>
     </div>
     {{-- Old Design --}}
@@ -582,7 +582,7 @@ var mymap = L.map('map-baru').setView([{{ $event->lintang }}, {{ $lon }}], 7);
             /* Copy the text inside the text field */
             navigator.clipboard.writeText(copyText.value);
             var tooltip = document.getElementById("myTooltip");
-              tooltip.innerHTML = "Pesan telah disalin : "+copyText.value ;
+              tooltip.innerHTML = "Pesan telah disalin " ;
             /* Alert the copied text */
             // alert("Pesan disalin: " + copyText.value);
         }
