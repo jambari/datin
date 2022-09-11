@@ -359,7 +359,7 @@ class BalaiGempaCrudController extends CrudController
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
         } else {
-            $lat = $lat[1].$lat[2].'LU';
+            $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
         return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah','wilayah1', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
     }

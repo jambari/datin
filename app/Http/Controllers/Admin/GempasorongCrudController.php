@@ -121,7 +121,8 @@ class GempasorongCrudController extends CrudController
         // ------ CRUD ACCESS
         //$this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'infogempa']);
         if (backpack_auth()->user()->name == 'angkasa') {
-        // $this->crud->allowAccess(['list', 'infogempa','reorder','injecasorong']);
+        $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
         // $this->crud->addButtonFromView('line', 'inject' , 'injecasorong', 'end');
       } else {
         $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
@@ -376,7 +377,7 @@ public function infosorong($id) {
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
         } else {
-            $lat = $lat[1].$lat[2].'LU';
+            $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
         return view('gempa.infosorong', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
     }

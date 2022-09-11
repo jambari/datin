@@ -376,7 +376,7 @@ public function infogempa($id) {
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
         } else {
-            $lat = $lat[1].$lat[2].'LU';
+            $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
         return view('gempa.infonabire', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
     }
