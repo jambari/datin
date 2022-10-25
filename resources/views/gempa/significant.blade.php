@@ -232,7 +232,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2" id="balai" >
                             <div id="streetmap-baru">
-                                <img src=" {{ asset('images') }}/oke9.bmp " alt="logo" width="100%" height="20%" style="" >
+                                <img src="{{ asset('images') }}/header-balai-2022.jpg" alt="logo" width="100%" height="20%" style="" >
                                     <div id="map-baru" style="width:99%;height:500px;"></div>
                                 <p class="text-center " style="" > <strong class="" >Info Gempa Mag: {{ $event->magnitudo }}, {{ $event->tanggal }} {{ $event->jam }} WIT, Lok: {{ $lat }}-{{ $lon }} BT ({{ $event->lokasi }}), Kdlmn: {{ $event->depth }} Km @if($event->dirasakan), dirasakan {{ $event->dirasakan }} @endif :: BMKG-PGR-V </strong> </p>
                             </div>

@@ -100,4 +100,7 @@ Route::group([
 	Route::get('/gempasorong/{id}/injectsorong', 'GempanabireCrudController@inject'); 
 
 	CRUD::resource('petir', 'PetirCrudController');
+	CRUD::resource('logbook', 'LogbookCrudController');
+
+	// Logbook
 }); // this should be the absolute last line of this file

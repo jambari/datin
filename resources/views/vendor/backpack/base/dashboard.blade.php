@@ -206,14 +206,14 @@
                                     {
                                     label: "K Indeks",
                                     backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                                    data: [{{ $data['kindeks']['k1'] }},
-                                    {{ $data['kindeks']['k2'] }}
-                                    ,{{ $data['kindeks']['k3'] }},
-                                    {{ $data['kindeks']['k4'] }},
-                                    {{ $data['kindeks']['k5'] }},
-                                    {{ $data['kindeks']['k6'] }},
-                                    {{ $data['kindeks']['k7'] }},
-                                    {{ $data['kindeks']['k8'] }}]
+                                    data: [{{ $data['kindeks']['k1'] ?? '0' }},
+                                    {{ $data['kindeks']['k2'] ?? '0' }}
+                                    ,{{ $data['kindeks']['k3'] ?? '0' }},
+                                    {{ $data['kindeks']['k4'] ?? '0'  }},
+                                    {{ $data['kindeks']['k5'] ?? '0' }},
+                                    {{ $data['kindeks']['k6'] ?? '0' }},
+                                    {{ $data['kindeks']['k7'] ?? '0' }},
+                                    {{ $data['kindeks']['k8'] ?? '0' }}]
                                     }
                                 ]
                                 },
@@ -299,8 +299,10 @@
                 </div>
             </div>
         </div>
+        
+
         <!-- Darat -->
-{{--         <div class="col-md-6">
+     {{--<div class="col-md-6">
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h1 class="box-title">Darat Laut </h1>
@@ -335,6 +337,49 @@
                 </div>
             </div>
         </div> --}}
+        <div class="col-md-6">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                <h1 class="box-title">Logbook </h1>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                </div>
+                <div class="box-body">
+                <canvas id="Logbook-chart" width="800" height="450"></canvas>
+                    <script>
+                        new Chart(document.getElementById("Logbook-chart"), {
+                        type: 'bar',
+                        data: {
+                        labels: [
+                                "alif","berlian",'gogo','jambari','lidya',
+                                'netty','prasetia','purnama'
+                            ],
+                        datasets: [
+                            {
+                            label: "Jumlah Dinas",
+                            backgroundColor: ["#162756", "#162756", "#162756", "#162756", "#162756", 
+                                                "#162756", "#162756", "#162756" ],
+                            data: [ {{ $data['alif'] ?? '0' }}, {{ $data['berlian'] ?? '0' }}, {{ $data['gogo'] ?? '0' }},{{ $data['jambari'] ?? '0' }},
+                                    {{ $data['lidya'] ?? '0' }}, {{ $data['netty'] ?? '0' }}, {{ $data['prasetia'] ?? '0' }}, {{ $data['purnama'] ?? '0' }},]
+                            },
+                        ]
+                        },
+                        options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Petugas dinas 30 hari terakhir'
+                        }
+                        }
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
@@ -418,7 +463,7 @@
                             {
                             label: "Gempabumi",
                             backgroundColor: ["#804715", "#D49C6A","#FFD2AA"],
-                            data: [ {{ $data['BMbelowthree'] }} ,{{ $data['BMthreefive'] }}, {{ $data['BMabovefive'] }} ]
+                            data: [ {{ $data['BMbelowthree'] ?? '0' }} ,{{ $data['BMthreefive'] ?? '0' }}, {{ $data['BMabovefive'] ?? '0' }} ]
                             }
                         ]
                         },
@@ -456,7 +501,7 @@
                             {
                             label: "Gempabumi",
                             backgroundColor: ["#013034", "#0E494E","#417C81"],
-                            data: [ {{ $data['BDshallow'] }} ,{{ $data['BDmediate'] }}, {{ $data['BDverydeep'] }} ]
+                            data: [ {{ $data['BDshallow'] ?? '0' }} ,{{ $data['BDmediate'] ?? '0' }}, {{ $data['BDverydeep'] ?? '0' }} ]
                             }
                         ]
                         },

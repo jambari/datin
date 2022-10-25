@@ -12,6 +12,7 @@ use App\Models\Hujan;
 use App\Models\Spm;
 use App\Models\Kah;
 use App\Models\Infogempa;
+use App\Models\Logbook;
 
 
 class DashboardController extends Controller
@@ -47,6 +48,25 @@ class DashboardController extends Controller
         $darat = Infogempa::where('sms','like', '%darat%')->count();
         //Laut
         $laut = Infogempa::where('sms','like', '%laut%')->count();
+        //logbook
+        $logbookJadwal = Logbook::orderBy('id', 'DESC')->first();
+        $alif = Logbook::where('petugas', '=', 'alif')
+                ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $berlian = Logbook::where('petugas', '=', 'berlian')
+                ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $gogo = Logbook::where('petugas', '=', 'gogo')
+                ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $jambari = Logbook::where('petugas', '=', 'jambari')
+                ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $lidya = Logbook::where('petugas', '=', 'lidya')
+                ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $netty = Logbook::where('petugas','=','netty')
+                ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $prasetia = Logbook::where('petugas', '=', 'prasetia')
+                ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+        $purnama = Logbook::where('petugas', '=', 'purnama')
+                ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
+
         //Gempa dari seiscomp Balai
         $Bgempa = Balaigempa::orderBy('id', 'DESC')->first();
         $BMbelowthree = Balaigempa::where('magnitudo','<', 3)
@@ -83,6 +103,15 @@ class DashboardController extends Controller
             'BDshallow' => $BDshallow,
             'BDmediate'  => $BMmediate,
             'BDverydeep' => $BMverydeep,
+            'logbookJadwal' => $logbookJadwal,
+            'alif' => $alif,
+            'berlian' => $berlian,
+            'gogo' => $gogo,
+            'jambari' => $jambari,
+            'lidya' => $lidya,
+            'netty' => $netty,
+            'prasetia' => $prasetia,
+            'purnama' => $purnama,
         ];
         return view('vendor.backpack.base.dashboard')->with(compact('data'));
     }
