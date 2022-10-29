@@ -968,7 +968,7 @@ class LogbookCrudController extends CrudController
         // $this->crud->removeButtonFromStack($name, $stack);
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
-        $this->crud->addButtonFromView('line', 'unduh', 'unduh', 'beginning');
+        // $this->crud->addButtonFromView('line', 'unduh', 'unduh', 'beginning');
 
         // ------ CRUD ACCESS
 
@@ -984,7 +984,7 @@ class LogbookCrudController extends CrudController
         // ------ REVISIONS
         // You also need to use \Venturecraft\Revisionable\RevisionableTrait;
         // Please check out: https://laravel-backpack.readme.io/docs/crud#revisions
-        $this->crud->allowAccess('unduh');
+        // $this->crud->allowAccess('unduh');
 
         // ------ AJAX TABLE VIEW
         // Please note the drawbacks of this though:
