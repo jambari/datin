@@ -41,7 +41,7 @@ class BalaiGempaCrudController extends CrudController
         $fields = [
             [
                 'name' => 'tanggal',
-                'labe;' => 'Tanggal',
+                'label' => 'Tanggal',
                 'type' => 'date'
             ], [
                 'name' => 'origin',
@@ -98,7 +98,7 @@ class BalaiGempaCrudController extends CrudController
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         $this->crud->addFields($fields, 'update/create/both');
-        $this->crud->removeField('tanggal', 'update');
+        //$this->crud->removeField('tanggal', 'update');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // add asterisk for fields that are required in GempaRequest
