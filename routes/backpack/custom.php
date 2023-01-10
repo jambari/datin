@@ -97,10 +97,16 @@ Route::group([
 	//Gempa Sorong
 	CRUD::resource('gempasorong', 'GempasorongCrudController');
 	Route::get('gempasorong/{id}/infosorong', 'GempasorongCrudController@infosorong');
-	Route::get('/gempasorong/{id}/injectsorong', 'GempanabireCrudController@inject'); 
+	Route::get('/gempasorong/{id}/injectsorong', 'GempasorongCrudController@inject'); 
 
 	CRUD::resource('petir', 'PetirCrudController');
 	CRUD::resource('logbook', 'LogbookCrudController');
 
+	//satudatagempa SDG
+	CRUD::resource('satudatagempa', 'SatudatagempaCrudController')->name('satudatagempa');
+	Route::get('/balaigempa/{id}/kirimsdgpgr', 'BalaigempaCrudController@kirimsdgpgr'); // kirim ke SDG dari repository balai
+	Route::get('gempa/{id}/kirimsdgjay', 'GempaCrudController@kirimsdgjay'); //kirim ke SDG dari repository Jay
+	Route::get('gempanabire/{id}/kirimsdgnbpi', 'GempanabireCrudController@kirimsdgnbpi'); //kirim ke SDG dari repository NBPI
+	Route::get('/gempasorong/{id}/kirimsdgswi', 'GempasorongCrudController@kirimsdgswi'); //kirim ke SDG dari repository SWI
 	// Logbook
 }); // this should be the absolute last line of this file

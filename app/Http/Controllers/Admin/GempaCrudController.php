@@ -9,6 +9,7 @@ use App\Http\Requests\StoreGempaRequest as StoreRequest;
 use App\Http\Requests\UpdateGempaRequest as UpdateRequest;
 use App\Models\Infogempa;
 use App\Models\Gempa;
+use App\Models\Satudatagempa;
 
 /**
  * Class GempaCrudController
@@ -96,7 +97,7 @@ class GempaCrudController extends CrudController
                 'options' => ['alif' => 'Alif','berlian' => 'Berlian', 'canggih'=>'Canggih',
                     'danang' => 'Danang' ,'gogo' => 'Gogo', 'jambari' => 'Jambari',
                     'lidya' => 'Lidya', 'netty' => 'Netty','prasetia'=>'Prasetia', 'purnama' => 'Purnama',
-                    'rosi' => 'Rosi', 'syawal' => 'Syawal'
+                    'rosi' => 'Rosi','rivaldo' => 'Rivaldo', 'syawal' => 'Syawal'
                 ],
                 'default' => 'umum'
             ]
@@ -145,6 +146,22 @@ class GempaCrudController extends CrudController
         // ------ CRUD DETAILS ROW
         $this->crud->enableDetailsRow();
         $this->crud->allowAccess('details_row');
+        if (backpack_auth()->user()->name == 'balai5') {
+            $this->crud->allowAccess('kirimsdgjay');
+            $this->crud->addButtonFromView('line', 'kirimsdgjay' , 'kirimsdgjay', 'end');
+            $this->crud->removeColumn('narasi'); // remove a column from the stack
+            $this->crud->removeColumn('petugas'); // remove a column from the stack
+            $this->crud->removeColumn('created_at'); // remove a column from the stack
+            $this->crud->removeColumn('terdampak'); // remove a column from the stack
+            $this->crud->removeColumn('sumber'); // remove a column from the stack
+            $this->crud->removeColumn('terasa'); // remove a column from the stack
+            $this->crud->removeColumn('updated_at'); // remove a column from the stack
+            $this->crud->denyAccess('create'); // remove a column from the stack
+            $this->crud->denyAccess('update'); // remove a column from the stack
+            $this->crud->denyAccess('delete'); // remove a column from the stack
+            $this->crud->denyAccess('press'); // remove a column from the stack
+        }
+
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
 
@@ -459,6 +476,23 @@ class GempaCrudController extends CrudController
             $lat = $lat[1].$lat[2].'LU';
         }
         return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
+    }
+
+    public function kirimsdgjay($id)
+    {
+      $event = Gempa::find($id);
+      $gempa = new Satudatagempa;
+      $tanggal = $event['tanggal'];
+      $gempa->tanggal = date("Y-m-d", strtotime($tanggal));
+      $gempa->origin = $event['origin'];
+      $gempa->lintang = $event['lintang'];
+      $gempa->bujur = $event['bujur'];
+      $gempa->magnitudo = $event['magnitudo'];
+      $gempa->depth = $event['depth'];
+      $gempa->ket = '.';
+      $gempa->sumber = 'BMKG-JAY';
+      $gempa->save();
+      return redirect('/admin/satudatagempa');
     }
 
 }

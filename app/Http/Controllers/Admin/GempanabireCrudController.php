@@ -9,6 +9,7 @@ use App\Http\Requests\GempanabireRequest as StoreRequest;
 use App\Http\Requests\UpdateGempanabireRequest as UpdateRequest;
 use App\Models\Gempanabire;
 use App\Models\Gempa;
+use App\Models\Satudatagempa;
 
 /**
  * Class GempanabireCrudController
@@ -129,7 +130,15 @@ class GempanabireCrudController extends CrudController
         $this->crud->addButtonFromView('line', 'press' , 'infogempa', 'end');
 
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
-
+        if (backpack_auth()->user()->name == 'balai5') {
+            $this->crud->allowAccess('kirimsdgnbpi');
+            $this->crud->addButtonFromView('line', 'kirimsdgnbpi' , 'kirimsdgnbpi', 'end');
+            $this->crud->denyAccess('create'); // remove a column from the stack
+            $this->crud->denyAccess('update'); // remove a column from the stack
+            $this->crud->denyAccess('delete'); // remove a column from the stack
+            $this->crud->denyAccess('infogempa'); // remove a column from the stack
+            $this->crud->removeColumn('terdampak'); // remove a column from the stack
+        }
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
@@ -397,4 +406,24 @@ public function infogempa($id) {
       $gempa->save();
       return back();
     }
+
+    public function kirimsdgnbpi($id)
+    {
+      $event = Gempanabire::find($id);
+      $gempa = new Satudatagempa;
+      $tanggal = $event['tanggal'];
+      $gempa->tanggal = date("Y-m-d", strtotime($tanggal));
+      $gempa->origin = $event['origin'];
+      $gempa->lintang = $event['lintang'];
+      $gempa->bujur = $event['bujur'];
+      $gempa->magnitudo = $event['magnitudo'];
+      $gempa->depth = $event['depth'];
+      $gempa->ket = '.';
+      $gempa->sumber = 'BMKG-NBPI';
+      $gempa->save();
+    //   return back();
+    return redirect('/admin/satudatagempa');
+    }
+
+
 }

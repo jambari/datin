@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateBalaigempaRequest as UpdateRequest;
 use App\Models\Balaisms;
 use App\Models\Balaigempa;
 use App\Models\Gempa;
+use App\Models\Satudatagempa;
 use Carbon\Carbon;
 
 /**
@@ -132,10 +133,12 @@ class BalaiGempaCrudController extends CrudController
         $this->crud->enableDetailsRow();
         $this->crud->allowAccess('details_row');
         $this->crud->allowAccess('sms');
+        $this->crud->allowAccess('kirimsdgpgr');
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
         //$this->crud->addButtonFromView('line', 'press' , 'press', 'end');
         $this->crud->addButtonFromView('line', 'sms' , 'sms', 'beginning');
+        $this->crud->addButtonFromView('line', 'kirimsdgpgr' , 'kirimsdgpgr', 'end');
         // ------ REVISIONS
         // You also need to use \Venturecraft\Revisionable\RevisionableTrait;
         // Please check out: https://laravel-backpack.readme.io/docs/crud#revisions
@@ -464,6 +467,23 @@ class BalaiGempaCrudController extends CrudController
       $gempa->sumber = 'PGR V';
       $gempa->save();
       return back();
+    }
+
+    public function kirimsdgpgr($id)
+    {
+      $event = Balaigempa::find($id);
+      $gempa = new Satudatagempa;
+      $tanggal = $event['tanggal'];
+      $gempa->tanggal = date("Y-m-d", strtotime($tanggal));
+      $gempa->origin = $event['origin'];
+      $gempa->lintang = $event['lintang'];
+      $gempa->bujur = $event['bujur'];
+      $gempa->magnitudo = $event['magnitudo'];
+      $gempa->depth = $event['depth'];
+      $gempa->ket = '.';
+      $gempa->sumber = 'BMKG-PGR V';
+      $gempa->save();
+      return redirect('/admin/satudatagempa');
     }
 
 }

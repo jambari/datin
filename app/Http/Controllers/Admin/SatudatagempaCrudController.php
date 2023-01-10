@@ -5,18 +5,17 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\GempasorongRequest as StoreRequest;
-use App\Http\Requests\UpdateGempasorongRequest as UpdateRequest;
-use App\Models\Gempasorong;
-use App\Models\Gempa;
+use App\Http\Requests\SatudatagempaRequest as StoreRequest;
+use App\Http\Requests\UpdateSatudatagempaRequest as UpdateRequest;
 use App\Models\Satudatagempa;
+use App\Models\Gempa;
 
 /**
  * Class GempasorongCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class GempasorongCrudController extends CrudController
+class SatudatagempaCrudController extends CrudController
 {
     public function setup()
     {
@@ -25,9 +24,9 @@ class GempasorongCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Gempasorong');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/gempasorong');
-        $this->crud->setEntityNameStrings('gempa', 'gempa');
+        $this->crud->setModel('App\Models\Satudatagempa');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/satudatagempa');
+        $this->crud->setEntityNameStrings('SDG', 'SDG');
 
         /*
         |--------------------------------------------------------------------------
@@ -57,12 +56,6 @@ class GempasorongCrudController extends CrudController
                 'name' => 'magnitudo',
                 'label' => 'Magnitudo'
             ], [
-                'name' => 'type',
-                'label' => 'Tipe Magnitudo',
-                'type' => 'select_from_array',
-                'options' => ['M'=>'M', 'MLv' => 'MLv', 'Mw'=>'Mw', 'Mwp'=> 'Mwp'],
-                'default' => 'M'
-            ], [
                 'name' => 'depth',
                 'label' => 'Kedalaman',
                 'type' => 'text'
@@ -71,31 +64,27 @@ class GempasorongCrudController extends CrudController
                 'label' => 'Keterangan',
                 'type' => 'text'
             ], [
-                'name' => 'terasa',
-                'label' => 'dirasakan',
+                'name' => 'sumber',
+                'label' => 'sumber',
                 'type' => 'checkbox',
                 'default' => '0',
-            ], [
-                'name' => 'terdampak',
-                'label' => 'daerah yang merasakan',
-                'type' => 'textarea'
             ]
         ];
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
-        // $this->crud->removeColumn('column_name'); // remove a column from the stack
+        $this->crud->removeColumn('type'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
-        $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']);
-        $this->crud->setColumnDetails('terasa', ['label' => 'Terasa']); // adjusts the properties of the passed in column (by name)
+        // $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']);
+        // $this->crud->setColumnDetails('terasa', ['label' => 'Terasa']); // adjusts the properties of the passed in column (by name)
         $this->crud->setColumnsDetails(['origin'], ['label' => 'Origin (UTC)']);
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         $this->crud->addFields($fields, 'update/create/both');
-        $this->crud->removeField('tanggal', 'update');
+        // $this->crud->removeField('tanggal', 'update');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // add asterisk for fields that are required in GempaRequest
@@ -121,24 +110,16 @@ class GempasorongCrudController extends CrudController
 
         // ------ CRUD ACCESS
         //$this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'infogempa']);
-        if (backpack_auth()->user()->name == 'angkasa') {
-        $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
-        $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
-        // $this->crud->addButtonFromView('line', 'inject' , 'injecasorong', 'end');
-      } else {
-        $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
-      }
-        $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
-         if (backpack_auth()->user()->name == 'balai5') {
-            $this->crud->allowAccess('kirimsdgswi');
-            $this->crud->addButtonFromView('line', 'kirimsdgswi' , 'kirimsdgswi', 'end');
-            $this->crud->denyAccess('create'); // remove a column from the stack
-            $this->crud->denyAccess('update'); // remove a column from the stack
-            $this->crud->denyAccess('delete'); // remove a column from the stack
-            $this->crud->denyAccess('infogempa'); // remove a column from the stack
-            $this->crud->removeColumn('terdampak'); // remove a column from the stack
-            $this->crud->removeColumn('terasa'); // remove a column from the stack
-        }
+        $this->crud->allowAccess(['list','infosdg', 'create', 'update', 'reorder', 'delete']);
+    //     if (backpack_auth()->user()->name == 'angkasa') {
+    //     $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
+    //     $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
+    //     // $this->crud->addButtonFromView('line', 'inject' , 'injecasorong', 'end');
+    //   } else {
+    //     $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
+    //   }
+    //     $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
+
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -307,7 +288,7 @@ class GempasorongCrudController extends CrudController
         return $redirect_location;
     }
 
-public function infosorong($id) {
+public function infosdg($id) {
         $event = $this->crud->getEntry($id);
         //Penanggalan
         //array bulan
@@ -389,41 +370,90 @@ public function infosorong($id) {
         } else {
             $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
-        return view('gempa.infosorong', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
+        return view('gempa.infosdg', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
     }
 
-    public function inject($id)
-    {
-      $event = Gempasorong::find($id);
-      $gempa = new Gempa;
-      $tanggal = $event['tanggal'];
-      $gempa->tanggal = date("Y-m-d", strtotime($tanggal));
-      $gempa->origin = $event['origin'];
-      $gempa->lintang = $event['lintang'];
-      $gempa->bujur = $event['bujur'];
-      $gempa->magnitudo = $event['magnitudo'];
-      $gempa->depth = $event['depth'];
-      $gempa->ket = '.';
-      $gempa->sumber = 'BMKG-SWI';
-      $gempa->save();
-      return back();
-    }
+   //detail eq on frontend
+    public function showmap($id) {
+        $event = $this->crud->getEntry($id);
+        //Penanggalan
+        //array bulan
+            $bulan = array (
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
 
-public function kirimsdgswi($id)
-    {
-      $event = Gempasorong::find($id);
-      $gempa = new Satudatagempa;
-      $tanggal = $event['tanggal'];
-      $gempa->tanggal = date("Y-m-d", strtotime($tanggal));
-      $gempa->origin = $event['origin'];
-      $gempa->lintang = $event['lintang'];
-      $gempa->bujur = $event['bujur'];
-      $gempa->magnitudo = $event['magnitudo'];
-      $gempa->depth = $event['depth'];
-      $gempa->ket = '.';
-      $gempa->sumber = 'BMKG-SWI';
-      $gempa->save();
-    //   return back();
-    return redirect('/admin/satudatagempa');
+            $bulansms = array (
+            1 =>   'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'Mei',
+            'Jun',
+            'Jul',
+            'Agu',
+            'Sep',
+            'Okt',
+            'Nov',
+            'Des'
+        );
+
+        //array hari senin-sabtu
+        $days = array (
+            0 =>   'Minggu',
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            "Jum'at",
+            'Sabtu'
+    );
+        $tanggal = $event['tanggal']; //get date of the eathquake
+        $jam = $event['origin']; // get origin time of eq
+        $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
+        $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
+        $tanggalbarusms = date("d-m-y", strtotime($tanggaljam)); //mengubah ke tipe datetime untuk sms
+        $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
+        $jamnya = (int)date("H", strtotime($tanggaljam)); //ambil angka jam dalam sebuah minggu
+        $selisih = ($jamnya+ 9) - 24;
+        if ($selisih >=0) {
+           $tanggalbaru = date('d-m-Y', strtotime($tanggaljam . ' +1 day'));
+           $tanggalbarusms = date('d-m-y', strtotime($tanggaljam . ' +1 day'));
+        }
+        $hari = $days[$hari];
+        $pecahkan = explode('-',$tanggalbaru); //membuat array yang terdiri dari hari index 0, bulan index 1, tahun index 2
+        $pecahkansms = explode('-',$tanggalbarusms);
+        $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
+        $tanggalindosms= $pecahkan[0] . '-' . $bulansms[ (int)$pecahkansms[1] ] . '-' . $pecahkansms[2]; //Menggabungkan jadi tanggal format indonesia
+        $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
+        $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
+        $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
+        $lat = $event['lintang'];
+        $lon = $event['bujur'].' BT';
+        $mag = round($event['magnitudo'],1);
+        $depth = $event['depth'];
+        //wilayah yang diguncang gempa
+        // $wilayah = $event['ket'];
+        // $ket = explode(" ", $wilayah);
+        // $wilayah = $ket[3];
+        // $arah = $ket[2];
+        // $jarak = $ket[0];
+        $lat = str_split($lat); //break latitude to an array
+        if ($lat[0] == '-') {
+            $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
+        } else {
+            $lat = $lat[1].$lat[2].'LU';
+        }
+        return view('gempa.detail_satudatagempa', compact('lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
     }
 }

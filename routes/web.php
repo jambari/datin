@@ -19,6 +19,10 @@ Route::get('/', 'HomeController@index'); //home
 Route::get('/home', 'HomeController@index'); // home
 Route::get('/about', 'HomeController@about'); // about us
 Route::get('/gempa/terkini', 'HomeController@terkini'); // table of up recent eqs
+
+Route::get('/gempa/terupdate', 'HomeController@terupdate'); // table of up recent eqs from satu data gempa repository
+
+
 Route::get('/gempa/recentmap', 'HomeController@recentmap'); //several latest eqs map
 Route::get('/gempa/statistik', 'HomeController@statistik'); // statistik and earthquake
 
@@ -48,6 +52,8 @@ Route::get('/siarans/{id}', 'Admin\SiaranCrudController@show'); //detail press r
 Route::get('/gempa/{id}', 'Admin\GempaCrudController@showmap'); // detail earthquake
 Route::get('/balaigempa/{id}', 'Admin\GempaCrudController@showmap'); // sms balai
 Route::resource('/mercallies', 'MercallyController');// Indeks Seismisitas
+
+Route::get('/satudatagempa/{id}', 'Admin\SatudatagempaCrudController@showmap'); // detail earthquake satudatagempa
 
 //simimi
 Route::get('/rasagempa', 'HomeController@simimi');
