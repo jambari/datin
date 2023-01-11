@@ -1,4 +1,4 @@
-@extends('main')
+@extends('mainangkasa')
 @section('title')
 <title>Gempabumi Terkini- Stasiun Geofisika Kelas I Jayapura</title>
 @section('after_style')

@@ -139,6 +139,10 @@ class BalaiGempaCrudController extends CrudController
         //$this->crud->addButtonFromView('line', 'press' , 'press', 'end');
         $this->crud->addButtonFromView('line', 'sms' , 'sms', 'beginning');
         $this->crud->addButtonFromView('line', 'kirimsdgpgr' , 'kirimsdgpgr', 'end');
+        if (backpack_auth()->user()->name != 'balai5') {
+
+            $this->crud->denyAccess('kirimsdgpgr'); // remove a column from the stack
+        }
         // ------ REVISIONS
         // You also need to use \Venturecraft\Revisionable\RevisionableTrait;
         // Please check out: https://laravel-backpack.readme.io/docs/crud#revisions

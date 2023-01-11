@@ -84,7 +84,7 @@ class GempanabireCrudController extends CrudController
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
-        // $this->crud->removeColumn('column_name'); // remove a column from the stack
+        $this->crud->removeColumn('type'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
@@ -138,6 +138,7 @@ class GempanabireCrudController extends CrudController
             $this->crud->denyAccess('delete'); // remove a column from the stack
             $this->crud->denyAccess('infogempa'); // remove a column from the stack
             $this->crud->removeColumn('terdampak'); // remove a column from the stack
+            $this->crud->removeColumn('terasa'); // remove a column from the stack
         }
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
