@@ -146,21 +146,21 @@ class GempaCrudController extends CrudController
         // ------ CRUD DETAILS ROW
         $this->crud->enableDetailsRow();
         $this->crud->allowAccess('details_row');
-        // if (backpack_auth()->user()->name == 'balai5') {
-        //     $this->crud->allowAccess('kirimsdgjay');
-        //     $this->crud->addButtonFromView('line', 'kirimsdgjay' , 'kirimsdgjay', 'end');
-        //     $this->crud->removeColumn('narasi'); // remove a column from the stack
-        //     $this->crud->removeColumn('petugas'); // remove a column from the stack
-        //     $this->crud->removeColumn('created_at'); // remove a column from the stack
-        //     $this->crud->removeColumn('terdampak'); // remove a column from the stack
-        //     $this->crud->removeColumn('sumber'); // remove a column from the stack
-        //     $this->crud->removeColumn('terasa'); // remove a column from the stack
-        //     $this->crud->removeColumn('updated_at'); // remove a column from the stack
-        //     $this->crud->denyAccess('create'); // remove a column from the stack
-        //     $this->crud->denyAccess('update'); // remove a column from the stack
-        //     $this->crud->denyAccess('delete'); // remove a column from the stack
-        //     $this->crud->denyAccess('press'); // remove a column from the stack
-        // } 
+        if (backpack_auth()->user()->name == 'balai5') {
+            $this->crud->allowAccess('kirimsdgjay');
+            $this->crud->addButtonFromView('line', 'kirimsdgjay' , 'kirimsdgjay', 'end');
+            $this->crud->removeColumn('narasi'); // remove a column from the stack
+            $this->crud->removeColumn('petugas'); // remove a column from the stack
+            $this->crud->removeColumn('created_at'); // remove a column from the stack
+            $this->crud->removeColumn('terdampak'); // remove a column from the stack
+            $this->crud->removeColumn('sumber'); // remove a column from the stack
+            $this->crud->removeColumn('terasa'); // remove a column from the stack
+            $this->crud->removeColumn('updated_at'); // remove a column from the stack
+            $this->crud->denyAccess('create'); // remove a column from the stack
+            $this->crud->denyAccess('update'); // remove a column from the stack
+            $this->crud->denyAccess('delete'); // remove a column from the stack
+            $this->crud->denyAccess('press'); // remove a column from the stack
+        } 
 
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
