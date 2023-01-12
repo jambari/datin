@@ -33,7 +33,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $gempas = Gempa::orderBy('id','desc')->first();
+        $gempas = Satudatagempa::orderBy('id','desc')->first();
         $articles = Article::take(8)->where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('id','desc')->get();
         $galleries = Article::take(3)->where('category_id','=', 10)->orderBy('id','desc')->get();
         $pengumuman = Pengumuman::orderBy('id','desc')->first();

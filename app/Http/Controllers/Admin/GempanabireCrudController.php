@@ -123,7 +123,10 @@ class GempanabireCrudController extends CrudController
         //$this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'infogempa']);
         if (backpack_auth()->user()->name == 'angkasa') {
         $this->crud->allowAccess(['list', 'infogempa','reorder','injectnabire']);
+          $this->crud->denyAccess(['create', 'update','delete']);
         $this->crud->addButtonFromView('line', 'inject' , 'injectnabire', 'end');
+        $this->crud->allowAccess('kirimsdgnbpi');
+        $this->crud->addButtonFromView('line', 'kirimsdgnbpi' , 'kirimsdgnbpi', 'end');
       } else {
         $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
       }

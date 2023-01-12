@@ -122,11 +122,14 @@ class GempasorongCrudController extends CrudController
         // ------ CRUD ACCESS
         //$this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'infogempa']);
         if (backpack_auth()->user()->name == 'angkasa') {
-        $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list','infosorong', 'reorder','injectsorong']);
+        $this->crud->denyAccess(['create', 'update','delete']);
         $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
-        // $this->crud->addButtonFromView('line', 'inject' , 'injecasorong', 'end');
+        $this->crud->allowAccess('kirimsdgswi');
+        $this->crud->addButtonFromView('line', 'kirimsdgswi' , 'kirimsdgswi', 'end');
+        $this->crud->addButtonFromView('line', 'inject' , 'injectsorong', 'end');
       } else {
-        $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list','infosorong', 'create', 'update', 'reorder', 'delete']);
       }
         $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
          if (backpack_auth()->user()->name == 'balai5') {
