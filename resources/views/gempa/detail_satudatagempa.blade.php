@@ -218,7 +218,7 @@
             <div class=" @if ($mag < 3) alert alert-success @elseif ($mag >= 3 && $mag < 5) alert alert-warning @else alert alert-danger @endif">
                 <p class="text-center" style="font-size: 1.1em; font-family: 'Quicksand', sans-serif; font-weight: bold; color: black;" >
                     <input type="text" name="" id="isiSms" hidden value=" Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-PGR V" >
-                    Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-PGR V <button class="btn btn-outline-dark" onclick="copySms()" onmouseout="outFunc()"> <i class="la la-copy"></i>  <span class="tooltiptext" id="myTooltip">Salin pesan </span></button> <span></span>
+                    Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG <button class="btn btn-outline-dark" onclick="copySms()" onmouseout="outFunc()"> <i class="la la-copy"></i>  <span class="tooltiptext" id="myTooltip">Salin pesan </span></button> <span></span>
                     <!-- <button class="copy-icon">Copy to Clipboard</button> -->
                 </p>
             </div>
@@ -344,6 +344,8 @@
 </script>
 <script src="{{ asset('gjson') }}/indofaults.js">
 </script>
+<script src="{{ asset('gjson') }}/png.js" > </script>
+<script src="{{ asset('gjson') }}/batasinapng.js" > </script>
 
 <script>
     var mymap = L.map('map').setView([{{ $event['lintang'] }}, {{ $event['bujur'] }}], 7);
@@ -438,12 +440,32 @@
         //     style : patahanStyle,
         // }).addTo(mymap); //add patahan symbol
 
-
+        //Papua New Guinea
+        var pngStyle = {
+            fillColor: '#0AA53E',
+            weight: 1,
+            opacity: 1,
+            color: '#0AA53E',  //Outline color
+            fillOpacity: 1
+        };
+        L.geoJSON(png, {
+            style : pngStyle,
+        }).addTo(mymap);
         // L.geoJSON(worldPlates, {
         //     style: subduksiStyle,
         //     onEachFeature: onEachFeature
         // }).addTo(mymap);
-
+        var batasStyle = {
+            fillColor: '#D31B1B',
+            weight: 2,
+            opacity: 1,
+            color: '#D31B1B',  //Outline color
+            fillOpacity: 1
+        };
+        //add PNG to Map
+        L.geoJSON(batasInapng, {
+            style : batasStyle,
+        }).addTo(mymap);
         //plot subduction
         L.geoJSON(indoFaults, {
             style: indoFaultsStyle
