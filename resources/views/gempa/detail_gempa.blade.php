@@ -166,7 +166,7 @@
                 <p class="text-center" style="font-size: 1.1em; font-family: 'Quicksand', sans-serif; font-weight: bold; color: black;" >
                     <input type="text" name="" id="isiSms" hidden value=" Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-JAY" >
                     Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-JAY <button class="btn btn-outline-dark" onclick="copySms()" onmouseout="outFunc()"> <i class="la la-copy"></i>  <span class="tooltiptext" id="myTooltip">Salin pesan </span></button> <span></span>
-                    <!-- <button class="btn btn-outline-dark" onclick="copyMap()">Copy to Clipboard</button> -->
+                    <button class="btn btn-outline-dark" onclick="copyMap()">Kopi peta (under development)</button>
                     <!-- <button class="btn btn-outline-dark" onclick="take_snapshot()">Copy to Clipboard</button> -->
                 </p>
             </div>
@@ -441,33 +441,9 @@
 
         // Capture Map
     function copyMap() {
-        // const element = document.querySelector('#capture-me');
-        // html2canvas(element)
-        // .then(canvas => {
-        //     let imgData = canvas.toDataURL("image/png");
-        //     let img = new Image();
-        //     img.src = imgData;
-
-        //     let canvasClone = document.createElement("canvas");
-        //     canvasClone.width = img.width;
-        //     canvasClone.height = img.height;
-
-        //     let ctx = canvasClone.getContext("2d");
-        //     ctx.drawImage(img, 0, 0);
-
-        //     const imgDataUrl = canvasClone.toDataURL("image/png");
-            
-        //     const ele = document.createElement("a");
-        //     ele.href = imgDataUrl;
-        //     ele.download = "capture.png";
-        //     ele.click();
-        //     document.execCommand("copy");
-        //     console.log("Image copied to clipboard!");
-        // });
-
-
-        html2canvas(document.querySelector("#capture-me")).then(canvas => {
-            // document.body.appendChild(canvas)
+        const element = document.querySelector('#capture-me');
+        html2canvas(element)
+        .then(canvas => {
             let imgData = canvas.toDataURL("image/png");
             let img = new Image();
             img.src = imgData;
@@ -480,39 +456,39 @@
             ctx.drawImage(img, 0, 0);
 
             const imgDataUrl = canvasClone.toDataURL("image/png");
-            console.log(imgDataUrl);
-            // const ele = document.createElement("a");
-            // ele.href = imgDataUrl;
             
-            // ele.download = "capture.png";
-            // ele.click();
-            // document.execCommand("copy");
-            // console.log("Image copied to clipboard!");
+            const ele = document.createElement("a");
+            ele.href = imgDataUrl;
+            ele.download = "capture.png";
+            ele.click();
+            document.execCommand("copy");
+            console.log("Image copied to clipboard!");
         });
+
+
+        // html2canvas(document.querySelector("#capture-me")).then(canvas => {
+        //     // document.body.appendChild(canvas)
+        //     let imgData = canvas.toDataURL("image/png");
+        //     let img = new Image();
+        //     img.src = imgData;
+
+        //     let canvasClone = document.createElement("canvas");
+        //     canvasClone.width = img.width;
+        //     canvasClone.height = img.height;
+
+        //     let ctx = canvasClone.getContext("2d");
+        //     ctx.drawImage(img, 0, 0);
+
+        //     const imgDataUrl = canvasClone.toDataURL("image/png");
+        //     console.log(imgDataUrl);
+        //     // const ele = document.createElement("a");
+        //     // ele.href = imgDataUrl;
+            
+        //     // ele.download = "capture.png";
+        //     // ele.click();
+        //     // document.execCommand("copy");
+        //     // console.log("Image copied to clipboard!");
+        // });
     }
 </script>
-
-// <script src="{{ asset('js') }}/webcam.min.js"></script>
-//     <script language="JavaScript">
-//     Webcam.set({
-//     width: 320,
-//     height: 240,
-//     dest_width: 320,
-//     dest_height: 240,
-//     image_format: 'png',
-//     jpeg_quality: 90,
-//     force_flash: false
-// });
-
-//     Webcam.attach( '#my_camera' );
-
-//     function take_snapshot() {
-//         Webcam.snap( function(data_uri, canvas, context) {
-//             document.getElementById('capture-me').innerHTML = '<img src="'+data_uri+'"/>';
-//             var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
-//             document.getElementById('foto').value = raw_image_data;
-//             console.log(raw_image_data);
-//         } );
-//     }
-// </script>
 @endsection

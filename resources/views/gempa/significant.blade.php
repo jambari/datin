@@ -263,6 +263,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
    <script src="{{ asset('gjson') }}/subduksi.js" ></script>
    <script src="{{ asset('gjson') }}/plates.js" > </script>
    <script src="{{ asset('gjson') }}/png.js" > </script>
+   <script src="{{ asset('gjson') }}/indofaults.js"> </script>
    <script src="{{ asset('gjson') }}/batasinapng.js" > </script>
         <script>
 var mymap = L.map('map-baru').setView([{{ $event->lintang }}, {{ $lon }}], 7);
@@ -382,7 +383,11 @@ var mymap = L.map('map-baru').setView([{{ $event->lintang }}, {{ $lon }}], 7);
         // }).addTo(mymap);
 
         //plot subduction
-        L.geoJSON(subDuksi, {
+        // L.geoJSON(subDuksi, {
+        //     style: subduksiStyle
+        // }).addTo(mymap);
+
+        L.geoJSON(indoFaults, {
             style: subduksiStyle
         }).addTo(mymap);
 

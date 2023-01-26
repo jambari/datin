@@ -38,7 +38,7 @@
 					    <th scope="col">Mag</th>
 					    <th scope="col">Kedlmn</th>
 					    <th scope="col">Lokasi</th>
-					    <th scope="col">Dirasakan</th>
+					    <!-- <th scope="col">Dirasakan</th> -->
 					    <th scope="col">Action</th>
 					    <!-- <th scope="col">Observer</th> -->
 				    </tr>
@@ -55,7 +55,7 @@
 				      	<td> {{ $gempa->magnitudo ?? '' }} </td>
 				      	<td> {{ $gempa->depth ?? '' }} </td>
 				      	<td> {{ $gempa->ket ?? '' }} </td>
-				      	<td>{{ $gempa->terasa ?? '' }}</td>
+				      	<!-- <td>{{ $gempa->terasa ?? '' }}</td> -->
 				      	<td><a href="/satudatagempa/{{ $gempa->id }}" class="btn btn-outline-success" > Peta </a></td>
 				      	<!-- <td>{{ $gempa->petugas ?? '' }}</td> -->
 				    </tr>
