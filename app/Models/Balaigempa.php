@@ -105,10 +105,23 @@ class Balaigempa extends Model
         }
     }
 
+
+    public function getTerdampakAttribute($value)
+    {
+      if (isset($value)) {
+        $value = ', Dirasakan '.$value;
+        return $value;
+      } else {
+        return $value;
+      }
+    }
+
     public function getTanggalAttribute($value)
     {
         return date("d-m-Y", strtotime($value));
     }
+
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

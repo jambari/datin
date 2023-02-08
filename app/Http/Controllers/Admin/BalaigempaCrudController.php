@@ -442,6 +442,7 @@ class BalaiGempaCrudController extends CrudController
       $mag = round($event['magnitudo'],1);
       $depth = $event['depth'];
       $terdampak = $event['terdampak'];
+
       //wilayah yang diguncang gempa
       // $wilayah = $event['ket'];
       // $ket = explode(" ", $wilayah);
