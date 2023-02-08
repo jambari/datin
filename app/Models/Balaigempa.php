@@ -21,7 +21,7 @@ class Balaigempa extends Model
     public $timestamps = true;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth', 'ket','terasa','terdampak'
+        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth','ket','terasa','terdampak'
     ];
     // protected $hidden = [];
     // protected $dates = [];

@@ -89,9 +89,9 @@ class BalaiGempaCrudController extends CrudController
         // $this->crud->addColumn('terdampak');
         //$this->crud->addColumn('created_at');
         // add a single column, at the end of the stack
-        $this->crud->addColumns(['tanggal', 'origin', 'lintang', 'bujur', 'magnitudo','depth', 'ket']); // add multiple columns, at the end of the stack
+        $this->crud->addColumns(['tanggal', 'origin', 'lintang', 'bujur', 'magnitudo','depth', 'ket','terasa','terdampak']); // add multiple columns, at the end of the stack
         //$this->crud->removeColumn('narasi'); // remove a column from the stack
-        $this->crud->removeColumns(['type', 'terdampak']); // remove an array of columns from the stack
+        $this->crud->removeColumns(['type']); // remove an array of columns from the stack
         $this->crud->setColumnDetails('terdampak', ['label' => 'Dampak']);
         $this->crud->setColumnDetails('terasa', ['label' => 'Terasa']); // adjusts the properties of the passed in column (by name)
         $this->crud->setColumnsDetails(['origin'], ['label' => 'Origin (UTC)']);
@@ -441,6 +441,7 @@ class BalaiGempaCrudController extends CrudController
       $lon = $event['bujur'].' BT';
       $mag = round($event['magnitudo'],1);
       $depth = $event['depth'];
+      $terdampak = $event['terdampak'];
       //wilayah yang diguncang gempa
       // $wilayah = $event['ket'];
       // $ket = explode(" ", $wilayah);
@@ -453,7 +454,7 @@ class BalaiGempaCrudController extends CrudController
       } else {
           $lat = $lat[1].$lat[2].'LU';
       }
-      return view('gempa.balaisms', compact('lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
+      return view('gempa.balaisms', compact('lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms', 'terdampak'));
     }
 
     public function inject($id)
