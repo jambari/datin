@@ -129,20 +129,20 @@
         <div class="col-md-12 d-none d-sm-block">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/" class="text-primary">Home</a></li>
-                <li class="breadcrumb-item active"><a href="/gempa/terkini" class="text-primary">Gempabumi</a></li>
+                <li class="breadcrumb-item active"><a href="/gempa/jay" class="text-primary">Gempabumi</a></li>
             </ol>
         </div>
     </div>
 </div>
 
-<!-- <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
               <label for="basemap" class="form-control">Pilih Jenis Peta</label>
               <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)" class="form-control">
-                <option value="NationalGeographic" selected >National Geographic</option>
-                <option value="Topographic">Topographic</option>
+                <option value="NationalGeographic"  >National Geographic</option>
+                <option value="Topographic" selected>Topographic</option>
                 <option value="Terrain">Terrain</option>
                 <option value="Streets">Streets</option>
                 <option value="Oceans">Oceans</option>
@@ -157,7 +157,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <div class="container">
     <div class="row">
@@ -301,13 +301,13 @@
 <script>
     var mymap = L.map('map').setView([{{ $event['lintang'] }}, {{ $event['bujur'] }}], 7);
     // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
-    //  var layer = L.esri.basemapLayer('NationalGeographic').addTo(mymap);
-    //  var layerLabels;
+     var layer = L.esri.basemapLayer('Topographic').addTo(mymap);
+     var layerLabels;
 
-     L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-}).addTo(mymap);
+//      L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+//     maxZoom: 18,
+//     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+// }).addTo(mymap);
 
 //      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 //     maxZoom: 18,
