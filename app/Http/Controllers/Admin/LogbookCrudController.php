@@ -307,51 +307,51 @@ class LogbookCrudController extends CrudController
             [
                 'name' => 'berat_kertas',
                 'label' => 'Berat Kertas',
-                'type' => 'number',
+                'type' => 'text',
                 'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
                 // 'allows_null' => true
             ], [
                 'name' => 'counter_awal',
                 'label' => 'Counter Awal (PS)',
-                'type' => 'number',
+                'type' => 'text',
                 'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
                 // 'allows_null' => true
             ], [
                 'name' => 'counter_akhir',
                 'label' => 'Counter Akhir (AK)',
-                'type' => 'number',
+                'type' => 'text',
                 'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
                 // 'allows_null' => true
             ], [
                 'name' => 'flow_rate_awal',
                 'label' => 'Flow Rate Awal',
-                'type' => 'number',
+                'type' => 'text',
                 'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
                 // 'allows_null' => true
             ], [
                 'name' => 'flow_rate_akhir',
                 'label' => 'Flow Rate Akhir',
-                'type' => 'number',
+                'type' => 'text',
                 'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
                 // 'allows_null' => true
             ], [
                 'name' => 'hillman_intensitas',
                 'label' => 'Hillman Intensitas(mm)',
                 'hint' => 'jika TTU isi 9999',
-                'type' => 'number',
+                'type' => 'text',
                 'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
                 // 'allows_null' => true
             ], [
                 'name' => 'obs_intensitas',
                 'label' => 'Obs Intensitas (mm)',
                 'hint' => 'jika TTU isi 9999',
-                'type' => 'number',
+                'type' => 'text',
                 'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
                 // 'allows_null' => true
             ], [
                 'name' => 'kah',
                 'label' => 'Sampel Air Hujan (KAH)',
-                'type' => 'number',
+                'type' => 'text',
                 'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
                 // 'allows_null' => true
             ]
@@ -856,7 +856,11 @@ class LogbookCrudController extends CrudController
                 'label' => 'Jadwal Dinas',
                 'type' => 'select_from_array',
                 'options' => [
-                    'pagi_siang' => 'Pagi Siang', 'malam' => 'Malam'
+                    'Pagi Siang' => 'Pagi Siang',
+                    'malam Tengah Malam' => 'Malam Tengah Malam',
+                    'Pagi' => 'Pagi',
+                    'Siang' => 'Siang',
+                    'Malam' => 'Malam'
                 ], 
                 'allows null' => false
             ],[
@@ -868,9 +872,9 @@ class LogbookCrudController extends CrudController
                 'label' => 'On Duty',
                 'type' => 'select_from_array',
                 'options' => [
-                    'alif' => 'Alif','berlian' => 'Berlian',
-                    'gogo' => 'Gogo', 'jambari' => 'Jambari','lidya' => 'Lidya', 
-                    'netty' => 'Netty','prasetia'=>'Prasetia', 'purnama' => 'Purnama',
+                    'Alif Muhammad Annabal' => 'Alif Muhammad Annabal','Berlian Y Andrianto' => 'Berlian Y Andrianto',
+                    'Gogo Diego Y. Silalahi' => 'Gogo Diego Y. Silalahi', 'Jambari' => 'Jambari','Lidya N. Hutapea' => 'Lidya N. Hutapea', 
+                    'Netty Y. Baru' => 'Netty Y. Baru','Achmad Prasetia Budi'=>'Achmad Prasetia Budi', 'Purnama David Anwar' => 'Purnama David Anwar', 'Rivaldo M. Sihombing' => 'Rivaldo M. Sihombing'
                 ], 
                 'allows null' => false
             ]
@@ -969,6 +973,8 @@ class LogbookCrudController extends CrudController
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
         // $this->crud->addButtonFromView('line', 'unduh', 'unduh', 'beginning');
+        $this->crud->allowAccess('unduh');
+        $this->crud->addButtonFromView('line', 'unduh' , 'unduh', 'beginning');
 
         // ------ CRUD ACCESS
 
@@ -1016,9 +1022,9 @@ class LogbookCrudController extends CrudController
          ],
          function(){
             return [
-                'alif' => 'Alif', 'berlian' => 'Berlian',
-                'gogo' => 'Gogo', 'jambari' => 'Jambari', 'lidya' => 'Lidya',
-                'netty' => 'Netty', 'prasetia' => 'Prasetia', 'purnama' => 'Purnama'
+                'Alif Muhammad Annabal' => 'Alif Muhammad Annabal','Berlian Y Andrianto' => 'Berlian Y Andrianto',
+                    'Gogo Diego Y. Silalahi' => 'Gogo Diego Y. Silalahi', 'Jambari' => 'Jambari','Lidya N. Hutapea' => 'Lidya N. Hutapea', 
+                    'Netty Y. Baru' => 'Netty Y. Baru','Achmad Prasetia Budi'=>'Achmad Prasetia Budi', 'Purnama David Anwar' => 'Purnama David Anwar', 'Rivaldo M. Sihombing' => 'Rivaldo M. Sihombing'
             ];
          },
          function($value) { // if the filter is active
@@ -1051,6 +1057,8 @@ class LogbookCrudController extends CrudController
         // $this->crud->orderBy();
         // $this->crud->groupBy('tanggal');
         // $this->crud->limit();
+
+
     }
 
     public function store(StoreRequest $request)

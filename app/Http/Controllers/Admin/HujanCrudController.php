@@ -75,7 +75,7 @@ class HujanCrudController extends CrudController
                 'options' => ['alif' => 'Alif','berlian' => 'Berlian', 'canggih'=>'Canggih',
                     'danang' => 'Danang' ,'gogo' => 'Gogo', 'jambari' => 'Jambari',
                     'lidya' => 'Lidya', 'netty' => 'Netty','prasetia'=>'Prasetia', 'purnama' => 'Purnama',
-                    'rosi' => 'Rosi', 'syawal' => 'Syawal'
+                    'rivaldo' => 'Rivaldo', 'syawal' => 'Syawal'
                 ],
                 'default' => 'umum'
             ]

@@ -100,7 +100,10 @@ Route::group([
 	Route::get('/gempasorong/{id}/injectsorong', 'GempasorongCrudController@inject'); 
 
 	CRUD::resource('petir', 'PetirCrudController');
+
+	//Logbook
 	CRUD::resource('logbook', 'LogbookCrudController');
+	Route::get('/logbook/{id}/logbook', 'LogbookCrudController@unduh'); 
 
 	//satudatagempa SDG
 	CRUD::resource('satudatagempa', 'SatudatagempaCrudController')->name('satudatagempa');
