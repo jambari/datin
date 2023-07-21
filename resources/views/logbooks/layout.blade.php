@@ -126,15 +126,15 @@
           <tbody>
               <tr>
                 <td>BMKGSOFT</td>
-                <td>: {{ $logbook->intensitas_hujan ?? '' }} </td>
+                <td>: {{ ucfirst($logbook->intensitas_hujan) ?? '' }} </td>
               </tr>
               <tr>
                 <td>PETIR</td>
-                <td>: {{ $logbook->data_nexstorm ?? '' }} </td>
+                <td>: {{ ucfirst($logbook->data_nexstorm) ?? '' }} </td>
               </tr>
               <tr>
                 <td>JAMSTEC</td>
-                <td>: {{ $logbook->data_jamstec ?? '' }} </td>
+                <td>: {{ ucfirst($logbook->data_jamstec) ?? '' }} </td>
               </tr>
           </tbody>
         </table>
@@ -148,35 +148,35 @@
 
               <tr>
                 <td>SEISMISITAS</td>
-                <td>: {{ $logbook->data_seismisitas ?? '' }} </td>
+                <td>: {{ ucfirst($logbook->data_seismisitas) ?? '' }} </td>
               </tr>     
               <tr>
                 <td>BERAT KERTAS</td>
-                <td>: {{ $logbook->berat_kertas ?? '' }} </td>
+                <td>: {{ ucfirst($logbook->berat_kertas) ?? '' }} </td>
               </tr>
               <tr>
                 <td>COUNTER AWAL</td>
-                <td>: {{ $logbook->counter_awal ?? '' }} </td>
+                <td>: {{ ucfirst($logbook->counter_awal) ?? '' }} </td>
               </tr>
               <tr>
                 <td>COUNTER AKHIR</td>
-                <td>: {{ $logbook->counter_akhir ?? '' }} </td>
+                <td>: {{ ucfirst($logbook->counter_akhir) ?? '' }} </td>
               </tr>
               <tr>
                 <td>FLOW RATE AWAL</td>
-                <td>: {{ $logbook->flow_rate_awal ?? ''}} </td>
+                <td>: {{ ucfirst($logbook->flow_rate_awal) ?? ''}} </td>
               </tr>
               <tr>
                 <td>FLOW RATE AKHIR</td>
-                <td>: {{ $logbook->flow_rate_akhir ?? ''}} </td>
+                <td>: {{ ucfirst($logbook->flow_rate_akhir) ?? ''}} </td>
               </tr>
               <tr>
                 <td>INTENSITAS</td>
-                <td>: {{ $logbook->hillman_intensitas ?? '' }} </td>
+                <td>: {{ ucfirst($logbook->hillman_intensitas) ?? '' }} </td>
               </tr>
               <tr>
                 <td>OBS</td>
-                <td>: {{ $logbook->obs_intensitas ?? '' }} </td>
+                <td>: {{ ucfirst($logbook->obs_intensitas) ?? '' }} </td>
               </tr>
           </table>
           <h6 class="text-success">SEISMIC STATIONS</h6>
@@ -184,71 +184,71 @@
             <tbody>
                 <tr>
                   <td>ARMI</td>
-                  <td>: {{ $logbook->armi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->armi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>ARPI</td>
-                  <td>: {{ $logbook->arpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->arpi) ?? '' }} </td>
                 </tr>   
                 <tr>
                   <td>BAKI</td>
-                  <td>: {{ $logbook->baki ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->baki) ?? '' }} </td>
                 </tr>  
                 <tr>
                   <td>BNDI</td>
-                  <td>: {{ $logbook->bndi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->bndi) ?? '' }} </td>
                 </tr>    
                 <tr>
                   <td>DYPI</td>
-                  <td>: {{ $logbook->dypi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->dypi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>ERPI</td>
-                  <td>: {{ $logbook->erpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->erpi) ?? '' }} </td>
                 </tr>     
                 <tr>
                   <td>FAKI</td>
-                  <td>: {{ $logbook->faki ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->faki) ?? '' }} </td>
                 </tr>   
                 <tr>
                   <td>FKMPM</td>
-                  <td>: {{ $logbook->fkmpm ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->fkmpm) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>GENI</td>
-                  <td>: {{ $logbook->geni ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->geni) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>GLMI</td>
-                  <td>: {{ $logbook->glmi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->glmi) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>IWPI</td>
-                  <td>: {{ $logbook->iwpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->iwpi) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>JAY</td>
-                  <td>: {{ $logbook->jay ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->jay) ?? '' }} </td>
                 </tr>  
                 <tr>
                   <td>KMPI</td>
-                  <td>: {{ $logbook->kmpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->kmpi) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>KMSI</td>
-                  <td>: {{ $logbook->kmsi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->kmsi) ?? '' }} </td>
                 </tr>   
                 <tr>
                   <td>KRAI</td>
-                  <td>: {{ $logbook->krai ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->krai) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>LJPI</td>
-                  <td>: {{ $logbook->ljpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->ljpi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>MBPI</td>
-                  <td>: {{ $logbook->mbpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->mbpi) ?? '' }} </td>
                 </tr> 
 
             </tbody>
@@ -265,47 +265,47 @@
               <tbody>
                 <tr>
                   <td>MIPI</td>
-                  <td>: {{ $logbook->mipi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->mipi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>MMPI</td>
-                  <td>: {{ $logbook->mmpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->mmpi) ?? '' }} </td>
                 </tr>   
                 <tr>
                   <td>MSAI</td>
-                  <td>: {{ $logbook->msai ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->msai) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>MTN</td>
-                  <td>: {{ $logbook->mtn ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->mtn) ?? '' }} </td>
                 </tr>   
                 <tr>
                   <td>NBPI</td>
-                  <td>: {{ $logbook->nbpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->nbpi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>RAPI</td>
-                  <td>: {{ $logbook->rapi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->rapi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>RKPI</td>
-                  <td>: {{ $logbook->rkpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->rkpi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>SANI</td>
-                  <td>: {{ $logbook->SANI ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->sani) ?? '' }} </td>
                 </tr>  
                 <tr>
                   <td>SAUI</td>
-                  <td>: {{ $logbook->saui ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->saui) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>SJPM</td>
-                  <td>: {{ $logbook->sjpm ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->sjpm) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>SKPM</td>
-                  <td>: {{ $logbook->skpm ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->skpm) ?? '' }} </td>
                 </tr>        
               </tbody>
             </table>
@@ -315,43 +315,43 @@
               <tbody>
                 <tr>
                   <td>SMPI</td>
-                  <td>: {{ $logbook->smpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->smpi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>SRPI</td>
-                  <td>: {{ $logbook->srpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->srpi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>STPI</td>
-                  <td>: {{ $logbook->stpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->stpi) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>SWI</td>
-                  <td>: {{ $logbook->swi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->swi) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>TAMI</td>
-                  <td>: {{ $logbook->tami ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->tami) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>TLE2</td>
-                  <td>: {{ $logbook->tle2 ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->tle2) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>TNTI</td>
-                  <td>: {{ $logbook->tnti ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->tnti) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>TSPI</td>
-                  <td>: {{ $logbook->tspi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->tspi) ?? '' }} </td>
                 </tr>
                 <tr>
                   <td>WAMI</td>
-                  <td>: {{ $logbook->wami ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->wami) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td>wwpi</td>
-                  <td>: {{ $logbook->wwpi ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->wwpi) ?? '' }} </td>
                 </tr>             
               </tbody>
             </table>
@@ -363,17 +363,17 @@
               <tbody>
                 <tr>
                   <td>WEBSITE</td>
-                  <td>: {{ $logbook->website ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->website) ?? '' }} </td>
                 </tr>  
                 <tr>
                   <td>MEDIA SOSIAL</td>
-                  <td>: {{ $logbook->media_sosial ?? '' }} </td>
+                  <td>: {{ ucfirst($logbook->media_sosial) ?? '' }} </td>
                 </tr> 
                 <tr>
                   <td colspan="2" class="text-center" >KETERANGAN</td>
                 </tr>
                 <tr>
-                  <td>{{ $logbook->keterangan ?? '' }}</td>
+                  <td>{{ ucfirst($logbook->keterangan) ?? '' }}</td>
                 </tr>
               </tbody>
             </table>
