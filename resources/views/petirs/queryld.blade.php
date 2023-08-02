@@ -275,6 +275,11 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
     </div>
 </div>
 <br>
+<div class="container">
+    <div class="row">
+    </div>
+    
+</div>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    crossorigin=""></script>
@@ -293,13 +298,13 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
 }).addTo(ic);
 
     var cgplus = L.icon({
-        iconUrl: '/images/newcgplus.png',
+        iconUrl: '/images/newcgplus.webp',
         iconSize:     [25, 25], // size of the icon
 
     });
 
     var cgminus = L.icon({
-        iconUrl: '/images/newcgminus.png',
+        iconUrl: '/images/newcgminus.webp',
         iconSize:     [25, 25], // size of the icon
 
     });
@@ -325,8 +330,5 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
 
         @endforeach
 
-    // var mapControlsContainer = document.getElementsByClassName("leaflet-control")[1];
-    // var logoContainertanpaic = document.getElementById("logoContainertanpaic");
-    // mapControlsContainer.appendChild(logoContainertanpaic);
 </script>
 @endsection

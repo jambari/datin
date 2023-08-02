@@ -316,90 +316,73 @@ class HomeController extends Controller
         $totalType0 = 0;
         $totalType1 = 0;
 
-        // Loop through the date range and read files with matching names
-        while ($startDateObj <= $endDateObj) {
-            $fileName = $startDateObj->format('Ymd') . '.csv';
-            $filePath = public_path('berita/petir/' . $fileName);
+            // Loop through the date range and read files with matching names
+            while ($startDateObj <= $endDateObj) {
+                $fileName = $startDateObj->format('Ymd') . '.csv';
+                $filePath = public_path('berita/petir/' . $fileName);
 
-            if (file_exists($filePath)) {
-                // File exists, read the CSV data
-                $csv = Reader::createFromPath($filePath, 'r');
-                $csv->setHeaderOffset(0);
+                if (file_exists($filePath)) {
+                    // File exists, read the CSV data
+                    $csv = Reader::createFromPath($filePath, 'r');
+                    $csv->setHeaderOffset(0);
 
-                // Filter records by coordinate boundary and then merge the records
-                $filteredRecords = array_filter(iterator_to_array($csv->getRecords()), function ($record) use ($minLatitude, $maxLatitude, $minLongitude, $maxLongitude) {
-                    // Replace 'latitude' and 'longitude' with the actual column names in your CSV
-                    $latitude = $record['latitude'];
-                    $longitude = $record['longitude'];
+                    // Filter records by coordinate boundary and 'type' value, then merge the records
+                    $recordsForDate = array_filter(iterator_to_array($csv->getRecords()), function ($record) use ($minLatitude, $maxLatitude, $minLongitude, $maxLongitude) {
+                        // Replace 'latitude' and 'longitude' with the actual column names in your CSV
+                        $latitude = $record['latitude'];
+                        $longitude = $record['longitude'];
 
-                    // Check if the latitude and longitude are within the boundary
-                    return ($latitude >= $minLatitude && $latitude <= $maxLatitude) && ($longitude >= $minLongitude && $longitude <= $maxLongitude);
-                });
+                        // Check if the latitude and longitude are within the boundary
+                        return ($latitude >= $minLatitude && $latitude <= $maxLatitude) && ($longitude >= $minLongitude && $longitude <= $maxLongitude)
+                            && ($record['type'] === '0' || $record['type'] === '1');
+                    });
 
-                // Count the occurrences of each type for the current date
-                $typeCounts = array_count_values(array_column($filteredRecords, 'type'));
+                    // Count the occurrences of each type for the current date
+                    $typeCounts = array_count_values(array_column($filteredRecords, 'type'));
 
-                // Add the type counts to the result array with the date as the key
-                $results[$startDateObj->format('Ymd')] = $typeCounts;
+                    // Add the type counts to the result array with the date as the key
+                    $results[$startDateObj->format('Ymd')] = $typeCounts;
 
-                // Update the total counts of type 0 and type 1
-                $totalType0 += isset($typeCounts['0']) ? $typeCounts['0'] : 0;
-                $totalType1 += isset($typeCounts['1']) ? $typeCounts['1'] : 0;
+                    // Merge the records for this date into the main filteredRecords array
+                    $filteredRecords = array_merge($filteredRecords, $recordsForDate);
+                }
+
+                // Move to the next date
+                $startDateObj->add(new DateInterval('P1D'));
             }
 
-            // Move to the next date
-            $startDateObj->add(new DateInterval('P1D'));
-        }
+            // Calculate the total counts of type 0 and type 1
+            $totalType0 = count(array_filter($filteredRecords, function ($record) {
+                return $record['type'] === '0';
+            }));
 
-        foreach ($results as $date => $types) {
-            $dates[] = $date;
-            $type0Data[] = isset($types['0']) ? $types['0'] : 0;
-            $type1Data[] = isset($types['1']) ? $types['1'] : 0;
-        }
+            $totalType1 = count(array_filter($filteredRecords, function ($record) {
+                return $record['type'] === '1';
+            }));
 
-        $totalsum = $totalType0 + $totalType1;
+            foreach ($results as $date => $types) {
+                $dates[] = $date;
+                $type0Data[] = isset($types['0']) ? $types['0'] : 0;
+                $type1Data[] = isset($types['1']) ? $types['1'] : 0;
+            }
+
+            $totalsum = $totalType0 + $totalType1;
         //END LEAGUE/CSV
 
 
         if($start != "" and $start < $end ) {
 
-        // $intraclouds = Petir::where('type','=', 2)
-        //             ->whereBetween('tanggaljam', [$start, $end])->count();
-        $cgpositives = Petir::where('type','=',0)
-                    ->whereBetween('tanggaljam', [$start, $akhir])->count();
-        $cgnegatives = Petir::where('type','=', 1)
-                    ->whereBetween('tanggaljam', [$start, $akhir])->count();
-        //plot ke peta
-        // $sambarans = Queryld::whereBetween('tanggaljam', [$start, $akhir])->get();
-        $sambarans = $filteredRecords;
-        //$all = Queryld::whereBetween('tanggaljam', [$start, $end])->count();
-        //$alltanpaic = (int)$all-((int)$cgpositives+(int)$cgnegatives);
-        $alltanpaic = (int)$cgpositives+(int)$cgnegatives;
 
-        $cgplusdails =  Queryld::select([
-                // This aggregates the data and makes available a 'count' attribute
-                DB::raw('count(id) as count'),
-                // This throws away the timestamp portion of the date
-                DB::raw('DATE(tanggaljam) as day')
-                // Group these records according to that day
-                ])->groupBy('day')->where('type', '=',0)->whereBetween('tanggaljam', [$start, $akhir])->orderBy('day','ASC')->get();
-        $cgminusdails = Queryld::select([
-                // This aggregates the data and makes available a 'count' attribute
-                DB::raw('count(id) as count'),
-                // This throws away the timestamp portion of the date
-                DB::raw('DATE(tanggaljam) as day')
-                // Group these records according to that day
-                ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $akhir])->orderBy('day','ASC')->get();
+        $sambarans = $filteredRecords;
+
         Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end);
-        return view('petirs.queryld')->with(compact('sambarans', 'cgplusdails', 'start', 'end','alltanpaic','akhir','filteredRecords','type0Data','type1Data','dates','totalType0', 'totalType1','totalsum'));
-                // return response()->json($filteredRecords);
+        return view('petirs.queryld')->with(compact('sambarans', 'start', 'end','akhir','filteredRecords','type0Data','type1Data','dates','totalType0', 'totalType1','totalsum'));
+                // return response()->json($type0Data);
         } else {
 
             Session::flash('warning', 'Tanggal awal harus lebih kecil dari tanggal akhir ');
             return view('petirs.caripetir');
         }
-
-
 
 
     }
