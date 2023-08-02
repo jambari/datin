@@ -319,7 +319,7 @@ class HomeController extends Controller
         // Loop through the date range and read files with matching names
         while ($startDateObj <= $endDateObj) {
             $fileName = $startDateObj->format('Ymd') . '.csv';
-            $filePath = public_path('berita/petir' . $fileName);
+            $filePath = public_path('berita/petir/' . $fileName);
 
             if (file_exists($filePath)) {
                 // File exists, read the CSV data
@@ -391,7 +391,7 @@ class HomeController extends Controller
                 // Group these records according to that day
                 ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $akhir])->orderBy('day','ASC')->get();
         Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end);
-        return view('petirs.queryld')->with(compact('sambarans','start', 'end','alltanpaic','akhir','filteredRecords','type0Data','type1Data','dates','totalType0', 'totalType1','totalsum'));
+        return view('petirs.queryld')->with(compact('sambarans', 'cgplusdails', 'start', 'end','alltanpaic','akhir','filteredRecords','type0Data','type1Data','dates','totalType0', 'totalType1','totalsum'));
                 // return response()->json($filteredRecords);
         } else {
 
