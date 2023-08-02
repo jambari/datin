@@ -147,10 +147,13 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
+
         /*
          * Package Service Providers...
          */
         Jorenvh\Share\Providers\ShareServiceProvider::class,
+        App\Providers\CsvAutoloadServiceProvider::class,
 
         /*
          * Application Service Providers...

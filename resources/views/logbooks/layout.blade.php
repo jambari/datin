@@ -24,7 +24,7 @@
         <h5 class="text-center mt-2 text-success " >LOGBOOK DINAS HARIAN STASIUN GEOFISIKA JAYAPURA</h5>
         <div style="display: flex; flex-direction: row; justify-content: space-between; ">
             <h6 class="text-success">Nama : {{ $logbook->petugas ?? '-'}}</h6>
-            <h6 class="text-success">Tanggal : {{ $logbook->tanggal ?? '-' }}</h6>
+            <h6 class="text-success">Tanggal : {{ \Carbon\Carbon::parse($logbook->tanggal)->format('d-M-Y') }}</h6>
             <h6 class="text-success">Dinas : {{ $logbook->jadwal_dinas ?? '-' }} </h6>       
         </div>
 
@@ -350,7 +350,7 @@
                   <td>: {{ ucfirst($logbook->wami) ?? '' }} </td>
                 </tr> 
                 <tr>
-                  <td>wwpi</td>
+                  <td>WWPI</td>
                   <td>: {{ ucfirst($logbook->wwpi) ?? '' }} </td>
                 </tr>             
               </tbody>
@@ -377,7 +377,8 @@
                 </tr>
               </tbody>
             </table>
-            <p>SUB KOORDINATOR OBSERVASI</p>
+            <p>A.N KEPALA STASIUN GEOFISIKA JAYAPURA <br>
+            SUB KOORDINATOR OBSERVASI</p>
             <br>
             <br>
             <br>

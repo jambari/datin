@@ -24,7 +24,7 @@
 </div>
 
 <div class="container" style="margin-top: 3%;">
-        <h5>Silahkan Lengkapi formulir di bawah ini !</h5>
+        <h5>You can modify the coordinate boundary as you prefer</h5>
         <form action="/caripetir/query" method="POST" role="search">
             {{ csrf_field() }}
              
@@ -35,6 +35,22 @@
             <div class="form-group">
                 <label for="akhir">Tanggal akhir / End date</label>
                 <input type="date" class="form-control" name="end" required>
+            </div>
+            <div class="form-group">
+                <label for="start">Min Lat</label>
+                <input type="text" class="form-control" name="min_lat" value='-3.014833' required >
+            </div>
+            <div class="form-group">
+                <label for="akhir">Max Lat</label>
+                <input type="text" class="form-control" name="max_lat" value='-2.014833' required>
+            </div>
+            <div class="form-group">
+                <label for="start">Min Lon</label>
+                <input type="text" class="form-control" name="min_lon" value='140.204667' required >
+            </div>
+            <div class="form-group">
+                <label for="akhir">Max Lon</label>
+                <input type="text" class="form-control" name="max_lon" value='141.204667' required>
             </div>
             <div class="form-group">
             <button type="submit" class="btn btn-secondary btn-block btn-lg">

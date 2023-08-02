@@ -27,6 +27,8 @@ use DatePeriod;
 use DateTime;
 use DateInterval;
 
+use League\Csv\Reader;
+
 class HomeController extends Controller
 {
 
@@ -284,13 +286,80 @@ class HomeController extends Controller
     }
 
     public function querypetir(Request $request) {
-        // $start = $request->input( 'start' );
-        // $end = $request->input( 'end' );
 
 
+        $minLatitude = $request->input( 'min_lat' );
+        $maxLatitude = $request->input( 'max_lat' );
+        $minLongitude = $request->input( 'min_lon' );
+        $maxLongitude = $request->input( 'max_lon' );
         $start = \Carbon\Carbon::parse($request->input( 'start' ))->format('Y-m-d');
         $end = \Carbon\Carbon::parse($request->input( 'end' ))->format('Y-m-d');
         $akhir = \Carbon\Carbon::parse($request->input( 'end' ))->addDays(1)->format('Y-m-d');
+
+        $awal = \Carbon\Carbon::parse($request->input( 'start' ))->format('Ymd');
+        $terakhir = \Carbon\Carbon::parse($request->input( 'end' ))->format('Ymd');
+
+        //TEST LEAGUE/CSV
+
+        //baca file dengan League/CSV
+
+        $startDateObj = DateTime::createFromFormat('Ymd', $awal);
+        $endDateObj = DateTime::createFromFormat('Ymd', $terakhir);
+
+        // Initialize an empty array to hold the filtered records
+        $filteredRecords = [];
+        $results = [];
+        $dates = [];
+        $type0Data = [];
+        $type1Data = [];
+        // Initialize variables to hold the total counts of type 0 and type 1
+        $totalType0 = 0;
+        $totalType1 = 0;
+
+        // Loop through the date range and read files with matching names
+        while ($startDateObj <= $endDateObj) {
+            $fileName = $startDateObj->format('Ymd') . '.csv';
+            $filePath = public_path('berita/petir' . $fileName);
+
+            if (file_exists($filePath)) {
+                // File exists, read the CSV data
+                $csv = Reader::createFromPath($filePath, 'r');
+                $csv->setHeaderOffset(0);
+
+                // Filter records by coordinate boundary and then merge the records
+                $filteredRecords = array_filter(iterator_to_array($csv->getRecords()), function ($record) use ($minLatitude, $maxLatitude, $minLongitude, $maxLongitude) {
+                    // Replace 'latitude' and 'longitude' with the actual column names in your CSV
+                    $latitude = $record['latitude'];
+                    $longitude = $record['longitude'];
+
+                    // Check if the latitude and longitude are within the boundary
+                    return ($latitude >= $minLatitude && $latitude <= $maxLatitude) && ($longitude >= $minLongitude && $longitude <= $maxLongitude);
+                });
+
+                // Count the occurrences of each type for the current date
+                $typeCounts = array_count_values(array_column($filteredRecords, 'type'));
+
+                // Add the type counts to the result array with the date as the key
+                $results[$startDateObj->format('Ymd')] = $typeCounts;
+
+                // Update the total counts of type 0 and type 1
+                $totalType0 += isset($typeCounts['0']) ? $typeCounts['0'] : 0;
+                $totalType1 += isset($typeCounts['1']) ? $typeCounts['1'] : 0;
+            }
+
+            // Move to the next date
+            $startDateObj->add(new DateInterval('P1D'));
+        }
+
+        foreach ($results as $date => $types) {
+            $dates[] = $date;
+            $type0Data[] = isset($types['0']) ? $types['0'] : 0;
+            $type1Data[] = isset($types['1']) ? $types['1'] : 0;
+        }
+
+        $totalsum = $totalType0 + $totalType1;
+        //END LEAGUE/CSV
+
 
         if($start != "" and $start < $end ) {
 
@@ -301,34 +370,12 @@ class HomeController extends Controller
         $cgnegatives = Petir::where('type','=', 1)
                     ->whereBetween('tanggaljam', [$start, $akhir])->count();
         //plot ke peta
-        $sambarans = Queryld::whereBetween('tanggaljam', [$start, $akhir])->get();
+        // $sambarans = Queryld::whereBetween('tanggaljam', [$start, $akhir])->get();
+        $sambarans = $filteredRecords;
         //$all = Queryld::whereBetween('tanggaljam', [$start, $end])->count();
         //$alltanpaic = (int)$all-((int)$cgpositives+(int)$cgnegatives);
         $alltanpaic = (int)$cgpositives+(int)$cgnegatives;
-        //per sambaran per hari
-        // sambaran tertinggi per hari
-        // $tertinggi = DB::table('petirs')->select(
-        //             DB::raw('DATE(tanggaljam) as date'), DB::raw('count(*) as harian'))
-        //             ->groupBy('date')->get();
 
-
-        // Queryld::select([
-        //         // This aggregates the data and makes available a 'count' attribute
-        //         DB::raw('count(id) as count'),
-        //         // This throws away the timestamp portion of the date
-        //         DB::raw('DATE(tanggaljam) as day')
-        //         // Group these records according to that day
-        //         ])->groupBy('day')->whereBetween('tanggaljam', [$start, $end])->get();
-        //sambaran terendah per hari
-
-        //rata-rata sambaran per hari
-        // $icdails =  Queryld::select([
-        //         // This aggregates the data and makes available a 'count' attribute
-        //         DB::raw('count(id) as count'),
-        //         // This throws away the timestamp portion of the date
-        //         DB::raw('DATE(tanggaljam) as day')
-        //         // Group these records according to that day
-        //         ])->groupBy('day')->where('type', '=',2)->whereBetween('tanggaljam', [$start, $end])->orderBy('day','ASC')->get();
         $cgplusdails =  Queryld::select([
                 // This aggregates the data and makes available a 'count' attribute
                 DB::raw('count(id) as count'),
@@ -344,12 +391,16 @@ class HomeController extends Controller
                 // Group these records according to that day
                 ])->groupBy('day')->where('type', '=',1)->whereBetween('tanggaljam', [$start, $akhir])->orderBy('day','ASC')->get();
         Session::flash('info', 'Data Sambaran '.$start.' s.d '.$end);
-        return view('petirs.queryld')->with(compact('cgpositives', 'cgnegatives', 'sambarans', 'cgplusdails', 'cgminusdails', 'start', 'end','alltanpaic','akhir'));
+        return view('petirs.queryld')->with(compact('cgpositives', 'cgnegatives', 'sambarans', 'cgplusdails', 'cgminusdails', 'start', 'end','alltanpaic','akhir','filteredRecords','type0Data','type1Data','dates','totalType0', 'totalType1','totalsum'));
+                // return response()->json($filteredRecords);
         } else {
 
             Session::flash('warning', 'Tanggal awal harus lebih kecil dari tanggal akhir ');
             return view('petirs.caripetir');
         }
+
+
+
 
     }
 

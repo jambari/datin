@@ -105,6 +105,22 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
                 <input type="date" class="form-control" name="end" required >
             </div>
             <div class="form-group">
+                <label for="start">Min Lat</label>
+                <input type="text" class="form-control" name="min_lat" value='-3.014833' required >
+            </div>
+            <div class="form-group">
+                <label for="akhir">Max Lat</label>
+                <input type="text" class="form-control" name="max_lat" value='-2.014833' required>
+            </div>
+            <div class="form-group">
+                <label for="start">Min Lon</label>
+                <input type="text" class="form-control" name="min_lon" value='140.204667' required >
+            </div>
+            <div class="form-group">
+                <label for="akhir">Max Lon</label>
+                <input type="text" class="form-control" name="max_lon" value='141.204667' required>
+            </div>
+            <div class="form-group">
             <button type="submit" class="btn btn-secondary btn-block btn-lg">
                 <span class="glyphicon glyphicon-search">Cari</span>
             </button>
@@ -141,7 +157,7 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
     <div class="row">
         <div class="col-lg-12">
             <div id="logoContainertanpaic" style="display: flex; justify-content: space-around; align-items: center;">
-                <span style="font-size:2em; color: white" >Peta Sebaran Petir {{ \Carbon\Carbon::parse($start)->format('d M') }} - {{ \Carbon\Carbon::parse($end)->format('d M') }} {{ \Carbon\Carbon::parse($end)->format('Y') }}</span> 
+                <span style="font-size:2em; color: white" >Peta Sebaran Petir {{ \Carbon\Carbon::parse($start)->format('d M') }} - {{ \Carbon\Carbon::parse($end)->format('d M') }} {{ \Carbon\Carbon::parse($end)->format('Y') }} </span> 
             </div>
         </div>
     </div>
@@ -159,19 +175,19 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
     <div class="row" style="display: flex; flex-direction: row; justify-content: space-between;">
             <div class="col-lg-2 col-md-2 " style="display: flex; flex-direction: column; justify-content: space-around; align-content: space-between; background-color: #14222F; ">
                 <div class="totalsambaran">
-                    <p style="color: white; font-size: 2.5em;" >{{ $alltanpaic }}</p>
+                    <p style="color: white; font-size: 2.5em;" >{{ $totalsum }}</p>
                     <p style="color: white" >Sambaran</p>
                 </div>
                 <div class="totalcgplus">
                     <p>CG+</p>
-                    <p style="font-size: 1.5em;">{{ $cgpositives }}</p>
+                    <p style="font-size: 1.5em;">{{ $totalType0 }}</p>
                     <img src="/images/newcgplus.png" width="30px" height="38px" alt="Cloud to ground positive">
                 </div>
             </div>
             <div class="col-lg-2 col-md-2" style="display: flex; flex-direction: column; justify-content: space-around; align-content: space-between; background-color: #14222F">
                 <div class="totalcgminus">
                     <p>CG-</p>
-                    <p style="font-size: 1.5em;">{{ $cgnegatives }}</p>
+                    <p style="font-size: 1.5em;">{{ $totalType1 }}</p>
                     <img src="/images/newcgminus.png" width="27px" height="35px" alt="Cloud to ground negative icon">
                 </div>
                 <div class="totalintraclouds">
@@ -191,45 +207,36 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
 
                     <canvas id="chart-tanpaic" width="800" height="350" ></canvas>
                     <script>
-                        @php
-                            $periods = new DatePeriod(
-                            new DateTime($start),
-                            new DateInterval('P1D'),
-                            new DateTime($akhir));
-                        @endphp
+                        // @php
+                        //     $periods = new DatePeriod(
+                        //     new DateTime($start),
+                        //     new DateInterval('P1D'),
+                        //     new DateTime($akhir));
+                        // @endphp
+                                var dates = @json($dates);
+                                var type0Data = @json($type0Data);
+                                var type1Data = @json($type1Data);
                         new Chart(document.getElementById("chart-tanpaic"), {
                             type: 'bar',
                             data: {
-                              labels: [ 
-                                        @foreach ($periods as $key => $value)
-                                            "{{ $value->format("d-m-Y")  }}",     
-                                        @endforeach
-                                    ],
+                              labels: [
+
+                                    @foreach ($dates as $date)
+                                        {{ $date }},
+                                    @endforeach
+
+                                ]
+
+                              ,
                               datasets: [
                                 {
                                   label: "CG+",
-                                  backgroundColor: 
-                                    [@foreach($cgplusdails as $cgplus)
-                                        "#E62129",
-                                    @endforeach
-                                    ],
-                                  data: [
-                                    @foreach($cgplusdails as $cgplus)
-                                        {{ $cgplus->count.',' }}
-                                    @endforeach
-
-                                  ]
+                                  backgroundColor:"#E62129",
+                                  data: type0Data
                                 }, {
                                   label: "CG-",
-                                  backgroundColor: [
-                                    @foreach($cgminusdails as $cgminus)
-                                        "#F08519",
-                                    @endforeach],
-                                  data: [
-                                    @foreach($cgminusdails as $cgminus)
-                                        {{ $cgminus->count.',' }}
-                                    @endforeach
-                                  ]
+                                  backgroundColor: "#F08519",
+                                  data: type1Data
                                 },
                               ]
                             },
@@ -263,6 +270,7 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
                     </script>
 <!--                 </div>
             </div> -->
+    
         </div>
     </div>
 </div>
@@ -274,56 +282,6 @@ color: white; background-color: #1D2B38; display: flex; flex-direction: column; 
     integrity="sha512-YZ6b5bXRVwipfqul5krehD9qlbJzc6KOGXYsDjU9HHXW2gK57xmWl2gU6nAegiErAqFXhygKIsWPKbjLPXVb2g=="
     crossorigin=""></script>
 <script>
-
-// var mymap = L.map('map').setView([-2.5104, 140.714], 11);
-// // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
-//      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     maxZoom: 18,
-//     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-// }).addTo(mymap);
-
-    // var cgplus = L.icon({
-    //     iconUrl: '/images/newcgplus.png',
-    //     iconSize:     [25, 25], // size of the icon
-
-    // });
-
-    // var cgminus = L.icon({
-    //     iconUrl: '/images/newcgminus.png',
-    //     iconSize:     [25, 25], // size of the icon
-
-    // });
-
-    // var intraclouds = L.icon({
-    //     iconUrl: '/images/newic.png',
-    //     iconSize:     [25, 25], // size of the icon
-
-    // });
-
-    // @if ($sambarans->count() > 0)
-    //     @foreach ($sambarans as $sambaran)
-    //     	@if ($sambaran->type == 0)
-    //         marker = new L.marker([{{ $sambaran->latitude }}, {{ $sambaran->longitude }}], { icon: cgplus}).addTo(mymap)
-    //         .bindPopup(
-    //             `Cloud to ground positives`+' {{ $sambaran->tanggaljam }}');
-    //         @endif
-    //     	@if ($sambaran->type == 1)
-    //         marker = new L.marker([{{ $sambaran->latitude }}, {{ $sambaran->longitude }}], { icon: cgminus}).addTo(mymap)
-    //         .bindPopup(
-    //             `Cloud to ground negatives`+' {{ $sambaran->tanggaljam }}');
-    //         @endif
-
-    //     	@if ($sambaran->type == 2)
-    //         marker = new L.marker([{{ $sambaran->latitude }}, {{ $sambaran->longitude }}], { icon: intraclouds}).addTo(mymap)
-    //         .bindPopup(
-    //             `Intraclouds`+' {{ $sambaran->tanggaljam }}');
-    //         @endif
-
-    //     @endforeach
-    // @endif
-    // var mapControlsContainer = document.getElementsByClassName("leaflet-control")[0];
-    // var logoContainer = document.getElementById("logoContainer");
-    // mapControlsContainer.appendChild(logoContainer);
 
     //below is map without intracloud
 
@@ -352,21 +310,21 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
 
     });
 
-    @if ($sambarans->count() > 0)
+
         @foreach ($sambarans as $sambaran)
-            @if ($sambaran->type == 0)
-            marker = new L.marker([{{ $sambaran->latitude }}, {{ $sambaran->longitude }}], { icon: cgplus}).addTo(ic)
+            @if ($sambaran['type'] == 0)
+            marker = new L.marker([{{ $sambaran['latitude'] }}, {{ $sambaran['longitude'] }}], { icon: cgplus}).addTo(ic)
             .bindPopup(
-                `Cloud to ground positives`+' {{ $sambaran->tanggaljam }}');
+                `Cloud to ground positives`+' {{ $sambaran['datetime_utc'] }}');
             @endif
-            @if ($sambaran->type == 1)
-            marker = new L.marker([{{ $sambaran->latitude }}, {{ $sambaran->longitude }}], { icon: cgminus}).addTo(ic)
+            @if ($sambaran['type'] == 1)
+            marker = new L.marker([{{ $sambaran['latitude'] }}, {{ $sambaran['longitude'] }}], { icon: cgminus}).addTo(ic)
             .bindPopup(
-                `Cloud to ground negatives`+' {{ $sambaran->tanggaljam }}');
+                `Cloud to ground negatives`+' {{ $sambaran['datetime_utc'] }}');
             @endif
 
         @endforeach
-    @endif
+
     // var mapControlsContainer = document.getElementsByClassName("leaflet-control")[1];
     // var logoContainertanpaic = document.getElementById("logoContainertanpaic");
     // mapControlsContainer.appendChild(logoContainertanpaic);
