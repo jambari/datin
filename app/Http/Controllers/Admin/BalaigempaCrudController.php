@@ -38,7 +38,7 @@ class BalaiGempaCrudController extends CrudController
         */
 
         //$this->crud->setFromDb();
-
+        $this->crud->addColumn('delta');
         $fields = [
             [
                 'name' => 'tanggal',

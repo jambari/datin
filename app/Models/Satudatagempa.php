@@ -61,6 +61,22 @@ class Satudatagempa extends Model
         }
     }
 
+    public function getOriginAttribute($value)
+    {
+        $tanggal = $this->attributes['tanggal'];
+        $currentTime = $value; // Get the current timestamp
+        $currentTime = $tanggal." ".$currentTime;
+        // $value = $currentTime;
+
+        // Format the seconds without decimal value
+        $dateTime = strtotime($currentTime);
+        $formattedTime = date("H:i:s", $dateTime);
+        //$secondsWithoutDecimal = date('s', $dateTime);
+        $value = $formattedTime;
+
+        return $value;
+    }
+
     public function getTanggalAttribute($value)
     {
         return date("d-m-Y", strtotime($value));

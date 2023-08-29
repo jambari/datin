@@ -34,7 +34,7 @@ class GempasorongCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-
+        $this->crud->addColumn('delta');
         $this->crud->setFromDb();
         $fields = [
             [

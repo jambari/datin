@@ -49,50 +49,47 @@ class Balaigempa extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-    // public function getWaktu ($value) {
+    public function getOriginAttribute($value)
+    {
+        $tanggal = $this->attributes['tanggal'];
+        $currentTime = $value; // Get the current timestamp
+        $currentTime = $tanggal." ".$currentTime;
+        // $value = $currentTime;
 
+        // Format the seconds without decimal value
+        $dateTime = strtotime($currentTime);
+        $formattedTime = date("H:i:s", $dateTime);
+        //$secondsWithoutDecimal = date('s', $dateTime);
+        $value = $formattedTime;
 
-        // $tanggal = $this->attributes['tanggal']; //get date of the eathquake
-        // $jam = $this->attributes['origin']; // get origin time of eq
-        // $bulan = array (
-        //     1 =>   'Januari',
-        //     'Februari',
-        //     'Maret',
-        //     'April',
-        //     'Mei',
-        //     'Juni',
-        //     'Juli',
-        //     'Agustus',
-        //     'September',
-        //     'Oktober',
-        //     'November',
-        //     'Desember'
-        // );
-        // //array hari senin-sabtu
-        // $days = array (
-        //     0 =>   'Minggu',
-        //     'Senin',
-        //     'Selasa',
-        //     'Rabu',
-        //     'Kamis',
-        //     "Jum'at",
-        //     'Sabtu'
-        // );
+        return $value;
+    }
+    //Get time difference between OT and Data send to database
+    public function getDeltaAttribute($value)
+    {
 
-        // $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
-        // $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
-        // $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
-        // $hari = $days[$hari];
-        // $pecahkan = explode('-',$tanggalbaru);
-        // $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
-        // $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
-        // $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
-        // $value = $tanggalindo.' '.$jamwit;
-        // $value = $jam;
-        // return $value;
+        $tanggal = $this->attributes['tanggal'];
+        $origin = $this->attributes['origin'];
+        $originTime = $tanggal." ".$origin;
+        $originTime = strtotime($originTime);
+        //$originTime = $formattedTime = date("H:i:s", $originTime);
 
+        $createdTime = $this->attributes['created_at'];
+        $createdTime = strtotime($createdTime);
+        $delta = abs($createdTime - $originTime);
+        $ril = date("H:m:s", $delta);
+        $value = $delta;
 
-    // }
+        if ($value <= 600) {
+            $value = $ril." ".'ONTIME';
+            return $value;
+        } else {
+            $value = $ril." ".'LATE';
+            return $value;
+        }
+        return $value;
+
+    }
 
     public function getTerasaAttribute($value)
     {

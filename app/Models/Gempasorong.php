@@ -61,6 +61,49 @@ class Gempasorong extends Model
         }
     }
 
+
+    public function getOriginAttribute($value)
+    {
+        $tanggal = $this->attributes['tanggal'];
+        $currentTime = $value; // Get the current timestamp
+        $currentTime = $tanggal." ".$currentTime;
+        // $value = $currentTime;
+
+        // Format the seconds without decimal value
+        $dateTime = strtotime($currentTime);
+        $formattedTime = date("H:i:s", $dateTime);
+        //$secondsWithoutDecimal = date('s', $dateTime);
+        $value = $formattedTime;
+
+        return $value;
+    }
+
+    public function getDeltaAttribute($value)
+    {
+
+        $tanggal = $this->attributes['tanggal'];
+        $origin = $this->attributes['origin'];
+        $originTime = $tanggal." ".$origin;
+        $originTime = strtotime($originTime);
+        //$originTime = $formattedTime = date("H:i:s", $originTime);
+
+        $createdTime = $this->attributes['created_at'];
+        $createdTime = strtotime($createdTime);
+        $delta = abs($createdTime - $originTime);
+        $ril = date("H:m:s", $delta);
+        $value = $delta;
+
+        if ($value <= 600) {
+            $value = $ril." ".'ONTIME';
+            return $value;
+        } else {
+            $value = $ril." ".'LATE';
+            return $value;
+        }
+        return $value;
+
+    }
+
     public function getTanggalAttribute($value)
     {
         return date("d-m-Y", strtotime($value));

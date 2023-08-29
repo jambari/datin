@@ -34,7 +34,7 @@ class GempaCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-
+        $this->crud->addColumn('delta');
         $this->crud->setFromDb();
 
         $fields = [
@@ -107,6 +107,7 @@ class GempaCrudController extends CrudController
         // $this->crud->addColumn('terdampak');
         $this->crud->addColumn('created_at');
         $this->crud->addColumn('updated_at');
+
         // add a single column, at the end of the stack
         //$this->crud->addColumns('terasa','terdampak'); // add multiple columns, at the end of the stack
         $this->crud->removeColumn('narasi'); // remove a column from the stack
