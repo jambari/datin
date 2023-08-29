@@ -97,12 +97,14 @@ class Gempa extends Model
         $seconds = $delta->s;
         $totalMinutes = $delta->days * 24 * 60 + $delta->h * 60 + $delta->i;
         $ril = $hours.":".$minutes.":".$seconds;
+        $opentag = "<i class='bg bg-danger'>";
+        $closetag = "</i>";
 
         if ($totalMinutes <= 10) {
-            $value = $ril." ".'ONTIME';
+            $value = $opentag.$ril." ".'ONTIME'.$closetag;
             return $value;
         } else {
-            $value = $ril." ".'LATE';
+            $value = $opentag.$ril." ".'LATE'.$closetag;
             return $value;
         }
 

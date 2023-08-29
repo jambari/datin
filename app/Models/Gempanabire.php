@@ -77,33 +77,33 @@ class Gempanabire extends Model
         return $value;
     }
 
-    public function getDeltaAttribute($value)
-    {
+    // public function getDeltaAttribute($value)
+    // {
 
-        $tanggal = $this->attributes['tanggal'];
-        $origin = $this->attributes['origin'];
-        $originTime = $tanggal." ".$origin;
-        $originTime = new DateTime($originTime);
-        //$originTime = $formattedTime = date("H:i:s", $originTime);
+    //     $tanggal = $this->attributes['tanggal'];
+    //     $origin = $this->attributes['origin'];
+    //     $originTime = $tanggal." ".$origin;
+    //     $originTime = new DateTime($originTime);
+    //     //$originTime = $formattedTime = date("H:i:s", $originTime);
 
-        $createdTime = $this->attributes['created_at'];
-        $createdTime = new DateTime($createdTime);
-        $delta = $originTime->diff($createdTime);
-        $hours = $delta->h;
-        $minutes = $delta->i;
-        $seconds = $delta->s;
-        $totalMinutes = $delta->days * 24 * 60 + $delta->h * 60 + $delta->i;
-        $ril = $hours.":".$minutes.":".$seconds;
+    //     $createdTime = $this->attributes['created_at'];
+    //     $createdTime = new DateTime($createdTime);
+    //     $delta = $originTime->diff($createdTime);
+    //     $hours = $delta->h;
+    //     $minutes = $delta->i;
+    //     $seconds = $delta->s;
+    //     $totalMinutes = $delta->days * 24 * 60 + $delta->h * 60 + $delta->i;
+    //     $ril = $hours.":".$minutes.":".$seconds;
 
-        if ($totalMinutes <= 10) {
-            $value = $ril." ".'ONTIME';
-            return $value;
-        } else {
-            $value = $ril." ".'LATE';
-            return $value;
-        }
+    //     if ($totalMinutes <= 10) {
+    //         $value = $ril." ".'ONTIME';
+    //         return $value;
+    //     } else {
+    //         $value = $ril." ".'LATE';
+    //         return $value;
+    //     }
 
-    }
+    // }
 
     public function getTanggalAttribute($value)
     {
