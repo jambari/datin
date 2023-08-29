@@ -71,23 +71,25 @@ class Balaigempa extends Model
         $tanggal = $this->attributes['tanggal'];
         $origin = $this->attributes['origin'];
         $originTime = $tanggal." ".$origin;
-        $originTime = strtotime($originTime);
+        $originTime = new DateTime($originTime);
         //$originTime = $formattedTime = date("H:i:s", $originTime);
 
         $createdTime = $this->attributes['created_at'];
-        $createdTime = strtotime($createdTime);
-        $delta = abs($createdTime - $originTime);
-        $ril = date("H:m:s", $delta);
-        $value = $delta;
+        $createdTime = new DateTime($createdTime);
+        $delta = $originTime->diff($createdTime);
+        $hours = $delta->h;
+        $minutes = $delta->i;
+        $seconds = $delta->s;
+        $totalMinutes = $delta->days * 24 * 60 + $delta->h * 60 + $delta->i;
+        $ril = $hours.":".$minutes.":".$seconds;
 
-        if ($value <= 600) {
+        if ($totalMinutes <= 10) {
             $value = $ril." ".'ONTIME';
             return $value;
         } else {
             $value = $ril." ".'LATE';
             return $value;
         }
-        return $value;
 
     }
 
