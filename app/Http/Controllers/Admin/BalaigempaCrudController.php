@@ -39,6 +39,7 @@ class BalaiGempaCrudController extends CrudController
 
         //$this->crud->setFromDb();
         $this->crud->addColumn('delta');
+        $this->crud->setColumnDetails('delta', ['label' => 'PENGIRIMAN']);
         $fields = [
             [
                 'name' => 'tanggal',

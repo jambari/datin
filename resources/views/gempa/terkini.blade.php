@@ -41,6 +41,7 @@
 					    <th scope="col">Dirasakan</th>
 					    <th scope="col">Action</th>
 					    <th scope="col">Observer</th>
+					    <th scope="col">Pengiriman</th>
 				    </tr>
 				</thead>
 				<tbody>
@@ -58,6 +59,7 @@
 				      	<td>{{ $gempa->terasa ?? '' }}</td>
 				      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-outline-success" > Peta </a></td>
 				      	<td>{{ $gempa->petugas ?? '' }}</td>
+				      	<td>{{ $gempa->type ?? '' }}</td>
 				    </tr>
 		  	@endforeach
 		 	@endif

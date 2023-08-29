@@ -35,6 +35,7 @@ class GempasorongCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->addColumn('delta');
+        $this->crud->setColumnDetails('delta', ['label' => 'PENGIRIMAN']);
         $this->crud->setFromDb();
         $fields = [
             [

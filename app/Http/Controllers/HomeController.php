@@ -193,6 +193,22 @@ class HomeController extends Controller
             $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
             $value = $tanggalindo.' '.$jamwit;
             $eq['origin'] = $value;
+
+
+            $originTime = new DateTime(date("Y-m-d H:i:s", strtotime($tanggaljam)));
+            $createdTime = new DateTime($eq['created_at']);
+            $delta = $originTime->diff($createdTime);
+            $hours = $delta->h;
+            $minutes = $delta->i;
+            $seconds = $delta->s;
+            $totalMinutes = $delta->days * 24 * 60 + $delta->h * 60 + $delta->i;
+            $ril = $hours.":".$minutes.":".$seconds;
+
+            if ($totalMinutes <= 10) {
+                $eq['type'] = $ril." ".'ONTIME';
+            } else {
+                $eq['type'] = $ril." ".'LATE';
+            }
         }
         return view('gempa.terkini',compact('gempas'));
     }
