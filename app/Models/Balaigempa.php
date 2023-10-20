@@ -68,40 +68,40 @@ class Balaigempa extends Model
         return $value;
     }
     //Get time difference between OT and Data send to database
-    public function getDeltaAttribute($value)
-    {
-        $id = $this->attributes['id'];
-        $tanggal = $this->attributes['tanggal'];
-        $origin = $this->attributes['origin'];
-        $originTime = $tanggal." ".$origin;
-        $originTime = new DateTime($originTime);
-        //$originTime = $formattedTime = date("H:i:s", $originTime);
+    // public function getDeltaAttribute($value)
+    // {
+    //     $id = $this->attributes['id'];
+    //     $tanggal = $this->attributes['tanggal'];
+    //     $origin = $this->attributes['origin'];
+    //     $originTime = $tanggal." ".$origin;
+    //     $originTime = new DateTime($originTime);
+    //     //$originTime = $formattedTime = date("H:i:s", $originTime);
 
-        $createdTime = $this->attributes['created_at'];
-        $createdTime = new DateTime($createdTime);
-        $delta = $originTime->diff($createdTime);
-        $hours = $delta->h;
-        $minutes = $delta->i;
-        $seconds = $delta->s;
-        $totalMinutes = $delta->days * 24 * 60 + $delta->h * 60 + $delta->i;
-        $ril = $hours.":".$minutes.":".$seconds;
+    //     $createdTime = $this->attributes['created_at'];
+    //     $createdTime = new DateTime($createdTime);
+    //     $delta = $originTime->diff($createdTime);
+    //     $hours = $delta->h;
+    //     $minutes = $delta->i;
+    //     $seconds = $delta->s;
+    //     $totalMinutes = $delta->days * 24 * 60 + $delta->h * 60 + $delta->i;
+    //     $ril = $hours.":".$minutes.":".$seconds;
 
-        if ($totalMinutes <= 10) {
-            $value = $ril." ".'ONTIME';
-            $selisih = Balaigempa::find($id);
-            $selisih->delta = $value;
-            $selisih->save();
-            return $value;
+    //     if ($totalMinutes <= 10) {
+    //         $value = $ril." ".'ONTIME';
+    //         $selisih = Balaigempa::find($id);
+    //         $selisih->delta = $value;
+    //         $selisih->save();
+    //         return $value;
 
-        } else {
-            $value = $ril." ".'LATE';
-            $selisih = Balaigempa::find($id);
-            $selisih->delta = $value;
-            $selisih->save();
-            return $value;
-        }
+    //     } else {
+    //         $value = $ril." ".'LATE';
+    //         $selisih = Balaigempa::find($id);
+    //         $selisih->delta = $value;
+    //         $selisih->save();
+    //         return $value;
+    //     }
 
-    }
+    // }
 
     public function getTerasaAttribute($value)
     {
