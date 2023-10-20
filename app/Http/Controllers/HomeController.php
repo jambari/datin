@@ -153,6 +153,7 @@ class HomeController extends Controller
         foreach ($gempas as $eq) {
             $tanggal = $eq['tanggal']; //get date of the eathquake
             $jam = $eq['origin']; // get origin time of eq
+            $id = $eq['id'];
             $bulan = array (
                 1 =>   'Januari',
                 'Februari',
@@ -206,8 +207,16 @@ class HomeController extends Controller
 
             if ($totalMinutes <= 10) {
                 $eq['type'] = $ril." ".'ONTIME';
+                $value = $ril." ".'ONTIME';
+                $selisih = Gempa::find($id);
+                $selisih->delta = $value;
+                $selisih->save();
             } else {
                 $eq['type'] = $ril." ".'LATE';
+                $value = $ril." ".'LATE';
+                $selisih = Gempa::find($id);
+                $selisih->delta = $value;
+                $selisih->save();
             }
         }
         return view('gempa.terkini',compact('gempas'));

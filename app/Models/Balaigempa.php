@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 
@@ -23,7 +24,7 @@ class Balaigempa extends Model
     public $timestamps = true;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth','ket','terasa','terdampak'
+        'tanggal', 'origin', 'lintang', 'bujur', 'magnitudo', 'type','depth','ket','terasa','terdampak','delta'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -69,7 +70,7 @@ class Balaigempa extends Model
     //Get time difference between OT and Data send to database
     public function getDeltaAttribute($value)
     {
-
+        $id = $this->attributes['id'];
         $tanggal = $this->attributes['tanggal'];
         $origin = $this->attributes['origin'];
         $originTime = $tanggal." ".$origin;
@@ -87,9 +88,16 @@ class Balaigempa extends Model
 
         if ($totalMinutes <= 10) {
             $value = $ril." ".'ONTIME';
+            $selisih = Balaigempa::find($id);
+            $selisih->delta = $value;
+            $selisih->save();
             return $value;
+
         } else {
             $value = $ril." ".'LATE';
+            $selisih = Balaigempa::find($id);
+            $selisih->delta = $value;
+            $selisih->save();
             return $value;
         }
 
