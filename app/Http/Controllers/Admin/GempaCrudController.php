@@ -43,7 +43,7 @@ class GempaCrudController extends CrudController
                 'name' => 'tanggal',
                 'labe;' => 'Tanggal',
                 'type' => 'date'
-            ], [
+            ], [    
                 'name' => 'origin',
                 'label' => 'Origin',
                 'type' => 'text'
