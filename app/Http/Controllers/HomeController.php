@@ -151,7 +151,7 @@ class HomeController extends Controller
 
     //recent earthquakes tables
     public function terkini() {
-        $gempas = Balaigempa::take(10)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
+        $gempas = Gempa::take(10)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
         foreach ($gempas as $eq) {
             $tanggal = $eq['tanggal']; //get date of the eathquake
             $jam = $eq['origin']; // get origin time of eq
