@@ -50,7 +50,7 @@
 
 				    <tr class="@if ($gempa->terasa == 'dirasakan') bg-red @endif">
 				      	<td  scope="row"> {{ $loop->iteration }}</td>
-				      	<td> {{ $gempa->tanggal ?? '' }} </td>
+				      	<td> {{ $gempa->origin ?? '' }} {{ $gempa->narasi ?? '' }}</td>
 				      	<td> {{ $gempa->lintang ?? '' }} </td>
 				      	<td> {{ $gempa->bujur ?? '' }} </td>
 				      	<td> {{ $gempa->magnitudo ?? '' }} </td>

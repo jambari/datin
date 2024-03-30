@@ -195,7 +195,8 @@ class HomeController extends Controller
             $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
             $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
             $value = $tanggalindo.' '.$jamwit;
-            $eq['origin'] = $value;
+            $eq['origin'] = $tanggalindo;
+            $eq['narasi'] = $jamwit;
 
 
             $originTime = new DateTime(date("Y-m-d H:i:s", strtotime($tanggaljam)));
