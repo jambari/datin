@@ -49,7 +49,7 @@ Route::get('/bulletins/{id}', 'Admin\BulletinCrudController@show');
 Route::get('/siarans', 'Admin\SiaranCrudController@siarans'); //daftar semua press release
 Route::get('/siarans/{id}', 'Admin\SiaranCrudController@show'); //detail press release
 //Gempabumi //list of recent earthquake
-Route::get('/gempa/{id}', 'HomeController@showmap'); // detail earthquake
+Route::get('/gempa/{id}', 'HomeController@detailgempajay'); // detail earthquake
 Route::get('/balaigempa/{id}', 'Admin\GempaCrudController@showmap'); // sms balai
 Route::resource('/mercallies', 'MercallyController');// Indeks Seismisitas
 
