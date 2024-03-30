@@ -18,7 +18,7 @@
 		<div class="col-md-12 d-none d-sm-block ">
 			<ol class="breadcrumb  ">
 				<li class="breadcrumb-item  "><a href="/" class="text-primary">Home</a></li>
-				<li class="breadcrumb-item active "><a href="/gempa/terkini" class="text-primary" >Gempabumi Terkini</a></li>
+				<li class="breadcrumb-item active "><a href="/gempa/terupdate" class="text-primary" >Gempabumi Terkini</a></li>
 			</ol>
 		</div>
 	</div>
@@ -32,7 +32,7 @@
 				  <thead>
 				   <tr>
 					    <th scope="col">#</th>
-					    <th scope="col"> Origin (WIT) </th>
+					    <th scope="col">Origin (WIT) </th>
 					    <th scope="col">Lintang</th>
 					    <th scope="col">Bujur</th>
 					    <th scope="col">Mag</th>
@@ -49,7 +49,7 @@
 
 				    <tr class="@if ($gempa->terasa == 'dirasakan') bg-red @endif">
 				      	<td  scope="row"> {{ $loop->iteration }}</td>
-				      	<td> {{ $gempa->origin ?? '' }} </td>
+				      	<td> {{ $gempa->type ?? '' }} {{ $gempa->origin ?? '' }}  </td>
 				      	<td> {{ $gempa->lintang ?? '' }} </td>
 				      	<td> {{ $gempa->bujur ?? '' }} </td>
 				      	<td> {{ $gempa->magnitudo ?? '' }} </td>

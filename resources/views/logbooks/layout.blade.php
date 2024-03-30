@@ -378,7 +378,7 @@
               </tbody>
             </table>
             <p>A.N KEPALA STASIUN GEOFISIKA JAYAPURA <br>
-            SUB KOORDINATOR OBSERVASI</p>
+            KETUA TIM OBSERVASI</p>
             <br>
             <br>
             <br>

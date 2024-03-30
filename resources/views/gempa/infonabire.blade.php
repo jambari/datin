@@ -55,7 +55,6 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
 /*        margin-bottom: 10px;*/
     }
     .kota {
-        font-size: ;
         color: black;
         background-color: white;
         border: 3px solid #FF0000;
@@ -193,14 +192,18 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                 </div>
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-12" id="balai" >
-                            <div id="streetmap-baru">
-                                {{-- <img src=" {{ asset('images') }}/stageof_nabire.png " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
-                                <img src=" {{ asset('images') }}/logo_nabire_baru.jpg " alt="logo" width="100%" height="20%" style="" >
-                                    <div id="map-baru" style="width:99%;height:500px;"></div>
-                                <p class="text-center " style="" > <strong class="" >
-                                	Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-NBPI
-                                </strong> </p>
+                        <div class="col-md-8 col-md-offset-2" style="" >
+                            <div class="row" >
+                              <div class="col-md-12" id="balai" >
+                                  <div id="streetmap-baru">
+                                      {{-- <img src=" {{ asset('images') }}/stageof_nabire.png " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
+                                      <img src=" {{ asset('images') }}/logo_nabire_baru.jpg " alt="logo" width="100%" height="20%" style="" >
+                                          <div id="map-baru" style="width:99%;height:500px;"></div>
+                                      <p class="text-center " style="" > <strong class="" >
+                                        Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-NBPI
+                                      </strong> </p>
+                                  </div>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -236,7 +239,7 @@ var mymap = L.map('map-baru').setView([{{ $latmap }}, {{ $lonmap }}], 7);
 //  // var layer = L.esri.basemapLayer('NationalGeographic').addTo(mymap);
 //  //  var layerLabels;
 //
- L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 18,
 attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 }).addTo(mymap);

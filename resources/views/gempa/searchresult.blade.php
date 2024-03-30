@@ -19,6 +19,24 @@ crossorigin=""/>
   }
   #basemaps {
   }
+
+    .red-circle-icon {
+        border-radius: 50%;
+        border: 2px solid rgba(0, 0, 0, 0.7); /* Solid red border */
+        background-color: rgba(255, 0, 0, 1); /* 50% opacity red background */
+    }
+
+    .yellow-circle-icon {
+        border-radius: 50%;
+        border: 2px solid rgba(0, 0, 0, 0.7); /* Solid red border */
+        background-color: rgba(255, 255, 0, 1); /* 50% opacity red background */
+    }
+
+    .green-circle-icon {
+        border-radius: 50%;
+        border: 2px solid rgba(0, 0, 0, 0.7); /* Solid red border */
+        background-color: rgba(0, 255, 0, 1); /* 50% opacity red background */
+    }
 </style>
 @section('content')
 @include('guests.pesan')
@@ -58,7 +76,7 @@ crossorigin=""/>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div id="map" style="width:100%; height: 750px; border-radius: 5px; "></div>
-            <div id="basemaps-wrapper" class="leaflet-bar">
+            <!-- <div id="basemaps-wrapper" class="leaflet-bar">
               <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
                 <option value="NationalGeographic"  >National Geographic</option>
                 <option value="Topographic">Topographic</option>
@@ -72,12 +90,12 @@ crossorigin=""/>
                 <option value="ShadedRelief">Shaded Relief</option>
                 <option value="Physical">Physical</option>
               </select>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
 <br>
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-3">
             <table class="table">
@@ -127,7 +145,7 @@ crossorigin=""/>
             </table>
         </div>
     </div>
-</div>
+</div> -->
 <br class="" >
 <div class="container">
     <div class="row">
@@ -213,13 +231,18 @@ crossorigin=""/>
     <link rel="stylesheet" href="{{ asset('css') }}/L.Icon.Pulse.css" />
     <script src="{{ asset('js') }}/L.Icon.Pulse.js"></script>
    <script src="{{ asset('gjson') }}/patahan.js" > </script>
-   <script src="{{ asset('gjson') }}/subduksi.js" > </script>
+<script src="{{ asset('gjson') }}/indofaults.js">
    <script src="{{ asset('gjson') }}/plates.js" > </script>
 <script>
 
 var map = L.map('map').setView([-2.5104, 140.714], 6);
 // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
- var layer = L.esri.basemapLayer('Streets').addTo(map);
+
+L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}).addTo(map);
+//  var layer = L.esri.basemapLayer('Streets').addTo(map);
   var layerLabels;
 
   function setBasemap(basemap) {
@@ -254,63 +277,81 @@ var map = L.map('map').setView([-2.5104, 140.714], 6);
     setBasemap(basemap);
   }
 
-    var terasa = L.icon({
-        iconUrl: '/images/felt.png',
-        iconSize:     [40, 40], // size of the icon
+    var terasa = L.divIcon({
+    className: 'star-icon',
+    html: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="orange"><path d="M12 2l2.37 7.25h7.63l-6.18 4.5 2.37 7.25-6.18-4.5-6.18 4.5 2.37-7.25-6.18-4.5h7.63z " stroke="black" fill="orange"/></svg>',
+    iconSize: [30, 30],
+    iconAnchor: [12, 12],
+});
+
+    var red1 = L.divIcon({
+        className: 'red-circle-icon',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 10 10" fill="red"><circle cx="12" cy="12" r="10" /></svg>',
+        iconSize: [10, 10],
+        iconAnchor: [0, 0],
+    });
+
+    var red2 = L.divIcon({
+        className: 'red-circle-icon',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 20 20" fill="red"><circle cx="12" cy="12" r="10" /></svg>',
+        iconSize: [15, 15],
+        iconAnchor: [0, 0],
 
     });
 
-    var red1 = L.icon({
-        iconUrl: '/images/redeq.png',
-        iconSize:     [9, 9], // size of the icon
+    var red3 = L.divIcon({
+        className: 'red-circle-icon',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="red"><circle cx="12" cy="12" r="10" /></svg>',
+        iconSize: [20, 20],
+        iconAnchor: [0, 0],
 
     });
 
-    var red2 = L.icon({
-        iconUrl: '/images/redeq.png',
-        iconSize:     [18, 18], // size of the icon
+    var yellow1 = L.divIcon({
+        className: 'yellow-circle-icon',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="yellow"><circle cx="12" cy="12" r="10" /></svg>',
+        iconSize: [10, 10],
+        iconAnchor: [0, 0],
 
     });
 
-    var red3 = L.icon({
-        iconUrl: '/images/redeq.png',
-        iconSize:     [27, 27], // size of the icon
+    var yellow2 = L.divIcon({
+        className: 'yellow-circle-icon',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="yellow"><circle cx="12" cy="12" r="10" /></svg>',
+        iconSize: [15, 15],
+        iconAnchor: [0, 0],
 
     });
 
-    var yellow1 = L.icon({
-        iconUrl: '/images/yelloweq.png',
-        iconSize:     [9, 9], // size of the icon
+    var yellow3 = L.divIcon({
+        className: 'yellow-circle-icon',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="yellow"><circle cx="12" cy="12" r="10" /></svg>',
+        iconSize: [20, 20],
+        iconAnchor: [0, 0],
 
     });
 
-    var yellow2 = L.icon({
-        iconUrl: '/images/yelloweq.png',
-        iconSize:     [18, 18], // size of the icon
+    var green1 = L.divIcon({
+        className: 'green-circle-icon',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="green"><circle cx="12" cy="12" r="10" /></svg>',
+        iconSize: [10, 10],
+        iconAnchor: [0, 0],
 
     });
 
-    var yellow3 = L.icon({
-        iconUrl: '/images/yelloweq.png',
-        iconSize:     [27, 27], // size of the icon
+    var green2 = L.divIcon({
+        className: 'green-circle-icon',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="green"><circle cx="12" cy="12" r="10" /></svg>',
+        iconSize: [15, 15],
+        iconAnchor: [0, 0],
 
     });
 
-    var green1 = L.icon({
-        iconUrl: '/images/green.png',
-        iconSize:     [9, 9], // size of the icon
-
-    });
-
-    var green2 = L.icon({
-        iconUrl: '/images/green.png',
-        iconSize:     [18, 18], // size of the icon
-
-    });
-
-    var green3 = L.icon({
-        iconUrl: '/images/green.png',
-        iconSize:     [27, 27], // size of the icon
+    var green3 = L.divIcon({
+        className: 'green-circle-icon',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="green"><circle cx="12" cy="12" r="10" /></svg>',
+        iconSize: [20, 20],
+        iconAnchor: [0, 0],
 
     });
 
@@ -323,10 +364,17 @@ var map = L.map('map').setView([-2.5104, 140.714], 6);
         //style for subduksi
 
         var subduksiStyle = {
-            "color": "#0A70C4",
+            "color": "#ffff00",
             "weight": 1,
             "opacity": 0.5,
             "fillColor": 'transparent',
+        };
+
+        var indoFaultsStyle = {
+            "color": "#ff0000",
+            "weight": 1,
+            "opacity": 1,
+            "fillColor": '#E04D01',
         }
 
         function onEachFeature(feature, layer) {
@@ -340,14 +388,14 @@ var map = L.map('map').setView([-2.5104, 140.714], 6);
             style : patahanStyle,
         }).addTo(map); //add patahan symbol
 
-        // L.geoJSON(worldPlates, {
-        //     style: subduksiStyle,
-        //     onEachFeature: onEachFeature
-        // }).addTo(mymap);
+        // //plot subduction
+        // L.geoJSON(subDuksi, {
+        //     style: subduksiStyle
+        // }).addTo(map);
 
         //plot subduction
-        L.geoJSON(subDuksi, {
-            style: subduksiStyle
+        L.geoJSON(indoFaults, {
+            style: indoFaultsStyle
         }).addTo(map);
 
     @if ($eq1s->count() > 0)
@@ -493,6 +541,20 @@ var map = L.map('map').setView([-2.5104, 140.714], 6);
                 Kdlmn {{ $eq->depth }} Km, 
                 {{ $eq->ket }},
                 {{ $eq->terdampak }}`);
+        @endforeach
+    @endif
+    //felt from significant
+    @if ($feltfromsignficants->count() > 0)
+        @foreach ($feltfromsignficants as $eq)
+            marker = new L.marker([{{ $eq->lintang }}, {{ $eq->bujur }}], { icon: terasa}).addTo(map)
+            .bindPopup(
+                `{{ $eq->tanggal }}
+                {{ $eq->origin }} WIT, 
+                {{ $eq->lintang }}
+                {{ $eq->bujur }} BT,  
+                M{{ $eq->magnitudo }}
+                Kdlmn {{ $eq->depth }} Km, 
+                {{ $eq->lokasi }}`);
         @endforeach
     @endif
 </script>

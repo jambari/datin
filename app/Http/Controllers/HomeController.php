@@ -17,6 +17,8 @@ use App\Models\Deklinasi;
 use App\Models\Inklinasi;
 use App\Models\Infogempa;
 use App\Models\Article;
+use App\Models\Balaigempa;
+use App\Models\Significant;
 use App\Models\Pengumuman;
 use App\Models\Siaran;
 use App\Models\Bulletin;
@@ -35,7 +37,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $gempas = Satudatagempa::orderBy('id','desc')->first();
+        $gempas = Balaigempa::orderBy('id','desc')->first();
         $articles = Article::take(8)->where('category_id','!=', 8)->where('category_id','!=', 10)->orderBy('id','desc')->get();
         $galleries = Article::take(3)->where('category_id','=', 10)->orderBy('id','desc')->get();
         $pengumuman = Pengumuman::orderBy('id','desc')->first();
@@ -149,7 +151,7 @@ class HomeController extends Controller
 
     //recent earthquakes tables
     public function terkini() {
-        $gempas = Gempa::take(10)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
+        $gempas = Balaigempa::take(10)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
         foreach ($gempas as $eq) {
             $tanggal = $eq['tanggal']; //get date of the eathquake
             $jam = $eq['origin']; // get origin time of eq
@@ -224,27 +226,27 @@ class HomeController extends Controller
 
     //recent eq map
     public function recentmap() {
-        $eqs = Gempa::take(60)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
-        $last = Gempa::orderBy('id','desc')->first();
+        $eqs = Balaigempa::take(60)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->get();
+        $last = Balaigempa::orderBy('id','desc')->first();
         return view('gempa.recentmap', compact('eqs','last'));
     }
 
     //Statistik eq map
     public function statistik() {
-        $gempa = Gempa::orderBy('id', 'DESC')->first();
-        $Mbelowthree = Gempa::where('magnitudo','<', 3)
+        $gempa = Balaigempa::orderBy('id', 'DESC')->first();
+        $Mbelowthree = Balaigempa::where('magnitudo','<', 3)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
-        $Mthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])
+        $Mthreefive = Balaigempa::whereBetween('magnitudo',[3, 4.9])
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
-        $Mabovefive = Gempa::where('magnitudo','>=', 5)
+        $Mabovefive = Balaigempa::where('magnitudo','>=', 5)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
 
         //depth\
-        $Dshallow = Gempa::where('depth','<', 70)
+        $Dshallow = Balaigempa::where('depth','<', 70)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
-        $Dmediate = Gempa::whereBetween('depth',[70, 249])
+        $Dmediate = Balaigempa::whereBetween('depth',[70, 249])
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
-        $Dverydeep = Gempa::where('depth','>=', 300)
+        $Dverydeep = Balaigempa::where('depth','>=', 300)
                     ->whereDate('tanggal', '>', Carbon::now()->subDays(30))->count();
         return view('gempa.statistik', compact('gempa', 'Mbelowthree', 'Mthreefive', 'Mabovefive',
             'Dshallow', 'Dmediate', 'Dverydeep'
@@ -256,48 +258,50 @@ class HomeController extends Controller
         $end = $request->input( 'end' );
         if($start != "" and $start < $end ){
         // m < 3 and depth < 70 icon small red
-        $eq1s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '<=', 60)->where('terasa', '=',0)->get();
+        $eq1s = Balaigempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '<=', 60)->where('terasa', '=',0)->get();
         // m betwen 3 to 5 and depth < 70 icon small red
-        $eq2s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
+        $eq2s = Balaigempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
         // m >= 5 and depth < 70 icon small red
-        $eq3s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
+        $eq3s = Balaigempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '<=', 60)->where('terasa', '=',0)->get();
 
         // depth 70-300
 
-        $eq4s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
+        $eq4s = Balaigempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
         // m betwen 3 to 5 and depth 71-300 icon small red
-        $eq5s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
+        $eq5s = Balaigempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
         // m >= 5 and depth 71-300 icon small red
-        $eq6s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
+        $eq6s = Balaigempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->whereBetween('depth', [61, 300])->where('terasa', '=',0)->get();
 
         // depth > 300
 
-        $eq7s = Gempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '>', 300)->where('terasa', '=',0)->get();
+        $eq7s = Balaigempa::whereBetween('tanggal', [$start, $end])->where('magnitudo', '<', 3)->where('depth', '>', 300)->where('terasa', '=',0)->get();
         // m betwen 3 to 5 and depth 71-300 icon small red
-        $eq8s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '>', 300)->where('terasa', '=',0)->get();
+        $eq8s = Balaigempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [3, 4.9])->where('depth', '>', 300)->where('terasa', '=',0)->get();
         // m >= 5 and depth 71-300 icon small red
-        $eq9s = Gempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '>', 300)->where('terasa', '=',0)->get();
+        $eq9s = Balaigempa::whereBetween('tanggal', [$start, $end])->whereBetween('magnitudo', [5, 10])->where('depth', '>', 300)->where('terasa', '=',0)->get();
 
-        $felts = Gempa::whereBetween('tanggal', [$start, $end])->where('terasa', '=',1)->get();
+        $felts = Balaigempa::whereBetween('tanggal', [$start, $end])->where('terasa', '=',1)->get();
+        $feltfromsignficants = Significant::whereBetween('created_at', [$start, $end])->get();
 
 
-        $Mbelowthree = Gempa::where('magnitudo','<', 3)
+
+        $Mbelowthree = Balaigempa::where('magnitudo','<', 3)
                     ->whereBetween('tanggal', [$start, $end])->count();
-        $Mthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])
+        $Mthreefive = Balaigempa::whereBetween('magnitudo',[3, 4.9])
                     ->whereBetween('tanggal', [$start, $end])->count();
-        $Mabovefive = Gempa::where('magnitudo','>=', 5)
+        $Mabovefive = Balaigempa::where('magnitudo','>=', 5)
                     ->whereBetween('tanggal', [$start, $end])->count();
 
         //depth\
-        $Dshallow = Gempa::where('depth','<', 60)
+        $Dshallow = Balaigempa::where('depth','<', 60)
                     ->whereBetween('tanggal', [$start, $end])->count();
-        $Dmediate = Gempa::whereBetween('depth',[60, 249])
+        $Dmediate = Balaigempa::whereBetween('depth',[60, 249])
                     ->whereBetween('tanggal', [$start, $end])->count();
-        $Dverydeep = Gempa::where('depth','>=', 300)
+        $Dverydeep = Balaigempa::where('depth','>=', 300)
                     ->whereBetween('tanggal', [$start, $end])->count();
 
         Session::flash('info', 'Data Gempabumi Periode '.$start.' s.d '.$end);
-        return view ( 'gempa.searchresult' )->with(compact('start', 'end', 'eq1s', 'eq2s', 'eq3s', 'eq4s', 'eq5s', 'eq6s', 'eq7s', 'eq8s', 'eq9s', 'felts', 'Mbelowthree', 'Mthreefive', 'Mabovefive', 'Dshallow', 'Dmediate', 'Dverydeep'));
+        return view ( 'gempa.searchresult' )->with(compact('start', 'end', 'eq1s', 'eq2s', 'eq3s', 'eq4s', 'eq5s', 'eq6s', 'eq7s', 'eq8s', 'eq9s', 'felts', 'Mbelowthree', 'Mthreefive', 'Mabovefive', 'Dshallow', 'Dmediate', 'Dverydeep','feltfromsignficants'));
         }
     }
     //Tentang Kami
@@ -529,7 +533,7 @@ class HomeController extends Controller
     }
 
     public function terupdate() {
-        $gempas = Satudatagempa::take(10)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
+        $gempas = Balaigempa::take(10)->orderBy('tanggal','desc')->orderBy('origin', 'desc')->paginate(10);
         foreach ($gempas as $eq) {
             $tanggal = $eq['tanggal']; //get date of the eathquake
             $jam = $eq['origin']; // get origin time of eq
@@ -571,15 +575,17 @@ class HomeController extends Controller
             $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
             $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
             $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
-            $value = $tanggalindo.' '.$jamwit;
-            $eq['origin'] = $value;
+            $value = (string)$tanggalindo.' '.(string)$jamwit;
+            $eq['origin'] = (string)$jamwit;
+            $eq['type'] = (string) $tanggalindo;
+
         }
         return view('gempa.terupdate',compact('gempas'));
     }
 
     public function showmap($id) {
         // $event = $this->crud->getEntry($id);
-        $event = Gempa::find($id);
+        $event = Balaigempa::find($id);
         //Penanggalan
         //array bulan
             $bulan = array (

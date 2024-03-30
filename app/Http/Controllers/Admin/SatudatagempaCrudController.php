@@ -8,6 +8,8 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\SatudatagempaRequest as StoreRequest;
 use App\Http\Requests\UpdateSatudatagempaRequest as UpdateRequest;
 use App\Models\Satudatagempa;
+use App\Models\Balaigempa;
+
 use App\Models\Gempa;
 
 /**
@@ -375,7 +377,7 @@ public function infosdg($id) {
 
    //detail eq on frontend
     public function showmap($id) {
-        $event = $this->crud->getEntry($id);
+        $event = Balaigempa::find($id);
         //Penanggalan
         //array bulan
             $bulan = array (
