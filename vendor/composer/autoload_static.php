@@ -549,6 +549,7 @@ class ComposerStaticInit63ac6f85bbe6a2aee234009a1bbea283
         'App\\Http\\Requests\\UpdateSatudatagempaRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateSatudatagempaRequest.php',
         'App\\Http\\Requests\\UpdateSpmRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateSpmRequest.php',
         'App\\Http\\Requests\\UpdateSummaryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateSummaryRequest.php',
+        'App\\Latency' => __DIR__ . '/../..' . '/app/Latency.php',
         'App\\Layanan' => __DIR__ . '/../..' . '/app/Layanan.php',
         'App\\Mercally' => __DIR__ . '/../..' . '/app/Mercally.php',
         'App\\Models\\Absolut' => __DIR__ . '/../..' . '/app/Models/Absolut.php',

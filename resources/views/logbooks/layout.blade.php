@@ -152,31 +152,23 @@
               </tr>     
               <tr>
                 <td>BERAT KERTAS</td>
-                <td>: {{ ucfirst($logbook->berat_kertas) ?? '' }} </td>
+                <td>: {{ $logbook->berat_kertas ?? '' }} </td>
               </tr>
               <tr>
                 <td>COUNTER AWAL</td>
-                <td>: {{ ucfirst($logbook->counter_awal) ?? '' }} </td>
+                <td>: {{ $logbook->counter_awal ?? '' }} </td>
               </tr>
               <tr>
                 <td>COUNTER AKHIR</td>
-                <td>: {{ ucfirst($logbook->counter_akhir) ?? '' }} </td>
+                <td>: {{ $logbook->counter_akhir ?? '' }} </td>
               </tr>
               <tr>
                 <td>FLOW RATE AWAL</td>
-                <td>: {{ ucfirst($logbook->flow_rate_awal) ?? ''}} </td>
+                <td>: {{ $logbook->flow_rate_awal ?? ''}} </td>
               </tr>
               <tr>
                 <td>FLOW RATE AKHIR</td>
-                <td>: {{ ucfirst($logbook->flow_rate_akhir) ?? ''}} </td>
-              </tr>
-              <tr>
-                <td>INTENSITAS</td>
-                <td>: {{ ucfirst($logbook->hillman_intensitas) ?? '' }} </td>
-              </tr>
-              <tr>
-                <td>OBS</td>
-                <td>: {{ ucfirst($logbook->obs_intensitas) ?? '' }} </td>
+                <td>: {{ $logbook->flow_rate_akhir ?? ''}} </td>
               </tr>
           </table>
           <h6 class="text-success">SEISMIC STATIONS</h6>
@@ -372,6 +364,22 @@
                 <tr>
                   <td colspan="2" class="text-center" >KETERANGAN</td>
                 </tr>
+                <tr>
+                  <td>JUMLAH GEMPA</td>
+                  <td>: {{ $seismisitas ?? '' }} </td>
+                </tr>
+              <tr>
+                <td>INTENSITAS</td>
+                <td>: {{ $hujan->hilman ?? '' }} mm<sup>2</sup> </td>
+              </tr>
+              <tr>
+                <td>OBS</td>
+                <td>: {{ $hujan->obs ?? '' }} mm<sup>2</sup> </td>
+              </tr>
+              <tr>
+                <td>PENAKAR</td>
+                <td>: {{ ucfirst($hujan->petugas) ?? '' }} </td>
+              </tr>
                 <tr>
                   <td>{{ ucfirst($logbook->keterangan) ?? '' }}</td>
                 </tr>

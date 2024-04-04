@@ -93,3 +93,10 @@ Route::get('/layanandata/alur', 'LayanandataController@alur' );
 //crud Layanan
 Route::resource('/layanans', 'LayananController');
 //cari tamu
+
+//latency dan availability
+//Buku Tamu balai
+Route::get('/latency', 'DashboardController@latencyform');
+Route::get('/avalilability', 'DashboardController@avalilabilityform');
+
+

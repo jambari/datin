@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use App\Models\Hujan;
+use App\Models\Gempa;
+use Carbon\Carbon;
+
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\LogbookRequest as StoreRequest;
@@ -331,20 +335,6 @@ class LogbookCrudController extends CrudController
             ], [
                 'name' => 'flow_rate_akhir',
                 'label' => 'Flow Rate Akhir',
-                'type' => 'text',
-                'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
-                // 'allows_null' => true
-            ], [
-                'name' => 'hillman_intensitas',
-                'label' => 'Hillman Intensitas(mm)',
-                'hint' => 'jika TTU isi 9999',
-                'type' => 'text',
-                'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
-                // 'allows_null' => true
-            ], [
-                'name' => 'obs_intensitas',
-                'label' => 'Obs Intensitas (mm)',
-                'hint' => 'jika TTU isi 9999',
                 'type' => 'text',
                 'tab' => 'Rekaman Data HV Sampler, Hillman, Obs',
                 // 'allows_null' => true
@@ -1081,7 +1071,19 @@ class LogbookCrudController extends CrudController
 public function unduh($id)
 {
     $logbook = $this->crud->getEntry($id);
-    return view('logbooks.layout', compact('logbook'));
+    $logbookdate = $logbook['tanggal'];
+    $jadwal_dinas = $logbook['jadwal_dinas'];
+    if ($jadwal_dinas == "malam Tengah Malam") {
+        $hujanmt = Carbon::parse($logbookdate)->addDay();
+        $hujan = Hujan::whereDate('tanggal', $hujanmt)->first();
+        $seismisitas = Gempa::whereDate('tanggal', $logbookdate)->count();
+        return view('logbooks.layout', compact('logbook','hujan', 'seismisitas'));
+    } else {
+        $hujan = Hujan::whereDate('tanggal', $logbookdate)->first();
+        $seismisitas = Gempa::whereDate('tanggal', $logbookdate)->count();
+        return view('logbooks.layout', compact('logbook','hujan','seismisitas'));
+    }
+
 }
 
 }

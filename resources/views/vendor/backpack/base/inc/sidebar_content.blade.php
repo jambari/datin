@@ -10,6 +10,7 @@
 <li><a href="{{ backpack_url('gempa') }}"><i class="wi wi-earthquake"></i> <span>Repositori JAY</span></a></li>
 <li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori NBPI</span></a></li>
 <li><a href="{{ backpack_url('gempasorong') }}"><i class="wi wi-earthquake"></i> <span>Repositori SWI</span></a></li>
+<li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li>
 @elseif (backpack_auth()->user()->name == 'mendat.bawil5')
 <li class="treeview">
 		<a href="#"> <i class="wi wi-dust" style="margin-right: 0.5em;"></i><span>Kualitas Udara</span> <i class="fa fa-angle-left pull-right"></i> </a>
@@ -51,6 +52,8 @@
 <li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori NBPI</span></a></li>
 <li><a href="{{ backpack_url('gempasorong') }}"><i class="wi wi-earthquake"></i> <span>Repositori SWI</span></a></li>
 <li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li>
+<li><a href="/latency"><i class="wi wi-earthquake"></i> <span>Latency</span></a></li>
+<li><a href="/availability"><i class="wi wi-earthquake"></i> <span>Availability</span></a></li>
 
 	</ul>
 </li>

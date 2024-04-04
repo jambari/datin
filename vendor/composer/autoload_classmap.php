@@ -109,6 +109,7 @@ return array(
     'App\\Http\\Requests\\UpdateSatudatagempaRequest' => $baseDir . '/app/Http/Requests/UpdateSatudatagempaRequest.php',
     'App\\Http\\Requests\\UpdateSpmRequest' => $baseDir . '/app/Http/Requests/UpdateSpmRequest.php',
     'App\\Http\\Requests\\UpdateSummaryRequest' => $baseDir . '/app/Http/Requests/UpdateSummaryRequest.php',
+    'App\\Latency' => $baseDir . '/app/Latency.php',
     'App\\Layanan' => $baseDir . '/app/Layanan.php',
     'App\\Mercally' => $baseDir . '/app/Mercally.php',
     'App\\Models\\Absolut' => $baseDir . '/app/Models/Absolut.php',

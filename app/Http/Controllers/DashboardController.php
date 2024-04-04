@@ -13,6 +13,10 @@ use App\Models\Spm;
 use App\Models\Kah;
 use App\Models\Infogempa;
 use App\Models\Logbook;
+use App\Models\Latency;
+use App\Models\Availability;
+
+
 
 
 class DashboardController extends Controller
@@ -114,5 +118,11 @@ class DashboardController extends Controller
             'purnama' => $purnama,
         ];
         return view('vendor.backpack.base.dashboard')->with(compact('data'));
+    }
+
+    public function latencyform () 
+    {
+        return view('monitorings.latencyform');
+
     }
 }
