@@ -15,12 +15,9 @@ class CreateAvailabilitiesTable extends Migration
     {
         Schema::create('availabilities', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('id');
             $table->string('site')->require();
             $table->string('komponen')->require();
             $table->float('avail')->nullable();
-            $table->timestamps();
-
             $table->timestamps();
         });
     }

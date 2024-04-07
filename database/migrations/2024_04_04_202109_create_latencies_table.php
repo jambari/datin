@@ -15,8 +15,10 @@ class CreateLatenciesTable extends Migration
     {
         Schema::create('latencies', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('number_code')->nullable();
             $table->char('site')->require();
             $table->float('latency')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }
