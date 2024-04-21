@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h1 class="box-title">Sun rise and set</h1>
+                    <h1 class="box-title">Sampel Hujan</h1>
                         <div class="box-tools">
                           <!-- This will cause the box to be removed when clicked -->
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -26,7 +26,7 @@
                 </div> 
                 <!-- end of kedalaman -->
                 <div class="box-body">
-                    <form action="/lapbul/get/ttm" method="GET" >
+                    <form action="/get/sampel/hujan/" method="GET" >
                     {{ csrf_field() }}
                         <div class="form-group">
                             <label for="start">Start</label>
@@ -35,23 +35,6 @@
                         <div class="form-group">
                             <label for="akhir">End</label>
                             <input type="date" class="form-control" name="end" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="for site label" >Pilih Kota</label>
-                            <select name="kota" id="kota" class="form-select">
-                                <option value="jayapura" selected>Jayapura</option>
-                                <option value="sentani">Sentani</option>
-                                <option value="biak">Biak</option>
-                                <option value="merauke">Merauke</option>
-                                <option value="sarmi">Sarmi</option>
-                                <option value="nabire">Nabire</option>
-                                <option value="timika">Timika</option>
-                                <option value="wamena">Wamena</option>
-                                <option value="manokwari">Manokwari</option>
-                                <option value="kaimana">Kaimana</option>
-                                <option value="sorong">Sorong</option>
-                                <option value="fakfak">Fakfak</option>
-                            </select> 
                         </div>
                         <div class="form-group">
                             <input type="submit" class="form-control btn btn-success " value="Submit" >

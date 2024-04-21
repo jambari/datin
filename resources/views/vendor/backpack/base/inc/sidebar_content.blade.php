@@ -128,7 +128,7 @@
 	<ul class="treeview-menu">
 		<li><a href=""><i class="wi wi-earthquake"></i> <span>Gempa</span></a></li>
 		<li><a href=""><i class="wi wi-rain"></i> <span>Hujan</span></a></li>
-		<li><a href=""><i class="wi wi-rain-mix"></i> <span>Sampel Hujan</span></a></li>
+		<li><a href="/sampel/hujan"><i class="wi wi-rain-mix"></i> <span>Sampel Hujan</span></a></li>
 		<li><a href="/lapbul/ttm"><i class="wi wi-sunrise"></i> <span>Terbit Terbenam Matahari</span></a></li>
 	</ul>
 </li>

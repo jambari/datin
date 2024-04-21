@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h1 class="box-title">Sun rise and set</h1>
+                    <h1 class="box-title">Sampel Hujan</h1>
                         <div class="box-tools">
                           <!-- This will cause the box to be removed when clicked -->
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -26,7 +26,7 @@
                 </div> 
                 <!-- end of kedalaman -->
                 <div class="box-body">
-                    <form action="/lapbul/get/ttm" method="GET" >
+                    <form action="/get//sampel/hujan/" method="GET" >
                     {{ csrf_field() }}
                         <div class="form-group">
                             <label for="start">Start</label>
@@ -37,23 +37,6 @@
                             <input type="date" class="form-control" name="end" required>
                         </div>
                         <div class="form-group">
-                            <label for="for site label" >Pilih Kota</label>
-                            <select name="kota" id="kota" class="form-select">
-                                <option value="jayapura" selected>Jayapura</option>
-                                <option value="sentani">Sentani</option>
-                                <option value="biak">Biak</option>
-                                <option value="merauke">Merauke</option>
-                                <option value="sarmi">Sarmi</option>
-                                <option value="nabire">Nabire</option>
-                                <option value="timika">Timika</option>
-                                <option value="wamena">Wamena</option>
-                                <option value="manokwari">Manokwari</option>
-                                <option value="kaimana">Kaimana</option>
-                                <option value="sorong">Sorong</option>
-                                <option value="fakfak">Fakfak</option>
-                            </select> 
-                        </div>
-                        <div class="form-group">
                             <input type="submit" class="form-control btn btn-success " value="Submit" >
                         </div>
                     </form>
@@ -62,12 +45,12 @@
         </div>
     </div>
 
-
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 ">
+<!-- hasil query -->
+<div class="row">
+        <div class="col-md-12">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h1 class="box-title"></h1>
+                    <h1 class="box-title">Hasil</h1>
                         <div class="box-tools">
                           <!-- This will cause the box to be removed when clicked -->
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -78,27 +61,33 @@
                 <!-- end of kedalaman -->
                 <div class="box-body">
                     <center>
-                    <h4> <strong>{{ strtoupper($kota ?? '') }}</strong>   </h4>
-                    <table class="" border>
-                        <thead class="bg-success" >
-                            <th><center>No</center></th>
-                            <th><center>Date</center></th>
-                            <th><center>Rise (WIT)</center></th>
-                            <th><center>Set (WIT)</center> </th>
-                        </thead>
-                        <tbody>
-                            @foreach ($ttms as $ttm)
-                            <tr>
-                                <td width="40" > <center>{{ $loop->iteration }} </center> </td>
-                                <td width="110"> <center>{{Carbon\Carbon::parse($ttm->tanggal)->format('d F Y') }}
-</center> </td>
-                                <td width="100"> <center>  {{ $ttm->terbit }} </center> </td>
-                                <td width="100"> <center> {{ $ttm->terbenam }} </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        </center>
-                    </table>
+                        <table border >
+                            <thead>
+                                <th><center>No</center></th>
+                                <th><center>Tanggal</center></th>
+                                <th><center>Jumlah</center></th>
+                                <th><center>Kategori</center></th>
+                                <th><center>Keterangan</center></th>
+                                <th><center>Obs</center></th>
+                            </thead>
+                            <tbody>
+                                @foreach ($hujans as $sampel)
+                                <tr>
+                                    <td width="50" ><center>{{ $loop->iteration }}</center></td>
+                                    <td width="95" ><center>{{ Carbon\Carbon::parse($sampel->tanggal)->format('d-m-Y') }}</center></td>
+                                    <td width="95"><center>{{ $sampel->obs }}</center></td>
+                                    <td width="95"><center>mm</center></td>
+                                    <td width="95"><center>{{ $sampel->kategori }}</center></td>
+                                    <td width="95"><center>{{ ucfirst($sampel->petugas) }}</center></td>
+                                </tr>
+                                @endforeach
+                                <tr>
+                                    <td> <center><b>Total:</b></center> </td>
+                                    <td colspan="5" > <center><b>{{ $totalObs }} mm</b></center> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </center>
                 </div>
             </div>
         </div>

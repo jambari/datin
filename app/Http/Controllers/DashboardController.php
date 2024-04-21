@@ -152,6 +152,20 @@ class DashboardController extends Controller
                 $ttms = Sunrise::whereBetween('tanggal', [$start, $end])->where('kota', '=', $kota)->get();
                 return view('lapbuls.getttm')->with(compact('ttms', 'kota'));
         }
+    }
 
+    public function sampelhujanform() {
+        return view('lapbuls.sampel_hujan');
+    }
+
+    public function getsampelhujan(Request $request) {
+        $start = $request->input( 'start' );
+        $end = $request->input( 'end' );
+
+        if($start != "" and $start < $end ){
+                $hujans = Hujan::whereBetween('tanggal', [$start, $end])->get();
+                $totalObs = Hujan::whereBetween('tanggal', [$start, $end])->sum('obs');
+                return view('lapbuls.resultsampelhujan')->with(compact('hujans', 'totalObs'));
+        }
     }
 }
