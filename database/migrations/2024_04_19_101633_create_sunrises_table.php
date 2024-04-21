@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAvailabilitiesTable extends Migration
+class CreateSunrisesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateAvailabilitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('availabilities', function (Blueprint $table) {
+        Schema::create('sunrises', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('site')->require();
-            $table->string('komponen_z')->require();
-            $table->string('komponen_ew')->require();
-            $table->string('komponen_ns')->require();
-            $table->string('average')->require();
+            $table->date('tanggal')->nullable();
+            $table->char('kota')->nullable();
+            $table->char('terbit')->nullable();
+            $table->char('terbenam')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateAvailabilitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('availabilities');
+        Schema::dropIfExists('sunrises');
     }
 }

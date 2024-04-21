@@ -52,8 +52,7 @@
 <li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori NBPI</span></a></li>
 <li><a href="{{ backpack_url('gempasorong') }}"><i class="wi wi-earthquake"></i> <span>Repositori SWI</span></a></li>
 <li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li>
-<li><a href="/latency"><i class="wi wi-earthquake"></i> <span>Latency</span></a></li>
-<li><a href="/availability"><i class="wi wi-earthquake"></i> <span>Availability</span></a></li>
+
 
 	</ul>
 </li>
@@ -98,14 +97,7 @@
 
 <li class="treeview">
 	<a href="#"><i class="fa fa-newspaper-o"></i> <span>Berita</span> <i class="fa fa-angle-left pull-right"></i></a>
-	<ul class="treeview-menu">
-	  	<li><a href="{{ backpack_url('article') }}"><i class="fa fa-newspaper-o"></i> <span>Articles</span></a></li>
-	    <li><a href="{{ backpack_url('gallery') }}"><i class="fa fa-list"></i> <span>Lampiran Berita</span></a></li>
-	  	<li><a href="{{ backpack_url('category') }}"><i class="fa fa-list"></i> <span>Categories</span></a></li>
-	  	<li><a href="{{ backpack_url('tag') }}"><i class="fa fa-tag"></i> <span>Tags</span></a></li>
-		<li><a href="{{ backpack_url('siaran') }}"><i class="fa fa-bullhorn"></i> <span>Siaran Press</span></a></li>
-	  	<li><a href="{{ backpack_url('pengumuman') }}"><i class="fa fa-bullhorn"></i> <span>Pengumuman</span></a></li>
-	</ul>
+
 </li>
 <!--
 <li><a href="{{ backpack_url('lapbul') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Laporan Bulanan (Under Construction)</span></a></li>-->
@@ -121,3 +113,22 @@
 <li><a href='{{ backpack_url('layanan') }}'><i class='fa fa-envelope'></i> <span>Pelayanan</span></a></li>
 <li><a href='{{ backpack_url('city') }}'><i class='fa fa-envelope'></i> <span>Daftar Kota</span></a></li>
 @endif
+
+
+<li class="treeview">
+	<a href="#"><i class="fa fa-newspaper-o"></i> <span>SLA OLA</span> <i class="fa fa-angle-left pull-right"></i></a>
+	<ul class="treeview-menu">
+		<li><a href="/latency"><i class="wi wi-earthquake"></i> <span>SLA SEISMIC <sub>under development</sub> </span></a></li>
+		<li><a href="/availability"><i class="wi wi-earthquake"></i> <span>OLA SEISMIK <sub>under development</sub></span></a></li>
+	</ul>
+</li>
+
+<li class="treeview">
+	<a href="#"><i class="fa fa-newspaper-o"></i> <span>BAHAN LAPBUL DAN BULETIN <sub>For lazy purposes only</sub></span> <i class="fa fa-angle-left pull-right"></i></a>
+	<ul class="treeview-menu">
+		<li><a href=""><i class="wi wi-earthquake"></i> <span>Gempa</span></a></li>
+		<li><a href=""><i class="wi wi-rain"></i> <span>Hujan</span></a></li>
+		<li><a href=""><i class="wi wi-rain-mix"></i> <span>Sampel Hujan</span></a></li>
+		<li><a href="/lapbul/ttm"><i class="wi wi-sunrise"></i> <span>Terbit Terbenam Matahari</span></a></li>
+	</ul>
+</li>

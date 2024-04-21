@@ -97,6 +97,11 @@ Route::resource('/layanans', 'LayananController');
 //latency dan availability
 //Buku Tamu balai
 Route::get('/latency', 'DashboardController@latencyform');
+Route::get('/latency/daily', 'DashboardController@daily')->name('latencies.fetch');;
 Route::get('/avalilability', 'DashboardController@avalilabilityform');
 
+
+//lapbul dan buletin
+Route::get('/lapbul/ttm', 'DashboardController@ttmform');
+Route::any('/lapbul/get/ttm', 'DashboardController@getttm');
 

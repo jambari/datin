@@ -15,7 +15,7 @@ use App\Models\Infogempa;
 use App\Models\Logbook;
 use App\Models\Latency;
 use App\Models\Availability;
-
+use App\Sunrise;
 
 
 
@@ -123,6 +123,35 @@ class DashboardController extends Controller
     public function latencyform () 
     {
         return view('monitorings.latencyform');
+
+    }
+
+    public function daily(Request $request)
+    {
+        $date = $request->tanggal;
+
+        $latencies = Latency::whereDate('created_at', $date)
+        ->select('site', DB::raw('AVG(latency) as average_latency'))
+        ->groupBy('site', 'status')
+        ->get();
+        return view('monitorings.dailylatency')->with(compact('latencies'));
+    }
+
+
+    //Controler for lapbul dan buletin
+    public function ttmform() {
+        return view('lapbuls.terbit');
+    }
+
+    public function getttm(Request $request) {
+        $start = $request->input( 'start' );
+        $end = $request->input( 'end' );
+        $kota = $request->input('kota');
+
+        if($start != "" and $start < $end ){
+                $ttms = Sunrise::whereBetween('tanggal', [$start, $end])->where('kota', '=', $kota)->get();
+                return view('lapbuls.getttm')->with(compact('ttms', 'kota'));
+        }
 
     }
 }

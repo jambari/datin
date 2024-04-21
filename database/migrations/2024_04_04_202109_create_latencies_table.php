@@ -17,8 +17,8 @@ class CreateLatenciesTable extends Migration
             $table->increments('id');
             $table->integer('number_code')->nullable();
             $table->char('site')->require();
-            $table->decimal('latency', 16, 2)->nullable();
-            $table->integer('status')->nullable();
+            $table->string('latency')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
