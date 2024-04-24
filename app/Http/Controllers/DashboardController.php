@@ -168,4 +168,23 @@ class DashboardController extends Controller
                 return view('lapbuls.resultsampelhujan')->with(compact('hujans', 'totalObs'));
         }
     }
+
+    public function bahanbuletinhujan() {
+        return view('lapbuls.bahanbuletinhujan');
+    }
+
+    public function getbahanbuletinhujan(Request $request) {
+        $start = $request->input( 'start' );
+        $end = $request->input( 'end' );
+
+        if($start != "" and $start < $end ){
+                $hujans = Hujan::whereBetween('tanggal', [$start, $end])->get();
+                $totalObs = Hujan::whereBetween('tanggal', [$start, $end])->sum('obs');
+                $hujanMax = Hujan::whereBetween('tanggal', [$start, $end])->max('obs');
+                $tanggalMax = Hujan::whereBetween('tanggal', [$start, $end])->where('obs','=',$hujanMax)->first();
+                $hujanMin = Hujan::whereBetween('tanggal', [$start, $end])->min('obs');
+                $hariHujan = Hujan::whereBetween('tanggal', [$start, $end])->where('obs','!=',0)->count();
+                return view('lapbuls.bahanbuletinhujan')->with(compact('hujans', 'totalObs', 'hujanMax', 'hujanMin', 'hariHujan', 'tanggalMax'));
+        }
+    }
 }

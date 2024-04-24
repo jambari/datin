@@ -1,5 +1,4 @@
 @extends('backpack::layout')
-@if (backpack_auth()->user()->name != 'balai5')
 @section('header')
     <section class="content-header" id="daily" >
       <ol class="breadcrumb">
@@ -8,6 +7,13 @@
       </ol>
     </section>
 @endsection
+
+<style>
+    table, th, td {
+    border: 1px solid black;
+    }
+</style>
+
 
 
 @section('content')
@@ -61,6 +67,9 @@
                 <!-- end of kedalaman -->
                 <div class="box-body">
                     <center>
+                        <h4><b>STASIUN GEOFISIKA JAYAPURA</b></h4>
+                        <h4><b>LAPORAN HUJAN HARIAN</b></h4>
+                        <br>
                         <table border >
                             <thead>
                                 <th><center>No</center></th>
@@ -73,7 +82,7 @@
                             <tbody>
                                 @foreach ($hujans as $sampel)
                                 <tr>
-                                    <td width="50" ><center>{{ $loop->iteration }}</center></td>
+                                    <td width="50" style="color: black;" ><center>{{ $loop->iteration }}</center></td>
                                     <td width="95" ><center>{{ Carbon\Carbon::parse($sampel->tanggal)->format('d-m-Y') }}</center></td>
                                     <td width="95"><center>{{ $sampel->obs }}</center></td>
                                     <td width="95"><center>mm</center></td>
@@ -88,12 +97,11 @@
                             </tbody>
                         </table>
                     </center>
+                    <br>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 
-@yield('after_script')
-@endif
 
