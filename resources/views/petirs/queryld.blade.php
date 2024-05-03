@@ -326,19 +326,30 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
     });
 
 
-        @foreach ($sambarans as $sambaran)
-            @if ($sambaran['type'] == 0)
+    @php
+    $counter = 0;
+@endphp
+
+@foreach ($sambarans as $sambaran)
+    @if ($counter < 5000)
+        @if ($sambaran['type'] == 0)
             marker = new L.marker([{{ $sambaran['latitude'] }}, {{ $sambaran['longitude'] }}], { icon: cgplus}).addTo(ic)
             .bindPopup(
                 `Cloud to ground positives`+' {{ $sambaran['datetime_utc'] }}');
-            @endif
-            @if ($sambaran['type'] == 1)
+        @endif
+        @if ($sambaran['type'] == 1)
             marker = new L.marker([{{ $sambaran['latitude'] }}, {{ $sambaran['longitude'] }}], { icon: cgminus}).addTo(ic)
             .bindPopup(
                 `Cloud to ground negatives`+' {{ $sambaran['datetime_utc'] }}');
-            @endif
+        @endif
+        @php
+            $counter++;
+        @endphp
+    @else
+        @break
+    @endif
+@endforeach
 
-        @endforeach
 
 </script>
 @endsection
