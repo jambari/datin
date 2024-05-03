@@ -76,76 +76,12 @@ crossorigin=""/>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div id="map" style="width:100%; height: 750px; border-radius: 5px; "></div>
-            <!-- <div id="basemaps-wrapper" class="leaflet-bar">
-              <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
-                <option value="NationalGeographic"  >National Geographic</option>
-                <option value="Topographic">Topographic</option>
-                <option value="Streets" selected>Streets</option>
-                <option value="Oceans">Oceans</option>
-                <option value="Gray">Gray</option>
-                <option value="DarkGray">Dark Gray</option>
-                <option value="Imagery">Imagery</option>
-                <option value="ImageryClarity">Imagery (Clarity)</option>
-                <option value="ImageryFirefly">Imagery (Firefly)</option>
-                <option value="ShadedRelief">Shaded Relief</option>
-                <option value="Physical">Physical</option>
-              </select>
-            </div> -->
+
         </div>
     </div>
 </div>
 <br>
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <table class="table">
-                <tr>
-                    <td class="text-center"><img src="/images/redeq.png" alt="" width="9" height="9"> <span>M &#60; 3 & Depth &#8804; 70 Km </span> </td>
-                </tr>
-                <tr>
-                    <td class="text-center"><img src="/images/redeq.png" alt="" width="18" height="18"> <span>3 &#8805; M &#60; 5 & Depth &#8804; 70 Km </span> </td>
-                </tr>
-                <tr>
-                    <td class="text-center"><img src="/images/redeq.png" alt="" width="27" height="27"> <span>M &#8805; 5 & Depth &#8804; 70 Km </span> </td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-3">
-            <table class="table table-bordered">
-                <tr>
-                    <td class="text-center"><img src="/images/yelloweq.png" alt="" width="9" height="9"> <span>M &#60; 3 &  70 Km &#8805; Depth &#60; 300 Km</span> </td>
-                </tr>
-                <tr>
-                    <td class="text-center"><img src="/images/yelloweq.png" alt="" width="18" height="18"> <span>3 &#8805; M &#60; 5 & 70 Km &#8805; Depth &#60; 300 Km </span> </td>
-                </tr>
-                <tr>
-                    <td class="text-center"><img src="/images/yelloweq.png" alt="" width="27" height="27"> <span>M &#8805; 5 & 70 Km &#8805; Depth &#60; 300 Km </span> </td>
-                </tr>
-            </table>
-        </div>
 
-        <div class="col-md-3">
-            <table class="table table-bordered">
-                <tr>
-                    <td class="text-center"><img src="/images/green.png" alt="" width="9" height="9"> <span>M &#60; 3 & Depth &#62; 300 Km </span> </td>
-                </tr>
-                <tr>
-                    <td class="text-center"><img src="/images/green.png" alt="" width="18" height="18"> <span>3 &#8805; M &#60; 5 & Depth &#62; 300 Km </span> </td>
-                </tr>
-                <tr>
-                    <td class="text-center"><img src="/images/green.png" alt="" width="27" height="27"> <span>M &#8805; 5 & Depth &#62; 300 Km </span> </td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-3">
-            <table class="table table-bordered">
-                <tr>
-                    <td class="text-center"><img src="/images/felt.png" alt="" width="30" height="30" > <span>Gempa dirasakan</span> </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div> -->
 <br class="" >
 <div class="container">
     <div class="row">
@@ -284,12 +220,14 @@ L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     iconAnchor: [12, 12],
 });
 
+
     var red1 = L.divIcon({
         className: 'red-circle-icon',
         html: '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 10 10" fill="red"><circle cx="12" cy="12" r="10" /></svg>',
         iconSize: [10, 10],
         iconAnchor: [0, 0],
     });
+
 
     var red2 = L.divIcon({
         className: 'red-circle-icon',

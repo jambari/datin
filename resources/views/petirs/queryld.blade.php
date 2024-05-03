@@ -297,17 +297,27 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 }).addTo(ic);
 
-    var cgplus = L.icon({
-        iconUrl: '/images/newcgplus.webp',
-        iconSize:     [25, 25], // size of the icon
+    // var cgplus = L.icon({
+    //     iconUrl: '/images/newcgplus.webp',
+    //     iconSize:     [25, 25], // size of the icon
 
+    // });
+
+    var cgplus = L.divIcon({
+        className: 'cg-plus',
+        html: '<svg width="32px" height="32px" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>thunder</title><desc>Created with Sketch.</desc><defs></defs><g id="Vivid.JS" stroke="rgb(1,1,1)" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Vivid-Icons" transform="translate(-205.000000, -723.000000)"><g id="Icons" transform="translate(37.000000, 169.000000)"><g id="thunder" transform="translate(156.000000, 546.000000)"><g transform="translate(12.000000, 8.000000)" id="Shape"><polygon fill="#0C0058" points="21 0 8.842 0 2 14 8 14 0 32 24 13 15 13"></polygon><polygon fill="#0C0058" points="16.421 19 0 32 5.778 19"></polygon></g></g></g></g></g></svg>'
     });
 
-    var cgminus = L.icon({
-        iconUrl: '/images/newcgminus.webp',
-        iconSize:     [25, 25], // size of the icon
-
+    var cgminus = L.divIcon({
+        className: 'cg-minus',
+        html: '<svg width="32px" height="32px" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>thunder</title><desc>Created with Sketch.</desc><defs></defs><g id="Vivid.JS" stroke="rgb(1,1,1)" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Vivid-Icons" transform="translate(-205.000000, -723.000000)"><g id="Icons" transform="translate(37.000000, 169.000000)"><g id="thunder" transform="translate(156.000000, 546.000000)"><g transform="translate(12.000000, 8.000000)" id="Shape"><polygon fill="#F08519" points="21 0 8.842 0 2 14 8 14 0 32 24 13 15 13"></polygon><polygon fill="#F08519" points="16.421 19 0 32 5.778 19"></polygon></g></g></g></g></g></svg>'
     });
+
+    // var cgminus = L.icon({
+    //     iconUrl: '/images/newcgminus.webp',
+    //     iconSize:     [25, 25], // size of the icon
+
+    // });
 
     var intraclouds = L.icon({
         iconUrl: '/images/newic.png',
