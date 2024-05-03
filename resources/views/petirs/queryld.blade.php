@@ -331,7 +331,7 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
 @endphp
 
 @foreach ($sambarans as $sambaran)
-    @if ($counter < 5000)
+    @if ($counter < 10000)
         @if ($sambaran['type'] == 0)
             marker = new L.marker([{{ $sambaran['latitude'] }}, {{ $sambaran['longitude'] }}], { icon: cgplus}).addTo(ic)
             .bindPopup(
