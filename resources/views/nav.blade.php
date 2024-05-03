@@ -48,9 +48,9 @@
                      <a class="dropdown-item " href="/caripetir" target="_blank" >Query LD</a>
                   </div>
                </li>
-               <li class="nav-item ">
+               <!-- <li class="nav-item ">
                   <a class="nav-link text-white" href="/layanandata">Layanan Data dan Jasa</a>
-               </li>  
+               </li>   -->
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Media 
@@ -62,9 +62,9 @@
               
             </ul>
            <ul class="navbar-nav ml-auto">
-            <li class="nav-item ">
+            <!-- <li class="nav-item ">
                <a href="/rasagempa" class="nav-link btn btn-outline">Rasa Gempa ?</a>
-            </li>
+            </li> -->
              <li class="nav-item">
                <a href="/about" class="nav-link text-white">Tentang Kami</a>
              </li>

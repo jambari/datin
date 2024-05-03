@@ -305,7 +305,7 @@ var ic = L.map('maptanpaic').setView([-2.5104, 140.714], 11);
 
     var cgplus = L.divIcon({
         className: 'cg-plus',
-        html: '<svg width="32px" height="32px" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>thunder</title><desc>Created with Sketch.</desc><defs></defs><g id="Vivid.JS" stroke="rgb(1,1,1)" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Vivid-Icons" transform="translate(-205.000000, -723.000000)"><g id="Icons" transform="translate(37.000000, 169.000000)"><g id="thunder" transform="translate(156.000000, 546.000000)"><g transform="translate(12.000000, 8.000000)" id="Shape"><polygon fill="#0C0058" points="21 0 8.842 0 2 14 8 14 0 32 24 13 15 13"></polygon><polygon fill="#0C0058" points="16.421 19 0 32 5.778 19"></polygon></g></g></g></g></g></svg>'
+        html: '<svg width="32px" height="32px" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>thunder</title><desc>Created with Sketch.</desc><defs></defs><g id="Vivid.JS" stroke="rgb(1,1,1)" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Vivid-Icons" transform="translate(-205.000000, -723.000000)"><g id="Icons" transform="translate(37.000000, 169.000000)"><g id="thunder" transform="translate(156.000000, 546.000000)"><g transform="translate(12.000000, 8.000000)" id="Shape"><polygon fill="#E62129" points="21 0 8.842 0 2 14 8 14 0 32 24 13 15 13"></polygon><polygon fill="#E62129" points="16.421 19 0 32 5.778 19"></polygon></g></g></g></g></g></svg>'
     });
 
     var cgminus = L.divIcon({
