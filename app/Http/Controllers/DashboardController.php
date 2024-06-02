@@ -184,7 +184,7 @@ class DashboardController extends Controller
                 $tanggalMax = Hujan::whereBetween('tanggal', [$start, $end])->where('obs','=',$hujanMax)->first();
                 $hujanMin = Hujan::whereBetween('tanggal', [$start, $end])->min('obs');
                 $hariHujan = Hujan::whereBetween('tanggal', [$start, $end])->where('obs','!=',0)->count();
-                return view('lapbuls.bahanbuletinhujan')->with(compact('hujans', 'totalObs', 'hujanMax', 'hujanMin', 'hariHujan', 'tanggalMax'));
+                return view('lapbuls.resultbahanbuletinhujan')->with(compact('hujans', 'totalObs', 'hujanMax', 'hujanMin', 'hariHujan', 'tanggalMax'));
         }
     }
 }
