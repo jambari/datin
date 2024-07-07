@@ -108,4 +108,5 @@ Route::get('/sampel/hujan', 'DashboardController@sampelhujanform');
 Route::any('/get/sampel/hujan/', 'DashboardController@getsampelhujan');
 Route::get('/bahan/buletin/hujan/', 'DashboardController@bahanbuletinhujan');
 Route::any('/get/bahan/buletin/hujan/', 'DashboardController@getbahanbuletinhujan');
-
+Route::any('/bahan/lapbul/gempa/', 'DashboardController@bahanlapbulgempa');
+Route::any('/get/bahan/buletin/gempa/', 'DashboardController@getbahanlapbulgempa');
