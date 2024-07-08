@@ -57,7 +57,189 @@
             </div> 
             <!-- end of kedalaman -->
             <div class="box-body">
-                   {{ $hujanMax }} 
+                   <div class="row" >
+                        <div class="col-md-12">
+                            <p>
+                                Secara umum curah hujan bulan <i class="bg-danger" >
+                                @if($monthValue==1) Januari @endif 
+                                @if($monthValue==2) Februari @endif
+                                @if($monthValue==3) Maret @endif
+                                @if($monthValue==4) April @endif
+                                @if($monthValue==5) Mei @endif
+                                @if($monthValue==6) Juni @endif
+                                @if($monthValue==7) Juli @endif
+                                @if($monthValue==8) Agustus @endif
+                                @if($monthValue==9) September @endif
+                                @if($monthValue==10) Oktober @endif
+                                @if($monthValue==11) November @endif
+                                @if($monthValue==12) Desember @endif
+                                 {{ $year ?? '-' }} </i>yang tercatat di Stasiun Geofisika Jayapura
+                                dan sekitarnya mengalami peningkatan/penurunan dibandingkan dengan sebelumnya. Intensitas hujan bervariasi antara penakar 
+                                hujan Obs dan penakar hujan Hellmann, dengan kategori yang berkisar dari sangat ringan hingga  <i class="bg-danger text-light" > {{ $tanggalMax->kategori?? '-' }}</i>. 
+                                    Grafik berikut menunjukkan curah hujan selama bulan <i class="bg-danger" >
+                                @if($monthValue==1) Januari @endif 
+                                @if($monthValue==2) Februari @endif
+                                @if($monthValue==3) Maret @endif
+                                @if($monthValue==4) April @endif
+                                @if($monthValue==5) Mei @endif
+                                @if($monthValue==6) Juni @endif
+                                @if($monthValue==7) Juli @endif
+                                @if($monthValue==8) Agustus @endif
+                                @if($monthValue==9) September @endif
+                                @if($monthValue==10) Oktober @endif
+                                @if($monthValue==11) November @endif
+                                @if($monthValue==12) Desember @endif
+                                 {{ $year ?? '-' }} </i>.
+                                Berdasarkan grafik tersebut, terdapat <i class="bg-danger" >{{ $hariHujan }}</i> hari hujan selama bulan
+                                <i class="bg-danger" >
+                                @if($monthValue==1) Januari @endif 
+                                @if($monthValue==2) Februari @endif
+                                @if($monthValue==3) Maret @endif
+                                @if($monthValue==4) April @endif
+                                @if($monthValue==5) Mei @endif
+                                @if($monthValue==6) Juni @endif
+                                @if($monthValue==7) Juli @endif
+                                @if($monthValue==8) Agustus @endif
+                                @if($monthValue==9) September @endif
+                                @if($monthValue==10) Oktober @endif
+                                @if($monthValue==11) November @endif
+                                @if($monthValue==12) Desember @endif
+                                 {{ $year ?? '-' }}</i>. Curah hujan tertinggi tercatat pada tanggal <i class="bg-danger" >
+                               {{Carbon\Carbon::parse($tanggalMax->tanggal)->format('d') }} 
+                                                               @if($monthValue==1) Januari @endif 
+                                @if($monthValue==2) Februari @endif
+                                @if($monthValue==3) Maret @endif
+                                @if($monthValue==4) April @endif
+                                @if($monthValue==5) Mei @endif
+                                @if($monthValue==6) Juni @endif
+                                @if($monthValue==7) Juli @endif
+                                @if($monthValue==8) Agustus @endif
+                                @if($monthValue==9) September @endif
+                                @if($monthValue==10) Oktober @endif
+                                @if($monthValue==11) November @endif
+                                @if($monthValue==12) Desember @endif
+                                {{ $year ?? '-' }}</i>
+                                mencapai <i class="bg-danger" >{{ $maxObs ?? '-' }}mm</i>  dengan kategori “<i class="bg-danger" >{{ $tanggalMax->kategori?? '-' }}</i>”.
+                            </p>
+                        </div>
+                   </div>
+                   <div class="row" >
+                        <div class="col-md-12" >
+                            <div id="dailyRainChart" style="width: 100%; height: 500px;"></div>
+                            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                            <script>
+
+                                var dailyRain = [
+                                    @foreach($hujans as $hujan)
+                                        { tanggal: {{ $loop->iteration }}, rain: @if($hujan['obs']==9999)0 @else {{ $hujan['obs'] }}@endif },
+                                    @endforeach
+                                ];
+
+                                const rainCategories = dailyRain.map(item => item.tanggal);
+                                const rainCounts = dailyRain.map(item => item.rain); 
+                                const rainTrace = {
+                                x: rainCategories,
+                                y: rainCounts,
+                                type: 'bar',
+                                text: rainCounts.map(String),
+                                textposition: 'auto', // Display text on top of bars
+                                };
+
+                                // Define layout
+                                @php
+                                    $monthNames = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                                @endphp
+
+                                const monthName = '{{ $monthNames[$monthValue] ?? '' }}';
+                                const year = '{{ $year ?? '' }}';
+
+                                // Define layout
+                                const rainLayoutBar = {
+                                    title: `Curah Hujan Bulan ${monthName} ${year}`,
+                                    xaxis: { title: '' },
+                                    yaxis: { title: 'Jumlah' }
+                                };
+                                // Plot using Plotly.js
+                                Plotly.newPlot('dailyRainChart', [rainTrace], rainLayoutBar);
+                            </script>
+                        </div>
+                   </div>
+                   <div class="row" >
+                        <div class="col-md-12" >
+                            <div id="dailyRainChartLine" style="width: 100%; height: 500px;"></div>
+                            <script>
+                                var dailyRainLine = [
+                                    @foreach($hujans as $hujan)
+                                        { tanggal: {{ $loop->iteration }}, rain: @if($hujan['obs']==9999)0 @else {{ $hujan['obs'] }} @endif },
+                                    @endforeach
+                                ];
+
+                                const rainCategoriesLine = dailyRainLine.map(item => item.tanggal);
+                                const rainCountsLine = dailyRainLine.map(item => item.rain);
+
+                                const rainTraceLine = {
+                                    x: rainCategoriesLine,
+                                    y: rainCountsLine,
+                                    mode: 'lines+markers', // Change to 'markers' for scatter plot type
+                                    type: 'scatter',
+                                    marker: {
+                                        size: 10, // Adjust marker size as needed
+                                        color: 'orange' // Marker color
+                                    },
+                                    line: {shape: 'linear'},
+                                    text: rainCountsLine.map(String),
+                                    textposition: 'top' // Display text on top of markers
+                                };
+
+                                // Define month and year variables
+                                @php
+                                    $monthNamesLine = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                                @endphp
+
+                                const monthNameLine = '{{ $monthNamesLine[$monthValue] ?? '' }}';
+                                const yearLine = '{{ $year ?? '' }}';
+
+                                // Define layout
+                                const rainLayoutScatterLine = {
+                                    title: `Curah Hujan Bulan ${monthNameLine} ${yearLine}`,
+                                    xaxis: { title: 'Tanggal' },
+                                    yaxis: { title: 'Curah Hujan (mm)' }
+                                };
+
+                                // Plot using Plotly.js
+                                Plotly.newPlot('dailyRainChartLine', [rainTraceLine], rainLayoutScatterLine);
+                            </script>
+                        </div>
+                   </div>
+                   <div class="row" >
+                        <div class="col-md-8 col-md-offset-4" >
+                            <table border style="border-color:black;" >
+                                <thead class="bg-primary" >
+                                    <th><center>No</center></th>
+                                    <th><center>Tanggal</center></th>
+                                    <th><center>Jumlah (mm)</center></th>
+                                    <th><center>Kategori</center></th>
+        
+                                    <th><center>Obs</center></th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($hujans as $sampel)
+                                    <tr>
+                                        <td width="50" style="color: black;" ><center>{{ $loop->iteration }}</center></td>
+                                        <td width="95" ><center>{{ Carbon\Carbon::parse($sampel->tanggal)->format('d-m-Y') }}</center></td>
+                                        <td width="95"><center>{{ $sampel->obs }}</center></td>
+                                        <td width="95"><center>{{ ucfirst($sampel->kategori) }}</center></td>
+                                        <td width="95"><center>{{ ucfirst($sampel->petugas) }}</center></td>
+                                    </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td colspan="3" > <center><b>Total:</b></center> </td>
+                                        <td colspan="3" > <center><b>{{ $totalObs }} mm</b></center> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                   </div>
             </div>
         </div>
     </div>

@@ -166,7 +166,7 @@ class DashboardController extends Controller
         $end = $request->input( 'end' );
 
         if($start != "" and $start < $end ){
-                $hujans = Hujan::whereBetween('tanggal', [$start, $end])->get();
+                $hujans = Hujan::whereBetween('tanggal', [$start, $start])->get();
                 $totalObs = Hujan::whereBetween('tanggal', [$start, $end])->sum('obs');
                 return view('lapbuls.resultsampelhujan')->with(compact('hujans', 'totalObs'));
         }
@@ -181,13 +181,26 @@ class DashboardController extends Controller
         $end = $request->input( 'end' );
 
         if($start != "" and $start < $end ){
-                $hujans = Hujan::whereBetween('tanggal', [$start, $end])->get();
-                $totalObs = Hujan::whereBetween('tanggal', [$start, $end])->sum('obs');
-                $hujanMax = Hujan::whereBetween('tanggal', [$start, $end])->max('obs');
-                $tanggalMax = Hujan::whereBetween('tanggal', [$start, $end])->where('obs','=',$hujanMax)->first();
-                $hujanMin = Hujan::whereBetween('tanggal', [$start, $end])->min('obs');
-                $hariHujan = Hujan::whereBetween('tanggal', [$start, $end])->where('obs','!=',0)->count();
-                return view('lapbuls.resultbahanbuletinhujan')->with(compact('hujans', 'totalObs', 'hujanMax', 'hujanMin', 'hariHujan', 'tanggalMax'));
+            $carbonDate = Carbon::parse($start);
+
+            $monthValue = $carbonDate->month;
+            $year = $carbonDate->year;
+            $hujans = Hujan::whereBetween('tanggal', [$start, $end])->get();
+            $totalObs = Hujan::whereBetween('tanggal', [$start, $end])->sum('obs');
+            $hujanMax = Hujan::selectRaw('MAX(CAST(Obs AS UNSIGNED)) AS max_obs')
+                        ->whereBetween('tanggal', [$start, $end])
+                        ->where('Obs', '!=', '9999')
+                        ->first();
+            $maxObs = $hujanMax->max_obs;
+            $tanggalMax = Hujan::whereBetween('tanggal', [$start, $end])
+                    ->whereRaw('CAST(obs AS UNSIGNED) = ?', [$maxObs])
+                    ->first();
+            $hariHujan = Hujan::where('obs', '!=', '0') // Compare as strings
+                            ->where('obs', '!=', '9999') // Compare as strings
+                            ->whereBetween('tanggal', [$start, $end]) // Adjust date range
+                            ->count();
+            return view('lapbuls.resultbahanbuletinhujan')->with(compact('hujans', 'totalObs', 'maxObs'
+                        , 'hariHujan', 'tanggalMax', 'year','monthValue'));
         }
     }
 
