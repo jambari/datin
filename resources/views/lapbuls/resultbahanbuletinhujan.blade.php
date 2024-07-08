@@ -105,8 +105,20 @@
                                 @if($monthValue==11) November @endif
                                 @if($monthValue==12) Desember @endif
                                  {{ $year ?? '-' }}</i>. Curah hujan tertinggi tercatat pada tanggal <i class="bg-danger" >
-                               {{Carbon\Carbon::parse($tanggalMax['tanggal'])->format('d F Y') }} 
-                                </i>
+                               {{Carbon\Carbon::parse($tanggalMax->tanggal)->format('d') ?? '-'}} 
+                                                               @if($monthValue==1) Januari @endif 
+                                @if($monthValue==2) Februari @endif
+                                @if($monthValue==3) Maret @endif
+                                @if($monthValue==4) April @endif
+                                @if($monthValue==5) Mei @endif
+                                @if($monthValue==6) Juni @endif
+                                @if($monthValue==7) Juli @endif
+                                @if($monthValue==8) Agustus @endif
+                                @if($monthValue==9) September @endif
+                                @if($monthValue==10) Oktober @endif
+                                @if($monthValue==11) November @endif
+                                @if($monthValue==12) Desember @endif
+                                {{ $year ?? '-' }}</i>
                                 mencapai <i class="bg-danger" >{{ $maxObs ?? '-' }}mm</i>  dengan kategori “<i class="bg-danger" >{{ $tanggalMax->kategori?? '-' }}</i>”.
                             </p>
                         </div>
