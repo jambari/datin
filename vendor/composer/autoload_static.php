@@ -592,6 +592,7 @@ class ComposerStaticInit63ac6f85bbe6a2aee234009a1bbea283
         'App\\Providers\\CsvAutoloadServiceProvider' => __DIR__ . '/../..' . '/app/Providers/CsvAutoloadServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Sunrise' => __DIR__ . '/../..' . '/app/Sunrise.php',
         'App\\Traits\\UploadTrait' => __DIR__ . '/../..' . '/app/Traits/UploadTrait.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Backpack\\Base\\BaseServiceProvider' => __DIR__ . '/..' . '/backpack/base/src/BaseServiceProvider.php',

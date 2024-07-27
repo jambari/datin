@@ -165,50 +165,26 @@
                         </div>
                    </div>
                    <div class="row" >
-                        <div class="col-md-12" >
-                            <div id="dailyRainChartLine" style="width: 100%; height: 500px;"></div>
-                            <script>
-                                var dailyRainLine = [
-                                    @foreach($hujans as $hujan)
-                                        { tanggal: {{ $loop->iteration }}, rain: @if($hujan['obs']==9999)0 @else {{ $hujan['obs'] }} @endif },
-                                    @endforeach
-                                ];
+                        <div class="col-md-6 col-md-offset-3" >
+                            <div id="dailyRainChartPie" style="width: 100%; height: 500px;"></div>
+                        <script>
+                            const xArray = [
+                                @foreach($rainRecords as $rain)
+                                    "{{ $rain->kategori }}",
+                                @endforeach
+                            ];
+                            const yArray = [
+                                @foreach($rainRecords as $rain)
+                                    {{ $rain->total_amount }},
+                                @endforeach
+                            ]; 
 
-                                const rainCategoriesLine = dailyRainLine.map(item => item.tanggal);
-                                const rainCountsLine = dailyRainLine.map(item => item.rain);
+                            const layout = {title:"Persentase Berdasarkan Kategori"};
 
-                                const rainTraceLine = {
-                                    x: rainCategoriesLine,
-                                    y: rainCountsLine,
-                                    mode: 'lines+markers', // Change to 'markers' for scatter plot type
-                                    type: 'scatter',
-                                    marker: {
-                                        size: 10, // Adjust marker size as needed
-                                        color: 'orange' // Marker color
-                                    },
-                                    line: {shape: 'linear'},
-                                    text: rainCountsLine.map(String),
-                                    textposition: 'top' // Display text on top of markers
-                                };
+                            const dataPie = [{labels:xArray, values:yArray, type:"pie"}];
 
-                                // Define month and year variables
-                                @php
-                                    $monthNamesLine = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-                                @endphp
-
-                                const monthNameLine = '{{ $monthNamesLine[$monthValue] ?? '' }}';
-                                const yearLine = '{{ $year ?? '' }}';
-
-                                // Define layout
-                                const rainLayoutScatterLine = {
-                                    title: `Curah Hujan Bulan ${monthNameLine} ${yearLine}`,
-                                    xaxis: { title: 'Tanggal' },
-                                    yaxis: { title: 'Curah Hujan (mm)' }
-                                };
-
-                                // Plot using Plotly.js
-                                Plotly.newPlot('dailyRainChartLine', [rainTraceLine], rainLayoutScatterLine);
-                            </script>
+                            Plotly.newPlot("dailyRainChartPie", dataPie, layout);
+                        </script>
                         </div>
                    </div>
                    <div class="row" >

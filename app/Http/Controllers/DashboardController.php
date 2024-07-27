@@ -199,8 +199,15 @@ class DashboardController extends Controller
                             ->where('obs', '!=', '9999') // Compare as strings
                             ->whereBetween('tanggal', [$start, $end]) // Adjust date range
                             ->count();
+
+            $rainRecords = Hujan::whereBetween('tanggal', [$start, $end])
+                ->where('obs', '!=', 9999)
+                ->selectRaw('kategori, SUM(obs) as total_amount')
+                ->groupBy('kategori')
+                ->get();
+                            
             return view('lapbuls.resultbahanbuletinhujan')->with(compact('hujans', 'totalObs', 'maxObs'
-                        , 'hariHujan', 'tanggalMax', 'year','monthValue'));
+                        , 'hariHujan', 'tanggalMax', 'year','monthValue', 'rainRecords'));
         }
     }
 

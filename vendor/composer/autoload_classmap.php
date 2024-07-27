@@ -152,6 +152,7 @@ return array(
     'App\\Providers\\CsvAutoloadServiceProvider' => $baseDir . '/app/Providers/CsvAutoloadServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\Sunrise' => $baseDir . '/app/Sunrise.php',
     'App\\Traits\\UploadTrait' => $baseDir . '/app/Traits/UploadTrait.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Backpack\\Base\\BaseServiceProvider' => $vendorDir . '/backpack/base/src/BaseServiceProvider.php',
