@@ -38,6 +38,7 @@ crossorigin=""/>
         background-color: rgba(0, 255, 0, 1); /* 50% opacity red background */
     }
 </style>
+@endsection
 @section('content')
 @include('guests.pesan')
 <br>

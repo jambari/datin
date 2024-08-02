@@ -30,6 +30,9 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
       <link href="https://fonts.googleapis.com/css?family=Cabin|Quicksand&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+crossorigin=""/>
 
       <style>
         body {
@@ -56,6 +59,25 @@
       .navbar-toggler-icon {
           background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(50,140,186,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
         }
+
+
+        .red-circle-icon {
+        border-radius: 50%;
+        border: 2px solid rgba(0, 0, 0, 0.7); /* Solid red border */
+        background-color: rgba(255, 0, 0, 1); /* 50% opacity red background */
+    }
+
+    .yellow-circle-icon {
+        border-radius: 50%;
+        border: 2px solid rgba(0, 0, 0, 0.7); /* Solid red border */
+        background-color: rgba(255, 255, 0, 1); /* 50% opacity red background */
+    }
+
+    .green-circle-icon {
+        border-radius: 50%;
+        border: 2px solid rgba(0, 0, 0, 0.7); /* Solid red border */
+        background-color: rgba(0, 255, 0, 1); /* 50% opacity red background */
+    }
       </style>
       @yield('after_style')
 <!--Start of Tawk.to Script-->

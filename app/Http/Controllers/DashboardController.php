@@ -270,7 +270,7 @@ class DashboardController extends Controller
                         ->where('terdampak', '<>', '')->get();
                 return view('lapbuls.resultbahanbuletingempa')->with(compact('start','end',
                 'totalevents','feltevents','sumber','Mbelowthree','Mthreefive','Mabovefive',
-                'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts'));
+                'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts','events'));
 
 
 

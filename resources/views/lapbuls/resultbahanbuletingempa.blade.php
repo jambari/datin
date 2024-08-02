@@ -204,6 +204,7 @@
                         <div id="myPlot" style="width:100%;max-width:700px"></div>
 
                         <script>
+                            
                         const xArray = ["M < 3.0", "3,0 ≤ M ˂ 5,0", "M ≥ 5,0"];
                         const yArray = [{{ $Mbelowthree }} , {{ $Mthreefive }}, {{ $Mabovefive }}];
 
@@ -399,8 +400,149 @@
                 </div>
              </div>
             <br>
+            <!-- This section for events map -->
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h4 class="bg-info" >Peta Gempa Bumi Periode  {{ $start }} s/d {{ $end }} </h4>
+                    <div id="eventsMap" style="width:100%; height: 600px; border-radius: 5px; "></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<style type="text/css" media="screen">
+
+  #basemaps-wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 500;
+    margin: 3px; 
+    margin-right: 10px;
+  }
+  #basemaps {
+  }
+
+</style>
+
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+    crossorigin=""></script>
+<script src="https://unpkg.com/esri-leaflet@2.2.3/dist/esri-leaflet.js"
+    integrity="sha512-YZ6b5bXRVwipfqul5krehD9qlbJzc6KOGXYsDjU9HHXW2gK57xmWl2gU6nAegiErAqFXhygKIsWPKbjLPXVb2g=="
+    crossorigin=""></script>
+<link rel="stylesheet" href="{{ asset('css') }}/L.Icon.Pulse.css" />
+<script src="{{ asset('js') }}/L.Icon.Pulse.js"></script>
+<script src="{{ asset('gjson') }}/patahan.js"></script>
+<script src="{{ asset('gjson') }}/indofaults.js"></script>
+<script src="{{ asset('gjson') }}/plates.js"></script>
+
+<script>
+var map = L.map('eventsMap').setView([-2.5104, 140.714], 6);
+
+L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}).addTo(map);
+
+var terasa = L.divIcon({
+    className: 'star-icon',
+    html: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="orange"><path d="M12 2l2.37 7.25h7.63l-6.18 4.5 2.37 7.25-6.18-4.5-6.18 4.5 2.37-7.25-6.18-4.5h7.63z" stroke="black" fill="orange"/></svg>',
+    iconSize: [30, 30],
+    iconAnchor: [12, 12],
+});
+
+
+var patahanStyle = {
+    "color": "#2C4B48",
+    "weight": 0.7,
+    "opacity": 0.9
+};
+
+//style for subduksi
+var subduksiStyle = {
+    "color": "#ffff00",
+    "weight": 1,
+    "opacity": 0.5,
+    "fillColor": 'transparent',
+};
+
+var indoFaultsStyle = {
+    "color": "#ff0000",
+    "weight": 1,
+    "opacity": 1,
+    "fillColor": '#E04D01',
+}
+
+function onEachFeature(feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties && feature.properties.PlateName) {
+        layer.bindPopup(feature.properties.PlateName);
+    }
+}
+
+//plot subduction
+L.geoJSON(indoFaults, {
+    style: indoFaultsStyle
+}).addTo(map);
+
+var redCircleIcon = L.divIcon({
+    className: 'red-circle-icon',
+    html: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="50" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" stroke="black" stroke-width="1" fill="red" /></svg>',
+    iconSize: [10, 10]
+});
+
+var greenCircleIcon = L.divIcon({
+    className: 'green-circle-icon',
+    html: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" stroke="black" stroke-width="1" fill="green" /></svg>',
+    iconSize: [10, 10]
+});
+
+var yellowCircleIcon = L.divIcon({
+    className: 'yellow-circle-icon',
+    html: '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" stroke="black" stroke-width="1" fill="yellow" /></svg>',
+    iconSize: [10, 10]
+});
+
+
+@if ($events->count() > 0)
+    @foreach ($events as $eq)
+        @if ($eq['magnitudo'] < 3)
+        marker = new L.marker([{{ $eq->lintang }}, {{ $eq->bujur }}], { icon: greenCircleIcon }).addTo(map)
+            .bindPopup(
+                `{{ $eq->tanggal }}
+                {{ $eq->origin }} UTC, 
+                {{ $eq->lintang }}
+                {{ $eq->bujur }} BT,  
+                M{{ $eq->magnitudo }}
+                Kdlmn {{ $eq->depth }} Km, 
+                {{ $eq->ket }}`);
+        @endif
+        @if ($eq['magnitudo'] >= 3 && $eq['magnitudo'] < 5)
+        marker = new L.marker([{{ $eq->lintang }}, {{ $eq->bujur }}], { icon: yellowCircleIcon }).addTo(map)
+            .bindPopup(
+                `{{ $eq->tanggal }}
+                {{ $eq->origin }} UTC, 
+                {{ $eq->lintang }}
+                {{ $eq->bujur }} BT,  
+                M{{ $eq->magnitudo }}
+                Kdlmn {{ $eq->depth }} Km, 
+                {{ $eq->ket }}`);
+        @endif
+        @if ($eq['magnitudo'] >= 5)
+        marker = new L.marker([{{ $eq->lintang }}, {{ $eq->bujur }}], { icon: redCircleIcon }).addTo(map)
+            .bindPopup(
+                `{{ $eq->tanggal }}
+                {{ $eq->origin }} UTC, 
+                {{ $eq->lintang }}
+                {{ $eq->bujur }} BT,  
+                M{{ $eq->magnitudo }}
+                Kdlmn {{ $eq->depth }} Km, 
+                {{ $eq->ket }}`);
+        @endif
+    @endforeach
+@endif
+</script>
 @endsection
 
