@@ -1,7 +1,7 @@
 @extends('backpack::layout')
 
 <style>
-    #logo-bmkg {
+    .logo-bmkg {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -11,6 +11,12 @@
     }
 
     #right-frame {
+        border: 1px solid black;
+        height: 600px;
+        margin-left: -1%;
+    }
+
+    #right-frame-two {
         border: 1px solid black;
         height: 600px;
         margin-left: -1%;
@@ -446,7 +452,7 @@
                                 <div id="eventsMap" style="width:100%; height: 600px; border-radius: 5px; margin-left: -10px;"></div>
                             </div>
                             <div class="col-md-3" id="right-frame" >
-                                <div id="logo-bmkg">
+                                <div class="logo-bmkg">
                                     <img src="{{ asset('images') }}/logo-bmkg.png " alt="" width="50" height="60" style="margin-top: 2%;margin-bottom: 3%;" >
                                     <center>
                                         <strong id="displayStation">STASIUN GEOFISIKA KELAS I JAYAPURA</strong>
@@ -471,9 +477,57 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                <h4 class="bg-info" >Peta Gempa Bumi Dirasakan Periode  {{ $start }} s/d {{ $end }} </h4>
-                <div id="feltsMap" style="width:100%; height: 600px; border-radius: 5px; "></div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 ">
+                        <h4>Peta Gempa Dirasakan</h4>
+                        <div class="form-group">
+                            <label for="userFeltsInput">Ketik Judul Peta</label>
+                            <input type="text" id="userFeltsInput" class="form-control" name="userFeltsInput" required placeholder="PETA GEMPABUMI DIRASAKAN DI PAPUA DAN SEKITARNYA  PERIODE JULI 2024" >
+                            <label for="stationName">Nama UPT</label>
+                            <input type="text" id="stationFeltsName" class="form-control" name="stationFeltsName" required placeholder="STASIUN GEOFISIKA JAYAPURA" >
+                        </div>
+                        <div class="row" style="border: 2px solid black; border-bottom: none;">
+                            <div class="col-md-12" >
+                            <center>
+                                <h2>
+                                    <strong id="displayFeltsText">PETA GEMPABUMI DIRASAKAN DI PAPUA DAN SEKITARNYA
+                                    PERIODE JULI 2024</strong>
+                                </h2>
+                                </center>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 2px solid black; padding: 1%;">
+                            <div class="col-md-9" >
+                                <div id="feltsMap" style="width:100%; height: 600px; border-radius: 5px; margin-left: -10px;"></div>
+                            </div>
+                            <div class="col-md-3" id="right-frame-two" >
+                                <div class="logo-bmkg">
+                                    <img src="{{ asset('images') }}/logo-bmkg.png " alt="" width="50" height="60" style="margin-top: 2%;margin-bottom: 3%;" >
+                                    <center>
+                                        <strong id="displayFeltsStation">STASIUN GEOFISIKA KELAS I JAYAPURA</strong>
+                                    </center>
+                                </div>
+                                <div id="legenda" >
+                                    <b>Legenda:</b>
+                                    <br>
+                                    <div style="display:flex; flex-direction: row; justify-content: space-around; " >
+                                    <p> <b>Gempa Dirasakan</b> </p>
+                                    <img src="{{ asset('images') }}/bintang.png" alt="" height="25" width="25" >
+                                    </div>
+                                </div>
+                                <div class="legenda" >
+                                    <img src="{{ asset('images') }}/kontur-slab.png" alt="" height="100" width="250" style="margin-top: 2%;" >
+                                </div>
+                                <div class="legenda" >
+                                    <img src="{{ asset('images') }}/batas_batas.png" alt="" height="100" width="250" style="margin-top: 2%;" >
+                                </div>
+                                <div class="legenda" >
+                                    <b>INSET</b>
+                                    <img src="{{ asset('images') }}/inset.png" alt="" height="100" width="250" style="margin-top: 2%;" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -511,7 +565,11 @@
 <script src="{{ asset('gjson') }}/garis_pantai_papua.js" ></script>
 
 <script>
-var map = L.map('eventsMap').setView([-2.5104, 137.714], 7);
+var map = L.map('eventsMap', {
+    zoomSnap: 0.1,    // Allows fractional zoom levels like 1.1, 1.2, etc.
+    zoomDelta: 0.1,   // Zooms by 0.1 units per scroll or control click
+    zoom: 1.2  
+}).setView([-2.5104, 137.714], 6);
 
 // L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
 //     maxZoom: 18,
@@ -628,7 +686,7 @@ L.Control.NorthArrow = L.Control.extend({
     return 'rgba(255,255,255,0.8)'; // Default to white if no category matches
     }
 
-    d3.json('{{ asset('gjson') }}/geojson/slab_Indonesia_usgs.json').then(function(data) {
+    d3.json('{{ asset('gjson') }}/slab_Indonesia_usgs.json').then(function(data) {
         L.geoJSON(data, {
             style: function(feature) {
                 return {
@@ -824,9 +882,13 @@ L.Control.NorthArrow = L.Control.extend({
     @endif
 
 
-    var feltsMap = L.map('feltsMap').setView([-2.5104, 136.714], 7);
+    var feltsMap = L.map('feltsMap',{
+        zoomSnap: 0.1,    // Allows fractional zoom levels like 1.1, 1.2, etc.
+        zoomDelta: 0.1,   // Zooms by 0.1 units per scroll or control click
+        zoom: 1.2  
+    }).setView([-2.5104, 136.714], 6);
     // ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
-     var layer = L.esri.basemapLayer('Topographic').addTo(feltsMap);
+     var layer = L.esri.basemapLayer('Oceans').addTo(feltsMap);
      var layerLabels;
 
   function setBasemap(basemap) {
@@ -865,6 +927,20 @@ L.Control.NorthArrow = L.Control.extend({
     style: indoFaultsStyle
      }).addTo(feltsMap);
 
+
+     L.geoJSON(BatasProvinsiPapua, {
+        style: BatasProvinsiPapuaStyle
+    }).addTo(feltsMap);
+
+    L.geoJSON(GarisPantaiPapua, {
+        style: garisPantaiPapuaStyle
+    }).addTo(feltsMap);
+
+
+    L.geoJSON(batasLautIndonesia, {
+        style: batasLautStyle
+    }).addTo(feltsMap);
+
      L.Control.NorthArrow = L.Control.extend({
     onAdd: function(feltsMap) {
         var img = L.DomUtil.create('img');
@@ -882,6 +958,43 @@ L.Control.NorthArrow = L.Control.extend({
     }
 
     L.control.northArrow({ position: 'topright' }).addTo(feltsMap);
+
+
+    const feltsColorCategories = [
+        { range: [0, 20], color: 'rgb(245,0,0)' },   // Light green
+        { range: [20, 40], color: 'rgb(250,75,0)' }, // Green
+        { range: [40, 60], color: 'rgb(252,118,0)' }, // Darker green
+        { range: [60, 80], color: 'rgb(253,160,0)' }, // Olive
+        { range: [80, 100], color: 'rgb(250,160,0)' }, // Orange
+        { range: [100, 120], color: 'rgb(245,245,0)' }, // Dark orange
+        { range: [120, 200], color: 'rgb(210,247,0)' },  // Red-orange
+        { range: [200, 300], color: 'rgb(169,247,0)' },   // Red
+        { range: [300, 400], color: 'rgb(128,247,0)' },   // Dark red
+        { range: [400, 500], color: 'rgb(86,247,0)' },  // Deep red
+        { range: [500, 660], color: 'rgb(0,245,0)' }  // Maroon
+    ];
+
+    function getColor(value) {
+    for (let i = 0; i < feltsColorCategories.length; i++) {
+        let category = feltsColorCategories[i];
+        if (value >= category.range[0] && value <= category.range[1]) {
+            return category.color;
+        }
+    }
+    return 'rgba(255,255,255,0.8)'; // Default to white if no category matches
+    }
+
+    d3.json('{{ asset('gjson') }}/slab_Indonesia_usgs.json').then(function(data) {
+        L.geoJSON(data, {
+            style: function(feature) {
+                return {
+                    color: getColor(feature.properties.DEPTH), // Match the value to a color
+                    weight: 2,
+                    fillOpacity: 0.5 // You can adjust this opacity level as needed
+                };
+            }
+        }).addTo(feltsMap);
+    });
 
 
     @foreach($felts as $felt)
@@ -916,6 +1029,27 @@ L.Control.NorthArrow = L.Control.extend({
         stationField.addEventListener('input', function() {
             // Update the display element with the current value of the input field
             displayStation.textContent = stationField.value;
+        });
+
+
+        // Get the input field and the display element
+        var inputFeltsField = document.getElementById('userFeltsInput');
+        var displayFeltsElement = document.getElementById('displayFeltsText');
+
+        // Add an event listener to detect input changes
+        inputFeltsField.addEventListener('input', function() {
+            // Update the display element with the current value of the input field
+            displayFeltsElement.textContent = inputFeltsField.value;
+        });
+
+        // Get the input field and the display element
+        var stationFeltsField = document.getElementById('stationFeltsName');
+        var displayFeltsStation = document.getElementById('displayFeltsStation');
+
+        // Add an event listener to detect input changes
+        stationFeltsField.addEventListener('input', function() {
+            // Update the display element with the current value of the input field
+            displayFeltsStation.textContent = stationFeltsField.value;
         });
 
 
