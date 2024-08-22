@@ -94,6 +94,7 @@ Route::group([
 	Route::get('gempanabire/{id}/infonabire', 'GempanabireCrudController@infogempa');
 	Route::get('gempanabire/{id}/nabire/template/balai', 'GempanabireCrudController@nabiretemplatebalai');
     Route::get('/gempanabire/{id}/injectnabire', 'GempanabireCrudController@inject'); // inject hasil analisis nabire
+	Route::get('gempanabire/{id}/press', 'GempanabireCrudController@press');
 
 
 	//Gempa Sorong
@@ -101,6 +102,7 @@ Route::group([
 	Route::get('gempasorong/{id}/infosorong', 'GempasorongCrudController@infosorong');
 	Route::get('/gempasorong/{id}/injectsorong', 'GempasorongCrudController@inject'); 
 	Route::get('gempasorong/{id}/sorong/template/balai', 'GempasorongCrudController@sorongtemplatebalai');
+	Route::get('gempasorong/{id}/press', 'GempasorongCrudController@press');
 
 	CRUD::resource('petir', 'PetirCrudController');
 

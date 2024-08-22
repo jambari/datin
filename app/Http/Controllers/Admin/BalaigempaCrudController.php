@@ -134,12 +134,15 @@ class BalaiGempaCrudController extends CrudController
         $this->crud->enableDetailsRow();
         $this->crud->allowAccess('details_row');
         $this->crud->allowAccess('sms');
+        $this->crud->allowAccess('press');
         $this->crud->allowAccess('kirimsdgpgr');
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
         //$this->crud->addButtonFromView('line', 'press' , 'press', 'end');
         $this->crud->addButtonFromView('line', 'sms' , 'sms', 'beginning');
+        $this->crud->addButtonFromView('line', 'press' , 'press', 'beginning');
         $this->crud->addButtonFromView('line', 'kirimsdgpgr' , 'kirimsdgpgr', 'end');
+
         // if (backpack_auth()->user()->name != 'balai5') {
 
         //     $this->crud->denyAccess('kirimsdgpgr'); // remove a column from the stack
@@ -313,7 +316,7 @@ class BalaiGempaCrudController extends CrudController
         return view('gempa.detail_gempa', compact('event'));
     }
     //recent eq statistik
-    public function press($id)
+    public function press($id) //rilis media
     {
         $event = Balaigempa::find($id);
         //Penanggalan
@@ -347,6 +350,12 @@ class BalaiGempaCrudController extends CrudController
         $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
         $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
         $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
+        $jamnya = (int)date("H", strtotime($tanggaljam)); //ambil angka jam dalam sebuah minggu
+        $selisih = ($jamnya+ 9) - 24;
+        if ($selisih >=0) {
+           $tanggalbaru = date('d-m-Y', strtotime($tanggaljam . ' +1 day'));
+           $tanggalbarusms = date('d-m-y', strtotime($tanggaljam . ' +1 day'));
+        }
         $hari = $days[$hari];
         $pecahkan = explode('-',$tanggalbaru);
         $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
@@ -361,15 +370,24 @@ class BalaiGempaCrudController extends CrudController
         $wilayah = $event['ket'];
         $ket = explode(" ", $wilayah);
         $wilayah = $ket[3];
+        $originalString = $wilayah;
+        $wilayah = str_replace("-", ", ", $wilayah);
+        // Split the string at the hyphen
+        $parts = explode("-", $originalString);
+        // Take the first part (before the hyphen)
+        $firstWord = $parts[0];
+        // Capitalize the first letter and make the rest lowercase
+        $formattedWord = ucfirst(strtolower($firstWord));
+        $wilayah1 = 
         $arah = $ket[2];
         $jarak = $ket[0];
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
         } else {
-            $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
+            $lat = $lat[1].$lat[2].'LU';
         }
-        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah','wilayah1', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
+        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah','formattedWord', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
     }
 
 

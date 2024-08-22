@@ -35,6 +35,38 @@
                         <label for="akhir">End</label>
                         <input type="date" class="form-control" name="end" required>
                     </div>
+                    <table class="table table-responsive">
+                        <thead>
+                            <th>Min Latitude</th>
+                            <th>Max Latitude</th>
+                            <th>Min Longitude</th>
+                            <th>Max Longitude</th>
+                            <th>Min Depth</th>
+                            <th>Max Depth</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="number" class="form-control" name="minlat" value="-8" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="maxlat" value="2" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="minlon" value="128" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="maxlon" value="143" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="mindepth" value="0" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="maxdepth" value="800" required>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <div class="form-group">
                         <label for="sumber">Sumber</label>
                         <select name="sumber" id="sumber" class="form-control">Sumber

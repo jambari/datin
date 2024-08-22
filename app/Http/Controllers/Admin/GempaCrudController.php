@@ -165,7 +165,6 @@ class GempaCrudController extends CrudController
             $this->crud->denyAccess('create'); // remove a column from the stack
             $this->crud->denyAccess('update'); // remove a column from the stack
             $this->crud->denyAccess('delete'); // remove a column from the stack
-            $this->crud->denyAccess('press'); // remove a column from the stack
         } 
 
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
@@ -473,6 +472,15 @@ class GempaCrudController extends CrudController
         $wilayah = $event['ket'];
         $ket = explode(" ", $wilayah);
         $wilayah = $ket[3];
+        $originalString = $wilayah;
+        $wilayah = str_replace("-", ", ", $wilayah);
+        // Split the string at the hyphen
+        $parts = explode("-", $originalString);
+        // Take the first part (before the hyphen)
+        $firstWord = $parts[0];
+        // Capitalize the first letter and make the rest lowercase
+        $formattedWord = ucfirst(strtolower($firstWord));
+        $wilayah1 = 
         $arah = $ket[2];
         $jarak = $ket[0];
         $lat = str_split($lat); //break latitude to an array
@@ -481,7 +489,7 @@ class GempaCrudController extends CrudController
         } else {
             $lat = $lat[1].$lat[2].'LU';
         }
-        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
+        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah','formattedWord', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
     }
 
     public function kirimsdgjay($id)

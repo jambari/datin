@@ -16,65 +16,101 @@
                 </div>
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-12">
-                        	<div class="alert alert-success alert-dismissible">
+						<div class="col-md-6" >
+						<div class="alert alert-warning alert-dismissible">
                         		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							  	Hai Pengamat, Ini adalah Siaran Press otomatis, Tugas Pengamat tentu sebagai kontrol kualitas, <strong>Anda kami sarankan untuk memperhatikan kembali parameter gempa yang diwarnai dan menyunting narasi untuk hasil lebih baik di program pengolah kata yang anda suka !</strong>
+							  	Hai Pengamat, Ini adalah Rilis Media otomatis, Tugas Pengamat tentu sebagai kontrol kualitas, <strong>Anda kami sarankan untuk memperhatikan kembali parameter gempa yang diwarnai dan menyunting narasi untuk hasil lebih baik di program pengolah kata yang anda suka !</strong>
 							</div>
                         	<div class="alert alert-success alert-dismissible text-info">
                         		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 							  	<span>Tanggal: {{ $event->tanggal or '-' }}</span> | <span>Origin: {{ $event->origin or '-' }} UTC</span> | <span>Lintang: {{ $event->lintang or '-' }}</span> | <span>Bujur: {{ $event->bujur or '-' }}</span> | <span>Depth: {{ $event->depth or '-' }} Km</span> | <span>Jarak: {{ $event->ket or '-' }}</span>
 							</div>
+							<h1 class="text text-center" >Sunting Narasi</h1>
+							<div class="form-group">
+                            	<label for="userInput">Judul</label>
+                            	<input type="text" id="judulText" class="form-control" value="GEMPA BUMI TEKTONIK M{{ $mag }} DIRASAKAN DI {{ $wilayah }}" >
+                        	</div>
+							<div class="form-group">
+								<label for="userFeltsInput">*Kejadian dan Parameter Gempa Bumi*</label>
+								<textarea class="form-control" rows="3" id="parameterText" >
+								Hari {{ $hari }}, {{ $tanggalindo }} pukul {{ $jamwit }} WIT wilayah {{ $formattedWord }} diguncang gempa bumi tektonik. 
+									Hasil analisis BMKG menunjukkan gempa bumi memiliki parameter kekuatan M{{ $mag }}. 
+									Episenter gempa bumi terletak pada koordinat {{ $lat }} dan {{ $lon }}, pada jarak {{ $jarak }} Km {{ $arah }} {{ $wilayah }}. 
+									Berlokasi di darat dengan kedalaman {{ $depth }}Km.
+								</textarea>
+								<label for="stationName">*Jenis dan Mekanisme Gempa Bumi:*</label>
+								<textarea class="form-control" rows="" id="mekanismeText" >
+								Dengan memperhatikan lokasi episenter dan kedalaman hiposenternya, gempa bumi yang terjadi merupakan jenis gempabumi dangkal dengan mekanisme geser (strike slip)akibat aktivitas Sesar Lokal.
+								</textarea>
+								<label for="stationName">*Dampak Gempa Bumi:*</label>
+								<textarea class="form-control" rows="" id="terdampakText">
+								Berdasarkan informasi dari masyarakat, gempa bumi {{ $event->terdampak or 'Isi dulu kolom terdampak' }} *(getaran dirasakan nyata dalam rumah, terasa getaran seakan-akan ada truk berlalu)*. 
+									Hingga saat ini belum ada laporan dampak kerusakan yang ditimbulkan akibat gempabumi tersebut.
+								</textarea>
+								<label for="stationName">*Gempa bumi susulan*</label>
+								<textarea class="form-control" rows="" id="susulanText" >
+								Hingga pukul {{ $jamsusulan }} WIT 
+									hasil monitoring BMKG belum menunjukan adanya aktivitas gempa bumi susulan (aftershock)
+								</textarea>
+								<label for="stationName">*Rekomendasi*</label>
+								<textarea class="form-control" rows="" id="rekomendasiText" >
+								Masyarakat diimbau agar tetap tenang dan tidak terpengaruh oleh isu yang tidak dapat 
+									dipertanggungjawabkan kebenarannya, menghindar dari bangunan yang retak atau rusak diakibatkan oleh gempa. 
+									Periksa dan pastikan bangunan tempat tinggal anda cukup tahan gempa, ataupun  tidak ada kerusakan akibat 
+									getaran gempa yang membahayakan kestabilan bangunan sebelum anda kembali kedalam rumah.
+								</textarea>
+							</div>
+							<div class="form-group">
+                            	<label for="userInput">Judul</label>
+                            	<input type="text" id="kabalText" class="form-control" value="*Yustus Rumakiek, S.Si*" >
+                        	</div>
+						</div>
+                        <div class="col-md-6">
 
-								<h1 class="text text-center" >GEMPABUMI M <strong class="text text-danger">{{ $mag }}</strong>  MENGUNCANG WILAYAH <strong class="text text-danger" >{{ $wilayah }}</strong></h1>
+								<h1 class="text text-center" >HASIL</h1>
+								<h3 class="text text-center" id="judulDisplay">GEMPA BUMI TEKTONIK <strong class="text text-danger">M{{ $mag }}</strong>  DIRASAKAN DI <strong class="text text-danger" >{{ $wilayah }}</strong></h3>
 								
 								<ul>
-									<li class="text text-justify" >
-										Hari <strong class="text text-danger">{{ $hari }}</strong>, <strong class="text text-danger">{{ $tanggalindo }}</strong>, terjadi gempa tektonik di wilayah <strong class="text text-danger" >{{ $wilayah }}</strong>.
-
-									</li>
-									<li class="text text-justify">
-										Hasil analisis BMKG menunjukkan bahwa gempabumi ini terjadi pada pukul <strong class="text text-danger">{{ $jamwit }} </strong>WIT dengan Magnitudo M=<strong class="text text-danger">{{ $mag }} </strong>SR Episenter terletak pada koordinat <strong class="text text-danger">{{ $lat }} – {{ $lon }} </strong>tepatnya di darat pada jarak <strong class="text text-danger">{{ $jarak }}</strong> Km arah <strong class="text text-danger">{{ $arah }} {{ $wilayah }}</strong> dengan kedalaman <strong class="text text-danger">{{ $depth }}</strong> Km.
-
-									</li>
-									<li class="text text-justify">
-										Dampak gempa berupa guncangan yang dirasakan di <strong class="text text-danger">{{ $event->terdampak or 'Isi dulu kolom terdampak' }}</strong>.
-									</li>
-									<li class="text text-justify">
-										Ditinjau dari kedalaman hiposenter, gempabumi ini merupakan gempabumi <strong class="text text-danger">
-											@if ($depth < 70)
-											dangkal
-											@elseif ($depth >= 71 and $depth <= 150)
-											menengah
-											@else
-											dalam
-											@endif
-										</strong> akibat aktivitas sesar lokal yang melintas di wilayah <strong class="text text-danger" >{{ $wilayah }}</strong>. Hasil pemodelan menunjukkan bahwa gempabumi tidak berpotensi tsunami.
-
-									</li>
-									<li class="text text-justify">
-										Hingga pukul <strong class="text text-danger">{{ $jamsusulan }}</strong> WIT, hasil monitoring BMKG belum menunjukkan adanya aktivitas gempabumi susulan lain (after shock).  Kepada masyarakat dihimbau agar tetap tenang dan tidak terpengaruh oleh isu yang tidak dapat dipertanggungjawabkan kebenarannya.*
-									</li>
-									<li class="text text-justify">
-										Pastikan informasi resmi hanya bersumber dari BMKG yang disebarkan melalui kanal komunikasi resmi yang telah terverifikasi (Instagram/Twitter @infoBMKG), website (<a href="https://www.bmkg.go.id atau inatews.bmkg.go.id">https://www.bmkg.go.id atau inatews.bmkg.go.id</a>), atau melalui Mobile Apps (iOS dan Android @infobmkg).
-									</li>
-								</ul>
-								@if (backpack_auth()->user()->name == 'balai5')
+									<b>*Kejadian dan Parameter Gempa Bumi*</b>
+									<p id="parameterDisplay" >
+									Hari <strong class="text text-danger">{{ $hari }}</strong>, <strong class="text text-danger">{{ $tanggalindo }}</strong> pukul <strong class="text text-danger">{{ $jamwit }} </strong>WIT wilayah <strong class="text text-danger" >{{ $formattedWord }}</strong> diguncang gempa bumi tektonik. 
+									Hasil analisis BMKG menunjukkan gempa bumi memiliki parameter kekuatan <strong class="text text-danger" >M{{ $mag }}</strong>. 
+									Episenter gempa bumi terletak pada koordinat {{ $lat }} dan {{ $lon }}, pada jarak <strong class="text text-danger">{{ $jarak }}</strong> Km <strong class="text text-danger">{{ $arah }} {{ $wilayah }}</strong>. 
+									Berlokasi di <strong class="text text-danger" >darat</strong> dengan kedalaman <strong class="text text-danger">{{ $depth }}</strong>Km.
+									</p>
+									<b>*Jenis dan Mekanisme Gempa Bumi:*</b>
+									<p id="mekanismeDisplay" >
+									Dengan memperhatikan lokasi episenter dan kedalaman hiposenternya, 
+									gempa bumi yang terjadi merupakan jenis gempabumi dangkal dengan mekanisme <strong id="mekanisme" class="text text-danger" >geser (<i>strike slip</i>)</strong> akibat aktivitas <strong id="namaSesar" class="text text-danger" >Sesar Lokal</strong>.
+									</p>
+									<b>*Dampak Gempa Bumi:*</b>
+									<p id="terdampakDisplay" >
+									Berdasarkan informasi dari masyarakat, gempa bumi <strong id="terdampak" class="text text-danger">{{ $event->terdampak or 'Isi dulu kolom terdampak' }} *(getaran dirasakan nyata dalam rumah, terasa getaran seakan-akan ada truk berlalu)*. Hingga saat ini belum ada laporan dampak kerusakan yang ditimbulkan akibat gempabumi tersebut</strong>. 
+									</p>
+									<b>*Gempa Bumi Susulan:*</b>
+									<p id="susulanDisplay" >
+									Hingga pukul <strong class="text text-danger">{{ $jamsusulan }}</strong> WIT 
+									hasil monitoring BMKG belum menunjukan adanya aktivitas gempa bumi susulan (<i>aftershock</i>).
+									</p>
+									<b>*Rekomendasi*</b>
+									<p id="rekomendasiDisplay" >
+									Masyarakat diimbau agar tetap tenang dan tidak terpengaruh oleh isu yang tidak dapat 
+									dipertanggungjawabkan kebenarannya, menghindar dari bangunan yang retak atau rusak diakibatkan oleh gempa. 
+									Periksa dan pastikan bangunan tempat tinggal anda cukup tahan gempa, ataupun  tidak ada kerusakan akibat 
+									getaran gempa yang membahayakan kestabilan bangunan sebelum anda kembali kedalam rumah.
+									</p>
+									<p>
+									Pastikan informasi resmi hanya bersumber dari BMKG yang disebarkan melalui kanal komunikasi 
+									resmi yang telah terverifikasi (Instagram/Twitter @infoBMKG), website (https://www.bmkg.go.id atau inatews.bmkg.go.id), 
+									telegram channel (https://t.me/InaTEWS_BMKG) atau melalui Mobile Apps (IOS dan Android): wrs-bmkg atau infobmkg.
+									</p>
 								<p>
 									Jayapura, <strong class="text text-danger">{{ $tanggalindo }}</strong> 
 								</p>
-								<p>Kepala Balai Besar Wilayah V Jayapura</p>
-								<p>
-									Petrus Demon Sili, S.IP, M.Si
+								<p>*Kepala Balai Besar MKG Wilayah V*</p>
+								<p id="kabalDisplay" >
+									*Yustus Rumakiek, S.Si*
 								</p>
-								<p>NIP 19630307 198503 1 002</p>
-								@else 
-								<p>
-									Jayapura, <strong class="text text-danger">{{ $tanggalindo }}</strong> 
-								</p>
-								<p>Kepala Stasiun Geofisika Klas I Angkasapura - Jayapura</p>
-								<p>MARGIONO, S.Si</p>
-								@endif
                             </div>
                         </div>
                     </div>
@@ -82,4 +118,75 @@
             </div>
         </div>
     </div>
+	<script>
+	    // Get the input field and the display element
+		var parameterField = document.getElementById('parameterText');
+        var parameterDisplay = document.getElementById('parameterDisplay');
+
+        // Add an event listener to detect input changes
+        parameterField.addEventListener('input', function() {
+        // Update the display element with the current value of the input field
+        parameterDisplay.textContent = parameterField.value;
+        });
+
+	    // Get the input field and the display element
+		var judulField = document.getElementById('judulText');
+        var judulDisplay = document.getElementById('judulDisplay');
+
+        // Add an event listener to detect input changes
+        judulField.addEventListener('input', function() {
+        // Update the display element with the current value of the input field
+        judulDisplay.textContent = judulField.value;
+        });
+
+	    // Get the input field and the display element
+		var mekanismeField = document.getElementById('mekanismeText');
+        var mekanismeDisplay = document.getElementById('mekanismeDisplay');
+
+        // Add an event listener to detect input changes
+        mekanismeField.addEventListener('input', function() {
+        // Update the display element with the current value of the input field
+        mekanismeDisplay.textContent = mekanismeField.value;
+        });
+
+	    // Get the input field and the display element
+		var terdampakField = document.getElementById('terdampakText');
+        var terdampakDisplay = document.getElementById('terdampakDisplay');
+
+        // Add an event listener to detect input changes
+        terdampakField.addEventListener('input', function() {
+        // Update the display element with the current value of the input field
+        terdampakDisplay.textContent = terdampakField.value;
+        });
+
+	    // Get the input field and the display element
+		var susulanField = document.getElementById('susulanText');
+        var susulanDisplay = document.getElementById('susulanDisplay');
+
+        // Add an event listener to detect input changes
+        susulanField.addEventListener('input', function() {
+        // Update the display element with the current value of the input field
+        susulanDisplay.textContent = susulanField.value;
+        });
+
+	    // Get the input field and the display element
+		var rekomendasiField = document.getElementById('rekomendasiText');
+        var rekomendasiDisplay = document.getElementById('rekomendasiDisplay');
+
+        // Add an event listener to detect input changes
+        rekomendasiField.addEventListener('input', function() {
+        // Update the display element with the current value of the input field
+        rekomendasiDisplay.textContent = rekomendasiField.value;
+        });
+
+	    // Get the input field and the display element
+		var kabalField = document.getElementById('kabalText');
+        var kabalDisplay = document.getElementById('kabalDisplay');
+
+        // Add an event listener to detect input changes
+        kabalField.addEventListener('input', function() {
+        // Update the display element with the current value of the input field
+        kabalDisplay.textContent = kabalField.value;
+        });
+	</script>
 @endsection

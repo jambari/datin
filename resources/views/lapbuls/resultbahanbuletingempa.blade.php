@@ -1,5 +1,5 @@
 @extends('backpack::layout')
-
+<script src="https://unpkg.com/leaflet-control-scale/dist/leaflet-control-scale.js"></script>
 <style>
     .logo-bmkg {
         display: flex;
@@ -21,6 +21,7 @@
         height: 600px;
         margin-left: -1%;
     }
+
 </style>
 
 @section('header')
@@ -58,6 +59,38 @@
                         <label for="akhir">End</label>
                         <input type="date" class="form-control" name="end" required>
                     </div>
+                    <table class="table table-responsive">
+                        <thead>
+                            <th>Min Latitude</th>
+                            <th>Max Latitude</th>
+                            <th>Min Longitude</th>
+                            <th>Max Longitude</th>
+                            <th>Min Depth</th>
+                            <th>Max Depth</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="number" class="form-control" name="minlat" value="-8" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="maxlat" value="2" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="minlon" value="128" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="maxlon" value="143" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="mindepth" value="0" required>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" name="maxdepth" value="800" required>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <div class="form-group">
                         <label for="sumber">Sumber</label>
                         <select name="sumber" id="sumber" class="form-control">Sumber
@@ -555,6 +588,7 @@
 <script src="https://unpkg.com/esri-leaflet@2.2.3/dist/esri-leaflet.js"
     integrity="sha512-YZ6b5bXRVwipfqul5krehD9qlbJzc6KOGXYsDjU9HHXW2gK57xmWl2gU6nAegiErAqFXhygKIsWPKbjLPXVb2g=="
     crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-scale/dist/leaflet-control-scale.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
 <link rel="stylesheet" href="{{ asset('css') }}/L.Icon.Pulse.css" />
 <script src="{{ asset('js') }}/L.Icon.Pulse.js"></script>
@@ -710,6 +744,8 @@ L.Control.NorthArrow = L.Control.extend({
     L.geoJSON(GarisPantaiPapua, {
         style: garisPantaiPapuaStyle
     }).addTo(map);
+
+    L.control.scale().addTo(map);
 
 
     L.geoJSON(batasLautIndonesia, {
@@ -958,6 +994,8 @@ L.Control.NorthArrow = L.Control.extend({
     }
 
     L.control.northArrow({ position: 'topright' }).addTo(feltsMap);
+
+    L.control.scale().addTo(feltsMap);
 
 
     const feltsColorCategories = [

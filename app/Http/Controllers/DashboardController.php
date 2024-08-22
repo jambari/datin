@@ -219,33 +219,74 @@ class DashboardController extends Controller
         $start = $request->input( 'start' );
         $end = $request->input( 'end' );
         $sumber = $request->input('sumber');
+        $minlat = (float) $request->input('minlat');
+        $maxlat = (float) $request->input('maxlat');
+        $minlon = (float) $request->input('minlon');
+        $maxlon = (float) $request->input('maxlon');
+        $mindepth = (float) $request->input('mindepth');
+        $maxdepth = (float) $request->input('maxdepth');
 
         if($start != "" and $start < $end ){
             if($sumber=='1'){
                 $sumber = 'Stasiun Geofisika Jayapura';
-                $events = Gempa::whereBetween('tanggal', [$start, $end])->get();
+                $events = Gempa::whereBetween('tanggal', [$start, $end])
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])
+                ->get();
                 $totalevents = $events->count();
-                $feltevents = Gempa::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
+                $feltevents = Gempa::whereBetween('tanggal', [$start, $end])
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])
+                ->whereNotNull('terdampak')
                         ->where('terdampak', '<>', '')->count();
 
                 $Mbelowthree = Gempa::where('magnitudo','<', 3)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->count();
                 $Mthreefive = Gempa::whereBetween('magnitudo',[3, 4.9])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->count();
                 $Mabovefive = Gempa::where('magnitudo','>=', 5)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->count();
 
                 //depth\
                 $Dshallow = Gempa::where('depth','<', 60)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->count();
                 $Dmediate = Gempa::whereBetween('depth',[60, 249])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->count();
                 $Dverydeep = Gempa::where('depth','>=', 300)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->count();
 
 
                 //Jumlah gempabumi per hari berdasarkan magnitudo
                 $dailyevents = Gempa::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
                              ->selectRaw('tanggal, 
                                  SUM(CASE WHEN magnitudo < 3 THEN 1 ELSE 0 END) as mag_below_3,
                                  SUM(CASE WHEN magnitudo >= 3 AND magnitudo < 5 THEN 1 ELSE 0 END) as mag_3_to_5,
@@ -261,13 +302,20 @@ class DashboardController extends Controller
 
                              // Hitung per hari
                 $eventCounts = Gempa::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
                             ->selectRaw('tanggal, COUNT(*) as event_count')
                             ->groupBy('tanggal')
                             ->orderBy('tanggal')
                             ->get();
                
                 $felts = Gempa::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
-                        ->where('terdampak', '<>', '')->get();
+                        ->where('terdampak', '<>', '')
+                        ->whereBetween('lintang', [$minlat, $maxlat])
+                        ->whereBetween('bujur', [$minlon, $maxlon])
+                        ->whereBetween('depth', [$mindepth, $maxdepth])
+                        ->get();
                 return view('lapbuls.resultbahanbuletingempa')->with(compact('start','end',
                 'totalevents','feltevents','sumber','Mbelowthree','Mthreefive','Mabovefive',
                 'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts','events'));
@@ -276,27 +324,56 @@ class DashboardController extends Controller
 
             } elseif($sumber=='2'){
                 $sumber = 'PGR 5';
-                $events = Balaigempa::whereBetween('tanggal', [$start, $end])->get();
+                $events = Balaigempa::whereBetween('tanggal', [$start, $end])
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])->get();
                 $totalevents = $events->count();
-                $feltevents = Balaigempa::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
-                        ->where('terdampak', '<>', '')->count();
+                $feltevents = Balaigempa::whereBetween('tanggal', [$start, $end])
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])
+                ->whereNotNull('terdampak')
+                ->where('terdampak', '<>', '')->count();
 
                 $Mbelowthree = Balaigempa::where('magnitudo','<', 3)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->count();
                 $Mthreefive = Balaigempa::whereBetween('magnitudo',[3, 4.9])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Mabovefive = Balaigempa::where('magnitudo','>=', 5)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
 
                 //depth\
                 $Dshallow = Balaigempa::where('depth','<', 60)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Dmediate = Balaigempa::whereBetween('depth',[60, 249])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Dverydeep = Balaigempa::where('depth','>=', 300)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
 
                 $dailyevents = Balaigempa::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
                              ->selectRaw('tanggal, 
                                  SUM(CASE WHEN magnitudo < 3 THEN 1 ELSE 0 END) as mag_below_3,
                                  SUM(CASE WHEN magnitudo >= 3 AND magnitudo < 5 THEN 1 ELSE 0 END) as mag_3_to_5,
@@ -311,38 +388,73 @@ class DashboardController extends Controller
                              ->get();
 
                 $eventCounts = Balaigempa::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
                             ->selectRaw('tanggal, COUNT(*) as event_count')
                             ->groupBy('tanggal')
                             ->orderBy('tanggal')
                             ->get();
                 $felts = Balaigempa::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
-                        ->where('terdampak', '<>', '')->get();
+                        ->where('terdampak', '<>', '')
+                        ->whereBetween('lintang', [$minlat, $maxlat])
+                        ->whereBetween('bujur', [$minlon, $maxlon])
+                        ->whereBetween('depth', [$mindepth, $maxdepth])
+                        ->get();
                 return view('lapbuls.resultbahanbuletingempa')->with(compact('start','end',
                 'totalevents','feltevents','sumber','Mbelowthree','Mthreefive','Mabovefive',
                 'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts','events'));
             } elseif($sumber=='3') {
                 $sumber = 'Stasiun Geofisika Sorong';
-                $events = Gempasorong::whereBetween('tanggal', [$start, $end])->get();
+                $events = Gempasorong::whereBetween('tanggal', [$start, $end])
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])->get();
                 $totalevents = $events->count();
-                $feltevents = Gempasorong::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
-                        ->where('terdampak', '<>', '')->count();
+                $feltevents = Gempasorong::whereBetween('tanggal', [$start, $end]
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])
+                )->whereNotNull('terdampak')
+                ->where('terdampak', '<>', '')->count();
 
                 $Mbelowthree = Gempasorong::where('magnitudo','<', 3)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Mthreefive = Gempasorong::whereBetween('magnitudo',[3, 4.9])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Mabovefive = Gempasorong::where('magnitudo','>=', 5)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
 
                 //depth\
                 $Dshallow = Gempasorong::where('depth','<', 60)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Dmediate = Gempasorong::whereBetween('depth',[60, 249])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Dverydeep = Gempasorong::where('depth','>=', 300)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
 
                 $dailyevents = Gempasorong::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
                              ->selectRaw('tanggal, 
                                  SUM(CASE WHEN magnitudo < 3 THEN 1 ELSE 0 END) as mag_below_3,
                                  SUM(CASE WHEN magnitudo >= 3 AND magnitudo < 5 THEN 1 ELSE 0 END) as mag_3_to_5,
@@ -356,39 +468,76 @@ class DashboardController extends Controller
                              ->orderBy('tanggal')
                              ->get();
 
-                $eventCounts = Gempasorong::whereBetween('tanggal', [$start, $end])
+                $eventCounts = Gempasorong::whereBetween('tanggal', [$start, $end]
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth]))
                             ->selectRaw('tanggal, COUNT(*) as event_count')
                             ->groupBy('tanggal')
                             ->orderBy('tanggal')
                             ->get();
-                $felts = Gempasorong::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
-                        ->where('terdampak', '<>', '')->get();
+                $felts = Gempasorong::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->whereNotNull('terdampak')
+                            ->where('terdampak', '<>', '')->get();
                 return view('lapbuls.resultbahanbuletingempa')->with(compact('start','end',
                 'totalevents','feltevents','sumber','Mbelowthree','Mthreefive','Mabovefive',
                 'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts','events'));                
             } elseif($sumber=='4'){
                 $sumber = 'Stasiun Geofisika Nabire';
-                $events = Gempanabire::whereBetween('tanggal', [$start, $end])->get();
+                $events = Gempanabire::whereBetween('tanggal', [$start, $end])
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])
+                ->get();
                 $totalevents = $events->count();
-                $feltevents = Gempanabire::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
+                $feltevents = Gempanabire::whereBetween('tanggal', [$start, $end])
+                        ->whereBetween('lintang', [$minlat, $maxlat])
+                        ->whereBetween('bujur', [$minlon, $maxlon])
+                        ->whereBetween('depth', [$mindepth, $maxdepth])
+                        ->whereNotNull('terdampak')
                         ->where('terdampak', '<>', '')->count();
 
                 $Mbelowthree = Gempanabire::where('magnitudo','<', 3)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Mthreefive = Gempanabire::whereBetween('magnitudo',[3, 4.9])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->count();
                 $Mabovefive = Gempanabire::where('magnitudo','>=', 5)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
 
                 //depth\
                 $Dshallow = Gempanabire::where('depth','<', 60)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Dmediate = Gempanabire::whereBetween('depth',[60, 249])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Dverydeep = Gempanabire::where('depth','>=', 300)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
 
                 $dailyevents = Gempanabire::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
                              ->selectRaw('tanggal, 
                                  SUM(CASE WHEN magnitudo < 3 THEN 1 ELSE 0 END) as mag_below_3,
                                  SUM(CASE WHEN magnitudo >= 3 AND magnitudo < 5 THEN 1 ELSE 0 END) as mag_3_to_5,
@@ -403,38 +552,72 @@ class DashboardController extends Controller
                              ->get();
 
                 $eventCounts = Gempanabire::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
                             ->selectRaw('tanggal, COUNT(*) as event_count')
                             ->groupBy('tanggal')
                             ->orderBy('tanggal')
                             ->get();
-                $felts = Gempanabire::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
-                        ->where('terdampak', '<>', '')->get();
+                $felts = Gempanabire::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->whereNotNull('terdampak')
+                            ->where('terdampak', '<>', '')->get();
                 return view('lapbuls.resultbahanbuletingempa')->with(compact('start','end',
                 'totalevents','feltevents','sumber','Mbelowthree','Mthreefive','Mabovefive',
                 'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts','events'));                  
             } else {
                 $sumber = 'Satu Data Gempa';
-                $events = Satudatagempa::whereBetween('tanggal', [$start, $end])->get();
+                $events = Satudatagempa::whereBetween('tanggal', [$start, $end])
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])->get();
                 $totalevents = $events->count();
-                $feltevents = Satudatagempa::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
+                $feltevents = Satudatagempa::whereBetween('tanggal', [$start, $end])
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])->whereNotNull('terdampak')
                         ->where('terdampak', '<>', '')->count();
 
                 $Mbelowthree = Satudatagempa::where('magnitudo','<', 3)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Mthreefive = Satudatagempa::whereBetween('magnitudo',[3, 4.9])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Mabovefive = Satudatagempa::where('magnitudo','>=', 5)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
 
                 //depth\
                 $Dshallow = Satudatagempa::where('depth','<', 60)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Dmediate = Satudatagempa::whereBetween('depth',[60, 249])
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
                 $Dverydeep = Satudatagempa::where('depth','>=', 300)
-                            ->whereBetween('tanggal', [$start, $end])->count();
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
 
                 $dailyevents = Satudatagempa::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
                              ->selectRaw('tanggal, 
                                  SUM(CASE WHEN magnitudo < 3 THEN 1 ELSE 0 END) as mag_below_3,
                                  SUM(CASE WHEN magnitudo >= 3 AND magnitudo < 5 THEN 1 ELSE 0 END) as mag_3_to_5,
@@ -449,12 +632,19 @@ class DashboardController extends Controller
                              ->get();
 
                 $eventCounts = Satudatagempa::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
                             ->selectRaw('tanggal, COUNT(*) as event_count')
                             ->groupBy('tanggal')
                             ->orderBy('tanggal')
                             ->get();
-                $felts = Satudatagempa::whereBetween('tanggal', [$start, $end])->whereNotNull('terdampak')
-                        ->where('terdampak', '<>', '')->get();
+                $felts = Satudatagempa::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->whereNotNull('terdampak')
+                                    ->where('terdampak', '<>', '')->get();
                 return view('lapbuls.resultbahanbuletingempa')->with(compact('start','end',
                 'totalevents','feltevents','sumber','Mbelowthree','Mthreefive','Mabovefive',
                 'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts','events'));                 

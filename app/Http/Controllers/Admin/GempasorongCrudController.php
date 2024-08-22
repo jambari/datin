@@ -123,7 +123,7 @@ class GempasorongCrudController extends CrudController
         // ------ CRUD ACCESS
         //$this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'infogempa']);
         if (backpack_auth()->user()->name == 'angkasa') {
-        $this->crud->allowAccess(['list','infosorong', 'reorder','injectsorong','sorongtemplatebalai']);
+        $this->crud->allowAccess(['list','infosorong', 'reorder','injectsorong','sorongtemplatebalai','press']);
         $this->crud->denyAccess(['create', 'update','delete']);
         $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
         $this->crud->allowAccess('kirimsdgswi');
@@ -131,10 +131,11 @@ class GempasorongCrudController extends CrudController
         $this->crud->addButtonFromView('line', 'inject' , 'injectsorong', 'end');
         $this->crud->addButtonFromView('line', 'sorongtemplatebalai' , 'sorongtemplatebalai', 'end');
       } else {
-        $this->crud->allowAccess(['list','infosorong', 'create', 'update', 'reorder', 'delete','sorongtemplatebalai']);
+        $this->crud->allowAccess(['list','infosorong', 'create', 'update', 'reorder', 'delete','sorongtemplatebalai','press']);
       }
         $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
         $this->crud->addButtonFromView('line', 'sorongtemplatebalai' , 'sorongtemplatebalai', 'end');
+        $this->crud->addButtonFromView('line', 'press' , 'press', 'end');
          if (backpack_auth()->user()->name == 'balai5') {
             $this->crud->allowAccess('kirimsdgswi');
             $this->crud->addButtonFromView('line', 'kirimsdgswi' , 'kirimsdgswi', 'end');
@@ -517,5 +518,79 @@ public function kirimsdgswi($id)
             $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
         return view('gempa.sorongtemplatebalai', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms','koma'));
+    }
+
+    public function press($id) //rilis media
+    {
+        $event = Gempasorong::find($id);
+        //Penanggalan
+        //array bulan
+            $bulan = array (
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        //array hari senin-sabtu
+        $days = array (
+            0 =>   'Minggu',
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            "Jum'at",
+            'Sabtu'
+    );
+        $tanggal = $event['tanggal']; //get date of the eathquake
+        $jam = $event['origin']; // get origin time of eq
+        $tanggaljam = $tanggal." ".$jam; //susun tanggal dari kolom tanggal dan origin
+        $tanggalbaru = date("d-m-Y", strtotime($tanggaljam)); //mengubah ke tipe datetime
+        $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
+        $jamnya = (int)date("H", strtotime($tanggaljam)); //ambil angka jam dalam sebuah minggu
+        $selisih = ($jamnya+ 9) - 24;
+        if ($selisih >=0) {
+           $tanggalbaru = date('d-m-Y', strtotime($tanggaljam . ' +1 day'));
+           $tanggalbarusms = date('d-m-y', strtotime($tanggaljam . ' +1 day'));
+        }
+        $hari = $days[$hari];
+        $pecahkan = explode('-',$tanggalbaru);
+        $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
+        $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
+        $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
+        $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
+        $lat = $event['lintang'];
+        $lon = $event['bujur'].' BT';
+        $mag = round($event['magnitudo'],1);
+        $depth = $event['depth'];
+        //wilayah yang diguncang gempa
+        $wilayah = $event['ket'];
+        $ket = explode(" ", $wilayah);
+        $wilayah = $ket[3];
+        $originalString = $wilayah;
+        $wilayah = str_replace("-", ", ", $wilayah);
+        // Split the string at the hyphen
+        $parts = explode("-", $originalString);
+        // Take the first part (before the hyphen)
+        $firstWord = $parts[0];
+        // Capitalize the first letter and make the rest lowercase
+        $formattedWord = ucfirst(strtolower($firstWord));
+        $wilayah1 = 
+        $arah = $ket[2];
+        $jarak = $ket[0];
+        $lat = str_split($lat); //break latitude to an array
+        if ($lat[0] == '-') {
+            $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
+        } else {
+            $lat = $lat[1].$lat[2].'LU';
+        }
+        return view('gempa.press')->with(compact('lat', 'lon', 'mag','wilayah','formattedWord', 'depth','event', 'arah', 'jarak', 'tanggalindo', 'hari', 'jamwit', 'jamsusulan'));
     }
 }
