@@ -64,6 +64,62 @@
                             	<label for="userInput">Judul</label>
                             	<input type="text" id="kabalText" class="form-control" value="*Yustus Rumakiek, S.Si*" >
                         	</div>
+							<table class="table table-responsive table-striped" >
+								<thead>
+									<th>MMI</th>
+									<th>Keteranan</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>I</td>
+										<td>Getaran tidak dirasakan kecuali dalam keadaan luarbiasa oleh beberapa orang</td>
+									</tr>
+									<tr>
+										<td>II</td>
+										<td>Getaran dirasakan oleh beberapa orang, benda-benda ringan yang digantung bergoyang.</td>
+									</tr>
+									<tr>
+										<td>III</td>
+										<td>Getaran dirasakan nyata dalam rumah. Terasa getaran seakan-akan ada truk berlalu.</td>
+									</tr>
+									<tr>
+										<td>IV</td>
+										<td>Pada siang hari dirasakan oleh orang banyak dalam rumah, di luar oleh beberapa orang, gerabah pecah, jendela/pintu berderik dan dinding berbunyi.</td>
+									</tr>
+									<tr>
+										<td>V</td>
+										<td>Getaran dirasakan oleh hampir semua penduduk, orang banyak terbangun, gerabah pecah, barang-barang terpelanting, tiang-tiang dan barang besar tampak bergoyang, bandul lonceng dapat berhenti.</td>
+									</tr>
+									<tr>
+										<td>VI</td>
+										<td>Getaran dirasakan oleh semua penduduk. Kebanyakan semua terkejut dan lari keluar, plester dinding jatuh dan cerobong asap pada pabrik rusak, kerusakan ringan.</td>
+									</tr>
+									<tr>
+										<td>VII</td>
+										<td>Tiap-tiap orang keluar rumah. Kerusakan ringan pada rumah-rumah dengan bangunan dan konstruksi yang baik. Sedangkan pada bangunan yang konstruksinya kurang baik terjadi retak-retak bahkan hancur, cerobong asap pecah. Terasa oleh orang yang naik kendaraan.</td>
+									</tr>
+									<tr>
+										<td>VIII</td>
+										<td>Kerusakan ringan pada bangunan dengan konstruksi yang kuat. Retak-retak pada bangunan degan konstruksi kurang baik, dinding dapat lepas dari rangka rumah, cerobong asap pabrik dan monumen-monumen roboh, air menjadi keruh.</td>
+									</tr>
+									<tr>
+										<td>IX</td>
+										<td>Kerusakan pada bangunan yang kuat, rangka-rangka rumah menjadi tidak lurus, banyak retak. Rumah tampak agak berpindah dari pondamennya. Pipa-pipa dalam rumah putus.</td>
+									</tr>
+									<tr>
+										<td>X</td>
+										<td>Bangunan dari kayu yang kuat rusak,rangka rumah lepas dari pondamennya, tanah terbelah rel melengkung, tanah longsor di tiap-tiap sungai dan di tanah-tanah yang curam.</td>
+									</tr>
+									<tr>
+										<td>XI</td>
+										<td>Bangunan-bangunan hanya sedikit yang tetap berdiri. Jembatan rusak, terjadi lembah. Pipa dalam tanah tidak dapat dipakai sama sekali, tanah terbelah, rel melengkung sekali.</td>
+									</tr>
+									<tr>
+										<td>XII</td>
+										<td>Hancur sama sekali, Gelombang tampak pada permukaan tanah. Pemandangan menjadi gelap. Benda-benda terlempar ke udara.</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
                         <div class="col-md-6">
 
