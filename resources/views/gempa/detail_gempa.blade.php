@@ -27,7 +27,7 @@
          color: #313131;
          font-size: 1em;
          margin:auto;
-         padding: 2%;
+         padding-top:1.5%;
          font-family: Courier, monospace;
 
     }

@@ -58,7 +58,7 @@
 </li>
 
 <li class="treeview">
-	<a href="#"><i class="fa fa-newspaper-o"></i> <span>BAHAN LAPBUL DAN BULETIN <sub>For lazy purposes only</sub></span> <i class="fa fa-angle-left pull-right"></i></a>
+	<a href="#"><i class="fa fa-newspaper-o"></i> <span>LAPBUL DAN BULETIN</span> <i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
 		<li><a href="/bahan/lapbul/gempa/"><i class="wi wi-earthquake"></i> <span>Gempa</span></a></li>
 		<li><a href="/bahan/buletin/hujan/"><i class="wi wi-rain"></i> <span>Hujan</span></a></li>

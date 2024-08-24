@@ -401,12 +401,7 @@
                     type: 'bar',
                     text: eventCounts.map(String),
                     textposition: 'auto',
-                    marker: {
-                        color: '#3cb371',
-                        line: {
-                            width: 2.5
-                        } // Display text on top of bars
-                    }};
+                };
 
                     // Define layout
                     const dailyLayoutBar = {

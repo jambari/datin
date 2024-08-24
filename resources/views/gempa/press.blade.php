@@ -19,7 +19,7 @@
 						<div class="col-md-6" >
 						<div class="alert alert-warning alert-dismissible">
                         		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							  	Hai Pengamat, Ini adalah Rilis Media otomatis, Tugas Pengamat tentu sebagai kontrol kualitas, <strong>Anda kami sarankan untuk memperhatikan kembali parameter gempa yang diwarnai dan menyunting narasi untuk hasil lebih baik di program pengolah kata yang anda suka !</strong>
+							  	Hai Pengamat, Ini adalah Rilis Media otomatis, Tugas Pengamat tentu sebagai kontrol kualitas, <strong>Anda kami sarankan untuk memperhatikan kembali parameter gempa yang diwarnai dan menyunting narasi untuk hasil lebih baik</strong>
 							</div>
                         	<div class="alert alert-success alert-dismissible text-info">
                         		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -61,13 +61,13 @@
 								</textarea>
 							</div>
 							<div class="form-group">
-                            	<label for="userInput">Judul</label>
+                            	<label for="userInput">Nama Kabal</label>
                             	<input type="text" id="kabalText" class="form-control" value="*Yustus Rumakiek, S.Si*" >
                         	</div>
 							<table class="table table-responsive table-striped" >
 								<thead>
 									<th>MMI</th>
-									<th>Keteranan</th>
+									<th>Keterangan</th>
 								</thead>
 								<tbody>
 									<tr>

@@ -140,7 +140,7 @@ class BalaiGempaCrudController extends CrudController
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
         //$this->crud->addButtonFromView('line', 'press' , 'press', 'end');
         $this->crud->addButtonFromView('line', 'sms' , 'sms', 'beginning');
-        $this->crud->addButtonFromView('line', 'press' , 'press', 'beginning');
+        $this->crud->addButtonFromView('line', 'press' , 'press', 'end');
         $this->crud->addButtonFromView('line', 'kirimsdgpgr' , 'kirimsdgpgr', 'end');
 
         // if (backpack_auth()->user()->name != 'balai5') {
