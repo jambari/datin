@@ -47,26 +47,12 @@
         border-radius: 10px;
         margin-bottom: 10px;
     }
-#map-baru {
-/*        border: 3px solid lightgray;
-        border-radius: 10px;*/
-/*        margin-bottom: 10px;*/
-    }
+
     .kota {
         font-size: ;
         color: black;
         background-color: white;
         border: 3px solid #FF0000;
-    }
-    .css-icon {
-
-        }
-
-    .white-icon {
-      /*background-color: white;*/
-/*      border-radius: 100px;
-      height: 30px;
-      width: 30px;*/
     }
 
     .gps_ring {
