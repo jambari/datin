@@ -226,7 +226,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3" id="balai" >
                             <div id="streetmap-baru" >
-                                <img src=" {{ asset('images') }}/header-balai-2024.png " alt="logo" width="100%" height="20%" style="" >
+                                <img src=" {{ asset('images') }}/header-balai-sep-2024.png" alt="logo" width="100%" height="20%" style="" >
                                     <div id="map-baru" style="width:99%;height:400px;"></div>
                                 <p class="text-center " style="" > <strong class="" >Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] ?? '-' }}), Kedlmn:{{ $event['depth'] }} Km @if($event->terasa) {{ $event->terdampak }} @endif ::BMKG-JAY</strong> </p>
                             </div>

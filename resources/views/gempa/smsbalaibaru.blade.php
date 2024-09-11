@@ -195,7 +195,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                         <div class="col-md-12" id="balai" >
                             <div id="streetmap-baru">
                                 {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
-                                <img src=" {{ asset('images') }}/oke9.bmp " alt="logo" width="100%" height="20%" style="" >
+                                <img src=" {{ asset('images') }}/header-balai-sep-2024.png" alt="logo" width="100%" height="20%" style="" >
                                     <div id="map-baru" style="width:99%;height:500px;"></div>
                                 <p class="text-center " style="" > <strong class="" >{{ $sms ?? '' }}</strong> </p>
                             </div>
