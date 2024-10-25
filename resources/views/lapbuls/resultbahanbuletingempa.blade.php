@@ -481,7 +481,7 @@
                                     </center>
                                 </div>
                                 <div id="legenda" >
-                                    <img src="{{ asset('images') }}/legenda.png" alt="" height="120" width="250" style="margin-top: 2%;" >
+                                    <img src="{{ asset('images') }}/legenda.png" alt="" height="120" width="250" style="margin-top: 1%;" >
                                 </div>
                                 <div id="legenda" >
                                     <img src="{{ asset('images') }}/kontur-slab.png" alt="" height="100" width="250" style="margin-top: 2%;" >
@@ -491,7 +491,10 @@
                                 </div>
                                 <div id="legenda" >
                                     <b>INSET</b>
-                                    <img src="{{ asset('images') }}/inset.png" alt="" height="100" width="250" style="margin-top: 2%;" >
+                                    <img src="{{ asset('images') }}/inset.png" alt="" height="100" width="250" style="margin-top: 1%;" >
+                                </div>
+                                <div class="legenda" >
+                                    <b>Sumber Data : BMKG & ESRI</b><br>
                                 </div>
                             </div>
                         </div>
@@ -546,6 +549,11 @@
                                 <div class="legenda" >
                                     <b>INSET</b>
                                     <img src="{{ asset('images') }}/inset.png" alt="" height="100" width="250" style="margin-top: 2%;" >
+                                </div>
+                                <div class="legenda" >
+                                    <b>Sumber Data :</b><br>
+                                    <b>1. BMKG</b><br>
+                                    <b>2. ESRI</b>
                                 </div>
                             </div>
                         </div>

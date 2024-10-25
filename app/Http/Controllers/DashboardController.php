@@ -411,11 +411,11 @@ class DashboardController extends Controller
                 ->whereBetween('bujur', [$minlon, $maxlon])
                 ->whereBetween('depth', [$mindepth, $maxdepth])->get();
                 $totalevents = $events->count();
-                $feltevents = Gempasorong::whereBetween('tanggal', [$start, $end]
+                $feltevents = Gempasorong::whereBetween('tanggal', [$start, $end])
                 ->whereBetween('lintang', [$minlat, $maxlat])
                 ->whereBetween('bujur', [$minlon, $maxlon])
                 ->whereBetween('depth', [$mindepth, $maxdepth])
-                )->whereNotNull('terdampak')
+                ->whereNotNull('terdampak')
                 ->where('terdampak', '<>', '')->count();
 
                 $Mbelowthree = Gempasorong::where('magnitudo','<', 3)
@@ -468,14 +468,15 @@ class DashboardController extends Controller
                              ->orderBy('tanggal')
                              ->get();
 
-                $eventCounts = Gempasorong::whereBetween('tanggal', [$start, $end]
-                            ->whereBetween('lintang', [$minlat, $maxlat])
-                            ->whereBetween('bujur', [$minlon, $maxlon])
-                            ->whereBetween('depth', [$mindepth, $maxdepth]))
-                            ->selectRaw('tanggal, COUNT(*) as event_count')
-                            ->groupBy('tanggal')
-                            ->orderBy('tanggal')
-                            ->get();
+                        $eventCounts = Gempasorong::whereBetween('tanggal', [$start, $end])
+                             ->whereBetween('lintang', [$minlat, $maxlat])
+                             ->whereBetween('bujur', [$minlon, $maxlon])
+                             ->whereBetween('depth', [$mindepth, $maxdepth])
+                             ->selectRaw('tanggal, COUNT(*) as event_count')
+                             ->groupBy('tanggal')
+                             ->orderBy('tanggal')
+                             ->get();
+                         
                 $felts = Gempasorong::whereBetween('tanggal', [$start, $end])
                             ->whereBetween('lintang', [$minlat, $maxlat])
                             ->whereBetween('bujur', [$minlon, $maxlon])
