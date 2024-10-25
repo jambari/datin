@@ -477,7 +477,7 @@
                                 <div class="logo-bmkg">
                                     <img src="{{ asset('images') }}/logo-bmkg.png " alt="" width="50" height="60" style="margin-top: 2%;margin-bottom: 3%;" >
                                     <center>
-                                        <strong id="displayStation">STASIUN GEOFISIKA KELAS I JAYAPURA</strong>
+                                        <strong id="displayStation"> {{ $sumber ?? '-' }} </strong>
                                     </center>
                                 </div>
                                 <div id="legenda" >
@@ -529,7 +529,7 @@
                                 <div class="logo-bmkg">
                                     <img src="{{ asset('images') }}/logo-bmkg.png " alt="" width="50" height="60" style="margin-top: 2%;margin-bottom: 3%;" >
                                     <center>
-                                        <strong id="displayFeltsStation">STASIUN GEOFISIKA KELAS I JAYAPURA</strong>
+                                        <strong id="displayFeltsStation">{{ $sumber ?? '-' }}</strong>
                                     </center>
                                 </div>
                                 <div id="legenda" >

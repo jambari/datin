@@ -228,7 +228,7 @@ class DashboardController extends Controller
 
         if($start != "" and $start < $end ){
             if($sumber=='1'){
-                $sumber = 'Stasiun Geofisika Jayapura';
+                $sumber = 'STASIUN GEOFISIKA JAYAPURA';
                 $events = Gempa::whereBetween('tanggal', [$start, $end])
                 ->whereBetween('lintang', [$minlat, $maxlat])
                 ->whereBetween('bujur', [$minlon, $maxlon])
@@ -323,7 +323,7 @@ class DashboardController extends Controller
 
 
             } elseif($sumber=='2'){
-                $sumber = 'PGR 5';
+                $sumber = 'PUSAT GEMPABUMI REGIONAL V';
                 $events = Balaigempa::whereBetween('tanggal', [$start, $end])
                 ->whereBetween('lintang', [$minlat, $maxlat])
                 ->whereBetween('bujur', [$minlon, $maxlon])
@@ -405,7 +405,7 @@ class DashboardController extends Controller
                 'totalevents','feltevents','sumber','Mbelowthree','Mthreefive','Mabovefive',
                 'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts','events'));
             } elseif($sumber=='3') {
-                $sumber = 'Stasiun Geofisika Sorong';
+                $sumber = 'STASIUN GEOFISIKA SORONG';
                 $events = Gempasorong::whereBetween('tanggal', [$start, $end])
                 ->whereBetween('lintang', [$minlat, $maxlat])
                 ->whereBetween('bujur', [$minlon, $maxlon])
@@ -487,7 +487,7 @@ class DashboardController extends Controller
                 'totalevents','feltevents','sumber','Mbelowthree','Mthreefive','Mabovefive',
                 'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts','events'));                
             } elseif($sumber=='4'){
-                $sumber = 'Stasiun Geofisika Nabire';
+                $sumber = 'STASIUN GEOFISIKA NABIRE';
                 $events = Gempanabire::whereBetween('tanggal', [$start, $end])
                 ->whereBetween('lintang', [$minlat, $maxlat])
                 ->whereBetween('bujur', [$minlon, $maxlon])
