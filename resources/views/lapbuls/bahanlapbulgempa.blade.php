@@ -1,5 +1,4 @@
 @extends('backpack::layout')
-@if (backpack_auth()->user()->name != 'balai5')
 @section('header')
     <section class="content-header" id="daily" >
       <ol class="breadcrumb">
@@ -88,5 +87,4 @@
 @endsection
 
 @yield('after_script')
-@endif
 

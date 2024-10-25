@@ -207,12 +207,6 @@
                     </div>
                 </div>
                 <br>
-                <p class="bg-info" >Perhitungan jumlah gempabumi berdasarkan jarak ke Stasiun Geofisika Jayapura
-                tidak dihitung, sudah tidak relevan
-                    karena analisis sudah tidak dilakukan
-                    menggunakan <i style="text-decoration: italic;" >single station </i>
-                    dan keterangan jarak dipilih berdasarkan kota terdekat.</p>
-                <br>
                 <h4 class="bg-info" >Grafik berdasarkan Magnitudo </h4>
                 <br>
                 <div class="row" >
@@ -265,7 +259,7 @@
                         const xArray = ["M < 3.0", "3,0 ≤ M ˂ 5,0", "M ≥ 5,0"];
                         const yArray = [{{ $Mbelowthree }} , {{ $Mthreefive }}, {{ $Mabovefive }}];
 
-                        const layout = {title:"Persentase Berdasarkan Magnitudo"};
+                        const layout = {title:"Persentase"};
 
                         const dataPie = [{labels:xArray, values:yArray, type:"pie"}];
 
@@ -326,7 +320,7 @@
                         const xdepthArray = ["D < 60", "60 ≤ D ˂ 300", "D ≥ 300"];
                         const ydepthArray = [{{ $Dshallow }} , {{ $Dmediate }}, {{ $Dverydeep }}];
 
-                        const depthLayout = {title:"Persentase Berdasarkan Kedalaman"};
+                        const depthLayout = {title:"Persentase"};
 
                         const depthPie = [{labels:xdepthArray, values:ydepthArray, type:"pie"}];
 

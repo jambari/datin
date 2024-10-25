@@ -2,8 +2,6 @@
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
 @if (backpack_auth()->user()->name == 'balai5')
 	<li><a href="{{ backpack_url('balaigempa') }}"><i class="wi wi-earthquake"></i> <span>Repositori PGR V</span></a></li>
-
-<!-- 	<li><a href="{{ backpack_url('balaisms') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa PGR V</span></a></li> -->
 <li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PGR V JAY NBPI</span></a></li>
 <li><a href="{{ backpack_url('significant') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>SIGNIFIKAN / MANUAL</span></a></li>
 <li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li>
@@ -57,15 +55,7 @@
 	</ul>
 </li>
 
-<li class="treeview">
-	<a href="#"><i class="fa fa-newspaper-o"></i> <span>LAPBUL DAN BULETIN</span> <i class="fa fa-angle-left pull-right"></i></a>
-	<ul class="treeview-menu">
-		<li><a href="/bahan/lapbul/gempa/"><i class="wi wi-earthquake"></i> <span>Gempa</span></a></li>
-		<li><a href="/bahan/buletin/hujan/"><i class="wi wi-rain"></i> <span>Hujan</span></a></li>
-		<li><a href="/sampel/hujan"><i class="wi wi-rain-mix"></i> <span>Sampel Hujan</span></a></li>
-		<li><a href="/lapbul/ttm"><i class="wi wi-sunrise"></i> <span>Terbit Terbenam Matahari</span></a></li>
-	</ul>
-</li>
+
 
 <li><a href="{{ backpack_url('hujan') }}"><i class="wi wi-raindrops" style="margin-right: 0.5em;"></i> <span>Hujan</span></a></li>
 <!-- <li class="">
@@ -77,31 +67,31 @@
 	</ul>
 </li> -->
 
-<li class="treeview">
+<!-- <li class="treeview">
 	<a href="#"><i class="fa fa-magnet"></i><span>Magnetbumi</span><i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
 {{-- 		<li><a href="{{ backpack_url('kindek') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Kindek</span></a></li> --}}
 		<li><a href="{{ backpack_url('magnet') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Variasi</span></a></li>
 		<li><a href="{{ backpack_url('absolut') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Absolut</span></a></li>
 	</ul>
-</li>
+</li> -->
 
 
 <!-- <li class="treeview">
 	<a href="#"><i class="fa fa-lightning"></i><span>Petir</span><i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu"> -->
-	<li><a href="{{ backpack_url('petir') }}"><i class="wi wi-lightning" style="margin-right: 0.5em;"></i> <span>Petir</span></a></li>
+	<!-- <li><a href="{{ backpack_url('petir') }}"><i class="wi wi-lightning" style="margin-right: 0.5em;"></i> <span>Petir</span></a></li> -->
 <!-- 	</ul>
 </li>
  -->
 
-{{-- <li class="treeview">
+<!-- {{-- <li class="treeview">
 	<a href="#"> <i class="wi wi-lightning" style="margin-right: 0.5em;"></i><span>Listrik Udara</span> <i class="fa fa-angle-left pull-right"></i> </a>
 	<ul class="treeview-menu">
 		<li><a href="{{ backpack_url('summary') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Summary</span></a></li>
 	</ul>
 
-</li> --}}
+</li> --}} -->
 
 
 
@@ -112,7 +102,7 @@
 </li>
 <!--
 <li><a href="{{ backpack_url('lapbul') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Laporan Bulanan (Under Construction)</span></a></li>-->
-<li><a href="{{ backpack_url('bulletin') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Bulletin</span></a></li>
+<li><a href="{{ backpack_url('bulletin') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Buletin</span></a></li>
 {{-- <li><a href="{{ backpack_url('kegiatan') }}"><i class="fa fa-user" style="margin-right: 0.5em;"></i> <span>Kegiatan</span></a></li> --}}
 <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-file" style="margin-right: 0.5em;"></i> <span>File Manager</span></a></li>
 
@@ -125,12 +115,23 @@
 <li><a href='{{ backpack_url('city') }}'><i class='fa fa-envelope'></i> <span>Daftar Kota</span></a></li>
 @endif
 
-
 <li class="treeview">
+	<a href="#"><i class="fa fa-newspaper-o"></i> <span>LAPBUL DAN BULETIN</span> <i class="fa fa-angle-left pull-right"></i></a>
+	<ul class="treeview-menu">
+		<li><a href="/bahan/lapbul/gempa/"><i class="wi wi-earthquake"></i> <span>Gempa</span></a></li>
+		<li><a href="/bahan/buletin/hujan/"><i class="wi wi-rain"></i> <span>Hujan</span></a></li>
+		<!-- <li><a href="/sampel/hujan"><i class="wi wi-rain-mix"></i> <span>Sampel Hujan</span></a></li> -->
+		<li><a href="/lapbul/ttm"><i class="wi wi-sunrise"></i> <span>Terbit Terbenam Matahari</span></a></li>
+	</ul>
+</li>
+
+<li><a href="/admin/nyusahin"><i class="fa fa-envelope"></i> <span>NGREPOTIN :D :P :[ </span></a></li>
+
+<!-- <li class="treeview">
 	<a href="#"><i class="fa fa-newspaper-o"></i> <span>SLA OLA</span> <i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
 		<li><a href="/latency"><i class="wi wi-earthquake"></i> <span>SLA SEISMIC <sub>under development</sub> </span></a></li>
 		<li><a href="/availability"><i class="wi wi-earthquake"></i> <span>OLA SEISMIK <sub>under development</sub></span></a></li>
 	</ul>
-</li>
+</li> -->
 

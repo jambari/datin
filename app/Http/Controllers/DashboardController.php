@@ -455,7 +455,7 @@ class DashboardController extends Controller
                             ->whereBetween('lintang', [$minlat, $maxlat])
                             ->whereBetween('bujur', [$minlon, $maxlon])
                             ->whereBetween('depth', [$mindepth, $maxdepth])
-                             ->selectRaw('tanggal, 
+                             ->selectRaw('tanggal,  
                                  SUM(CASE WHEN magnitudo < 3 THEN 1 ELSE 0 END) as mag_below_3,
                                  SUM(CASE WHEN magnitudo >= 3 AND magnitudo < 5 THEN 1 ELSE 0 END) as mag_3_to_5,
                                  SUM(CASE WHEN magnitudo >= 5 THEN 1 ELSE 0 END) as mag_above_5,
@@ -651,5 +651,9 @@ class DashboardController extends Controller
             }
             
         }
+    }
+
+    public function nyusahin() {
+        return view('monitorings.nyusahin');
     }
 }

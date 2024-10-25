@@ -196,7 +196,7 @@
                                     <th><center>Jumlah (mm)</center></th>
                                     <th><center>Kategori</center></th>
         
-                                    <th><center>Obs</center></th>
+                                    <th><center>Pengamat</center></th>
                                 </thead>
                                 <tbody>
                                     @foreach ($hujans as $sampel)

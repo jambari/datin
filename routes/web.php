@@ -110,3 +110,6 @@ Route::get('/bahan/buletin/hujan/', 'DashboardController@bahanbuletinhujan');
 Route::any('/get/bahan/buletin/hujan/', 'DashboardController@getbahanbuletinhujan');
 Route::any('/bahan/lapbul/gempa/', 'DashboardController@bahanlapbulgempa');
 Route::any('/get/bahan/buletin/gempa/', 'DashboardController@getbahanlapbulgempa');
+
+//SLA OLA
+Route::any('/admin/nyusahin', 'DashboardController@nyusahin');
