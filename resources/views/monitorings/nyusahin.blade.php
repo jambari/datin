@@ -63,7 +63,7 @@
                                             Username: jayapura@wrs.id <br>
                                             Username: jayapura
                                         </p>
-                                        <p><a href="http://202.90.198.40/sismon-wrs/web/slmon2"  target="_blank" class="btn btn-primary btn-block" role="button">SLMON 2</a></p>
+                                        <p><a href="http://202.90.199.203:3000/login"  target="_blank" class="btn btn-primary btn-block" role="button">GASZKEUN</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                         <h3>LD & ACCELERO (SIMORA)</h3>
                                         <p>Username: stageof.jayapura <br>
                                          Password: 12345678</p>
-                                        <p><a href="http://172.16.17.32/https://simora.bmkg.go.id/simora/web/login_page/"  target="_blank" class="btn btn-primary btn-block" role="button">GASZKEUN</a></p>
+                                        <p><a href="https://simora.bmkg.go.id/simora/web/login_page"  target="_blank" class="btn btn-primary btn-block" role="button">GASZKEUN</a></p>
                                     </div>
                                 </div>
                             </div>    
