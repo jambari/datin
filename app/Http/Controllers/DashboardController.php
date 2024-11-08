@@ -8,6 +8,7 @@ use App\Models\Gempa;
 use App\Models\Balaigempa;
 use App\Models\Gempasorong;
 use App\Models\Gempanabire;
+use App\Models\Gempanganjuk;
 use App\Models\Satudatagempa;
 use Carbon\Carbon;
 use App\Models\Kindek;
@@ -561,6 +562,89 @@ class DashboardController extends Controller
                             ->orderBy('tanggal')
                             ->get();
                 $felts = Gempanabire::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->whereNotNull('terdampak')
+                            ->where('terdampak', '<>', '')->get();
+                return view('lapbuls.resultbahanbuletingempa')->with(compact('start','end',
+                'totalevents','feltevents','sumber','Mbelowthree','Mthreefive','Mabovefive',
+                'Dshallow','Dmediate','Dverydeep','dailyevents','eventCounts','felts','events'));                  
+            } elseif($sumber=='6'){
+                $sumber = 'STASIUN GEOFISIKA NGANJUK';
+                $events = Gempanganjuk::whereBetween('tanggal', [$start, $end])
+                ->whereBetween('lintang', [$minlat, $maxlat])
+                ->whereBetween('bujur', [$minlon, $maxlon])
+                ->whereBetween('depth', [$mindepth, $maxdepth])
+                ->get();
+                $totalevents = $events->count();
+                $feltevents = Gempanganjuk::whereBetween('tanggal', [$start, $end])
+                        ->whereBetween('lintang', [$minlat, $maxlat])
+                        ->whereBetween('bujur', [$minlon, $maxlon])
+                        ->whereBetween('depth', [$mindepth, $maxdepth])
+                        ->whereNotNull('terdampak')
+                        ->where('terdampak', '<>', '')->count();
+
+                $Mbelowthree = Gempanganjuk::where('magnitudo','<', 3)
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
+                $Mthreefive = Gempanganjuk::whereBetween('magnitudo',[3, 4.9])
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->count();
+                $Mabovefive = Gempanganjuk::where('magnitudo','>=', 5)
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
+
+                //depth\
+                $Dshallow = Gempanganjuk::where('depth','<', 60)
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
+                $Dmediate = Gempanganjuk::whereBetween('depth',[60, 249])
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
+                $Dverydeep = Gempanganjuk::where('depth','>=', 300)
+                            ->whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])->count();
+
+                $dailyevents = Gempanganjuk::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                             ->selectRaw('tanggal, 
+                                 SUM(CASE WHEN magnitudo < 3 THEN 1 ELSE 0 END) as mag_below_3,
+                                 SUM(CASE WHEN magnitudo >= 3 AND magnitudo < 5 THEN 1 ELSE 0 END) as mag_3_to_5,
+                                 SUM(CASE WHEN magnitudo >= 5 THEN 1 ELSE 0 END) as mag_above_5,
+                                 SUM(CASE WHEN depth < 60 THEN 1 ELSE 0 END) as depth_below_60,
+                                 SUM(CASE WHEN depth >= 60 AND depth < 300 THEN 1 ELSE 0 END) as depth_60_to_300,
+                                 SUM(CASE WHEN depth >= 300 THEN 1 ELSE 0 END) as depth_above_300,
+                                 SUM(CASE WHEN terdampak IS NOT NULL THEN 1 ELSE 0 END) as felt_events,
+                                 SUM(CASE WHEN terdampak IS NULL THEN 1 ELSE 0 END) as not_felt_events')
+                             ->groupBy('tanggal')
+                             ->orderBy('tanggal')
+                             ->get();
+
+                $eventCounts = Gempanganjuk::whereBetween('tanggal', [$start, $end])
+                            ->whereBetween('lintang', [$minlat, $maxlat])
+                            ->whereBetween('bujur', [$minlon, $maxlon])
+                            ->whereBetween('depth', [$mindepth, $maxdepth])
+                            ->selectRaw('tanggal, COUNT(*) as event_count')
+                            ->groupBy('tanggal')
+                            ->orderBy('tanggal')
+                            ->get();
+                $felts = Gempanganjuk::whereBetween('tanggal', [$start, $end])
                             ->whereBetween('lintang', [$minlat, $maxlat])
                             ->whereBetween('bujur', [$minlon, $maxlon])
                             ->whereBetween('depth', [$mindepth, $maxdepth])

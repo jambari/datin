@@ -69,11 +69,15 @@
                     <div class="form-group">
                         <label for="sumber">Sumber</label>
                         <select name="sumber" id="sumber" class="form-control">Sumber
+                            @if (backpack_auth()->user()->name == 'nganjuk')
+                                <option value="6">BMKG-SJI</option>
+                            @else
                             <option value="1">BMKG-JAY</option>
                             <option value="2">BMKG-PGR 5</option>
                             <option value="3">BMKG-SWI</option>
                             <option value="4">BMKG-NBPI</option>
                             <option value="5">SDG</option>
+                            @endif
                         </select>
                     </div>
                     <div class="form-group">

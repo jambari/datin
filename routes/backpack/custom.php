@@ -117,4 +117,10 @@ Route::group([
 	Route::get('gempanabire/{id}/kirimsdgnbpi', 'GempanabireCrudController@kirimsdgnbpi'); //kirim ke SDG dari repository NBPI
 	Route::get('/gempasorong/{id}/kirimsdgswi', 'GempasorongCrudController@kirimsdgswi'); //kirim ke SDG dari repository SWI
 	// Logbook
+
+
+	//Stageof nganjuk
+	CRUD::resource('gempanganjuk', 'GempanganjukCrudController');
+	Route::get('gempanganjuk/{id}/infonganjuk', 'GempanganjukCrudController@infonganjuk');
+	Route::get('gempanganjuk/{id}/press', 'GempanganjukCrudController@press');
 }); // this should be the absolute last line of this file
