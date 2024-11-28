@@ -333,7 +333,7 @@ public function infonganjuk($id) {
         $tanggalbarusms = date("d-m-y", strtotime($tanggaljam)); //mengubah ke tipe datetime untuk sms
         $hari = (int)date("w", strtotime($tanggaljam)); //ambil angka hari dalam sebuah minggu
         $jamnya = (int)date("H", strtotime($tanggaljam)); //ambil angka jam dalam sebuah minggu
-        $selisih = ($jamnya+ 7) - 24;
+        $selisih = ($jamnya + 7) - 24;
         if ($selisih >=0) {
            $tanggalbaru = date('d-m-Y', strtotime($tanggaljam . ' +1 day'));
            $tanggalbarusms = date('d-m-y', strtotime($tanggaljam . ' +1 day'));
@@ -344,8 +344,8 @@ public function infonganjuk($id) {
         $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
         $tanggalindosms= $pecahkan[0] . '-' . $bulansms[ (int)$pecahkansms[1] ] . '-' . $pecahkansms[2]; //Menggabungkan jadi tanggal format indonesia
         $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
-        $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
-        $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
+        $jamwib = date("H:i:s", strtotime($jamutc) + 25200);
+        $jamsusulan = date("H:i", strtotime($jamutc) + 27200);
         $lat = $event['lintang'];
         $lon = $event['bujur'].' BT';
         $mag = round($event['magnitudo'],1);
@@ -362,7 +362,7 @@ public function infonganjuk($id) {
         } else {
             $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
-        return view('gempa.infonganjuk', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
+        return view('gempa.infonganjuk', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwib','event','tanggalindosms'));
     }
 
 
@@ -410,8 +410,8 @@ public function infonganjuk($id) {
         $pecahkan = explode('-',$tanggalbaru);
         $tanggalindo = $pecahkan[0] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[2]; //Menggabungkan jadi tanggal format indonesia
         $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
-        $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
-        $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
+        $jamwit = date("H:i:s", strtotime($jamutc) + 25200);
+        $jamsusulan = date("H:i", strtotime($jamutc) + 27200);
         $lat = $event['lintang'];
         $lon = $event['bujur'].' BT';
         $mag = round($event['magnitudo'],1);

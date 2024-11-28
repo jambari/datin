@@ -200,7 +200,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                                       <!-- <img src=" {{ asset('images') }}/logo_nabire_baru.jpg " alt="logo" width="100%" height="20%" style="" > -->
                                           <div id="map-baru" style="width:99%;height:500px;"></div>
                                       <p class="text-center " style="" > <strong class="" >
-                                        Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIB, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km @if($event->terasa) {{ $event->terdampak }} @endif ::BMKG-SJI
+                                        Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwib }} WIB, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] }}), Kedlmn:{{ $event['depth'] }} Km @if($event->terasa) {{ $event->terdampak }} @endif ::BMKG-SJI
                                       </strong> </p>
                                   </div>
                               </div>
