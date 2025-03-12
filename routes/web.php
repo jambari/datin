@@ -38,6 +38,7 @@ Route::get('/slideshow', 'HomeController@slideshow');
 Route::get('/admin/dashboard', 'DashboardController@index'); // dashboard page
 Route::get('/charts', 'HomeController@charts' ); // charts
 Route::get('/magnet', 'HomeController@magnet' ); // charts
+
 //api
 //Website Kantor
 Route::get('/news', 'Admin\ArticleCrudController@news'); // list semua berita
@@ -110,6 +111,8 @@ Route::get('/bahan/buletin/hujan/', 'DashboardController@bahanbuletinhujan');
 Route::any('/get/bahan/buletin/hujan/', 'DashboardController@getbahanbuletinhujan');
 Route::any('/bahan/lapbul/gempa/', 'DashboardController@bahanlapbulgempa');
 Route::any('/get/bahan/buletin/gempa/', 'DashboardController@getbahanlapbulgempa');
+Route::get('/get/bahan/buletin/magnet', 'DashboardController@variasi' ); // charts
 
 //SLA OLA
 Route::any('/admin/nyusahin', 'DashboardController@nyusahin');
+Route::any('/absolut', 'DashboardController@absolut');

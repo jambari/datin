@@ -62,7 +62,8 @@
 </li>
 
 
-
+<li><a href="{{ backpack_url('magnet') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Variasi</span></a></li>
+<li><a href="{{ backpack_url('absolut') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Absolut</span></a></li>
 <li><a href="{{ backpack_url('hujan') }}"><i class="wi wi-raindrops" style="margin-right: 0.5em;"></i> <span>Hujan</span></a></li>
 
 <li class="treeview">
@@ -93,6 +94,7 @@
 </li>
 
 <li><a href="/admin/nyusahin"><i class="fa fa-envelope"></i> <span>NGREPOTIN :D :P :[ </span></a></li>
+<li><a href="/absolut"><i class="fa fa-envelope"></i> <span>variasi harian</span></a></li>
 @endif
 
 

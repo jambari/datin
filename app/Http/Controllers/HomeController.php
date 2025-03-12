@@ -752,4 +752,14 @@ class HomeController extends Controller
         return view('gempa.detail_gempa', compact('lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
     }
 
+    public function variasi() {
+        $date_raw = date("r");
+        $tanggal = date('Y-m-d', strtotime('-1 day', strtotime($date_raw)));
+        $tahun =date('Y', strtotime($tanggal));
+        $bulan =date('m', strtotime($tanggal));
+        $hari = date('d', strtotime($tanggal));
+        $magnets = Magnet::select()->where('tanggal', $tanggal)->get();
+        return view('magnets.dailychart', compact('magnets', 'tanggal'));
+    }
+
 }

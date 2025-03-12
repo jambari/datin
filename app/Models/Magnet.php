@@ -19,7 +19,7 @@ class Magnet extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['tanggal','jam','kompx','kompy','kompz','komph','kompf','kompd','kompi'];
     // protected $hidden = [];
     // protected $dates = [];
 
