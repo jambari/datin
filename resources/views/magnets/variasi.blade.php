@@ -207,6 +207,30 @@
                         @endforeach
                     </tbody>
                 </table>
+                <br>
+                <table border="1">
+                <caption>Komponen F</caption>
+                    <thead>
+                        <tr>
+                            <th style="padding-left: 2px; padding-right: 2px; text-align: center;">Tanggal/Jam</th> <!-- Changed from 'Date' to 'Day' -->
+                            @for ($hour = 1; $hour < 25; $hour++)
+                                <th class="text-center">{{ str_pad($hour, 2, '0', STR_PAD_LEFT) }}</th>
+                            @endfor
+                            <th style="padding-left: 2px; padding-right: 2px; text-align: center;">rata-rata</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($kompfs as $data)
+                            <tr>
+                                <td class="text-center" >{{ \Carbon\Carbon::parse($data->tanggal)->format('d') }}</td> 
+                                @for ($hour = 0; $hour < 24; $hour++)
+                                    <td style="padding-left: 2px; padding-right: 2px; text-align: center;" >{{ $data->{'kompf_' . str_pad($hour, 2, '0', STR_PAD_LEFT)} ?? '-' }}</td>
+                                @endfor
+                                <td style="padding-left: 2px; padding-right: 2px; text-align: center;">{{ number_format($data->daily_avg, 2) }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
