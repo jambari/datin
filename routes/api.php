@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route; // Add this line
 use App\Http\Controllers\Api\EarthquakeController;
 use App\Http\Controllers\Api\BalaigempaController;
 use App\Http\Controllers\Api\AngkasagempaController;
+use App\Http\Controllers\Api\SoronggempaController;
+use App\Http\Controllers\Api\NabiregempaController;
+use App\Http\Controllers\Api\HujanController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,3 +31,15 @@ Route::get('/data/yesterday/balaigempas', [BalaigempaController::class, 'yesterd
 
 Route::get('/data/angkasagempas', [AngkasagempaController::class, 'index']);
 Route::get('/data/yesterday/angkasagempas', [AngkasagempaController::class, 'yesterday']);
+
+//sorong
+Route::get('/data/soronggempas', [SoronggempaController::class, 'index']);
+Route::get('/data/yesterday/soronggempas', [SoronggempaController::class, 'yesterday']);
+
+//nabire
+Route::get('/data/nabiregempas', [NabiregempaController::class, 'index']);
+Route::get('/data/yesterday/nabiregempas', [NabiregempaController::class, 'yesterday']);    
+
+//hujan
+Route::get('/data/hujans', [HujanController::class, 'index']);
+Route::get('/data/yesterday/hujans', [HujanController::class, 'yesterday']);
