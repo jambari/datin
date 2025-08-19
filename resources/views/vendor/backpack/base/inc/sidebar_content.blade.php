@@ -63,7 +63,7 @@
 
 
 <li><a href="{{ backpack_url('magnet') }}"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Variasi</span></a></li>
-<li><a href="http://36.91.166.189:8000"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Absolut</span></a></li>
+<li><a href="http://36.91.166.189"><i class="wi wi-storm-warning" style="margin-right: 0.5em;"></i> <span>Pengamatan Absolut</span></a></li>
 <li><a href="{{ backpack_url('hujan') }}"><i class="wi wi-raindrops" style="margin-right: 0.5em;"></i> <span>Hujan</span></a></li>
 
 <li class="treeview">
