@@ -31,6 +31,17 @@ class SoronggempaController extends Controller
             'features' => SoronggempaResource::collection($earthquakes)
         ]);
     }
+
+    public function forshakemap()
+    {
+
+        $earthquakes = Gempasorong::orderBy('tanggal', 'desc')->take(50)->get();
+
+        return response()->json([
+            'type' => 'FeatureCollection',
+            'features' => SoronggempaResource::collection($earthquakes)
+        ]);
+    }
 }
 
 

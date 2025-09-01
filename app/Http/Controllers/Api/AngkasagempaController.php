@@ -31,6 +31,17 @@ class AngkasagempaController extends Controller
             'features' => AngkasagempaResource::collection($earthquakes)
         ]);
     }
+
+    public function forshakemap()
+    {
+
+        $earthquakes = Gempa::orderBy('tanggal', 'desc')->take(50)->get();
+
+        return response()->json([
+            'type' => 'FeatureCollection',
+            'features' => AngkasagempaResource::collection($earthquakes)
+        ]);
+    }
 }
 
 

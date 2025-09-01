@@ -31,6 +31,18 @@ class NabiregempaController extends Controller
             'features' => NabiregempaResource::collection($earthquakes)
         ]);
     }
+
+    public function forshakemap()
+    {
+
+        $earthquakes = Gempanabire::orderBy('tanggal', 'desc')->take(50)->get();
+
+        return response()->json([
+            'type' => 'FeatureCollection',
+            'features' => NabiregempaResource::collection($earthquakes)
+        ]);
+    }
+
 }
 
 
