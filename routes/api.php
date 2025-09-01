@@ -46,5 +46,5 @@ Route::get('/data/yesterday/hujans', [HujanController::class, 'yesterday']);
 
 // for shakemap
 Route::get('/angkasa/forshakemap', [AngkasagempaController::class, 'forshakemap']);
-Route::get('/nabire/forshakemap', [AngkasagempaController::class, 'forshakemap']);
+Route::get('/nabire/forshakemap', [NabiregempaController::class, 'forshakemap']);
 Route::get('/sorong/forshakemap', [SoronggempaController::class, 'forshakemap']);
