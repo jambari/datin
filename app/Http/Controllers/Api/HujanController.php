@@ -16,11 +16,12 @@ class HujanController extends Controller
     }
 
     // Ambil detail data hujan by id
-    public function yesterday()
+
+    public function hujantoday()
     {
 
 
-        $hujan = Hujan::whereDate('tanggal', Carbon::yesterday())->get();
+        $hujan = Hujan::whereDate('tanggal', Carbon::today())->get();
 
         return HujanResource::collection($hujan);
     }

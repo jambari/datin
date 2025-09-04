@@ -42,7 +42,7 @@ Route::get('/data/yesterday/nabiregempas', [NabiregempaController::class, 'yeste
 
 //hujan
 Route::get('/data/hujans', [HujanController::class, 'index']);
-Route::get('/data/yesterday/hujans', [HujanController::class, 'yesterday']);
+Route::get('/hujans/today', [HujanController::class, 'hujantoday']);
 
 // for shakemap
 Route::get('/angkasa/forshakemap', [AngkasagempaController::class, 'forshakemap']);
