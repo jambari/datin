@@ -456,25 +456,18 @@ class BalaiGempaCrudController extends CrudController
       $jamutc = date("d-m-Y H:i:s", strtotime($tanggaljam)); //mengubah ke tipe datetime
       $jamwit = date("H:i:s", strtotime($jamutc) + 32400);
       $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
-      $lat = $event['lintang'];
-      $lon = $event['bujur'].' BT';
+      $lat = round($event['lintang'], 2);
       $mag = round($event['magnitudo'],1);
       $depth = $event['depth'];
       $terdampak = $event['terdampak'];
 
-      //wilayah yang diguncang gempa
-      // $wilayah = $event['ket'];
-      // $ket = explode(" ", $wilayah);
-      // $wilayah = $ket[3];
-      // $arah = $ket[2];
-      // $jarak = $ket[0];
-      $lat = str_split($lat); //break latitude to an array
-      if ($lat[0] == '-') {
-          $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
-      } else {
-          $lat = $lat[1].$lat[2].'LU';
-      }
-      return view('gempa.balaisms', compact('lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms', 'terdampak'));
+    //   $lat = str_split($lat); //break latitude to an array
+    //   if ($lat[0] == '-') {
+    //       $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
+    //   } else {
+    //       $lat = $lat[1].$lat[2].'LU';
+    //   }
+      return view('gempa.balaisms', compact('mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms', 'terdampak'));
     }
 
     public function inject($id)

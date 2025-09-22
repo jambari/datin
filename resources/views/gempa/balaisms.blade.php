@@ -237,7 +237,8 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                                 {{-- <img src=" {{ asset('images') }}/logo.jpg " alt="logo" width="100%" height="20%" style="margin-bottom: 15px" >  --}}
                                 <img src=" {{ asset('images') }}/header-balai-sep-2024.png" alt="logo" width="100%" height="20%" style="" >
                                     <div id="map-baru" style="width:99%;height:500px;"></div>
-                                <p class="text-center " style="" > <strong class="" >Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ number_format($event['bujur'], 2) }} BT ({{ $event['ket'] ?? '-' }}), Kedlmn:{{ $event['depth'] }} Km @if($event->terasa) {{ $event->terdampak }} @endif ::BMKG-PGR-V</strong> </p>
+                                <p class="text-center " style="" > <strong class="" >Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ number_format(abs($event['lintang']), 2) }} {{ $event['lintang'] < 0 ? 'LS' : 'LU' }}
+, {{ number_format($event['bujur'], 2) }} BT ({{ $event['ket'] ?? '-' }}), Kedlmn:{{ $event['depth'] }} Km @if($event->terasa) {{ $event->terdampak }} @endif ::BMKG-PGR-V</strong> </p>
                             </div>
                         </div>
                     </div>
@@ -247,7 +248,7 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2" style="display:flex; justify-content: center; ">
-        <input type="text" name="" id="isiSms" hidden value="Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ number_format($event['bujur'], 2) }} ({{ $event['ket'] ?? '-' }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-PGR-V" >
+        <input type="text" name="" id="isiSms" hidden value="Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ number_format(abs($event['lintang']), 2) }} {{ $event['lintang'] < 0 ? 'LS' : 'LU' }}, {{ number_format($event['bujur'], 2) }} ({{ $event['ket'] ?? '-' }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-PGR-V" >
         <button class="btn btn-primary btn-lg" onclick="copySms()" onmouseout="outFunc()"> <i class="la la-copy"></i>  <span class="tooltiptext" id="myTooltip">Salin pesan </span></button>
       </div>
     </div>
@@ -320,7 +321,7 @@ var mymap = L.map('map-baru').setView([{{ $event['lintang'] }}, {{ $event['bujur
 
       }
   }
-        // var mymap = L.map('map-baru').setView([{{ $lat }}, {{ $lon }}], 7);
+
 
         // L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         //     maxZoom: 18
