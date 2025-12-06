@@ -1,15 +1,16 @@
 
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
 @if (backpack_auth()->user()->name == 'balai5')
-	<li><a href="{{ backpack_url('balaigempa') }}"><i class="wi wi-earthquake"></i> <span>Repositori PGR V</span></a></li>
-<li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PGR V JAY NBPI</span></a></li>
+<li><a href="{{ backpack_url('balaigempa') }}"><i class="wi wi-earthquake"></i> <span>Repositori PGR V</span></a></li>
+<li><a href="http://36.91.166.189/monitor/" target="_blank" ><i class="wi wi-earthquake"></i> <span>Data Integrasi</span></a></li>
+<!-- <li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PGR V JAY NBPI</span></a></li> -->
 <li><a href="{{ backpack_url('significant') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>SIGNIFIKAN / MANUAL</span></a></li>
-<li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li>
+<!-- <li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li>
 <li><a href="{{ backpack_url('gempa') }}"><i class="wi wi-earthquake"></i> <span>Repositori JAY</span></a></li>
 <li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori NBPI</span></a></li>
 <li><a href="{{ backpack_url('gempasorong') }}"><i class="wi wi-earthquake"></i> <span>Repositori SWI</span></a></li>
 <li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li>
-<li><a href="/bahan/lapbul/gempa/"><i class="wi wi-earthquake"></i> <span>Laporan Gempa</span></a></li>
+<li><a href="/bahan/lapbul/gempa/"><i class="wi wi-earthquake"></i> <span>Laporan Gempa</span></a></li> -->
 @elseif (backpack_auth()->user()->name == 'mendat.bawil5')
 <li class="treeview">
 		<a href="#"> <i class="wi wi-dust" style="margin-right: 0.5em;"></i><span>Kualitas Udara</span> <i class="fa fa-angle-left pull-right"></i> </a>
@@ -23,16 +24,19 @@
 
 @elseif (backpack_auth()->user()->name == 'nabire')
 <li><a href="{{ backpack_url('gempanabire') }}"><i class="wi wi-earthquake"></i> <span>Repositori Gempa Nabire</span></a></li>
-<li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PGR V DAN ANGKASA</span></a></li>
+<li><a href="http://36.91.166.189/monitor/" target="_blank" ><i class="wi wi-earthquake"></i> <span>Data Integrasi</span></a></li>
+<!-- <li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PGR V DAN ANGKASA</span></a></li> -->
 <li><a href="{{ backpack_url('significant') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>SIGNIFIKAN / MANUAL</span></a></li>
-<li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li>
+<!-- <li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li> -->
 @elseif (backpack_auth()->user()->name == 'sorong')
 <li><a href="{{ backpack_url('gempasorong') }}"><i class="wi wi-earthquake"></i> <span>Repositori</span></a></li>
-<li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PAPUA</span></a></li>
-<li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li>
+<li><a href="http://36.91.166.189/monitor/" target="_blank" ><i class="wi wi-earthquake"></i> <span>Data Integrasi</span></a></li>
+<!-- <li><a href="{{ backpack_url('joingempa') }}"><i class="wi wi-earthquake" style="margin-right: 0.5em;"></i> <span>ESDX PAPUA</span></a></li>
+<li><a href="{{ backpack_url('satudatagempa') }}"><i class="wi wi-earthquake"></i> <span>Satu Data Gempa</span></a></li> -->
 <li><a href="/bahan/lapbul/gempa/"><i class="wi wi-earthquake"></i> <span>Laporan Gempa</span></a></li>
 @elseif (backpack_auth()->user()->name == 'nganjuk')
 <li><a href="{{ backpack_url('gempanganjuk') }}"><i class="wi wi-earthquake"></i> <span>Repositori</span></a></li>
+<li><a href="http://36.91.166.189/monitor/" target="_blank" ><i class="wi wi-earthquake"></i> <span>Data Integrasi</span></a></li>
 <li><a href="/bahan/lapbul/gempa/"><i class="wi wi-earthquake"></i> <span>Laporan Gempa</span></a></li>
 <li><a href='{{ backpack_url('city') }}'><i class='fa fa-envelope'></i> <span>Daftar Kota</span></a></li>
 @else
@@ -47,6 +51,7 @@
 	<ul class="treeview-menu">
 	<li><a href="/gempa/jay"><i class="wi wi-earthquake"></i> <span>GEMPA TERKINI ANGKASA</span></a></li>
 	<li><a href="{{ backpack_url('gempa') }}"><i class="wi wi-earthquake"></i> <span>Repositori JAY</span></a></li>
+	<li><a href="http://36.91.166.189/monitor/" target="_blank" ><i class="wi wi-earthquake"></i> <span>Data Integrasi</span></a></li>
 	<!-- <li><a href="{{ backpack_url('infogempa') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa</span></a></li> -->
 {{-- 	<li><a href="{{ backpack_url('mercally') }}"><i class="fa fa-envelope"></i></i> <span>MMI</span></a></li> --}}
 {{-- <li><a href="{{ backpack_url('balaisms') }}"><i class="fa fa-envelope"></i></i> <span>Info Gempa PGR V</span></a></li> --}}
