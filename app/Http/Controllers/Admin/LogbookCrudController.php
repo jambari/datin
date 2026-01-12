@@ -863,8 +863,9 @@ class LogbookCrudController extends CrudController
                 'type' => 'select_from_array',
                 'options' => [
                     'Alif Muhammad Annabal' => 'Alif Muhammad Annabal','Berlian Y Andrianto' => 'Berlian Y Andrianto',
-                    'Gogo Diego Y. Silalahi' => 'Gogo Diego Y. Silalahi', 'Jambari' => 'Jambari','Lidya N. Hutapea' => 'Lidya N. Hutapea', 
-                    'Netty Y. Baru' => 'Netty Y. Baru','Achmad Prasetia Budi'=>'Achmad Prasetia Budi', 'Purnama David Anwar' => 'Purnama David Anwar', 'Rivaldo M. Sihombing' => 'Rivaldo M. Sihombing'
+                    'Anas Taufiq Syarifuddin' => 'Anas Taufiq Syarifuddin', 'Jambari' => 'Jambari','Lidya N. Hutapea' => 'Lidya N. Hutapea', 
+                    'Donny Jusuf Hutagalung' => 'Donny Jusuf Hutagalung','Achmad Prasetia Budi'=>'Achmad Prasetia Budi', 'Purnama David Anwar' => 'Purnama David Anwar', 'Rivaldo M. Sihombing' => 'Rivaldo M. Sihombing',
+                    'Richard Milhous Pangkali' => 'Richard Milhous Pangkali', 'Gregorius Juan Putra Pelani Halawa' => 'Gregorius Juan Putra Pelani Halawa'
                 ], 
                 'allows null' => false
             ]
