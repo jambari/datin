@@ -242,14 +242,18 @@ background: linear-gradient(90deg, rgb(1, 3, 6), rgb(33, 107, 52));*/
                         </div>
                     </div>
                 </div>
+                  <br>
+                  @if($epic_map)
+                  <div class="row">
+                      <div class="col-md-8 col-md-offset-2" >
+                          <div id="streetmap-baru">
+                              <img src="{{ asset('uploads') }}/{{ $epic_map }}" alt="logo" width="60%" height="60%" style="" >
+                          </div>
+                      </div>
+                  </div>
+                  @endif
             </div>
         </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2" style="display:flex; justify-content: center; ">
-        <input type="text" name="" id="isiSms" hidden value="Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] ?? '-' }}), Kedlmn:{{ $event['depth'] }} Km ::BMKG-PGR-V" >
-        <button class="btn btn-primary btn-lg" onclick="copySms()" onmouseout="outFunc()"> <i class="la la-copy"></i>  <span class="tooltiptext" id="myTooltip">Salin pesan </span></button>
-      </div>
     </div>
     {{-- Old Design --}}
 

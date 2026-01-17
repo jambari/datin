@@ -57,7 +57,7 @@
 				      	<td> {{ $gempa->depth ?? '' }} </td>
 				      	<td> {{ $gempa->ket ?? '' }} </td>
 				      	<td>{{ $gempa->terasa ?? '' }}</td>
-				      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-outline-success" > Peta </a></td>
+				      	<td><a href="/gempa/{{ $gempa->id }}" class="btn btn-outline-success" > Peta</a></td>
 				      	<td>{{ $gempa->petugas ?? '' }}</td>
 				      	<td>{{ $gempa->type ?? '' }}</td>
 				    </tr>

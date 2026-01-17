@@ -123,8 +123,8 @@ class GempasorongCrudController extends CrudController
         // ------ CRUD ACCESS
         //$this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'infogempa']);
         if (backpack_auth()->user()->name == 'angkasa') {
-        $this->crud->allowAccess(['list','infosorong', 'reorder','injectsorong','sorongtemplatebalai','press']);
-        $this->crud->denyAccess(['create', 'update','delete']);
+        $this->crud->allowAccess(['create','list','infosorong', 'reorder','injectsorong','sorongtemplatebalai','press','delete']);
+        $this->crud->denyAccess(['update']);
         $this->crud->addButtonFromView('line', 'press' , 'infosorong', 'end');
         $this->crud->allowAccess('kirimsdgswi');
         $this->crud->addButtonFromView('line', 'kirimsdgswi' , 'kirimsdgswi', 'end');
@@ -502,22 +502,18 @@ public function kirimsdgswi($id)
         $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
         $lat = $event['lintang'];
         $lon = $event['bujur'].' BT';
-        $mag = round($event['magnitudo'],1);
+        $mag = number_format($event['magnitudo'], 1, '.', '');
         $depth = $event['depth'];
         $koma =',';
-        //wilayah yang diguncang gempa
-        // $wilayah = $event['ket'];
-        // $ket = explode(" ", $wilayah);
-        // $wilayah = $ket[3];
-        // $arah = $ket[2];
-        // $jarak = $ket[0];
+        $timestamp_filename = date("Y-m-d_His", strtotime($tanggaljam));
+        $epic_map = "SWI"."_".$timestamp_filename . "_" . $event['lintang'] . "_" . $event['bujur'] . "_" . $mag . "_" . $depth . ".png";
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
         } else {
             $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
-        return view('gempa.sorongtemplatebalai', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms','koma'));
+        return view('gempa.sorongtemplatebalai', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms','koma','epic_map'));
     }
 
     public function press($id) //rilis media

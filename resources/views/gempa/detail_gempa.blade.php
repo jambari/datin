@@ -31,6 +31,20 @@
          font-family: Courier, monospace;
 
     }
+
+    #gmtmap {
+        width: 750px;  /* Fixed size for Instagram post */
+        height: 750px; /* Fixed size for Instagram post */
+        /* background-color: #f0f0f0; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between; /* Space between elements */
+        padding: 10px;
+        box-sizing: border-box; /* Include padding in height and width */
+        border-radius: 10px; /* Optional rounded corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    }
     .kota {
         font-size: ;
         color: black;
@@ -180,18 +194,22 @@
 		</div>
 	</div>
 </div>
-        <!-- this is eq map -->
-<div class="container" id="isi" >
-    <div class="row" style="margin:;">
-        <div class="col-md-12" id="templateBalai" >
-            <div id="streetmap">
+<div class="row" id="isi" >
+    <div class="col-md-6" id="templateBalai" >
+        <div id="streetmap">
             <img src=" {{ asset('images') }}/header-balai-sep-2024.png" alt="logo" width="100%" height="20%" style="" >
-                <div id="map" style="width:100%;height:550px; border-radius: 5px;"></div>
-                <p class="text-center " style="" > <strong class="" >Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] ?? '-' }}), Kedlmn:{{ $event['depth'] }} Km @if($event->terasa) {{ $event->terdampak }} @endif ::BMKG-JAY</strong> </p>
-                </p>
-            </div>
+            <div id="map" style="width:100%;height:550px; border-radius: 5px;"></div>
+            <p class="text-center " style="" > <strong class="" >Info Gempa Mag:{{ $mag }}, {{ $tanggalindosms }} {{ $jamwit }} WIT, Lok:{{ $lat }}, {{ $lon }} ({{ $event['ket'] ?? '-' }}), Kedlmn:{{ $event['depth'] }} Km @if($event->terasa) {{ $event->terdampak }} @endif ::BMKG-JAY</strong> </p>
+            </p>
         </div>
     </div>
+    @if ($epic_map)
+    <div class="col-md-6" id="gmtmap" >
+        <div class="streetmap">
+            <img src="{{ asset('uploads') }}/{{ $epic_map }}" alt="logo" width="100%" height="70%" style="" >
+        </div>
+    </div>
+    @endif
 </div>
 <hr>
 @endsection @section('script')

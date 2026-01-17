@@ -108,13 +108,13 @@ class GempanabireCrudController extends CrudController
         // ------ CRUD ACCESS
         //$this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'infogempa']);
         if (backpack_auth()->user()->name == 'angkasa') {
-            $this->crud->allowAccess(['list', 'infogempa','reorder','injectnabire','nabiretemplatebalai','press']);
+            $this->crud->allowAccess(['list','reorder','injectnabire','nabiretemplatebalai','press']);
             $this->crud->addButtonFromView('line', 'inject' , 'injectnabire', 'end');
             $this->crud->allowAccess('kirimsdgnbpi');
             $this->crud->addButtonFromView('line', 'kirimsdgnbpi' , 'kirimsdgnbpi', 'end');
             $this->crud->addButtonFromView('line', 'nabiretemplatebalai' , 'nabiretemplatebalai', 'end');
       } else {
-            $this->crud->allowAccess(['list','infogempa', 'create', 'update', 'reorder', 'delete','press']);
+            $this->crud->allowAccess(['list','nabiretemplatebalai', 'create', 'update', 'reorder', 'delete','press']);
       }
         $this->crud->allowAccess(['nabiretemplatebalai']);      
         $this->crud->addButtonFromView('line', 'infogempa' , 'infogempa', 'end');
@@ -368,19 +368,17 @@ public function infogempa($id) {
         $lon = $event['bujur'].' BT';
         $mag = round($event['magnitudo'],1);
         $depth = $event['depth'];
-        //wilayah yang diguncang gempa
-        // $wilayah = $event['ket'];
-        // $ket = explode(" ", $wilayah);
-        // $wilayah = $ket[3];
-        // $arah = $ket[2];
-        // $jarak = $ket[0];
+
+        $timestamp_filename = date("Y-m-d_His", strtotime($tanggaljam));
+        $epic_map = "NBPI"."_".$timestamp_filename . "_" . $event['lintang'] . "_" . $event['bujur'] . "_" . $mag . "_" . $depth . ".png";
+
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
         } else {
             $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
-        return view('gempa.infonabire', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
+        return view('gempa.infonabire', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms','epic_map'));
     }
 
     public function inject($id)
@@ -486,22 +484,20 @@ public function infogempa($id) {
         $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
         $lat = $event['lintang'];
         $lon = $event['bujur'].' BT';
-        $mag = round($event['magnitudo'],1);
+        $mag = number_format($event['magnitudo'], 1, '.', '');
         $depth = $event['depth'];
         $koma =","; 
-        //wilayah yang diguncang gempa
-        // $wilayah = $event['ket'];
-        // $ket = explode(" ", $wilayah);
-        // $wilayah = $ket[3];
-        // $arah = $ket[2];
-        // $jarak = $ket[0];
+
+        $timestamp_filename = date("Y-m-d_His", strtotime($tanggaljam));
+        $epic_map = "NBPI"."_".$timestamp_filename . "_" . $event['lintang'] . "_" . $event['bujur'] . "_" . $mag . "_" . $depth . ".png";
+
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
         } else {
             $lat = $lat[0].$lat[1].$lat[2].$lat[3].' LU';
         }
-        return view('gempa.nabiretemplatebalai', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms','koma'));
+        return view('gempa.nabiretemplatebalai', compact('latmap','lonmap','lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms','koma','epic_map'));
     }
 
     public function press($id) //rilis media

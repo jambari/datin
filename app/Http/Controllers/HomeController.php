@@ -735,21 +735,21 @@ class HomeController extends Controller
         $jamsusulan = date("H:i", strtotime($jamutc) + 34200);
         $lat = $event['lintang'];
         $lon = $event['bujur'].' BT';
-        $mag = round($event['magnitudo'],1);
+        $mag = number_format($event['magnitudo'], 1, '.', '');
         $depth = $event['depth'];
-        //wilayah yang diguncang gempa
-        // $wilayah = $event['ket'];
-        // $ket = explode(" ", $wilayah);
-        // $wilayah = $ket[3];
-        // $arah = $ket[2];
-        // $jarak = $ket[0];
+        // --- TAMBAHKAN VARIABLE EPIC_MAP DI SINI ---
+        $timestamp_filename = date("Y-m-d_His", strtotime($tanggaljam));
+        $epic_map = "JAY"."_".$timestamp_filename . "_" . $event['lintang'] . "_" . $event['bujur'] . "_" . $mag . "_" . $depth . ".png";
+        
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
         } else {
             $lat = $lat[1].$lat[2].'LU';
         }
-        return view('gempa.detail_gempa', compact('lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms'));
+
+        
+        return view('gempa.detail_gempa', compact('lat', 'lon', 'mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms','epic_map'));
     }
 
     public function variasi() {
