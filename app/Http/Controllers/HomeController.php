@@ -739,7 +739,7 @@ class HomeController extends Controller
         $depth = $event['depth'];
         // --- TAMBAHKAN VARIABLE EPIC_MAP DI SINI ---
         $timestamp_filename = date("Y-m-d_His", strtotime($tanggaljam));
-        $epic_map = "JAY"."_".$timestamp_filename . "_" . $event['lintang'] . "_" . $event['bujur'] . "_" . $mag . "_" . $depth . ".png";
+        $epic_map = "JAY"."_".$timestamp_filename ."UTC".".png";
         
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {

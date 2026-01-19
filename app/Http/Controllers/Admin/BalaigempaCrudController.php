@@ -462,7 +462,7 @@ class BalaiGempaCrudController extends CrudController
             $terdampak = $event['terdampak'];
 
             $timestamp_filename = date("Y-m-d_His", strtotime($tanggaljam));
-            $epic_map = "PGR5"."_".$timestamp_filename . "_" . $event['lintang'] . "_" . $event['bujur'] . "_" . $mag . "_" . $depth . ".png";
+            $epic_map = "PGR5"."_".$timestamp_filename ."UTC".".png";
         return view('gempa.balaisms', compact('mag', 'depth','event', 'tanggalindo', 'hari', 'jamwit','event','tanggalindosms', 'terdampak','epic_map'));
     }
 

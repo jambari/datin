@@ -506,7 +506,7 @@ public function kirimsdgswi($id)
         $depth = $event['depth'];
         $koma =',';
         $timestamp_filename = date("Y-m-d_His", strtotime($tanggaljam));
-        $epic_map = "SWI"."_".$timestamp_filename . "_" . $event['lintang'] . "_" . $event['bujur'] . "_" . $mag . "_" . $depth . ".png";
+        $epic_map = "SWI"."_".$timestamp_filename ."UTC".".png";
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {
             $lat = $lat[1].$lat[2].$lat[3].$lat[4].' LS';
