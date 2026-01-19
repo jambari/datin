@@ -489,7 +489,7 @@ public function infogempa($id) {
         $koma =","; 
 
         $timestamp_filename = date("Y-m-d_His", strtotime($tanggaljam));
-        $epic_map = "NBPI"."_".$timestamp_filename . "_" . $event['lintang'] . "_" . $event['bujur'] . "_" . $mag . "_" . $depth . ".png";
+        $epic_map = "NBPI"."_".$timestamp_filename ."UTC".".png";
 
         $lat = str_split($lat); //break latitude to an array
         if ($lat[0] == '-') {
