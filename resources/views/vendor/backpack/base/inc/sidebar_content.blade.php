@@ -71,7 +71,7 @@
 
 <li class="treeview">
 	<a href="#"><i class="fa fa-newspaper-o"></i> <span>Berita</span> <i class="fa fa-angle-left pull-right"></i></a>
-
+	<li><a href="{{ backpack_url('siaran') }}"><i class="fa fa-bullhorn"></i> <span>Siaran Press</span></a></li>
 </li>
 <!--
 <li><a href="{{ backpack_url('lapbul') }}"><i class="fa fa-book" style="margin-right: 0.5em;"></i> <span>Laporan Bulanan (Under Construction)</span></a></li>-->
